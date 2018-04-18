@@ -1,20 +1,39 @@
-package com.service;
+package com.service.ui;
 
+import com.service.ui.web.ChromeDriverWrapper;
 import org.openqa.selenium.chrome.ChromeDriverService;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class WebDriverFactory {
+//Description:
+//creates instances of drivers for testing UI
+//each driver instance is marked with test thread id, each test thread uses only one driver instance
+//creates additional instances for drivers initialization such as OS services
+
+
+public class UIDriverFactory {
 
     private ChromeDriverService genericChromeDriverService;
-    private HashMap<String, WebDriverWrapper> driverPool = new HashMap<>();
+    private HashMap<String, UIDriverWrapper> driverPool = new HashMap<>();
 
-    public WebDriverWrapper createDriver(String name, String threadId){
-        if (driverPool.containsKey(threadId)){
+    public void shutDown(){
+        driverPool.forEach((k,v) -> {
+            v.close();
+            System.out.println("web driver closed in thread " + k);
+        });
+        stopChromeService();
+    }
+
+    public UIDriverWrapper getDriver(String name, String threadId){
+        if (driverPool.containsKey(threadId)) {
             return driverPool.get(threadId);
         }
+        return createDriverByName(name, threadId);
+    }
+
+    private UIDriverWrapper createDriverByName(String name, String threadId){
         if (name == "chrome") {
             return createChromeDriver(threadId) ? driverPool.get(threadId) : null;
         }
@@ -28,14 +47,6 @@ public class WebDriverFactory {
             return true;
         }
         return false;
-    }
-
-    public void shutDown(){
-        driverPool.forEach((k,v) -> {
-            v.close();
-            System.out.println("web driver closed in thread " + k);
-        });
-        stopChromeService();
     }
 
     private boolean startChromeService() {
