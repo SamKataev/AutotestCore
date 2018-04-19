@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="slemma test" parallel="tests" thread-count="3">
-    <parameter name="baseURL" value="https://beta.slemma.com"/>
+<suite name="suite template" parallel="tests" thread-count="3">
+    <parameter name="baseURL" value=""/>
 
     <listeners>
         <listener class-name="com.service.CustomTestListener"/>
@@ -10,21 +10,21 @@
     <test verbose="1" name="1" annotations="JDK">
         <parameter name="threadId" value="thread1"/>
         <classes>
-            <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
+
         </classes>
     </test>
 
     <test verbose="1" name="2" annotations="JDK">
         <parameter name="threadId" value="thread2"/>
         <classes>
-            <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
+
         </classes>
     </test>
 
     <test verbose="1" name="3" annotations="JDK">
         <parameter name="threadId" value="thread3"/>
         <classes>
-            <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
+
         </classes>
     </test>
 
