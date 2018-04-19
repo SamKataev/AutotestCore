@@ -5,10 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 //Description:
-//abstraction of container that initializes and uses web elements.
-//implementation of setChildElements() should initialize web elements used by inherited class methods
-//inherited classes can contain other page elements inherited from this class
-//TO DO: add common methods to simplify web elements initialization
+//Purpose of this class is to encapsulate findning and usage of web elements
+//implementation of setChildElements() in inherited class should initialize web elements
+//TO DO: add common methods to simplify web elements initialization and usage
 
 public abstract class WebElementsContainer {
 

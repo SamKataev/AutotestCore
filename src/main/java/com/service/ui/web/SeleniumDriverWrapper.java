@@ -9,9 +9,13 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 //Description:
-//implicityWait web driver prop is set to 0, it is overriden by defaultWaitTime prop for more flexible timeouts adjustment
-//initDriver() is abstract to be implemented in a specific driver wrapper class
-//all WebDriverException exceptions should be caught in this class
+//Purpose of this wrapper is to encapsulate usage of selenium WebDriver:
+//    - all WebDriverException exceptions should be caught in this class
+//    - all methods should return void or boolean to simplify assertion
+//    - all methods that use WebElement should accept wait timeout argument (int)
+//    - implicityWait web driver prop is set to 0, it is overriden by defaultWaitTime prop for more flexible timeouts adjustment
+//    - initDriver() is abstract to be implemented in a specific driver wrapper class
+
 
 public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
 
