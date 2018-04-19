@@ -1,21 +1,17 @@
 package com.service.ui.web;
 
 import com.service.ui.UIDriverWrapper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.log4testng.Logger;
-
-import java.util.HashMap;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 //Description:
 //implicityWait web driver prop is set to 0, it is overriden by defaultWaitTime prop for more flexible timeouts adjustment
 //initDriver() is abstract to be implemented in a specific driver wrapper class
+//all WebDriverException exceptions should be caught in this class
 
 public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
 
@@ -41,7 +37,63 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     abstract boolean initDriver();
 
     public void close(){
-        driver.close();
+        try {
+            driver.close();
+        }catch (WebDriverException e){
+            System.out.println("error closing web driver in driver wrapper: " + e.getMessage());
+        }
+    }
+
+    public boolean click(Object object){
+        if (object instanceof WebElement){
+           return clickWebElement((WebElement) object, defaultWaitTime);
+        }
+        else{
+            System.out.println("wrong argument type");
+        }
+        return false;
+    }
+
+    public boolean type(Object object, String text){
+        if (object instanceof WebElement){
+            return typeWebElement((WebElement) object, text, defaultWaitTime);
+        }
+        else{
+            System.out.println("wrong argument type");
+        }
+        return false;
+    }
+
+    public boolean click(WebElement element, int time){
+        return clickWebElement(element, time);
+    }
+
+    public boolean type(WebElement element, String text, int time){
+        return typeWebElement(element, text, time);
+    }
+
+    private boolean clickWebElement(WebElement element, int time){
+        if (waitUntilClickable(element, time)) {
+            try {
+                element.click();
+                return true;
+            }catch (WebDriverException e){
+                System.out.println("error clicking web element" + element.getLocation() + ": " + e.getMessage().substring(0,35) + "...");
+            }
+        }
+        return false;
+    }
+
+    private boolean typeWebElement(WebElement element, String text, int time){
+        if (waitUntilClickable(element, time) && clickWebElement(element, time)){
+            try {
+                element.sendKeys(text);
+                return true;
+            }catch (WebDriverException e){
+                System.out.println("error typing in web element" + element.getLocation() + ": " + e.getMessage().substring(0,35) + "...");
+            }
+        }
+        return false;
     }
 
     public void goToUrl(String url){
@@ -49,7 +101,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     }
 
     public boolean checkCurrentUrl(String url){
-        return driver.getCurrentUrl() == url;
+        return driver.getCurrentUrl().equals(url);
     }
 
     public void switchWindow(){ //switches to random window other than main window
@@ -140,7 +192,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
                 wait.until(ExpectedConditions.elementToBeClickable(element));
             }
             if (type == WaiterType.DISAPPEAR) {
-                wait.until(ExpectedConditions.invisibilityOf(element));
+                wait.until(ExpectedConditions. invisibilityOf(element));
             }
         } catch (TimeoutException ex) {
             System.out.println("timeout " + time + " expired, " + type.toString());

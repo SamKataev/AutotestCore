@@ -1,7 +1,5 @@
 package com.objects;
 
-
-
 //Description:
 //abstraction of complex web element on a specific web page
 //inherited classes can contain other complex page elements inherited from PageElement

@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ThreadGuard;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class ChromeDriverWrapper extends SeleniumDriverWrapper {
 
