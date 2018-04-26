@@ -3,24 +3,23 @@ package com.objects.slemmaobjects.pageobjects;
 import com.objects.PageObject;
 import com.objects.slemmaobjects.pageelements.NavigationPanel;
 import com.service.ui.web.SeleniumDriverWrapper;
-import com.tests.ui.WebTest;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 
 public class HomePage extends PageObject {
 
     public NavigationPanel navigationPanel;
 
-    private WebElement pageModeLabel;
+    private final By pageModeLabel = locatorBySubclassInParentClass("pageModeLbl", "lbl-cnt");
 
-    public HomePage(SeleniumDriverWrapper driver, WebTest testClass){
-        super(driver.getBaseUrl() + "/home", driver, testClass);
+    public HomePage(SeleniumDriverWrapper driver){
+        super(driver.getBaseUrl() + "/home", driver);
+        navigationPanel = new NavigationPanel(driver);
     }
 
     @Override
-    public HomePage setChildElements() {
-        pageModeLabel = getElementBySubclassInParentClass("pageModeLbl", "lbl-cnt", 10);
-        navigationPanel = new NavigationPanel(driver, currentTest).setChildElements();
-        return this;
+    public boolean getChildElements() {
+        return driver.waitUntilExist(pageModeLabel, 10)
+                && navigationPanel.getChildElements();
     }
 
     public boolean isLoggedIn(){
@@ -30,7 +29,7 @@ public class HomePage extends PageObject {
     }
 
     public boolean checkPageMode(String name){
-        return pageModeLabel.getText().equals(name);
+        return driver.getElement(pageModeLabel, 10).getText().equals(name);
     }
 
 }

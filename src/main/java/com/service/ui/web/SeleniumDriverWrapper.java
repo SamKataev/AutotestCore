@@ -23,7 +23,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     protected String mainHandle;
     protected String baseUrl;
 
-    enum WaiterType {VISIBLE, CLICKABLE, DISAPPEAR}
+    enum WaiterType {EXIST, VISIBLE, CLICKABLE, DISAPPEAR}
     private int defaultWaitTime;
 
     private static final Logger log = Logger.getLogger(SeleniumDriverWrapper.class);
@@ -50,8 +50,8 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     }
 
     public boolean click(Object object){
-        if (object instanceof WebElement){
-           return clickWebElement((WebElement) object, defaultWaitTime);
+        if (object instanceof By){
+           return clickWebElement((By) object, defaultWaitTime);
         }
         else{
             System.out.println("wrong argument type");
@@ -60,8 +60,8 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     }
 
     public boolean type(Object object, String text){
-        if (object instanceof WebElement){
-            return typeWebElement((WebElement) object, text, defaultWaitTime);
+        if (object instanceof By){
+            return typeWebElement((By) object, text, defaultWaitTime);
         }
         else{
             System.out.println("wrong argument type");
@@ -69,33 +69,33 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         return false;
     }
 
-    public boolean click(WebElement element, int time){
-        return clickWebElement(element, time);
+    public boolean click(By locator, int time){
+        return clickWebElement(locator, time);
     }
 
-    public boolean type(WebElement element, String text, int time){
-        return typeWebElement(element, text, time);
+    public boolean type(By locator, String text, int time){
+        return typeWebElement(locator, text, time);
     }
 
-    private boolean clickWebElement(WebElement element, int time){
-        if (waitUntilClickable(element, time)) {
+    private boolean clickWebElement(By locator, int time){
+        if (waitUntilClickable(locator, time)) {
             try {
-                element.click();
+                getElement(locator, time).click();
                 return true;
             }catch (WebDriverException e){
-                System.out.println("error clicking web element" + element.getLocation() + ": " + e.getMessage().substring(0,35) + "...");
+                System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,35) + "...");
             }
         }
         return false;
     }
 
-    private boolean typeWebElement(WebElement element, String text, int time){
-        if (waitUntilClickable(element, time) && clickWebElement(element, time)){
+    private boolean typeWebElement(By locator, String text, int time){
+        if (waitUntilClickable(locator, time) && clickWebElement(locator, time)){
             try {
-                element.sendKeys(text);
+                getElement(locator, time).sendKeys(text);
                 return true;
             }catch (WebDriverException e){
-                System.out.println("error typing in web element" + element.getLocation() + ": " + e.getMessage().substring(0,35) + "...");
+                System.out.println("error typing in web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,35) + "...");
             }
         }
         return false;
@@ -160,52 +160,52 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         return getElement(locator, defaultWaitTime);
     }
 
-    private boolean waitUntilExist(By locator, int time){
-       try {
-           WebDriverWait wait = new WebDriverWait(webDriver, time);
-           wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-       } catch (TimeoutException ex) {
-           System.out.println("timeout " + time + " expired, EXIST by locator: " + locator.toString());
-           return false;
-       }
-       return true;
+    public boolean waitUntilExist(By locator, int time){
+        return waitUntilConditions(locator, time, WaiterType.EXIST);
     }
 
-    public boolean waitUntilVisible(WebElement element, int time) {
-        return waitUntilConditions(element, time, WaiterType.VISIBLE);
+    public boolean waitUntilExist(By locator){
+       return waitUntilExist(locator, defaultWaitTime);
     }
 
-    public boolean waitUntilVisible(WebElement element) {
-       return waitUntilVisible(element, defaultWaitTime);
+    public boolean waitUntilVisible(By locator, int time) {
+       return waitUntilConditions(locator, time, WaiterType.VISIBLE);
     }
 
-    public boolean waitUntilClickable(WebElement element, int time) {
-        return waitUntilConditions(element, time, WaiterType.CLICKABLE);
+    public boolean waitUntilVisible(By locator) {
+       return waitUntilVisible(locator, defaultWaitTime);
     }
 
-    public boolean waitUntilClickable(WebElement element) {
-        return waitUntilClickable(element, defaultWaitTime);
+    public boolean waitUntilClickable(By locator, int time) {
+        return waitUntilConditions(locator, time, WaiterType.CLICKABLE);
     }
 
-    public boolean waitUntilDisappear(WebElement element, int time) {
-        return waitUntilConditions(element, time, WaiterType.DISAPPEAR);
+    public boolean waitUntilClickable(By locator) {
+        return waitUntilClickable(locator, defaultWaitTime);
     }
 
-    public boolean waitUntilDisappear(WebElement element) {
-        return waitUntilDisappear(element, defaultWaitTime);
+    public boolean waitUntilDisappear(By locator, int time) {
+        return waitUntilConditions(locator, time, WaiterType.DISAPPEAR);
     }
 
-    private boolean waitUntilConditions(WebElement element, int time, WaiterType type) {
+    public boolean waitUntilDisappear(By locator) {
+        return waitUntilDisappear(locator, defaultWaitTime);
+    }
+
+    private boolean waitUntilConditions(By locator, int time, WaiterType type) {
         try {
             WebDriverWait wait = new WebDriverWait(webDriver, time);
+            if (type == WaiterType.EXIST) {
+                wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+            }
             if (type == WaiterType.VISIBLE) {
-                wait.until(ExpectedConditions.visibilityOf(element));
+                wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             }
             if (type == WaiterType.CLICKABLE) {
-                wait.until(ExpectedConditions.elementToBeClickable(element));
+                wait.until(ExpectedConditions.elementToBeClickable(locator));
             }
             if (type == WaiterType.DISAPPEAR) {
-                wait.until(ExpectedConditions. invisibilityOf(element));
+                wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
             }
         } catch (TimeoutException ex) {
             System.out.println("timeout " + time + " expired, " + type.toString());

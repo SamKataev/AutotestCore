@@ -8,13 +8,15 @@ public class LoginAndRegister extends SlemmaWebTest {
 
     @BeforeClass
     @Override
-    public void setStartPage(){
+    public void startSlemmaTestClass(){
+        initPages(this);
         Assert.assertTrue(authPage.open().isOpened());
     }
 
     @Test
     public void checkLoginWithTrueCredentials(){
-        Assert.assertTrue(login().isLoggedIn());
+        Assert.assertTrue(logIn());
+        Assert.assertTrue(homePage.isLoggedIn());
     }
 
 }

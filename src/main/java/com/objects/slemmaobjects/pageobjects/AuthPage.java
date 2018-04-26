@@ -2,25 +2,23 @@ package com.objects.slemmaobjects.pageobjects;
 
 import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
-import com.tests.ui.WebTest;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class AuthPage extends PageObject{
 
-    private WebElement emailInput;
-    private WebElement passInput;
-    private WebElement signInBtn;
+    private By emailInput = locatorByInputInParentDivClass("emailInput");
+    private By passInput = locatorByInputInParentDivClass("passwordInput");
+    private By signInBtn = locatorByClass("signInBtn");
 
-    public AuthPage(SeleniumDriverWrapper driver, WebTest testClass){
-        super(driver.getBaseUrl()+"/auth", driver, testClass);
+    public AuthPage(SeleniumDriverWrapper driver){
+        super(driver.getBaseUrl()+"/auth", driver);
     }
 
-    public AuthPage setChildElements(){
-        emailInput = getInputByParentDivClass("emailInput", 10);
-        passInput = getInputByParentDivClass("passwordInput");
-        signInBtn = getElementByClass("signInBtn");
-        return this;
+    public boolean getChildElements(){
+        return driver.waitUntilExist(emailInput, 10)
+                && driver.waitUntilExist(passInput)
+                && driver.waitUntilExist(signInBtn);
     }
 
     public void logIn(String email, String pass){

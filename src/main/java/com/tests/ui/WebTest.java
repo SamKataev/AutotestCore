@@ -52,14 +52,6 @@ public abstract class WebTest {
         initPages(this);
     }
 
-//    @Parameters({"threadId"})
-//    @AfterClass
-//    public void stopClass(String threadId){
-//        if (driverFactory != null) {
-//            driverFactory.closeDriver(threadId);
-//        }
-//    }
-
     protected abstract void initPages(WebTest testClass);
 
     public SeleniumDriverWrapper getDriver(){

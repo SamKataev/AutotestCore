@@ -4,7 +4,6 @@ import com.objects.slemmaobjects.pageobjects.AuthPage;
 import com.objects.slemmaobjects.pageobjects.HomePage;
 import com.service.TestProperties;
 import com.tests.ui.WebTest;
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 
 public class SlemmaWebTest extends WebTest {
@@ -13,27 +12,26 @@ public class SlemmaWebTest extends WebTest {
     public AuthPage authPage;
 
     @BeforeClass
-    public void setStartPage(){
-        Assert.assertTrue(openHomePage().isOpened());  //each test class starts from home page if not overridden
+    public void startSlemmaTestClass(){
+        initPages(this);
+        openHomePage();  //each test class starts from home page if not overridden
     }
 
     @Override
     protected void initPages(WebTest testClass) {
-        homePage = new HomePage(driver, testClass);
-        authPage = new AuthPage(driver, testClass);
+        homePage = new HomePage(driver);
+        authPage = new AuthPage(driver);
     }
 
-    protected HomePage openHomePage(){
-        if (homePage.isOpened()) {
-            return homePage.setChildElements();
-        }
-        return login().setChildElements();
+    protected boolean openHomePage(){
+        return homePage.isOpened() || logIn();
     }
 
-    public HomePage login(){
+    public boolean logIn(){
         authPage.open();
         authPage.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
-        return  homePage.setChildElements();
+        boolean b = homePage.isOpened();
+        return homePage.isOpened();
     }
 
 }
