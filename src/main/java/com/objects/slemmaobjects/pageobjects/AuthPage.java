@@ -2,6 +2,7 @@ package com.objects.slemmaobjects.pageobjects;
 
 import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
+import com.tests.ui.WebTest;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -11,22 +12,21 @@ public class AuthPage extends PageObject{
     private WebElement passInput;
     private WebElement signInBtn;
 
-    public AuthPage(String url, SeleniumDriverWrapper driver){
-        super(url, driver);
+    public AuthPage(SeleniumDriverWrapper driver, WebTest testClass){
+        super(driver.getBaseUrl()+"/auth", driver, testClass);
     }
 
-    @Override
-    protected void setChildElements() {
+    public AuthPage setChildElements(){
         emailInput = getInputByParentDivClass("emailInput", 10);
         passInput = getInputByParentDivClass("passwordInput");
         signInBtn = getElementByClass("signInBtn");
+        return this;
     }
 
-    public AuthPage logIn(String email, String pass){
+    public void logIn(String email, String pass){
         enterEmail(email);
         enterPass(pass);
         clickSignIn();
-        return this;
     }
 
     public AuthPage enterEmail(String text){

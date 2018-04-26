@@ -1,16 +1,20 @@
 package com.tests.ui.slemmauitests;
 
-import com.objects.slemmaobjects.pageobjects.AuthPage;
-import com.service.TestProperties;
-import com.tests.ui.WebTest;
+import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class LoginAndRegister extends WebTest {
+public class LoginAndRegister extends SlemmaWebTest {
+
+    @BeforeClass
+    @Override
+    public void setStartPage(){
+        Assert.assertTrue(authPage.open().isOpened());
+    }
 
     @Test
-    public void login(){
-        AuthPage page = new AuthPage(baseUrl, webDriver);
-        page.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
+    public void checkLoginWithTrueCredentials(){
+        Assert.assertTrue(login().isLoggedIn());
     }
 
 }
