@@ -27,10 +27,9 @@ public class SlemmaWebTest extends WebTest {
         return homePage.isOpened() || logIn();
     }
 
-    public boolean logIn(){
+    protected boolean logIn(){
         authPage.open();
         authPage.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
-        boolean b = homePage.isOpened();
         return homePage.isOpened();
     }
 

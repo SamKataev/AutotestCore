@@ -24,12 +24,14 @@ public class HomePage extends PageObject {
 
     public boolean isLoggedIn(){
         return isOpened()
-                && checkPageMode("Library");
+                && checkMenuSection("Library", "/home");
                 //TODO: check account
     }
 
-    public boolean checkPageMode(String name){
-        return driver.getElement(pageModeLabel, 10).getText().equals(name);
+    public boolean checkMenuSection(String name, String path){
+        return isOpened()
+                && driver.checkCurrentUrl(driver.getBaseUrl() + path)
+                && driver.getElement(pageModeLabel, 10).getText().equals(name);
     }
 
 }

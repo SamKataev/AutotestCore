@@ -17,7 +17,7 @@ public abstract class PageObject extends WebElementsContainer {
     }
 
     public boolean isOpened(){
-        return getChildElements() && driver.checkCurrentUrl(url);
+        return getChildElements();
         //TODO: add more checks
     }
 
