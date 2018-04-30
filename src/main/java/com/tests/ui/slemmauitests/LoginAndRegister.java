@@ -9,7 +9,6 @@ public class LoginAndRegister extends SlemmaWebTest {
     @BeforeClass
     @Override
     public void startSlemmaTestClass(){
-        initPages(this);
         Assert.assertTrue(authPage.open().isOpened());
     }
 

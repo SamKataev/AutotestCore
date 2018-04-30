@@ -13,12 +13,11 @@ public class SlemmaWebTest extends WebTest {
 
     @BeforeClass
     public void startSlemmaTestClass(){
-        initPages(this);
         openHomePage();  //each test class starts from home page if not overridden
     }
 
     @Override
-    protected void initPages(WebTest testClass) {
+    protected void initPages() {
         homePage = new HomePage(driver);
         authPage = new AuthPage(driver);
     }

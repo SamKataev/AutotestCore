@@ -49,10 +49,10 @@ public abstract class WebTest {
         Assert.assertNotEquals(driver, null, "");
         driver.setBaseUrl(url);
         driver.setDefaultWaitTime(Integer.parseInt(defaultWaitTime));
-        initPages(this);
+        initPages();
     }
 
-    protected abstract void initPages(WebTest testClass);
+    protected abstract void initPages();
 
     public SeleniumDriverWrapper getDriver(){
         return driver;
