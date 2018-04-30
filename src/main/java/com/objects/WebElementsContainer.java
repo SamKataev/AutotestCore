@@ -2,37 +2,33 @@ package com.objects;
 
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 //Description:
-//Purpose of this class is to encapsulate findning and usage of web elements
-//implementation of setChildElements() in inherited class should initialize web elements
-//TO DO: add common methods to simplify web elements initialization and usage
+//Purpose of this class is to encapsulate formatting locators of web elements
+//inherited class should call getChildElements() to check if necessary web elements are available by web driver
+//TODO: add common methods to simplify instantiation and usage of web elements
 
 public abstract class WebElementsContainer {
 
     protected SeleniumDriverWrapper driver;
 
+
     public WebElementsContainer(SeleniumDriverWrapper webDriver){
         driver = webDriver;
     }
 
-    protected abstract void setChildElements();
+    public abstract boolean getChildElements();
 
-    protected WebElement getElementByClass(String name, int time){
-        return driver.getElement(By.cssSelector("." + name), time);
+    protected By locatorByClass(String name){
+        return By.cssSelector("." + name);
     }
 
-    protected WebElement getElementByClass(String name){
-        return getElementByClass(name, driver.getDefaultWaitTime());
+    protected By locatorByInputInParentDivClass(String name){
+        return By.xpath("//div[contains(@class, '" + name + "')]/input");
     }
 
-    protected WebElement getInputByParentDivClass(String name, int time){
-        return driver.getElement(By.xpath("//div[contains(@class, '" + name + "')]/input"), time);
-    }
-
-    protected WebElement getInputByParentDivClass(String name){
-        return getInputByParentDivClass(name, driver.getDefaultWaitTime());
+    protected By locatorBySubclassInParentClass(String className, String subclassName){
+        return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "')]");
     }
 
 }

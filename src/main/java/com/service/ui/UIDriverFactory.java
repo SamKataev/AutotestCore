@@ -37,6 +37,13 @@ public class UIDriverFactory {
         startChromeService();
     }
 
+    public void closeDrivers(){
+        driverPool.forEach((k,v) -> {
+            v.close();
+            System.out.println("web driver closed in thread" + k);
+        });
+    }
+
     public void stopServices(){
         //add new services here
         stopChromeService();
