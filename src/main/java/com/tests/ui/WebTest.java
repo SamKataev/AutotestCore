@@ -1,14 +1,9 @@
 package com.tests.ui;
 
-import com.objects.PageObject;
-import com.objects.WebElementsContainer;
 import com.service.ui.UIDriverFactory;
 import com.service.ui.web.SeleniumDriverWrapper;
-import com.tests.ui.slemmauitests.SlemmaWebTest;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.util.HashMap;
 
 //Description:
 //driverFactory instance is being initialized in BeforeSuite method and is static for all test classes

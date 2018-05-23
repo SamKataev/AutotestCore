@@ -19,9 +19,9 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
 
-    protected WebDriver webDriver;
-    protected String mainHandle;
-    protected String baseUrl;
+    WebDriver webDriver;
+    private String mainHandle;
+    private String baseUrl;
 
     enum WaiterType {EXIST, VISIBLE, CLICKABLE, DISAPPEAR}
     private int defaultWaitTime;
@@ -67,14 +67,6 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
             System.out.println("wrong argument type");
         }
         return false;
-    }
-
-    public boolean click(By locator, int time){
-        return clickWebElement(locator, time);
-    }
-
-    public boolean type(By locator, String text, int time){
-        return typeWebElement(locator, text, time);
     }
 
     private boolean clickWebElement(By locator, int time){

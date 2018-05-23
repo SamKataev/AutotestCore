@@ -8,8 +8,8 @@ import org.testng.annotations.BeforeClass;
 
 public class SlemmaWebTest extends WebTest {
 
-    public HomePage homePage;
-    public AuthPage authPage;
+    HomePage homePage;
+    AuthPage authPage;
 
     @BeforeClass
     public void startSlemmaTestClass(){
