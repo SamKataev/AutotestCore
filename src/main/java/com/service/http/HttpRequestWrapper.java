@@ -1,4 +1,4 @@
-package com.service.api;
+package com.service.http;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.StringEntity;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
-public class ApiRequest {
+public class HttpRequestWrapper {
 
     private String name;
     private String body;
@@ -22,6 +22,7 @@ public class ApiRequest {
     private HttpResponse response;
 
     public boolean send(HttpClient client){
+        System.out.println("test \"" + name + "\", send request: " + type + " " + url);
         if(type.equals("get") || type.equals("delete")){
             return sendWithoutEntity(client, initRequest());
         }
@@ -57,7 +58,9 @@ public class ApiRequest {
     private boolean execute(HttpClient client, HttpRequestBase request) {
         try {
             response = client.execute(request);
-            return true;
+            if(response != null) {
+                return true;
+            }
         } catch (IOException e) {
             System.out.println("test \"" + name + "\", error sending request: " + type);
         }
@@ -101,21 +104,25 @@ public class ApiRequest {
     }
 
     public boolean validateStatusCode(){
+        boolean valid = false;
         if(response != null){
-            return expectedStatusCode == response.getStatusLine().getStatusCode();
+            valid = expectedStatusCode == response.getStatusLine().getStatusCode();
         }
-        return false;
+        System.out.println("test \"" + name + "\", validate status code: " + valid);
+        return valid;
     }
 
     public boolean validateResponseBody(){
+        boolean valid = false;
         if(response != null){
             try {
-                return expectedResponseBody.equals(response.getEntity().getContent().toString());
+                valid = expectedResponseBody.equals(response.getEntity().getContent().toString());
             } catch (IOException e) {
                 System.out.println("test \"" + name + "\", error reading response body");
             }
         }
-        return false;
+        System.out.println("test \"" + name + "\", validate response body: " + valid);
+        return valid;
     }
 
     public void setName(String name) {

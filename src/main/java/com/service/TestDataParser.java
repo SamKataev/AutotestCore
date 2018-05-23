@@ -2,7 +2,7 @@ package com.service;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.service.api.ApiRequest;
+import com.service.http.HttpRequestWrapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class TestDataParser {
 
-    public static ArrayList<ApiRequest> getApiRequestsFromFileContent(String filePath) {
+    public static ArrayList<HttpRequestWrapper> getApiRequestsFromFileContent(String filePath) {
         return getApiRequests(getFileContentAsJsonArray(filePath));
     }
 
@@ -33,18 +33,18 @@ public class TestDataParser {
         }
     }
 
-    private static ArrayList<ApiRequest> getApiRequests(JsonArray testData){
-        ArrayList<ApiRequest> list = new ArrayList<>();
+    private static ArrayList<HttpRequestWrapper> getApiRequests(JsonArray testData){
+        ArrayList<HttpRequestWrapper> list = new ArrayList<>();
         if(testData != null) {
             testData.forEach((el) -> {
                 JsonObject testContent = el.getAsJsonObject();
                 if(validateTestContent(testContent)) {
-                    ApiRequest request = new ApiRequest();
+                    HttpRequestWrapper request = new HttpRequestWrapper();
                     parseTestContentToApiRequest(request, testContent);
                     list.add(request);
                 }else{
                     String testName = testContent.get("name") != null ? testContent.get("name").getAsString() : "name is missing";
-                    System.out.println("test \"" + testName + "\", invalid content, can't create request instance");
+                    System.out.println("test \"" + testName + "\", invalid content, can't create request instance \n");
                 }
             });
         }
@@ -62,7 +62,7 @@ public class TestDataParser {
                 && content.get("response") != null;
     }
 
-    private static void parseTestContentToApiRequest(ApiRequest request, JsonObject content) {
+    private static void parseTestContentToApiRequest(HttpRequestWrapper request, JsonObject content) {
         request.setName(content.get("name").getAsString());
         request.setBody(content.get("body").getAsString());
         request.setType(content.get("type").getAsString());

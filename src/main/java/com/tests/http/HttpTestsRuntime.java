@@ -1,6 +1,6 @@
-package com.tests.api;
+package com.tests.http;
 
-import com.service.api.ApiRequest;
+import com.service.http.HttpRequestWrapper;
 import com.service.TestDataParser;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 import java.util.ArrayList;
 
 
-public class ApiTestsRuntime {
+public class HttpTestsRuntime {
 
     private static HttpClient client;
 
@@ -20,9 +20,9 @@ public class ApiTestsRuntime {
 
     public class SimpleApiTest {
 
-        private ApiRequest request;
+        private HttpRequestWrapper request;
 
-        SimpleApiTest(ApiRequest request){
+        SimpleApiTest(HttpRequestWrapper request){
             setRequest(request);
         }
 
@@ -33,7 +33,7 @@ public class ApiTestsRuntime {
 //            Assert.assertTrue(request.validateResponseBody());
         }
 
-        void setRequest(ApiRequest request) {
+        void setRequest(HttpRequestWrapper request) {
             this.request = request;
         }
     }
@@ -41,7 +41,7 @@ public class ApiTestsRuntime {
     @Parameters({"filePath"})
     @Factory
     public Object[] apiTestsFactory(@Optional("src/main/resources/api_tests.txt") String filePath) {
-        ArrayList<ApiRequest> requests = TestDataParser.getApiRequestsFromFileContent(filePath);
+        ArrayList<HttpRequestWrapper> requests = TestDataParser.getApiRequestsFromFileContent(filePath);
         ArrayList<SimpleApiTest> tests = new ArrayList<>();
         requests.forEach((request) -> tests.add(new SimpleApiTest(request)));
         return  tests.toArray();
