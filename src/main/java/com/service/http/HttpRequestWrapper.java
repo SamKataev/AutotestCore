@@ -1,5 +1,7 @@
 package com.service.http;
 
+import com.google.gson.JsonObject;
+import com.service.CustomJsonParser;
 import org.apache.http.HttpResponse;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.client.HttpClient;
@@ -7,7 +9,9 @@ import org.apache.http.client.methods.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class HttpRequestWrapper {
 
@@ -17,7 +21,7 @@ public class HttpRequestWrapper {
     private String url;
     private final HashMap<String, String> headers = new HashMap<>();
     private int expectedStatusCode;
-    private String expectedResponseBody;
+    private JsonObject expectedResponseBody;
 
     private HttpResponse response;
 
@@ -52,6 +56,7 @@ public class HttpRequestWrapper {
             headers.forEach(request::addHeader);
             return true;
         }
+        System.out.println("test \"" + name + "\", headers are missing");
         return false;
     }
 
@@ -112,17 +117,25 @@ public class HttpRequestWrapper {
         return valid;
     }
 
-    public boolean validateResponseBody(){
+    public boolean validateResponseBody(ArrayList<String> ignoredProps){
         boolean valid = false;
         if(response != null){
+             String responseBodyContent = "";
             try {
-                valid = expectedResponseBody.equals(response.getEntity().getContent().toString());
-            } catch (IOException e) {
-                System.out.println("test \"" + name + "\", error reading response body");
+                responseBodyContent = new Scanner(response.getEntity().getContent()).useDelimiter("\\Z").next();
+            } catch (Exception e) {
+                System.out.println("test \"" + name + "\", error reading entity from response");
             }
+            JsonObject responseBody = CustomJsonParser.initJsonObject(responseBodyContent);
+            CustomJsonParser.removeJsonElements(ignoredProps, responseBody);
+            valid = responseBody.toString().equals(expectedResponseBody.toString());
         }
         System.out.println("test \"" + name + "\", validate response body: " + valid);
         return valid;
+    }
+
+    public boolean validateResponseBody(){
+        return validateResponseBody(new ArrayList<>());
     }
 
     public void setName(String name) {
@@ -145,7 +158,7 @@ public class HttpRequestWrapper {
         this.expectedStatusCode = expectedStatusCode;
     }
 
-    public void setExpectedResponseBody(String expectedResponseBody) {
+    public void setExpectedResponseBody(JsonObject expectedResponseBody) {
         this.expectedResponseBody = expectedResponseBody;
     }
 
