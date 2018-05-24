@@ -9,11 +9,11 @@ import java.util.ArrayList;
 
 public class HttpTestsRuntime {
 
-    public class SimpleApiTest {
+    public class SimpleHttpTest {
 
         private HttpRequestWrapper request;
 
-        SimpleApiTest(HttpRequestWrapper request){
+        SimpleHttpTest(HttpRequestWrapper request){
             setRequest(request);
         }
 
@@ -32,12 +32,12 @@ public class HttpTestsRuntime {
 
     @Parameters({"files"})
     @Factory
-    public Object[] apiTestsFactory(@Optional("src/main/resources/api_tests.txt") String files) {
+    public Object[] httpTestsFactory(@Optional("src/main/resources/api_tests.txt") String files) {
         ArrayList<HttpRequestWrapper> requests = new ArrayList<>();
         CommonService.parseStringByDelimeter(files).forEach((file) ->
                 requests.addAll(CustomJsonParser.getHttpRequestsFromFileContent(file)));
-        ArrayList<SimpleApiTest> tests = new ArrayList<>();
-        requests.forEach((request) -> tests.add(new SimpleApiTest(request)));
+        ArrayList<SimpleHttpTest> tests = new ArrayList<>();
+        requests.forEach((request) -> tests.add(new SimpleHttpTest(request)));
         return tests.toArray();
     }
 
