@@ -3,9 +3,11 @@ package com.service.http;
 import com.google.gson.JsonObject;
 import com.service.CustomJsonParser;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -22,10 +24,12 @@ public class HttpRequestWrapper {
     private final HashMap<String, String> headers = new HashMap<>();
     private int expectedStatusCode;
     private JsonObject expectedResponseBody;
-
     private HttpResponse response;
 
-    public boolean send(HttpClient client){
+    public boolean send(){
+        RequestConfig config= RequestConfig.custom().setSocketTimeout(60000).build();
+        HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+
         System.out.println("test \"" + name + "\", send request: " + type + " " + url);
         if(type.equals("get") || type.equals("delete")){
             return sendWithoutEntity(client, initRequest());

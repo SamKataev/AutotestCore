@@ -7,15 +7,17 @@
         <listener class-name="com.service.CustomTestListener"/>
     </listeners>
 
-    <test verbose="1" name="1" annotations="JDK">
-        <parameter name="threadId" value="thread1"/>
+    <test verbose="1" name="http" annotations="JDK">
+        <parameter name="files" value="D:/Dev/AutotestCore/src/main/resources/api_tests1.txt;
+                                            D:/Dev/AutotestCore/src/main/resources/api_tests2.txt;
+                                            D:/Dev/AutotestCore/src/main/resources/api_tests3.txt"/>
+        <parameter name="ignoredProps" value="CreatedAt;SIG;Token;Key"/>
         <classes>
-            <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
-            <class name="com.tests.ui.slemmauitests.Navigator"/>
+            <class name="com.tests.http.HttpTestsRuntime"/>
         </classes>
     </test>
 
-    <test verbose="1" name="2" annotations="JDK">
+    <test verbose="1" name="web1" annotations="JDK">
         <parameter name="threadId" value="thread2"/>
         <classes>
             <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
@@ -23,7 +25,7 @@
         </classes>
     </test>
 
-    <test verbose="1" name="3" annotations="JDK">
+    <test verbose="1" name="web2" annotations="JDK">
         <parameter name="threadId" value="thread3"/>
         <classes>
             <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>

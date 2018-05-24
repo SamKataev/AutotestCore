@@ -52,7 +52,6 @@ public class CustomJsonParser {
     }
 
     private static boolean validateHttpRequestContent(JsonObject content) {
-        //TODO add regex for props validation
         return content.get("name") != null && getStringFromJsonObject("name", content) != null
                 && content.get("url") != null && getStringFromJsonObject("url", content) != null
                 && content.get("type") != null && getStringFromJsonObject("type", content) != null
