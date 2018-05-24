@@ -48,7 +48,7 @@ public class HttpTestsRuntime {
     @Parameters({"filePath"})
     @Factory
     public Object[] apiTestsFactory(@Optional("src/main/resources/api_tests.txt") String filePath) {
-        ArrayList<HttpRequestWrapper> requests = CustomJsonParser.getApiRequestsFromFileContent(filePath);
+        ArrayList<HttpRequestWrapper> requests = CustomJsonParser.getHttpRequestsFromFileContent(filePath);
         ArrayList<SimpleApiTest> tests = new ArrayList<>();
         requests.forEach((request) -> tests.add(new SimpleApiTest(request)));
         return tests.toArray();

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class CustomJsonParser {
 
-    public static ArrayList<HttpRequestWrapper> getApiRequestsFromFileContent(String filePath) {
-        return getApiRequests(getFileContentAsJsonArray(filePath));
+    public static ArrayList<HttpRequestWrapper> getHttpRequestsFromFileContent(String filePath) {
+        return parseHttpRequests(getFileContentAsJsonArray(filePath));
     }
 
     private static JsonArray getFileContentAsJsonArray(String filePath) {
@@ -33,17 +33,17 @@ public class CustomJsonParser {
         }
     }
 
-    private static ArrayList<HttpRequestWrapper> getApiRequests(JsonArray testData) {
+    private static ArrayList<HttpRequestWrapper> parseHttpRequests(JsonArray data) {
         ArrayList<HttpRequestWrapper> list = new ArrayList<>();
-        if (testData != null) {
-            testData.forEach((el) -> {
-                JsonObject testContent = el.getAsJsonObject();
-                if (validateTestContent(testContent)) {
+        if (data != null) {
+            data.forEach((el) -> {
+                JsonObject requestContent = el.getAsJsonObject();
+                if (validateHttpRequestContent(requestContent)) {
                     HttpRequestWrapper request = new HttpRequestWrapper();
-                    parseTestContentToApiRequest(request, testContent);
+                    parseHttpRequestContentToHttpRequest(request, requestContent);
                     list.add(request);
                 } else {
-                    String testName = testContent.get("name") != null ? testContent.get("name").getAsString() : "name is missing";
+                    String testName = requestContent.get("name") != null ? requestContent.get("name").getAsString() : "name is missing";
                     System.out.println("test \"" + testName + "\", invalid content, can't create request wrapper instance\n");
                 }
             });
@@ -51,7 +51,7 @@ public class CustomJsonParser {
         return list;
     }
 
-    private static boolean validateTestContent(JsonObject content) {
+    private static boolean validateHttpRequestContent(JsonObject content) {
         //TODO add regex for props validation
         return content.get("name") != null && getStringFromJsonObject("name", content) != null
                 && content.get("url") != null && getStringFromJsonObject("url", content) != null
@@ -62,7 +62,7 @@ public class CustomJsonParser {
                 && content.get("response") != null && getStringFromJsonObject("name", content) != null;
     }
 
-    private static void parseTestContentToApiRequest(HttpRequestWrapper request, JsonObject content) {
+    private static void parseHttpRequestContentToHttpRequest(HttpRequestWrapper request, JsonObject content) {
         request.setName(getStringFromJsonObject("name", content));
         request.setUrl(getStringFromJsonObject("url", content));
         request.setType(getStringFromJsonObject("type", content));
