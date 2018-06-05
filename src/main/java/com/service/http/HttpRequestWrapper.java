@@ -20,8 +20,9 @@ public class HttpRequestWrapper {
     private String name;
     private String body;
     private String type;
-    private String url;
-    private final HashMap<String, String> headers = new HashMap<>();
+    private String enpoint;
+    private String method;
+    private HashMap<String, String> headers = new HashMap<>();
     private int expectedStatusCode;
     private JsonObject expectedResponseBody;
     private HttpResponse response;
@@ -30,9 +31,9 @@ public class HttpRequestWrapper {
         RequestConfig config= RequestConfig.custom().setSocketTimeout(60000).build();
         HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
 
-        System.out.println("test \"" + name + "\", send request: " + type + " " + url);
+        System.out.println("test \"" + name + "\", send request: " + type + " " + getUrl());
         if(type.equals("get") || type.equals("delete")){
-            return sendWithoutEntity(client, initRequest());
+            return sendWithoutEntity(client, initRequestWithoutEntity());
         }
         if(type.equals("post") || type.equals("put")){
             return sendWithEntity(client, initRequestWithEntity());
@@ -76,12 +77,12 @@ public class HttpRequestWrapper {
         return false;
     }
 
-    private HttpRequestBase initRequest(){
+    private HttpRequestBase initRequestWithoutEntity(){
         switch(type){
             case "get":
-                return new HttpGet(url);
+                return new HttpGet(getUrl());
             case "delete":
-                return new HttpDelete(url);
+                return new HttpDelete(getUrl());
             default:
                 System.out.println("test \"" + name + "\", invalid request type: " + type);
                 return null;
@@ -91,9 +92,9 @@ public class HttpRequestWrapper {
     private HttpEntityEnclosingRequestBase initRequestWithEntity(){
         switch(type){
             case "put":
-                return new HttpPut(url);
+                return new HttpPut(getUrl());
             case "post":
-                return new HttpPost(url);
+                return new HttpPost(getUrl());
             default:
                 System.out.println("test \"" + name + "\", invalid request type: " + type);
                 return null;
@@ -122,9 +123,8 @@ public class HttpRequestWrapper {
     }
 
     public boolean validateResponseBody(ArrayList<String> ignoredProps){
-        boolean valid = false;
         if(response != null){
-             String responseBodyContent = "";
+            String responseBodyContent = "";
             try {
                 responseBodyContent = new Scanner(response.getEntity().getContent()).useDelimiter("\\Z").next();
             } catch (Exception e) {
@@ -132,10 +132,11 @@ public class HttpRequestWrapper {
             }
             JsonObject responseBody = CustomJsonParser.initJsonObject(responseBodyContent);
             CustomJsonParser.removeJsonElements(ignoredProps, responseBody);
-            valid = responseBody.toString().equals(expectedResponseBody.toString());
+            boolean valid = responseBody.toString().equals(expectedResponseBody.toString());
+            System.out.println("test \"" + name + "\", validate response body: " + valid);
+            return valid;
         }
-        System.out.println("test \"" + name + "\", validate response body: " + valid);
-        return valid;
+        return true;
     }
 
     public boolean validateResponseBody(){
@@ -154,8 +155,16 @@ public class HttpRequestWrapper {
         this.body = body;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setEndpoint(String endpoint) {
+        this.enpoint = endpoint;
+    }
+
+    public String getEndpoint() {
+        return this.enpoint;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     public void setExpectedStatusCode(int expectedStatusCode) {
@@ -170,8 +179,21 @@ public class HttpRequestWrapper {
         this.headers.put(name, value);
     }
 
+    public void setHeaders(HashMap<String, String> headers) {
+        clearHeaders();
+        this.headers.putAll(headers);
+    }
+
+    public HashMap<String, String> getHeaders() {
+        return this.headers;
+    }
+
     public void clearHeaders() {
         this.headers.clear();
     }
 
+    private String getUrl(){
+        String url = enpoint + method;
+        return url.replaceAll("\\/{2,}","/").replaceAll(":\\/", "://");
+    }
 }

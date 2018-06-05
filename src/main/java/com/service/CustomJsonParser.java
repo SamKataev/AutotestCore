@@ -3,19 +3,15 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.service.http.HttpRequestWrapper;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CustomJsonParser {
 
-    public static ArrayList<HttpRequestWrapper> getHttpRequestsFromFileContent(String filePath) {
-        return parseHttpRequests(getFileContentAsJsonArray(filePath));
-    }
-
-    private static JsonArray getFileContentAsJsonArray(String filePath) {
+    public static JsonArray getFileContentAsJsonArray(String filePath) {
         String fileContent;
         try {
             fileContent = String.join("\n", Files.readAllLines(Paths.get(filePath)));
@@ -33,7 +29,7 @@ public class CustomJsonParser {
         }
     }
 
-    private static ArrayList<HttpRequestWrapper> parseHttpRequests(JsonArray data) {
+    public static ArrayList<HttpRequestWrapper> parseHttpRequests(JsonArray data) {
         ArrayList<HttpRequestWrapper> list = new ArrayList<>();
         if (data != null) {
             data.forEach((el) -> {
@@ -51,67 +47,139 @@ public class CustomJsonParser {
         return list;
     }
 
+    public static HashMap<String, String> parseHttpHeaders(JsonArray data) {
+        HashMap<String, String> headers = new HashMap<>();
+        if (data != null) {
+            data.forEach(el -> {
+                JsonObject header = el.getAsJsonObject();
+                String name = getStringFromJsonObject("name", header);
+                String value = getStringFromJsonObject("value", header);
+                if (name != null && value != null){
+                    headers.put(name, value);
+                }
+            });
+        }
+        return headers;
+    }
+
+    /**
+     *
+     * validates content of http request to have all mandatory props set
+     */
     private static boolean validateHttpRequestContent(JsonObject content) {
         return content.get("name") != null && getStringFromJsonObject("name", content) != null
-                && content.get("url") != null && getStringFromJsonObject("url", content) != null
+                && content.get("method") != null && getStringFromJsonObject("method", content) != null
                 && content.get("type") != null && getStringFromJsonObject("type", content) != null
-                && content.get("body") != null && getJsonObjectFromJsonObject("body", content) != null
-                && content.get("headers") != null && getJsonArrayFromJsonObject("headers", content) != null
-                && content.get("code") != null && getIntFromJsonObject("code", content) != 0
-                && content.get("response") != null && getStringFromJsonObject("name", content) != null;
+                && content.get("code") != null && getIntFromJsonObject("code", content) != 0;
     }
 
     private static void parseHttpRequestContentToHttpRequest(HttpRequestWrapper request, JsonObject content) {
+        parseValidatedProps (request, content);
+        parseOptionalProps (request, content);
+    }
+
+    /**
+     *
+     * parses only mandatory props validated by validateHttpRequestContent
+     */
+    private static void parseValidatedProps (HttpRequestWrapper request, JsonObject content) {
         request.setName(getStringFromJsonObject("name", content));
-        request.setUrl(getStringFromJsonObject("url", content));
+        request.setMethod(getStringFromJsonObject("method", content));
         request.setType(getStringFromJsonObject("type", content));
-        request.setBody(getJsonObjectFromJsonObject("body", content).toString());
         request.setExpectedStatusCode(getIntFromJsonObject("code", content));
-        request.setExpectedResponseBody(getJsonObjectFromJsonObject("response", content));
-        getJsonArrayFromJsonObject("headers", content).forEach((el) -> {
-            JsonObject header = el.getAsJsonObject();
-            request.setHeader(header.get("name").getAsString(), header.get("value").getAsString());
-        });
+    }
+
+    /**
+     *
+     * parses optional props that are not necessary to set in http test-content file
+     */
+    private static void parseOptionalProps (HttpRequestWrapper request, JsonObject content) {
+        JsonObject body = getJsonObjectFromJsonObject("body", content, false);
+        if (body != null) {
+            request.setBody(body.toString());
+        }
+
+        JsonObject response = getJsonObjectFromJsonObject("response", content, false);
+        if (response != null) {
+            request.setExpectedResponseBody(response);
+        }
+
+        String endpoint = getStringFromJsonObject("endpoint", content, false);
+        if (endpoint != null) {
+            request.setEndpoint(endpoint);
+        }
+
+        JsonArray headers = getJsonArrayFromJsonObject("headers", content, false);
+        if (headers != null) {
+                headers.forEach((el) -> {
+                JsonObject header = el.getAsJsonObject();
+                request.setHeader(header.get("name").getAsString(), header.get("value").getAsString());
+            });
+        }
+    }
+
+    public static JsonObject getJsonObjectFromJsonObject(String propName, JsonObject content, boolean logError) {
+        try {
+            return content.get(propName).getAsJsonObject();
+        } catch (Exception e) {
+            if (logError) {
+                String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
+                System.out.println("test \"" + testName + "\", error parsing JsonObject \"" + propName + "\" from JsonObject");
+            }
+            return null;
+        }
     }
 
     public static JsonObject getJsonObjectFromJsonObject(String propName, JsonObject content) {
+        return getJsonObjectFromJsonObject(propName, content, true);
+    }
+
+    public static JsonArray getJsonArrayFromJsonObject(String propName, JsonObject content, boolean logError) {
         try {
-            return content.get(propName).getAsJsonObject();
-        } catch (IllegalStateException e) {
-            String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
-            System.out.println("test \"" + testName + "\", error parsing JsonObject \"" + propName + "\" from JsonObject");
+            return content.get(propName).getAsJsonArray();
+        } catch (Exception e) {
+            if (logError) {
+                String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
+                System.out.println("test \"" + testName + "\", error parsing JsonArray \"" + propName + "\" from JsonObject");
+            }
             return null;
         }
     }
 
     public static JsonArray getJsonArrayFromJsonObject(String propName, JsonObject content) {
+        return getJsonArrayFromJsonObject(propName, content, true);
+    }
+
+    public static String getStringFromJsonObject(String propName, JsonObject content, boolean logError) {
         try {
-            return content.get(propName).getAsJsonArray();
-        } catch (IllegalStateException e) {
-            String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
-            System.out.println("test \"" + testName + "\", error parsing JsonArray \"" + propName + "\" from JsonObject");
+            return content.get(propName).getAsString();
+        } catch (Exception e) {
+            if (logError) {
+                String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
+                System.out.println("test \"" + testName + "\", error parsing String \"" + propName + "\" from JsonObject");
+            }
             return null;
         }
     }
 
     public static String getStringFromJsonObject(String propName, JsonObject content) {
+        return getStringFromJsonObject(propName, content, true);
+    }
+
+    public static int getIntFromJsonObject(String propName, JsonObject content, boolean logError) {
         try {
-            return content.get(propName).getAsString();
-        } catch (IllegalStateException e) {
-            String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
-            System.out.println("test \"" + testName + "\", error parsing String \"" + propName + "\" from JsonObject");
-            return null;
+            return content.get(propName).getAsInt();
+        } catch (Exception e) {
+            if (logError) {
+                String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
+                System.out.println("test \"" + testName + "\", error parsing int \"" + propName + "\" from JsonObject");
+            }
+            return 0;
         }
     }
 
     public static int getIntFromJsonObject(String propName, JsonObject content) {
-        try {
-            return content.get(propName).getAsInt();
-        } catch (IllegalStateException e) {
-            String testName = content.get("name") != null ? content.get("name").getAsString() : "name is missing";
-            System.out.println("test \"" + testName + "\", error parsing int \"" + propName + "\" from JsonObject");
-            return 0;
-        }
+        return getIntFromJsonObject(propName, content, true);
     }
 
     public static JsonObject initJsonObject(String input){
