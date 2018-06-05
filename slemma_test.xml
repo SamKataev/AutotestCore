@@ -7,30 +7,32 @@
         <listener class-name="com.service.CustomTestListener"/>
     </listeners>
 
-    <test verbose="1" name="http" annotations="JDK">
-        <parameter name="files" value="D:/Dev/AutotestCore/src/main/resources/api_tests1.txt;
+    <test verbose="1" name="http1" annotations="JDK">
+        <parameter name="requestsFiles" value="D:/Dev/AutotestCore/src/main/resources/api_tests1.txt;
                                             D:/Dev/AutotestCore/src/main/resources/api_tests2.txt;
                                             D:/Dev/AutotestCore/src/main/resources/api_tests3.txt"/>
+        <parameter name="headersFile" value="D:/Dev/AutotestCore/src/main/resources/headers.txt"/>
+        <parameter name="api_url" value="https://slemma.com/api/v1/"/>
         <parameter name="ignoredProps" value="CreatedAt;SIG;Token;Key"/>
         <classes>
             <class name="com.tests.http.HttpTestsRuntime"/>
         </classes>
     </test>
 
-    <test verbose="1" name="web1" annotations="JDK">
-        <parameter name="threadId" value="thread2"/>
-        <classes>
-            <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
-            <class name="com.tests.ui.slemmauitests.Navigator"/>
-        </classes>
-    </test>
+    <!--<test verbose="1" name="web1" annotations="JDK">-->
+        <!--<parameter name="threadId" value="thread2"/>-->
+        <!--<classes>-->
+            <!--<class name="com.tests.ui.slemmauitests.LoginAndRegister"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.Navigator"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
-    <test verbose="1" name="web2" annotations="JDK">
-        <parameter name="threadId" value="thread3"/>
-        <classes>
-            <class name="com.tests.ui.slemmauitests.LoginAndRegister"/>
-            <class name="com.tests.ui.slemmauitests.Navigator"/>
-        </classes>
-    </test>
+    <!--<test verbose="1" name="web2" annotations="JDK">-->
+        <!--<parameter name="threadId" value="thread3"/>-->
+        <!--<classes>-->
+            <!--<class name="com.tests.ui.slemmauitests.LoginAndRegister"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.Navigator"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
 </suite>
