@@ -4,15 +4,21 @@ import com.service.CommonService;
 import com.service.http.HttpRequestWrapper;
 import com.service.CustomJsonParser;
 import org.testng.Assert;
+import org.testng.IMethodInstance;
+import org.testng.IMethodInterceptor;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import org.testng.annotations.Optional;
 
+import java.util.*;
+
+@Listeners(HttpTestsRuntime.TestOrder.class)
 public class HttpTestsRuntime {
 
     public class SimpleHttpTest {
 
         private HttpRequestWrapper request;
+        private int order;
 
         SimpleHttpTest(HttpRequestWrapper request){
             setRequest(request);
@@ -28,6 +34,31 @@ public class HttpTestsRuntime {
 
         void setRequest(HttpRequestWrapper request) {
             this.request = request;
+        }
+
+        public int getOrder() {
+            return order;
+        }
+
+        public void setOrder(int order) {
+            this.order = order;
+        }
+    }
+
+    public static class TestOrder implements IMethodInterceptor {
+        @Override
+        public List<IMethodInstance> intercept(List<IMethodInstance> tests, ITestContext testRunner) {
+            Collections.sort(tests, new TestComparator());
+            return tests;
+        }
+    }
+
+    public static class TestComparator implements Comparator<IMethodInstance> {
+        @Override
+        public int compare(IMethodInstance test1, IMethodInstance test2) {
+            SimpleHttpTest testInstance1 = (SimpleHttpTest) test1.getMethod().getInstance();
+            SimpleHttpTest testInstance2 = (SimpleHttpTest) test2.getMethod().getInstance();
+            return Integer.compare(testInstance1.getOrder(), testInstance2.getOrder());
         }
     }
 
@@ -45,10 +76,16 @@ public class HttpTestsRuntime {
         setHeaders(requests, getHttpHeadersSetFromFileContent(headersFile));
 
         ArrayList<SimpleHttpTest> tests = new ArrayList<>();
-        requests.forEach((request) -> tests.add(new SimpleHttpTest(request)));
+        requests.forEach((request) -> {
+            SimpleHttpTest test = new SimpleHttpTest(request);
+            test.setOrder(tests.size());
+            tests.add(test);
+        });
 
         return tests.toArray();
     }
+
+
 
     private ArrayList<HttpRequestWrapper> getHttpRequestsFromFileContent(String filePath) {
         return CustomJsonParser.parseHttpRequests(CustomJsonParser.getFileContentAsJsonArray(filePath));
