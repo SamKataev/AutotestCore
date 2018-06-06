@@ -22,6 +22,7 @@ public class HttpRequestWrapper {
     private String type;
     private String enpoint;
     private String method;
+    private String headersSetName;
     private HashMap<String, String> headers = new HashMap<>();
     private int expectedStatusCode;
     private JsonObject expectedResponseBody;
@@ -123,7 +124,7 @@ public class HttpRequestWrapper {
     }
 
     public boolean validateResponseBody(ArrayList<String> ignoredProps){
-        if(response != null){
+        if(expectedResponseBody != null){
             String responseBodyContent = "";
             try {
                 responseBodyContent = new Scanner(response.getEntity().getContent()).useDelimiter("\\Z").next();
@@ -149,6 +150,14 @@ public class HttpRequestWrapper {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public void setHeadersSetName(String headersSetName) {
+        this.headersSetName = headersSetName;
+    }
+
+    public String getHeadersSetName() {
+        return this.headersSetName;
     }
 
     public void setBody(String body) {

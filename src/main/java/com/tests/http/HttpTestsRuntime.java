@@ -35,14 +35,14 @@ public class HttpTestsRuntime {
     @Factory
     public Object[] httpTestsFactory(@Optional("src/main/resources/api_tests.txt") String requestsFiles,
                                      @Optional("src/main/resources/headers.txt") String headersFile,
-                                     @Optional("https://slemma.com/api/v1/") String endpoint) {
+                                     @Optional("https://beta.slemma.com/api/v1/") String endpoint) {
 
         ArrayList<HttpRequestWrapper> requests = new ArrayList<>();
         CommonService.parseStringByDelimeter(requestsFiles).forEach((file) ->
                 requests.addAll(getHttpRequestsFromFileContent(file)));
 
         setDefaultEndpoint(requests, endpoint);
-        setDefaultHeaders(requests, getHttpHeadersFromFileContent(headersFile));
+        setHeaders(requests, getHttpHeadersSetFromFileContent(headersFile));
 
         ArrayList<SimpleHttpTest> tests = new ArrayList<>();
         requests.forEach((request) -> tests.add(new SimpleHttpTest(request)));
@@ -54,21 +54,16 @@ public class HttpTestsRuntime {
         return CustomJsonParser.parseHttpRequests(CustomJsonParser.getFileContentAsJsonArray(filePath));
     }
 
-    private HashMap<String, String> getHttpHeadersFromFileContent(String filePath) {
-        return CustomJsonParser.parseHttpHeaders(CustomJsonParser.getFileContentAsJsonArray(filePath));
+    private HashMap<String, HashMap<String, String>> getHttpHeadersSetFromFileContent(String filePath) {
+        return CustomJsonParser.parseHttpHeaders(CustomJsonParser.getFileContentAsJsonObject(filePath));
     }
 
     /**
      *
-     * default headers will be set only if there were no headers set in http requests file
-     * i.e. headers set in http requests file override default headers
+     * headers will be set according to headers-set prop from http requests file
      */
-    private void setDefaultHeaders(ArrayList<HttpRequestWrapper> requests, HashMap<String, String> defaultHeaders){
-        requests.forEach(request -> {
-            if (request.getHeaders().size() == 0) {
-                request.setHeaders(defaultHeaders);
-            }
-        });
+    private void setHeaders(ArrayList<HttpRequestWrapper> requests, HashMap<String, HashMap<String, String>> headersSet){
+        requests.forEach(request -> request.setHeaders(headersSet.get(request.getHeadersSetName())));
     }
 
     /**

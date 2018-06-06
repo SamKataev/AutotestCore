@@ -12,20 +12,33 @@ import java.util.HashMap;
 public class CustomJsonParser {
 
     public static JsonArray getFileContentAsJsonArray(String filePath) {
-        String fileContent;
-        try {
-            fileContent = String.join("\n", Files.readAllLines(Paths.get(filePath)));
-        } catch (IOException e) {
-            System.out.println("error reading " + filePath);
-            return null;
-        }
-
+        String fileContent = getFileContentAsString(filePath);
         JsonParser jsonParser = new JsonParser();
         try {
             return jsonParser.parse(fileContent).getAsJsonArray();
         } catch (Exception e) {
             System.out.println("errors in content of \"" + filePath + "\", can't read as JSON Array");
             return null;
+        }
+    }
+
+    public static JsonObject getFileContentAsJsonObject(String filePath) {
+        String fileContent = getFileContentAsString(filePath);
+        JsonParser jsonParser = new JsonParser();
+        try {
+            return jsonParser.parse(fileContent).getAsJsonObject();
+        } catch (Exception e) {
+            System.out.println("errors in content of \"" + filePath + "\", can't read as JSON Array");
+            return null;
+        }
+    }
+
+    public static String getFileContentAsString(String filePath) {
+        try {
+            return String.join("\n", Files.readAllLines(Paths.get(filePath)));
+        } catch (IOException e) {
+            System.out.println("error reading " + filePath);
+            return "";
         }
     }
 
@@ -47,7 +60,22 @@ public class CustomJsonParser {
         return list;
     }
 
-    public static HashMap<String, String> parseHttpHeaders(JsonArray data) {
+    /**
+     *
+     * headers must be stored in json format, with following structure:
+     * {"<headers set name>": [{"name": "<header name>", "value": "header value"}]}
+     */
+    public static HashMap<String, HashMap<String, String>> parseHttpHeaders(JsonObject data) {
+        HashMap<String, HashMap<String, String>> headersSets = new HashMap<>();
+        data.entrySet().forEach(
+                entry -> headersSets.put(
+                    entry.getKey(),
+                    parseHeadersSetFromJsonArray(entry.getKey(), entry.getValue().getAsJsonArray()))
+        );
+        return headersSets;
+    }
+
+    private static HashMap<String, String> parseHeadersSetFromJsonArray(String setName, JsonArray data){
         HashMap<String, String> headers = new HashMap<>();
         if (data != null) {
             data.forEach(el -> {
@@ -109,12 +137,11 @@ public class CustomJsonParser {
             request.setEndpoint(endpoint);
         }
 
-        JsonArray headers = getJsonArrayFromJsonObject("headers", content, false);
-        if (headers != null) {
-                headers.forEach((el) -> {
-                JsonObject header = el.getAsJsonObject();
-                request.setHeader(header.get("name").getAsString(), header.get("value").getAsString());
-            });
+        String headersSet = getStringFromJsonObject("headers_set", content, false);
+        if (headersSet != null) {
+            request.setHeadersSetName(headersSet);
+        }else{
+            request.setHeadersSetName("default");
         }
     }
 
