@@ -8,6 +8,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.testng.Assert;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -41,7 +42,6 @@ public class HttpRequestWrapper {
         }
         System.out.println("test \"" + name + "\", invalid request type: " + type);
         return false;
-
     }
 
     private boolean sendWithoutEntity(HttpClient client, HttpRequestBase request){
@@ -114,16 +114,13 @@ public class HttpRequestWrapper {
         return false;
     }
 
-    public boolean validateStatusCode(){
-        boolean valid = false;
-        if(response != null){
-            valid = expectedStatusCode == response.getStatusLine().getStatusCode();
+    public void validateStatusCode(){
+        if (response != null) {
+            Assert.assertEquals(response.getStatusLine().getStatusCode(), expectedStatusCode, "validate status code failed");
         }
-        System.out.println("test \"" + name + "\", validate status code: " + valid);
-        return valid;
     }
 
-    public boolean validateResponseBody(ArrayList<String> ignoredProps){
+    public void validateResponseBody(ArrayList<String> ignoredProps){
         if(expectedResponseBody != null){
             String responseBodyContent = "";
             try {
@@ -133,19 +130,20 @@ public class HttpRequestWrapper {
             }
             JsonObject responseBody = CustomJsonParser.initJsonObject(responseBodyContent);
             CustomJsonParser.removeJsonElements(ignoredProps, responseBody);
-            boolean valid = responseBody.toString().equals(expectedResponseBody.toString());
-            System.out.println("test \"" + name + "\", validate response body: " + valid);
-            return valid;
+            Assert.assertEquals(responseBody.toString(), expectedResponseBody.toString(), "validate response body failed");
         }
-        return true;
     }
 
-    public boolean validateResponseBody(){
-        return validateResponseBody(new ArrayList<>());
+    public void validateResponseBody(){
+        validateResponseBody(new ArrayList<>());
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void setType(String type) {

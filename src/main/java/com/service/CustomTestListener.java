@@ -1,17 +1,25 @@
 package com.service;
 
+import org.testng.IMethodInterceptor;
+import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-public class CustomTestListener extends TestListenerAdapter {
+public class CustomTestListener extends TestListenerAdapter implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult tr) {
-        String errorMessage = tr.getThrowable().getMessage();
-        String testName = tr.getMethod().getMethodName();
-        if (errorMessage.startsWith("expected")) {
-            errorMessage = "assertion error";
+        tr.setThrowable(new CustomThrowable("test \"" + tr.getMethod().getMethodName() + "\", " + tr.getThrowable().getMessage()));
+    }
+
+    protected class CustomThrowable extends Throwable{
+
+        public CustomThrowable(String message){
+            super(message,null,false,false);
         }
-        System.out.println("test \"" + testName + "\" failed: " + errorMessage + "\n");
+
+        public CustomThrowable(){
+            super("",null,false,false);
+        }
     }
 }
