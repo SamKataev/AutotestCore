@@ -1,6 +1,5 @@
 package com.service;
 
-import org.testng.IMethodInterceptor;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;

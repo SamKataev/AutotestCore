@@ -13,24 +13,28 @@ public class CustomJsonParser {
 
     public static JsonArray getFileContentAsJsonArray(String filePath) {
         String fileContent = getFileContentAsString(filePath);
-        JsonParser jsonParser = new JsonParser();
-        try {
-            return jsonParser.parse(fileContent).getAsJsonArray();
-        } catch (Exception e) {
-            System.out.println("errors in content of \"" + filePath + "\", can't read as JSON Array");
-            return null;
+        if (fileContent != null){
+            JsonParser jsonParser = new JsonParser();
+            try {
+                return jsonParser.parse(fileContent).getAsJsonArray();
+            } catch (Exception e) {
+                System.out.println("errors in content of \"" + filePath + "\", can't read as JSON Array");
+            }
         }
+        return null;
     }
 
     public static JsonObject getFileContentAsJsonObject(String filePath) {
         String fileContent = getFileContentAsString(filePath);
-        JsonParser jsonParser = new JsonParser();
-        try {
-            return jsonParser.parse(fileContent).getAsJsonObject();
-        } catch (Exception e) {
-            System.out.println("errors in content of \"" + filePath + "\", can't read as JSON Array");
-            return null;
+        if (fileContent != null) {
+            JsonParser jsonParser = new JsonParser();
+            try {
+                return jsonParser.parse(fileContent).getAsJsonObject();
+            } catch (Exception e) {
+                System.out.println("errors in content of \"" + filePath + "\", can't read as JSON Object");
+            }
         }
+        return null;
     }
 
     public static String getFileContentAsString(String filePath) {
@@ -38,7 +42,7 @@ public class CustomJsonParser {
             return String.join("\n", Files.readAllLines(Paths.get(filePath)));
         } catch (IOException e) {
             System.out.println("error reading " + filePath);
-            return "";
+            return null;
         }
     }
 

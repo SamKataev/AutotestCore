@@ -19,7 +19,7 @@ public class HttpTest {
     @Parameters({"ignoredProps"})
     @Test
     public void runTest(@Optional("") String ignoredProps){
-        Assert.assertTrue(request.send());
+        Assert.assertTrue(request.send(), "error sending request");
         request.validateStatusCode();
         request.validateResponseBody(CommonService.parseStringByDelimeter(ignoredProps));
     }

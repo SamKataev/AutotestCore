@@ -103,15 +103,16 @@ public class HttpRequestWrapper {
     }
 
     private boolean setEntity(HttpEntityEnclosingRequestBase request) {
-        if(body.length() > 0) {
+        if(body != null && body.length() > 0) {
             try {
                 request.setEntity(new StringEntity(body));
                 return true;
             } catch (UnsupportedEncodingException e) {
                 System.out.println("test \"" + name + "\", invalid request body format");
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public void validateStatusCode(){
