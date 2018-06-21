@@ -5,15 +5,14 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-//Description:
-//driverFactory instance is being initialized in BeforeSuite method and is static for all test classes
-//each test class has threadID and gets driver from driverFactory by this threadID
-//each test class is set to use one specific url (baseUrl)
-//test packages of app should contain "base" test class inherited from this class, this inherited "base" test class:
-//                      - implements initPages() method where PagObjects are to be instantiated
-//                      - declares BeforeTest methods common for app (such as log in, log out)
-
-
+/**
+ * driverFactory instance is being initialized in BeforeSuite method and is static for all test classes
+ * each test class has threadID and gets driver from driverFactory by this threadID
+ * each test class is set to use one specific url (baseUrl)
+ * test packages of app should contain "base" test class inherited from this class, this inherited "base" test class:
+ *                       - implements initPages() method where PagObjects are to be instantiated
+ *                       - declares BeforeTest methods common for app (such as log in, log out)
+ */
 public abstract class WebTest {
 
     private static UIDriverFactory driverFactory;

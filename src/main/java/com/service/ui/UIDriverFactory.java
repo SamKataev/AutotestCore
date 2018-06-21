@@ -8,11 +8,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
-//Description:
-//creates instances of drivers for testing UI
-//each driver instance is marked with test thread id, each test thread uses only one driver instance
-//creates additional instances for drivers initialization such as OS services
-
+/**
+ * creates instances of drivers for testing UI
+ * each driver instance is marked with test thread id, each test thread uses only one driver instance
+ * creates additional instances for drivers initialization such as OS services
+ */
 public class UIDriverFactory {
 
     private ChromeDriverService genericChromeDriverService;

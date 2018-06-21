@@ -8,15 +8,14 @@ import org.testng.log4testng.Logger;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-//Description:
-//Purpose of this wrapper is to encapsulate usage of selenium WebDriver:
-//    - all WebDriverExceptions should be caught in this class
-//    - all methods should return void or boolean to simplify assertion
-//    - all methods that use WebElement should accept wait timeout argument of type int
-//    - implicitlyWait web driver prop is set to 0, it is "overridden" by defaultWaitTime prop for more flexible timeouts adjustment
-//    - initDriver() is abstract to be implemented in a specific driver wrapper class
-
-
+/**
+ * purpose of this wrapper is to encapsulate usage of selenium WebDriver:
+ *    - all WebDriverExceptions should be caught in this class
+ *    - all methods should return void or boolean to simplify assertion
+ *    - all methods that use WebElement should accept wait timeout argument of type int
+ *    - implicitlyWait web driver prop is set to 0, it is "overridden" by defaultWaitTime prop for more flexible timeouts adjustment
+ *    - initDriver() is abstract to be implemented in a specific driver wrapper class
+ */
 public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
 
     WebDriver webDriver;
