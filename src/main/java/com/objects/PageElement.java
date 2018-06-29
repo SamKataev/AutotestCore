@@ -2,7 +2,7 @@ package com.objects;
 
 /**
  * an abstraction of complex web element on a specific web page
- * PageObject that hosts an instance of this class should call instance' getChildElements() to check if necessary web elements are available by web driver
+ * PageObject that hosts an instance of this class should call instance' Elements() to check if necessary web elements are available by web driver
  * inherited classes can contain other complex page elements inherited from PageElement
  */
 import com.service.ui.web.SeleniumDriverWrapper;

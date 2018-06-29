@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 
 /**
  * purpose of this class is to encapsulate formatting locators of web elements
- * inherited class should call getChildElements() to check if necessary web elements are available by web driver
+ * inherited class should call isRendered() or validateElements() to check if necessary web elements are rendered and available by web driver
  */
 public abstract class WebElementsContainer {
 
@@ -15,7 +15,12 @@ public abstract class WebElementsContainer {
         driver = webDriver;
     }
 
-    public abstract boolean getChildElements();
+    public abstract boolean validateElements();
+
+    public boolean isRendered(){
+        return validateElements();
+        //TODO: add more checks i.e all ajax requests resolved
+    }
 
     protected By locatorByClass(String name){
         return By.cssSelector("." + name);

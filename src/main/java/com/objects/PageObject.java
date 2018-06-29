@@ -16,11 +16,6 @@ public abstract class PageObject extends WebElementsContainer {
         url = pageUrl;
     }
 
-    public boolean isOpened(){
-        return getChildElements();
-        //TODO: add more checks
-    }
-
     public PageObject open(){
         driver.goToUrl(url);
         return this;
