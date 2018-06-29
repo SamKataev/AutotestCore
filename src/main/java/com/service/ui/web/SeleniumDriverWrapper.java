@@ -119,6 +119,10 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         return baseUrl;
     }
 
+    public String getCurrentUrl(){
+        return webDriver.getCurrentUrl();
+    }
+
     public void setBaseUrl(String url){
         baseUrl = url;
     }
