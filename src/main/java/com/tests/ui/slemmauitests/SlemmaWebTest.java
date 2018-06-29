@@ -1,15 +1,17 @@
 package com.tests.ui.slemmauitests;
 
-import com.objects.slemmaobjects.pageobjects.AuthPage;
-import com.objects.slemmaobjects.pageobjects.HomePage;
+import com.objects.slemmaobjects.pageobjects.*;
 import com.service.TestProperties;
 import com.tests.ui.WebTest;
 import org.testng.annotations.BeforeClass;
 
 public class SlemmaWebTest extends WebTest {
 
-    HomePage homePage;
-    AuthPage authPage;
+    Home homePage;
+    Auth authPage;
+    Dashboard dashboardPage;
+    Presentation presentationPage;
+    Register registerPage;
 
     @BeforeClass
     public void startSlemmaTestClass(){
@@ -18,18 +20,21 @@ public class SlemmaWebTest extends WebTest {
 
     @Override
     protected void initPages() {
-        homePage = new HomePage(driver);
-        authPage = new AuthPage(driver);
+        homePage = new Home(driver);
+        authPage = new Auth(driver);
+        dashboardPage = new Dashboard(driver);
+        presentationPage = new Presentation(driver);
+        registerPage = new Register(driver);
     }
 
     protected boolean openHomePage(){
-        return homePage.isOpened() || logIn();
+        return homePage.isRendered() || logIn();
     }
 
     protected boolean logIn(){
         authPage.open();
         authPage.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
-        return homePage.isOpened();
+        return homePage.isRendered();
     }
 
 }

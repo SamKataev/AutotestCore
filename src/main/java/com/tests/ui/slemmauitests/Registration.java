@@ -4,16 +4,16 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class LoginAndRegister extends SlemmaWebTest {
+public class Registration extends SlemmaWebTest {
 
     @BeforeClass
     @Override
     public void startSlemmaTestClass(){
-        Assert.assertTrue(authPage.open().isOpened());
+        Assert.assertTrue(registerPage.open().isRendered());
     }
 
     @Test
-    public void checkLoginWithTrueCredentials(){
+    public void checkRegisterWithTrueCredentials(){
         Assert.assertTrue(logIn());
         Assert.assertTrue(homePage.isLoggedIn());
     }
