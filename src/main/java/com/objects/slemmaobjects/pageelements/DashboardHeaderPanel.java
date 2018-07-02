@@ -1,11 +1,13 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Dashboard;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
 public class DashboardHeaderPanel extends PageElement {
+
+    private Dashboard parentPage;
 
     private final By logo = classSelector("logo-button");
     private final By title = subclassInParentClass("main-title-button", "btn__cont");
@@ -14,8 +16,9 @@ public class DashboardHeaderPanel extends PageElement {
     private final By switcher = classSelector("switcher__axis");
 
 
-    public DashboardHeaderPanel(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    public DashboardHeaderPanel(SeleniumDriverWrapper driver, Dashboard pageObj){
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override
@@ -33,6 +36,5 @@ public class DashboardHeaderPanel extends PageElement {
     public void switchEdit(){
         driver.click(switcher);
     }
-
 
 }

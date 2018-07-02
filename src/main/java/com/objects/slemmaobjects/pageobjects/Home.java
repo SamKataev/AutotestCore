@@ -46,16 +46,16 @@ public class Home extends PageObject {
         String currentUrl = driver.getCurrentUrl();
         driver.click(plusBtn);
         if (currentUrl.contains("infographics")){
-            return new ChooseDashboardTemplate(driver, this);
+            return new ChooseDashboardTemplateDialog(driver, this);
         }
         if (currentUrl.contains("reports")){
-            return new ChooseDataSource(driver, this);
+            return new ChooseDataSourceDialog(driver, this);
         }
         if (currentUrl.contains("presentations")){
             return new Presentation(driver);
         }
         if (currentUrl.contains("datasources")){
-            return new CreateNewIntegration(driver, this);
+            return new CreateNewIntegrationDialog(driver, this);
         }
         return this;
     }

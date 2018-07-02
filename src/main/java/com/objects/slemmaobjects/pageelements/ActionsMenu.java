@@ -1,13 +1,16 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 
 public class ActionsMenu extends PageElement {
 
-    public ActionsMenu(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    private Home parentPage;
+
+    public ActionsMenu(SeleniumDriverWrapper driver, Home pageObj){
+        super(driver);
+        parentPage = pageObj ;
     }
 
     @Override

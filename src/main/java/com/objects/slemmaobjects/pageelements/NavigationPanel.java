@@ -1,11 +1,13 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
 public class NavigationPanel extends PageElement {
+
+    private Home parentPage;
 
     private final By libraryBtn = classSelector("page-mode-panel__library-item");
     private final By dashboardsBtn = classSelector("page-mode-panel__dashboards-item");
@@ -17,8 +19,9 @@ public class NavigationPanel extends PageElement {
     private final By settingsBtn = classSelector("page-mode-panel__account-item");
     private final By adminBtn = classSelector("page-mode-panel__admin-item");
 
-    public NavigationPanel(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    public NavigationPanel(SeleniumDriverWrapper driver, Home pageObj){
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override

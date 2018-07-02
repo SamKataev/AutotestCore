@@ -1,17 +1,20 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class ChooseDashboardTemplate extends PageElement {
+public class ChooseDashboardTemplateDialog extends PageElement {
+
+    private Home parentPage;
 
     private final By labelTemplates = classContainsText("listitem__content", "Templates");
     private final By blankBtn = classSelector("listitem_blank-object");
 
-    public ChooseDashboardTemplate(SeleniumDriverWrapper driver, PageObject pageObj) {
-        super(driver, pageObj);
+    public ChooseDashboardTemplateDialog(SeleniumDriverWrapper driver, Home pageObj) {
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override

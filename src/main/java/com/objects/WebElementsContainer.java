@@ -47,7 +47,7 @@ public abstract class WebElementsContainer {
     }
 
     protected By inputInParentDivClass(String name){
-        return By.xpath("//div[contains(@class, '" + name + "')]/input");
+        return By.xpath("//div[contains(@class, '" + name + "')]//input");
     }
 
     protected By subclassInParentClass(String className, String subclassName){

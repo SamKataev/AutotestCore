@@ -1,19 +1,22 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class CreateNewFolder extends PageElement{
+public class CreateNewFolderDialog extends PageElement{
+
+    private Home parentPage;
 
     private final By labelNewFolder = containsText("New folder");
     private final By folderNameInput = containsValue("Untitled folder");
     private final By cancelBtn = classContainsText("btn__cont","Cancel");
     private final By createBtn = classContainsText("btn__cont","Create");
 
-    public CreateNewFolder(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    public CreateNewFolderDialog(SeleniumDriverWrapper driver, Home pageObj){
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override
@@ -24,16 +27,18 @@ public class CreateNewFolder extends PageElement{
                 && driver.waitUntilExist(createBtn);
     }
 
-    public CreateNewFolder enterFolderName(String text) {
+    public CreateNewFolderDialog enterFolderName(String text) {
         driver.type(folderNameInput, text);
         return this;
     }
 
-    public void clickCancel() {
+    public Home clickCancel() {
         driver.click(cancelBtn);
+        return parentPage;
     }
 
-    public void clickCreate() {
+    public Home clickCreate() {
         driver.click(createBtn);
+        return parentPage;
     }
 }

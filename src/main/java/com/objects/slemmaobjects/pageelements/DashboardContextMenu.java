@@ -1,12 +1,13 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
 import com.objects.slemmaobjects.pageobjects.Dashboard;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
 public class DashboardContextMenu extends PageElement{
+
+    private Dashboard parentPage;
 
     private final By panelLabel = classSelector("sub-panel__header-label");
     private final By saveBtn = classWithText("listitem__content", "Save");
@@ -17,8 +18,9 @@ public class DashboardContextMenu extends PageElement{
     private final By settingsBtn = classWithText("listitem__content", "Settings");
     private final By downloadTemplBtn = classWithText("listitem__content", "Download template");
 
-    public DashboardContextMenu(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    public DashboardContextMenu(SeleniumDriverWrapper driver, Dashboard pageObj){
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override
@@ -28,8 +30,8 @@ public class DashboardContextMenu extends PageElement{
                 && driver.waitUntilExist(detailsBtn)
                 && driver.waitUntilExist(dataRefreshSettingsBtn)
                 && driver.waitUntilExist(downloadTemplBtn)
-                && (!((Dashboard) parentPage).isEditable() || driver.waitUntilExist(saveBtn))
-                && (!((Dashboard) parentPage).isEditable() || driver.waitUntilExist(saveAsBtn))
-                && (!((Dashboard) parentPage).isEditable() || driver.waitUntilExist(settingsBtn));
+                && (!parentPage.isEditable() || driver.waitUntilExist(saveBtn))
+                && (!parentPage.isEditable() || driver.waitUntilExist(saveAsBtn))
+                && (!parentPage.isEditable() || driver.waitUntilExist(settingsBtn));
     }
 }

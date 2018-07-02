@@ -1,14 +1,17 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
 public class NavigatorObjectsList extends PageElement {
 
-    public NavigatorObjectsList(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    private Home parentPage;
+
+    public NavigatorObjectsList(SeleniumDriverWrapper driver, Home pageObj){
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override
@@ -18,24 +21,24 @@ public class NavigatorObjectsList extends PageElement {
     }
 
     ActionsMenu clickListItemByName(String name){
-        driver.click(locatorOfItemByTitle(name));
+        driver.click(itemByTitle(name));
         return new ActionsMenu(driver, this.parentPage);
     }
 
     ObjectContextMenu clickListItemContextBtnByName(String name){
-        driver.click(locatorOfItemContextBtnByTitle(name));
+        driver.click(itemContextBtnByTitle(name));
         return new ObjectContextMenu(driver, this.parentPage);
     }
 
-    protected By locatorOfItemByTitle(String title){
+    protected By itemByTitle(String title){
         return By.xpath("//div[contains(@title, '" + title + "')]/ancestor::div[contains(@class, 'listitem')]");
     }
 
-    protected By locatorOfItemContextBtnByTitle(String title){
+    protected By itemContextBtnByTitle(String title){
         return By.xpath("//div[contains(@title, '" + title + "')]/ancestor::div[contains(@class, 'listitem')]//div[contains(@class, 'btn_settings')]");
     }
 
-    protected By locatorOfItemCheckboxByTitle(String title){
+    protected By itemCheckboxByTitle(String title){
         return By.xpath("//div[contains(@title, '" + title + "')]/ancestor::div[contains(@class, 'listitem')]//div[contains(@class, 'listitem__img')]");
     }
 }

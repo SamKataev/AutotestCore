@@ -1,11 +1,13 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
 public class NewObjectBtnContent extends PageElement {
+
+    private Home parentPage;
 
     private final By folderBtn = By.xpath("//div[contains(@class, 'lbl-cnt') and contains(text(), 'Folder')]/parent::div/following-sibling::div");
     private final By datasetBtn = By.xpath("//div[contains(@class, 'lbl-cnt') and contains(text(), 'Dataset')]/parent::div/following-sibling::div");
@@ -14,8 +16,9 @@ public class NewObjectBtnContent extends PageElement {
     private final By savedChartBtn = By.xpath("//div[contains(@class, 'lbl-cnt') and contains(text(), 'Saved chart')]/parent::div/following-sibling::div");
     private final By dashboardBtn = By.xpath("//div[contains(@class, 'lbl-cnt') and contains(text(), 'Dashboard')]/parent::div/following-sibling::div");
 
-    public NewObjectBtnContent(SeleniumDriverWrapper driver, PageObject pageObj){
-        super(driver, pageObj);
+    public NewObjectBtnContent(SeleniumDriverWrapper driver, Home pageObj){
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override
@@ -28,32 +31,32 @@ public class NewObjectBtnContent extends PageElement {
                 && driver.waitUntilExist(dashboardBtn);
     }
 
-    public CreateNewFolder clickNewFolder() {
+    public CreateNewFolderDialog clickNewFolder() {
         driver.click(folderBtn);
-        return new CreateNewFolder(driver, this.parentPage);
+        return new CreateNewFolderDialog(driver, this.parentPage);
     }
 
-    public ChooseDataSource clickNewDataset() {
+    public ChooseDataSourceDialog clickNewDataset() {
         driver.click(folderBtn);
-        return new ChooseDataSource(driver, this.parentPage);
+        return new ChooseDataSourceDialog(driver, this.parentPage);
     }
 
-    public CreateNewIntegration clickNewIntegration() {
+    public CreateNewIntegrationDialog clickNewIntegration() {
         driver.click(folderBtn);
-        return new CreateNewIntegration(driver, this.parentPage);
+        return new CreateNewIntegrationDialog(driver, this.parentPage);
     }
 
     public void newPresentation() {
         driver.click(folderBtn);
     }
 
-    public ChooseDataSource clickNewSavedChart() {
+    public ChooseDataSourceDialog clickNewSavedChart() {
         driver.click(folderBtn);
-        return new ChooseDataSource(driver, this.parentPage);
+        return new ChooseDataSourceDialog(driver, this.parentPage);
     }
 
-    public ChooseDashboardTemplate clickNewDashboard() {
+    public ChooseDashboardTemplateDialog clickNewDashboard() {
         driver.click(folderBtn);
-        return new ChooseDashboardTemplate(driver, this.parentPage);
+        return new ChooseDashboardTemplateDialog(driver, this.parentPage);
     }
 }

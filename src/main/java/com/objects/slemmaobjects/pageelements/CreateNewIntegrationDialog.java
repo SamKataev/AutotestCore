@@ -1,18 +1,21 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
-import com.objects.PageObject;
+import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class CreateNewIntegration extends PageElement {
+public class CreateNewIntegrationDialog extends PageElement {
+
+    private Home parentPage;
 
     private final By labelCreateNew = classContainsText("listitem__content", "Create new");
     private final By uploadFileBtn = containsText("Upload a File");
     private final By uploadByUrlBtn = containsText("File by URL");
 
-    public CreateNewIntegration(SeleniumDriverWrapper driver, PageObject pageObj) {
-        super(driver, pageObj);
+    public CreateNewIntegrationDialog(SeleniumDriverWrapper driver, Home pageObj) {
+        super(driver);
+        parentPage = pageObj;
     }
 
     @Override
