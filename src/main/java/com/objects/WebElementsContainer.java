@@ -2,6 +2,7 @@ package com.objects;
 
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 /**
  * purpose of this class is to encapsulate formatting locators of web elements
@@ -20,6 +21,10 @@ public abstract class WebElementsContainer {
     public boolean isRendered(){
         return validateElements();
         //TODO: add more checks i.e all ajax requests resolved
+    }
+
+    public void checkIsRendered(){
+        Assert.assertTrue(isRendered());
     }
 
     protected By classSelector(String name){

@@ -11,6 +11,7 @@ public class Register extends SlemmaPageObject {
     private By passInput = inputInParentDivClass("passwordInput");
     private By createAccBtn = classSelector("createBtn");
     private By policyCheckBox = By.xpath("//span[contains(text(), 'Я подтверждаю, что прочитал и согласен с ')]/preceding-sibling::span");
+    private By signInBtn = classContainsText("btn__cont","Войти");
 
     public Register(SeleniumDriverWrapper driver) {
         super(driver.getBaseUrl() + "/register", driver);
@@ -39,8 +40,13 @@ public class Register extends SlemmaPageObject {
     }
 
     public Register clickPolicyCheckBox(){
-        driver.click(policyCheckBox);
+        Assert.assertTrue(driver.click(policyCheckBox));
         return this;
+    }
+
+    public Auth clickSignIn(){
+        Assert.assertTrue(driver.click(signInBtn));
+        return new Auth(driver);
     }
 
 }
