@@ -13,9 +13,12 @@ public class SlemmaWebTest extends WebTest {
     Presentation presentationPage;
     Register registerPage;
 
+    /**
+     * each test class starts from home page if not overridden
+     */
     @BeforeClass
     public void startSlemmaTestClass(){
-        openHomePage();  //each test class starts from home page if not overridden
+        openHomePage();
     }
 
     @Override

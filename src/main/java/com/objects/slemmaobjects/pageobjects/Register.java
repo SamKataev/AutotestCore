@@ -49,4 +49,8 @@ public class Register extends SlemmaPageObject {
         return new Auth(driver);
     }
 
+    public void checkCreateAccBtnIsUnavailable() {
+        Assert.assertFalse(driver.click(createAccBtn));
+    }
+
 }
