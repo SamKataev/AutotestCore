@@ -1,9 +1,9 @@
 package com.objects.slemmaobjects.pageobjects;
 
-import com.objects.PageObject;
+import com.objects.slemmaobjects.SlemmaPageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 
-public class Presentation extends PageObject {
+public class Presentation extends SlemmaPageObject {
 
     public Presentation(SeleniumDriverWrapper driver){
         super(driver.getBaseUrl()+"/auth", driver);

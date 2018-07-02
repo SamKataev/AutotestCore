@@ -13,9 +13,11 @@ public class Registration extends SlemmaWebTest {
     }
 
     @Test
-    public void checkRegisterWithTrueCredentials(){
-        Assert.assertTrue(logIn());
-        Assert.assertTrue(homePage.isLoggedIn());
+    public void registerWithAllEmptyFieldsFails(){
+        registerPage.clickPolicyCheckBox()
+                    .clickCreateAcc();
+        Assert.assertEquals(registerPage.getTextFromMessage(), "Некорректный эл. адрес");
     }
 
 }
+

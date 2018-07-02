@@ -1,11 +1,11 @@
 package com.objects.slemmaobjects.pageobjects;
 
-import com.objects.PageObject;
+import com.objects.slemmaobjects.SlemmaPageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class Auth extends PageObject{
+public class Auth extends SlemmaPageObject {
 
     private By emailInput = inputInParentDivClass("emailInput");
     private By passInput = inputInParentDivClass("passwordInput");

@@ -1,12 +1,12 @@
 package com.objects.slemmaobjects.pageobjects;
 
-import com.objects.PageObject;
+import com.objects.slemmaobjects.SlemmaPageObject;
 import com.objects.slemmaobjects.pageelements.DashboardContextMenu;
 import com.objects.slemmaobjects.pageelements.DashboardHeaderPanel;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class Dashboard extends PageObject {
+public class Dashboard extends SlemmaPageObject {
 
     DashboardHeaderPanel headerPanel;
     DashboardContextMenu contextMenu;

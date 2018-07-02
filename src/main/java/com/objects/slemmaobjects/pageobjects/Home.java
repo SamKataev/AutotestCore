@@ -1,12 +1,12 @@
 package com.objects.slemmaobjects.pageobjects;
 
-import com.objects.PageObject;
 import com.objects.WebElementsContainer;
+import com.objects.slemmaobjects.SlemmaPageObject;
 import com.objects.slemmaobjects.pageelements.*;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class Home extends PageObject {
+public class Home extends SlemmaPageObject {
 
     public NavigationPanel navigationPanel;
     public NavigatorObjectsList navigatorObjectsList;

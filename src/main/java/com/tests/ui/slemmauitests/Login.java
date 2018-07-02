@@ -13,7 +13,7 @@ public class Login extends SlemmaWebTest {
     }
 
     @Test
-    public void checkLoginWithTrueCredentials(){
+    public void loginWithTrueCredentials(){
         Assert.assertTrue(logIn());
         Assert.assertTrue(homePage.isLoggedIn());
     }
