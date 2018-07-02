@@ -1,6 +1,7 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
+import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
@@ -11,8 +12,8 @@ public class CreateNewFolder extends PageElement{
     private final By cancelBtn = classContainsText("btn__cont","Cancel");
     private final By createBtn = classContainsText("btn__cont","Create");
 
-    public CreateNewFolder(SeleniumDriverWrapper driver){
-        super(driver);
+    public CreateNewFolder(SeleniumDriverWrapper driver, PageObject pageObj){
+        super(driver, pageObj);
     }
 
     @Override

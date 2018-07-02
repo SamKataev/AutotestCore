@@ -26,6 +26,10 @@ public abstract class WebElementsContainer {
         return By.cssSelector("." + name);
     }
 
+    protected By idSelector(String id){
+        return By.id(id);
+    }
+
     protected By containsText(String text){
         return By.xpath("//*[contains(text(), '" + text + "')]");
     }
@@ -36,6 +40,10 @@ public abstract class WebElementsContainer {
 
     protected By classContainsText(String name, String text){
         return By.xpath("//*[contains(@class, '" + name + "') and contains(text(), '" + text + "')]");
+    }
+
+    protected By classWithText(String name, String text){
+        return By.xpath("//*[contains(@class, '" + name + "') and text() = '" + text + "']");
     }
 
     protected By inputInParentDivClass(String name){

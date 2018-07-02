@@ -9,24 +9,25 @@ import org.openqa.selenium.By;
 public class Home extends PageObject {
 
     public NavigationPanel navigationPanel;
-    public ObjectsList objectsList;
+    public NavigatorObjectsList navigatorObjectsList;
 
+    private final By waiter = classSelector("process-waiter__container");
     private final By pageModeLabel = subclassInParentClass("pageModeLbl", "lbl-cnt");
-
     private final By plusBtn = classSelector("new-object-button");
 
     public Home(SeleniumDriverWrapper driver){
         super(driver.getBaseUrl() + "/home", driver);
-        navigationPanel = new NavigationPanel(driver);
-        objectsList = new ObjectsList(driver);
+        navigationPanel = new NavigationPanel(driver, this);
+        navigatorObjectsList = new NavigatorObjectsList(driver, this);
     }
 
     @Override
     public boolean validateElements() {
-        return driver.waitUntilExist(pageModeLabel, 10)
+        return driver.waitUntilDisappear(waiter, 10)
+                && driver.waitUntilExist(pageModeLabel, 10)
                 && driver.waitUntilExist(plusBtn)
                 && navigationPanel.isRendered()
-                && objectsList.isRendered();
+                && navigatorObjectsList.isRendered();
     }
 
     public boolean isLoggedIn(){
@@ -45,16 +46,16 @@ public class Home extends PageObject {
         String currentUrl = driver.getCurrentUrl();
         driver.click(plusBtn);
         if (currentUrl.contains("infographics")){
-            return new ChooseDashboardTemplate(driver);
+            return new ChooseDashboardTemplate(driver, this);
         }
         if (currentUrl.contains("reports")){
-            return new ChooseDataSource(driver);
+            return new ChooseDataSource(driver, this);
         }
         if (currentUrl.contains("presentations")){
             return new Presentation(driver);
         }
         if (currentUrl.contains("datasources")){
-            return new CreateNewIntegration(driver);
+            return new CreateNewIntegration(driver, this);
         }
         return this;
     }

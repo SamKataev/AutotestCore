@@ -1,6 +1,7 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
+import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
@@ -13,8 +14,8 @@ public class NewObjectBtnContent extends PageElement {
     private final By savedChartBtn = By.xpath("//div[contains(@class, 'lbl-cnt') and contains(text(), 'Saved chart')]/parent::div/following-sibling::div");
     private final By dashboardBtn = By.xpath("//div[contains(@class, 'lbl-cnt') and contains(text(), 'Dashboard')]/parent::div/following-sibling::div");
 
-    public NewObjectBtnContent(SeleniumDriverWrapper driver){
-        super(driver);
+    public NewObjectBtnContent(SeleniumDriverWrapper driver, PageObject pageObj){
+        super(driver, pageObj);
     }
 
     @Override
@@ -29,17 +30,17 @@ public class NewObjectBtnContent extends PageElement {
 
     public CreateNewFolder clickNewFolder() {
         driver.click(folderBtn);
-        return new CreateNewFolder(driver);
+        return new CreateNewFolder(driver, this.parentPage);
     }
 
     public ChooseDataSource clickNewDataset() {
         driver.click(folderBtn);
-        return new ChooseDataSource(driver);
+        return new ChooseDataSource(driver, this.parentPage);
     }
 
     public CreateNewIntegration clickNewIntegration() {
         driver.click(folderBtn);
-        return new CreateNewIntegration(driver);
+        return new CreateNewIntegration(driver, this.parentPage);
     }
 
     public void newPresentation() {
@@ -48,11 +49,11 @@ public class NewObjectBtnContent extends PageElement {
 
     public ChooseDataSource clickNewSavedChart() {
         driver.click(folderBtn);
-        return new ChooseDataSource(driver);
+        return new ChooseDataSource(driver, this.parentPage);
     }
 
     public ChooseDashboardTemplate clickNewDashboard() {
         driver.click(folderBtn);
-        return new ChooseDashboardTemplate(driver);
+        return new ChooseDashboardTemplate(driver, this.parentPage);
     }
 }

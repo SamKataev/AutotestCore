@@ -1,13 +1,14 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
+import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class ObjectsList extends PageElement {
+public class NavigatorObjectsList extends PageElement {
 
-    public ObjectsList(SeleniumDriverWrapper driver){
-        super(driver);
+    public NavigatorObjectsList(SeleniumDriverWrapper driver, PageObject pageObj){
+        super(driver, pageObj);
     }
 
     @Override
@@ -18,12 +19,12 @@ public class ObjectsList extends PageElement {
 
     ActionsMenu clickListItemByName(String name){
         driver.click(locatorOfItemByTitle(name));
-        return new ActionsMenu(driver);
+        return new ActionsMenu(driver, this.parentPage);
     }
 
-    ContextMenu clickListItemContextBtnByName(String name){
+    ObjectContextMenu clickListItemContextBtnByName(String name){
         driver.click(locatorOfItemContextBtnByTitle(name));
-        return new ContextMenu(driver);
+        return new ObjectContextMenu(driver, this.parentPage);
     }
 
     protected By locatorOfItemByTitle(String title){

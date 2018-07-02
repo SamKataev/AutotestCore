@@ -1,6 +1,7 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
+import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
@@ -10,8 +11,8 @@ public class CreateNewIntegration extends PageElement {
     private final By uploadFileBtn = containsText("Upload a File");
     private final By uploadByUrlBtn = containsText("File by URL");
 
-    public CreateNewIntegration(SeleniumDriverWrapper driver) {
-        super(driver);
+    public CreateNewIntegration(SeleniumDriverWrapper driver, PageObject pageObj) {
+        super(driver, pageObj);
     }
 
     @Override

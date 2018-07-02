@@ -1,6 +1,7 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
+import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
@@ -16,8 +17,8 @@ public class NavigationPanel extends PageElement {
     private final By settingsBtn = classSelector("page-mode-panel__account-item");
     private final By adminBtn = classSelector("page-mode-panel__admin-item");
 
-    public NavigationPanel(SeleniumDriverWrapper driver){
-        super(driver);
+    public NavigationPanel(SeleniumDriverWrapper driver, PageObject pageObj){
+        super(driver, pageObj);
     }
 
     @Override

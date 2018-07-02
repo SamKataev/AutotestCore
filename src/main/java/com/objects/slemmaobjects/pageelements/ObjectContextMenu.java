@@ -1,12 +1,13 @@
 package com.objects.slemmaobjects.pageelements;
 
 import com.objects.PageElement;
+import com.objects.PageObject;
 import com.service.ui.web.SeleniumDriverWrapper;
 
-public class ContextMenu extends PageElement {
+public class ObjectContextMenu extends PageElement {
 
-    public ContextMenu(SeleniumDriverWrapper driver){
-        super(driver);
+    public ObjectContextMenu(SeleniumDriverWrapper driver, PageObject pageObj){
+        super(driver, pageObj);
     }
 
     @Override
