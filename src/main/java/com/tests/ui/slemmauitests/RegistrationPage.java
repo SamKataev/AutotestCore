@@ -4,7 +4,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Registration extends SlemmaWebTest {
+public class RegistrationPage extends SlemmaWebTest {
 
     @BeforeClass
     @Override

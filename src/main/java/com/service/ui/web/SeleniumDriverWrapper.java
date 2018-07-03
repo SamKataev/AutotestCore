@@ -81,9 +81,11 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     }
 
     private boolean typeWebElement(By locator, String text, int time){
-        if (waitUntilClickable(locator, time) && clickWebElement(locator, time)){
+        if (waitUntilClickable(locator, time)){
             try {
-                getElement(locator, time).sendKeys(text);
+                WebElement el = getElement(locator, time);
+                el.clear();
+                el.sendKeys(text);
                 return true;
             }catch (WebDriverException e){
                 System.out.println("error typing in web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,35) + "...");

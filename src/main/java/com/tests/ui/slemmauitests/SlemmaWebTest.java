@@ -9,6 +9,7 @@ public class SlemmaWebTest extends WebTest {
 
     Home homePage;
     Auth authPage;
+    SamlAuth samlAuthPage;
     Dashboard dashboardPage;
     Presentation presentationPage;
     Register registerPage;
@@ -25,6 +26,7 @@ public class SlemmaWebTest extends WebTest {
     protected void initPages() {
         homePage = new Home(driver);
         authPage = new Auth(driver);
+        samlAuthPage = new SamlAuth(driver);
         dashboardPage = new Dashboard(driver);
         presentationPage = new Presentation(driver);
         registerPage = new Register(driver);

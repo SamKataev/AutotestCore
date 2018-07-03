@@ -23,8 +23,9 @@ public abstract class WebElementsContainer {
         //TODO: add more checks i.e all ajax requests resolved
     }
 
-    public void checkIsRendered(){
+    public WebElementsContainer checkIsRendered(){
         Assert.assertTrue(isRendered());
+        return this;
     }
 
     protected By classSelector(String name){

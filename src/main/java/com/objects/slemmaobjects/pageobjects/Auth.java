@@ -1,6 +1,7 @@
 package com.objects.slemmaobjects.pageobjects;
 
 import com.objects.slemmaobjects.SlemmaPageObject;
+import com.objects.slemmaobjects.pageelements.PasswordResetDialog;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -13,6 +14,8 @@ public class Auth extends SlemmaPageObject {
     private By googleSignInBtn = classSelector("login-panel__google-button");
     private By registerBtn = subclassInParentClass("login-panel__register","btn__cont");
     private By samlSignInBtn = subclassInParentClass("login-panel__saml-button","btn__cont");
+    private By errorMessage = subclassInParentClass("login-panel__error", "lbl-cnt");
+    private By passResetBtn = subclassInParentClass("forgotPasswordBtn", "btn__cont");
 
     public Auth(SeleniumDriverWrapper driver){
         super(driver.getBaseUrl()+"/auth", driver);
@@ -22,6 +25,10 @@ public class Auth extends SlemmaPageObject {
     public boolean validateElements(){
         return driver.waitUntilExist(emailInput, 10)
                 && driver.waitUntilExist(passInput)
+                && driver.waitUntilExist(googleSignInBtn)
+                && driver.waitUntilExist(registerBtn)
+                && driver.waitUntilExist(samlSignInBtn)
+                && driver.waitUntilExist(passResetBtn)
                 && driver.waitUntilExist(signInBtn);
     }
 
@@ -53,14 +60,33 @@ public class Auth extends SlemmaPageObject {
     }
 
     public Auth clickRegister(){
-        //TODO: return Register page
         Assert.assertTrue(driver.click(registerBtn));
         return this;
     }
 
     public Auth clickSamlSignIn(){
-        //TODO: return Saml page
         Assert.assertTrue(driver.click(samlSignInBtn));
         return this;
     }
+
+    public PasswordResetDialog clickPassReset(){
+        Assert.assertTrue(driver.click(passResetBtn));
+        return new PasswordResetDialog(driver, this);
+    }
+
+    public String getErrorMessageText(){
+        if (driver.waitUntilClickable(errorMessage, 2)){
+            return driver.getElement(errorMessage).getText();
+        }
+        return "";
+    }
+
+    public void checkErrorMessageText(String text){
+        Assert.assertTrue(getErrorMessageText().equals(text));
+    }
+
+    public void checkErrorMessageTextContains(String text){
+        Assert.assertTrue(getErrorMessageText().contains(text));
+    }
+
 }

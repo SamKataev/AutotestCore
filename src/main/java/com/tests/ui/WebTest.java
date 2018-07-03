@@ -51,4 +51,16 @@ public abstract class WebTest {
     public SeleniumDriverWrapper getDriver(){
         return driver;
     }
+
+    protected void pause(int timeInSeconds) {
+        try {
+            if (timeInSeconds > 0) {
+                Thread.sleep(timeInSeconds * 1000);
+            }
+        } catch (InterruptedException e) {
+            System.out.println("thread sleep interrupted: " + e.getMessage());
+        }
+    }
+
+
 }

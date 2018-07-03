@@ -5,6 +5,7 @@ import com.objects.slemmaobjects.SlemmaPageObject;
 import com.objects.slemmaobjects.pageelements.*;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class Home extends SlemmaPageObject {
 
@@ -34,6 +35,10 @@ public class Home extends SlemmaPageObject {
         return isRendered()
                 && checkMenuSection("Library", "/home");
                 //TODO: check account
+    }
+
+    public void checkIsLoggedIn(){
+        Assert.assertTrue(isLoggedIn());
     }
 
     public boolean checkMenuSection(String name, String path){
