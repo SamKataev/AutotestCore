@@ -30,7 +30,7 @@ public class DashboardHeaderPanel extends PageElement {
     }
 
     public boolean isEditable(){
-        return driver.waitUntilExist(By.xpath("//div[contains(@class, 'switcher_checked')]"), 1);
+        return driver.waitUntilExist(By.xpath("//div[contains(@class, 'switcher_checked')]"), 5);
     }
 
     public void switchEdit(){

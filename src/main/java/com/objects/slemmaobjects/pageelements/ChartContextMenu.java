@@ -5,7 +5,7 @@ import com.objects.slemmaobjects.pageobjects.Dashboard;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 
-public class DashboardContextMenu extends PageElement{
+public class ChartContextMenu extends PageElement{
 
     private Dashboard parentPage;
 
@@ -18,7 +18,7 @@ public class DashboardContextMenu extends PageElement{
     private final By settingsBtn = classWithText("listitem__content", "Settings");
     private final By downloadTemplBtn = classWithText("listitem__content", "Download template");
 
-    public DashboardContextMenu(SeleniumDriverWrapper driver, Dashboard pageObj){
+    public ChartContextMenu(SeleniumDriverWrapper driver, Dashboard pageObj){
         super(driver);
         parentPage = pageObj;
     }
