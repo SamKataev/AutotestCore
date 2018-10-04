@@ -7,6 +7,7 @@ public class Navigator extends SlemmaWebTest {
 
     @Test
     public void goThroughNavigationMenu(){
+        homePage.checkIsRendered();
         Assert.assertTrue(homePage.navigationPanel.openLibrary()
                 && homePage.checkMenuSection("Library", "/home"));
         Assert.assertTrue(homePage.navigationPanel.openDasboards()

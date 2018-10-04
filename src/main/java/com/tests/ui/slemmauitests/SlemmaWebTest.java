@@ -5,7 +5,7 @@ import com.service.TestProperties;
 import com.tests.ui.WebTest;
 import org.testng.annotations.BeforeClass;
 
-public class SlemmaWebTest extends WebTest {
+public abstract class SlemmaWebTest extends WebTest {
 
     Home homePage;
     Auth authPage;
@@ -32,14 +32,23 @@ public class SlemmaWebTest extends WebTest {
         registerPage = new Register(driver);
     }
 
-    protected boolean openHomePage(){
-        return homePage.isRendered() || logIn();
+    protected void openHomePage(){
+        driver.goToUrl(driver.getBaseUrl()+"/home");
+        if (!driver.getCurrentUrl().equals(driver.getBaseUrl()+"/home")) {
+            logIn();
+        }
     }
 
-    protected boolean logIn(){
+    protected void logIn(){
         authPage.open();
         authPage.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
-        return homePage.isRendered();
+        changeTeam(TestProperties.getProp("team"));
+    }
+
+    protected void changeTeam(String name){
+        homePage.checkIsRendered();
+        homePage.clickAccountBtn()
+                .selectTeam(name);
     }
 
 }

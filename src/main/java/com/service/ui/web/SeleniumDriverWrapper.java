@@ -74,7 +74,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
                 getElement(locator, time).click();
                 return true;
             }catch (WebDriverException e){
-                System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,35) + "...");
+                System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,200) + "...");
             }
         }
         return false;
@@ -205,7 +205,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
                 wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
             }
         } catch (TimeoutException ex) {
-            System.out.println("timeout " + time + " expired, " + type.toString());
+            System.out.println("timeout " + time + " expired, " + type.toString() + ", " + locator.toString());
             return false;
         }
         return true;

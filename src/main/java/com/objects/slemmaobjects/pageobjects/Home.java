@@ -13,8 +13,10 @@ public class Home extends SlemmaPageObject {
     public NavigatorObjectsList navigatorObjectsList;
 
     private final By waiter = classSelector("process-waiter__container");
-    private final By pageModeLabel = subclassInParentClass("pageModeLbl", "lbl-cnt");
+    private final By pageModeLabel = classInParentClass("pageModeLbl", "lbl-cnt");
     private final By plusBtn = classSelector("new-object-button");
+    private final By searchInput = classInParentClass("list-view__search-input", "input__nativeinput");
+    private final By accountBtn = classSelector("accountBtn");
 
     public Home(SeleniumDriverWrapper driver){
         super(driver.getBaseUrl() + "/home", driver);
@@ -26,7 +28,8 @@ public class Home extends SlemmaPageObject {
     public boolean validateElements() {
         return driver.waitUntilDisappear(waiter, 10)
                 && driver.waitUntilExist(pageModeLabel, 10)
-                && driver.waitUntilExist(plusBtn)
+                && driver.waitUntilClickable(plusBtn)
+                && driver.waitUntilClickable(accountBtn)
                 && navigationPanel.isRendered()
                 && navigatorObjectsList.isRendered();
     }
@@ -49,7 +52,7 @@ public class Home extends SlemmaPageObject {
 
     public WebElementsContainer clickPlusBtn(){
         String currentUrl = driver.getCurrentUrl();
-        driver.click(plusBtn);
+        Assert.assertTrue(driver.click(plusBtn));
         if (currentUrl.contains("infographics")){
             return new ChooseDashboardTemplateDialog(driver, this);
         }
@@ -63,6 +66,16 @@ public class Home extends SlemmaPageObject {
             return new CreateNewIntegrationDialog(driver, this);
         }
         return this;
+    }
+
+    public WebElementsContainer searchInNavigator(String text){
+        driver.type(searchInput, text);
+        return this;
+    }
+
+    public AccountSettings clickAccountBtn(){
+        Assert.assertTrue(driver.click(accountBtn));
+        return new AccountSettings(driver, this);
     }
 
 }

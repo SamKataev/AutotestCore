@@ -26,15 +26,15 @@ public class NavigationPanel extends PageElement {
 
     @Override
     public boolean validateElements() {
-        return driver.waitUntilExist(libraryBtn, 10)
-                && driver.waitUntilExist(dashboardsBtn)
-                && driver.waitUntilExist(reportsBtn)
-                && driver.waitUntilExist(presentationsBtn)
-                && driver.waitUntilExist(dataSourcesBtn)
-                && driver.waitUntilExist(deliveryBtn)
-                && driver.waitUntilExist(activityBtn)
-                && driver.waitUntilExist(settingsBtn)
-                && driver.waitUntilExist(adminBtn);
+        return driver.waitUntilClickable(libraryBtn, 10)
+                && driver.waitUntilClickable(dashboardsBtn)
+                && driver.waitUntilClickable(reportsBtn)
+                && driver.waitUntilClickable(presentationsBtn)
+                && driver.waitUntilClickable(dataSourcesBtn)
+                && driver.waitUntilClickable(deliveryBtn)
+                && driver.waitUntilClickable(activityBtn)
+                && driver.waitUntilClickable(settingsBtn)
+                && driver.waitUntilClickable(adminBtn);
     }
 
     public boolean openLibrary(){

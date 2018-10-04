@@ -10,7 +10,7 @@ public class DashboardHeaderPanel extends PageElement {
     private Dashboard parentPage;
 
     private final By logo = classSelector("logo-button");
-    private final By title = subclassInParentClass("main-title-button", "btn__cont");
+    private final By title = classInParentClass("main-title-button", "btn__cont");
     private final By homeBtn = idSelector("designerHomeButton");
     private final By rightPanel = classSelector("context-header-node__right-part");
     private final By switcher = classSelector("switcher__axis");

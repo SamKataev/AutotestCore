@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class NavigatorObjectsList extends PageElement {
 
@@ -20,14 +21,34 @@ public class NavigatorObjectsList extends PageElement {
                 && driver.waitUntilExist(classSelector("list-view-listbox"));
     }
 
-    ActionsMenu clickListItemByName(String name){
-        driver.click(itemByTitle(name));
-        return new ActionsMenu(driver, this.parentPage);
+    public ActionsMenu clickDatasourceByName(String name){
+        Assert.assertTrue(driver.click(itemByNameAndType(name, "Schema")));
+        return new ActionsMenu(driver, parentPage);
     }
 
-    ObjectContextMenu clickListItemContextBtnByName(String name){
+    public void clickDashboardByName(String name){
+        Assert.assertTrue(driver.click(itemByNameAndType(name, "Dashboard")));
+    }
+
+    public ObjectContextMenu clickListItemContextBtnByName(String name){
         driver.click(itemContextBtnByTitle(name));
         return new ObjectContextMenu(driver, this.parentPage);
+    }
+
+    protected By itemByName(String name){
+        return By.xpath("//span[@class='nameSpan' and text()='" + name + "']/ancestor::div[contains(@class, 'listitem')]");
+    }
+
+    protected By itemByNameAndType(String name, String type){
+        return By.xpath("//span[@class='nameSpan' and text()='" + name + "']/ancestor::div[contains(@class, 'listitem') and contains(@class, '" + type + "')]");
+    }
+
+    protected By itemContextBtnByName(String name){
+        return By.xpath("//span[@class='nameSpan' and text()='" + name + "']/ancestor::div[contains(@class, 'listitem')]//div[contains(@class, 'btn_settings')]");
+    }
+
+    protected By itemCheckboxByName(String name){
+        return By.xpath("//span[@class='nameSpan' and text()='" + name + "']/ancestor::div[contains(@class, 'listitem')]//div[contains(@class, 'listitem__img')]");
     }
 
     protected By itemByTitle(String title){

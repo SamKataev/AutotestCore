@@ -10,7 +10,7 @@ public class SamlAuth extends SlemmaPageObject {
     private By emailInput = inputInParentDivClass("emailInput");
     private By signInBtn = classSelector("signInBtn");
     private By backToLoginBtn = classWithText("lbl-cnt", "Войти без SSO");
-    private By errorMessage = subclassInParentClass("login-panel__error", "lbl-cnt");
+    private By errorMessage = classInParentClass("login-panel__error", "lbl-cnt");
 
     public SamlAuth(SeleniumDriverWrapper driver){
         super(driver.getBaseUrl()+"/saml-auth", driver);
@@ -18,9 +18,9 @@ public class SamlAuth extends SlemmaPageObject {
 
     @Override
     public boolean validateElements(){
-        return driver.waitUntilExist(emailInput, 10)
-                && driver.waitUntilExist(backToLoginBtn)
-                && driver.waitUntilExist(signInBtn);
+        return driver.waitUntilClickable(emailInput, 10)
+                && driver.waitUntilClickable(backToLoginBtn, 10)
+                && driver.waitUntilClickable(signInBtn, 10);
     }
 
     public SamlAuth enterEmail(String text){

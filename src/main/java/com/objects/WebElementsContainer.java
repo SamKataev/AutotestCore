@@ -56,8 +56,16 @@ public abstract class WebElementsContainer {
         return By.xpath("//div[contains(@class, '" + name + "')]//input");
     }
 
-    protected By subclassInParentClass(String className, String subclassName){
+    protected By classInParentClass(String className, String subclassName){
         return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "')]");
+    }
+
+    protected By classWithTextInParentClass(String className, String subclassName, String text){
+        return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "') and contains(text(), '" + text + "')]");
+    }
+
+    protected By classBySubclass(String className, String subclassName){
+        return By.xpath("//div[contains(@class, '" + subclassName + "')]/ancestor::div[contains(@class, '" + className + "')]");
     }
 
 }

@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 public abstract class SlemmaPageObject extends PageObject{
 
-    private By messageDialog = subclassInParentClass("dropdown__content", "dialog__content");
+    private By messageDialog = classInParentClass("dropdown__content", "dialog__content");
     private By messageDialogContent = By.xpath("//div[contains(@class, 'dialog__content') and contains(@class, 'textContent')]");
 
     public SlemmaPageObject(String pageUrl, SeleniumDriverWrapper webDriver){

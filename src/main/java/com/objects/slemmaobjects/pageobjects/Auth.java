@@ -12,10 +12,10 @@ public class Auth extends SlemmaPageObject {
     private By passInput = inputInParentDivClass("passwordInput");
     private By signInBtn = classSelector("signInBtn");
     private By googleSignInBtn = classSelector("login-panel__google-button");
-    private By registerBtn = subclassInParentClass("login-panel__register","btn__cont");
-    private By samlSignInBtn = subclassInParentClass("login-panel__saml-button","btn__cont");
-    private By errorMessage = subclassInParentClass("login-panel__error", "lbl-cnt");
-    private By passResetBtn = subclassInParentClass("forgotPasswordBtn", "btn__cont");
+    private By registerBtn = classInParentClass("login-panel__register","btn__cont");
+    private By samlSignInBtn = classInParentClass("login-panel__saml-button","btn__cont");
+    private By errorMessage = classInParentClass("login-panel__error", "lbl-cnt");
+    private By passResetBtn = classInParentClass("forgotPasswordBtn", "btn__cont");
 
     public Auth(SeleniumDriverWrapper driver){
         super(driver.getBaseUrl()+"/auth", driver);
