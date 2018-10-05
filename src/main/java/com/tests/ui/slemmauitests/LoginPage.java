@@ -94,8 +94,8 @@ public class LoginPage extends SlemmaWebTest {
     @Test
     public void goSamlLoginFromLoginPageAndBack(){
         authPage.clickSamlSignIn();
-        samlAuthPage.checkIsRendered();
-        samlAuthPage.clickBackToLogin();
+        samlAuthPage.checkIsRendered()
+                .clickBackToLogin();
         authPage.checkIsRendered();
     }
 

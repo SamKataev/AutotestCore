@@ -34,6 +34,11 @@ public class Home extends SlemmaPageObject {
                 && navigatorObjectsList.isRendered();
     }
 
+    public Home checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
+
     public Home checkIsLoggedIn(){
         Assert.assertTrue(isRendered()
                 && checkMenuSection("Library", "/home"));

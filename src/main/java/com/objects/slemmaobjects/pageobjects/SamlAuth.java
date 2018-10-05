@@ -23,6 +23,11 @@ public class SamlAuth extends SlemmaPageObject {
                 && driver.waitUntilClickable(signInBtn, 10);
     }
 
+    public SamlAuth checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
+
     public SamlAuth enterEmail(String text){
         Assert.assertTrue(driver.type(emailInput ,text));
         return this;

@@ -32,6 +32,11 @@ public class Auth extends SlemmaPageObject {
                 && driver.waitUntilExist(signInBtn);
     }
 
+    public Auth checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
+
     public void logIn(String email, String pass){
         enterEmail(email);
         enterPass(pass);

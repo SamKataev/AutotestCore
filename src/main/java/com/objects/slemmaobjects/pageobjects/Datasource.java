@@ -27,6 +27,11 @@ public class Datasource extends SlemmaPageObject{
                 && driver.waitUntilExist(dataTableTab);
     }
 
+    public Datasource checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
+
     public Datasource clickDone(){
         Assert.assertTrue(driver.click(doneBtn));
         return this;

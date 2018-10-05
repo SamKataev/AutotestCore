@@ -24,6 +24,11 @@ public class Register extends SlemmaPageObject {
                 && driver.waitUntilExist(createAccBtn);
     }
 
+    public Register checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
+
     public Register enterEmail(String text){
         Assert.assertTrue(driver.type(emailInput ,text));
         return this;

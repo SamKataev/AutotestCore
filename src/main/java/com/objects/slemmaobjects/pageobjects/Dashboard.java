@@ -33,6 +33,10 @@ public class Dashboard extends SlemmaPageObject {
                 && driver.waitUntilExist(homeBtn);
     }
 
+    public Dashboard checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
 
     public boolean isEditable(){
         return driver.waitUntilExist(By.xpath("//div[contains(@class, 'switcher_checked')]"), 10)

@@ -13,4 +13,9 @@ public class Presentation extends SlemmaPageObject {
     public boolean validateElements(){
         return true;
     }
+
+    public Presentation checkIsRendered() {
+        super.checkIsRendered();
+        return this;
+    }
 }

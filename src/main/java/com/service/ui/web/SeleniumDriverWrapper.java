@@ -98,6 +98,10 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         webDriver.get(url);
     }
 
+    public void refreshPage(){
+        goToUrl(getCurrentUrl());
+    }
+
     public boolean checkCurrentUrl(String url){
         return webDriver.getCurrentUrl().equals(url);
     }
