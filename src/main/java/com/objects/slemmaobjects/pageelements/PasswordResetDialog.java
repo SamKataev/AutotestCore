@@ -26,7 +26,6 @@ public class PasswordResetDialog extends PageElement {
                 && driver.waitUntilExist(resetBtn);
     }
 
-    @Override
     public PasswordResetDialog checkIsRendered() {
         super.checkIsRendered();
         return this;

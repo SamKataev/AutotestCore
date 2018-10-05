@@ -9,6 +9,7 @@ public abstract class SlemmaPageObject extends PageObject{
 
     private By messageDialog = classInParentClass("dropdown__content", "dialog__content");
     private By messageDialogContent = By.xpath("//div[contains(@class, 'dialog__content') and contains(@class, 'textContent')]");
+    protected final By waiter = classSelector("process-waiter__container");
 
     public SlemmaPageObject(String pageUrl, SeleniumDriverWrapper webDriver){
         super(pageUrl ,webDriver);

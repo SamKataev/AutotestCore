@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class NavigationPanel extends PageElement {
 
@@ -35,6 +36,11 @@ public class NavigationPanel extends PageElement {
                 && driver.waitUntilClickable(activityBtn)
                 && driver.waitUntilClickable(settingsBtn)
                 && driver.waitUntilClickable(adminBtn);
+    }
+
+    public NavigationPanel checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 
     public boolean openLibrary(){

@@ -20,4 +20,9 @@ public class ChartSortPanel extends PageElement{
         return true;
     }
 
+    public ChartSortPanel checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
+    }
+
 }

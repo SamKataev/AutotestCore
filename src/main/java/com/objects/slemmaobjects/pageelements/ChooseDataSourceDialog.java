@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class ChooseDataSourceDialog extends PageElement {
 
@@ -24,5 +25,9 @@ public class ChooseDataSourceDialog extends PageElement {
                 && driver.waitUntilExist(labelChooseDataSource);
     }
 
+    public ChooseDataSourceDialog checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
+    }
 
 }

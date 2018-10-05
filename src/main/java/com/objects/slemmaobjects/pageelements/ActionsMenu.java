@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class ActionsMenu extends PageElement {
 
@@ -28,6 +29,11 @@ public class ActionsMenu extends PageElement {
                 && driver.waitUntilExist(savedChart)
                 && driver.waitUntilExist(presentation)
                 && driver.waitUntilExist(share);
+    }
+
+    public ActionsMenu checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 
     public boolean clickEditor(){

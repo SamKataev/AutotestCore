@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class CreateNewFolderDialog extends PageElement{
 
@@ -25,6 +26,11 @@ public class CreateNewFolderDialog extends PageElement{
                 && driver.waitUntilExist(labelNewFolder)
                 && driver.waitUntilExist(cancelBtn)
                 && driver.waitUntilExist(createBtn);
+    }
+
+    public CreateNewFolderDialog checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 
     public CreateNewFolderDialog enterFolderName(String text) {

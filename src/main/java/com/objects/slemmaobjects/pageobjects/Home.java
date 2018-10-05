@@ -34,14 +34,11 @@ public class Home extends SlemmaPageObject {
                 && navigatorObjectsList.isRendered();
     }
 
-    public boolean isLoggedIn(){
-        return isRendered()
-                && checkMenuSection("Library", "/home");
-                //TODO: check account
-    }
-
-    public void checkIsLoggedIn(){
-        Assert.assertTrue(isLoggedIn());
+    public Home checkIsLoggedIn(){
+        Assert.assertTrue(isRendered()
+                && checkMenuSection("Library", "/home"));
+        //TODO: check account
+        return this;
     }
 
     public boolean checkMenuSection(String name, String path){

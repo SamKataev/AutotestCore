@@ -11,6 +11,7 @@ public abstract class SlemmaWebTest extends WebTest {
     Auth authPage;
     SamlAuth samlAuthPage;
     Dashboard dashboardPage;
+    Datasource datasourcePage;
     Presentation presentationPage;
     Register registerPage;
 
@@ -28,6 +29,7 @@ public abstract class SlemmaWebTest extends WebTest {
         authPage = new Auth(driver);
         samlAuthPage = new SamlAuth(driver);
         dashboardPage = new Dashboard(driver);
+        datasourcePage = new Datasource(driver);
         presentationPage = new Presentation(driver);
         registerPage = new Register(driver);
     }
@@ -42,6 +44,7 @@ public abstract class SlemmaWebTest extends WebTest {
     protected void logIn(){
         authPage.open();
         authPage.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
+        homePage.checkIsLoggedIn();
         changeTeam(TestProperties.getProp("team"));
     }
 

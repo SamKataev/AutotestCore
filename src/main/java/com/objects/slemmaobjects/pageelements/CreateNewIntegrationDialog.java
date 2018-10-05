@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class CreateNewIntegrationDialog extends PageElement {
 
@@ -23,5 +24,10 @@ public class CreateNewIntegrationDialog extends PageElement {
         return driver.waitUntilExist(uploadFileBtn)
                 && driver.waitUntilExist(uploadByUrlBtn)
                 && driver.waitUntilExist(labelCreateNew);
+    }
+
+    public CreateNewIntegrationDialog checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 }

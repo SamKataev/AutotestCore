@@ -21,6 +21,11 @@ public class NavigatorObjectsList extends PageElement {
                 && driver.waitUntilExist(classSelector("list-view-listbox"));
     }
 
+    public NavigatorObjectsList checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
+    }
+
     public ActionsMenu clickDatasourceByName(String name){
         Assert.assertTrue(driver.click(itemByNameAndType(name, "Schema")));
         return new ActionsMenu(driver, parentPage);

@@ -6,17 +6,17 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class ChartSettingsMenu extends PageElement{
+public class ChartCornerBtnMenu extends PageElement{
 
     private Dashboard parentPage;
 
-    private final By edit = classWithText("menu-item__contl", "Edit Chart");
-    private final By layout = classWithText("menu-item__contl", "Layout");
-    private final By filters = classWithText("menu-item__contl", "Filters");
-    private final By sort = classWithText("menu-item__contl", "Sort");
-    private final By format = classWithText("menu-item__contl", "Format");
+    private final By edit = classWithText("menu-item__cont", "Edit Chart");
+    private final By layout = classWithText("menu-item__cont", "Layout");
+    private final By filters = classWithText("menu-item__cont", "Filters");
+    private final By sort = classWithText("menu-item__cont", "Sort");
+    private final By format = classWithText("menu-item__cont", "Format");
 
-    public ChartSettingsMenu(SeleniumDriverWrapper driver, Dashboard pageObj){
+    public ChartCornerBtnMenu(SeleniumDriverWrapper driver, Dashboard pageObj){
         super(driver);
         parentPage = pageObj;
     }
@@ -28,6 +28,11 @@ public class ChartSettingsMenu extends PageElement{
                 && driver.waitUntilClickable(filters, 10)
                 && driver.waitUntilClickable(sort, 10)
                 && driver.waitUntilClickable(format, 10);
+    }
+
+    public ChartCornerBtnMenu checkIsRendered(){
+        validateElements();
+        return this;
     }
 
     public void clickEdit(){

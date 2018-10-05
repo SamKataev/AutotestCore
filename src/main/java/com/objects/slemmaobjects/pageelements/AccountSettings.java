@@ -25,6 +25,11 @@ public class AccountSettings extends PageElement {
                 && driver.waitUntilExist(teamsList, 10);
     }
 
+    public AccountSettings checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
+    }
+
     public void selectTeam(String name){
         Assert.assertTrue(driver.click(classWithTextInParentClass("account-panel__teams", "listitem__content", name)));
     }

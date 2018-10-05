@@ -20,4 +20,9 @@ public class ChartFormatPanel extends PageElement{
         return true;
     }
 
+    public ChartFormatPanel checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
+    }
+
 }

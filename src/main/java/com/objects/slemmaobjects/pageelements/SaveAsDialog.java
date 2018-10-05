@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Dashboard;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class SaveAsDialog extends PageElement {
 
@@ -27,6 +28,11 @@ public class SaveAsDialog extends PageElement {
                 && driver.waitUntilExist(foldersCombo)
                 && driver.waitUntilExist(cancelBtn)
                 && driver.waitUntilExist(okBtn);
+    }
+
+    public SaveAsDialog checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 
     public SaveAsDialog typeName(String name){

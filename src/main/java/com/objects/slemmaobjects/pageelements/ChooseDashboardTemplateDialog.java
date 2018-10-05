@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class ChooseDashboardTemplateDialog extends PageElement {
 
@@ -21,5 +22,10 @@ public class ChooseDashboardTemplateDialog extends PageElement {
     public boolean validateElements() {
         return driver.waitUntilExist(labelTemplates)
                 && driver.waitUntilExist(blankBtn);
+    }
+
+    public ChooseDashboardTemplateDialog checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 }

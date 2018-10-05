@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Dashboard;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class ChartContextMenu extends PageElement{
 
@@ -33,5 +34,10 @@ public class ChartContextMenu extends PageElement{
                 && (!parentPage.isEditable() || driver.waitUntilExist(saveBtn))
                 && (!parentPage.isEditable() || driver.waitUntilExist(saveAsBtn))
                 && (!parentPage.isEditable() || driver.waitUntilExist(settingsBtn));
+    }
+
+    public ChartContextMenu checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 }

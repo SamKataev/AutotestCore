@@ -4,6 +4,7 @@ import com.objects.PageElement;
 import com.objects.slemmaobjects.pageobjects.Home;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class NewObjectBtnContent extends PageElement {
 
@@ -29,6 +30,11 @@ public class NewObjectBtnContent extends PageElement {
                 && driver.waitUntilExist(presentationBtn)
                 && driver.waitUntilExist(savedChartBtn)
                 && driver.waitUntilExist(dashboardBtn);
+    }
+
+    public NewObjectBtnContent checkIsRendered(){
+        Assert.assertTrue(validateElements());
+        return this;
     }
 
     public CreateNewFolderDialog clickNewFolder() {
