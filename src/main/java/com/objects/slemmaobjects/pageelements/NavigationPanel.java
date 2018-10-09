@@ -34,8 +34,7 @@ public class NavigationPanel extends PageElement {
                 && driver.waitUntilClickable(dataSourcesBtn)
                 && driver.waitUntilClickable(deliveryBtn)
                 && driver.waitUntilClickable(activityBtn)
-                && driver.waitUntilClickable(settingsBtn)
-                && driver.waitUntilClickable(adminBtn);
+                && driver.waitUntilClickable(settingsBtn);
     }
 
     public NavigationPanel checkIsRendered(){

@@ -5,46 +5,82 @@ import org.testng.annotations.Test;
 public class Editors extends SlemmaWebTest {
 
     @Test
-    public void renameDatasetField(){
-        homePage.navigatorObjectsList.clickDashboardByName("fields rename test");
+    public void renameSource(){
+        homePage.navigatorObjectsList.clickDashboardByName("rename tests");
         dashboardPage.checkIsRendered()
-                .switchEdit()
-                .checkIsEditable()
-                .clickChartByName("DB table fields rename")
-                .clickChartCornerButton("DB table fields rename").checkIsRendered()
+                .switchEdit().checkIsEditable()
+                .clickChartByName("GDrive")
+                .clickChartCornerButton("GDrive").checkIsRendered()
                 .clickLayout().checkIsRendered()
-                .checkFieldExist("alias before rename")
-                .checkFieldExist("amount before rename")
+                .checkDataSourceName("Source")
                 .clickDatasource()
                 .clickEditDataset();
         datasourcePage.checkIsRendered()
-                .clickField("alias before rename").checkIsRendered()
-                .typeFieldName("alias after rename")
-                .clickOK()
-                .clickField("amount before rename").checkIsRendered()
-                .typeFieldName("amount after rename")
-                .clickOK()
+                .clickCaption().checkIsRendered()
+                .typeName("Source after rename")
+                .clickRename();
+        datasourcePage.checkIsRendered()
+                .checkCaption("Source after rename")
                 .clickDone();
-        dashboardPage.checkIsRendered();
-        driver.refreshPage();
+        pause(5);
         dashboardPage.checkIsRendered()
-                .switchEdit()
-                .checkIsEditable()
-                .clickChartByName("DB table fields rename")
-                .clickChartCornerButton("DB table fields rename")
-                .checkIsRendered()
+                .clickChartByName("GDrive")
+                .clickChartCornerButton("GDrive").checkIsRendered()
                 .clickLayout().checkIsRendered()
-                .checkFieldExist("alias after rename")
-                .checkFieldExist("amount after rename")
+                .checkDataSourceName("Source after rename")
+
                 //restore initial test data
                 .clickDatasource()
                 .clickEditDataset();
         datasourcePage.checkIsRendered()
-                .clickField("alias after rename").checkIsRendered()
-                .typeFieldName("alias before rename")
+                .clickCaption().checkIsRendered()
+                .typeName("Source")
+                .clickRename();
+        datasourcePage.checkIsRendered()
+                .checkCaption("Source")
+                .clickDone();
+    }
+
+    @Test
+    public void renameDatasetFields(){
+        homePage.navigatorObjectsList.clickDashboardByName("rename tests");
+        dashboardPage.checkIsRendered()
+                .switchEdit().checkIsEditable()
+                .clickChartByName("GDrive")
+                .clickChartCornerButton("GDrive").checkIsRendered()
+                .clickLayout().checkIsRendered()
+                .checkFieldExist("Company")
+                .checkFieldExist("Value")
+                .clickDatasource()
+                .clickEditDataset();
+        datasourcePage.checkIsRendered()
+                .clickField("Company").checkIsRendered()
+                .typeFieldName("Company after rename")
                 .clickOK()
-                .clickField("amount after rename").checkIsRendered()
-                .typeFieldName("amount before rename")
+                .clickField("Value").checkIsRendered()
+                .typeFieldName("Value after rename")
+                .clickOK()
+                .clickDone();
+        dashboardPage.checkIsRendered();
+        driver.refreshPage();
+        pause(5);
+        dashboardPage.checkIsRendered()
+                .switchEdit().checkIsEditable()
+                .clickChartByName("GDrive")
+                .clickChartCornerButton("GDrive").checkIsRendered()
+                .clickLayout().checkIsRendered()
+                .checkFieldExist("Company after rename")
+                .checkFieldExist("Value after rename")
+
+                //restore initial test data
+                .clickDatasource()
+                .clickEditDataset();
+        datasourcePage.checkIsRendered()
+                .clickField("Company after rename").checkIsRendered()
+                .typeFieldName("Company")
+                .clickOK()
+                .clickField("Value after rename").checkIsRendered()
+                .typeFieldName("Value")
                 .clickOK()
                 .clickDone();
     }

@@ -23,8 +23,7 @@ public class ChartLayoutPanel extends PageElement{
     @Override
     public boolean validateElements() {
         return driver.waitUntilExist(layoutPanel, 10)
-                && driver.waitUntilClickable(datasourceBtn)
-                && driver.waitUntilClickable(applyBtn);
+                && driver.waitUntilClickable(datasourceBtn);
     }
 
     public ChartLayoutPanel checkIsRendered(){
@@ -34,6 +33,11 @@ public class ChartLayoutPanel extends PageElement{
 
     public ChartLayoutPanel checkFieldExist(String name){
         Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'listitem_unselectable')]/div[@class='listitem__content' and text()='" + name + "']")));
+        return this;
+    }
+
+    public ChartLayoutPanel checkDataSourceName(String name){
+        Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[@class='listitem__content' and text()='Data source']/following-sibling::div[contains(@class, 'label')]/div[text()='" + name + "']")));
         return this;
     }
 

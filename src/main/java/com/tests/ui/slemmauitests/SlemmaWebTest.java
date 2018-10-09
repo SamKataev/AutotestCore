@@ -4,6 +4,8 @@ import com.objects.slemmaobjects.pageobjects.*;
 import com.service.TestProperties;
 import com.tests.ui.WebTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 public abstract class SlemmaWebTest extends WebTest {
 
@@ -20,6 +22,14 @@ public abstract class SlemmaWebTest extends WebTest {
      */
     @BeforeClass
     public void startSlemmaTestClass(){
+        openHomePage();
+    }
+
+    /**
+     * each test method starts from home page if not overridden
+     */
+    @BeforeMethod
+    public void startSlemmaTestMethod(){
         openHomePage();
     }
 
