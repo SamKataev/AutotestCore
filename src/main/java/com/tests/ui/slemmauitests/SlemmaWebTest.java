@@ -53,9 +53,9 @@ public abstract class SlemmaWebTest extends WebTest {
 
     protected void logIn(){
         authPage.open();
-        authPage.logIn(TestProperties.getProp("email"), TestProperties.getProp("password"));
+        authPage.logIn(TestProperties.getSlemmaProp("email"), TestProperties.getSlemmaProp("password"));
         homePage.checkIsLoggedIn();
-        changeTeam(TestProperties.getProp("team"));
+        changeTeam(TestProperties.getSlemmaProp("team"));
     }
 
     protected void changeTeam(String name){

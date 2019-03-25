@@ -10,62 +10,81 @@ import org.testng.Assert;
  */
 public abstract class WebElementsContainer {
 
-    protected SeleniumDriverWrapper driver;
+	protected SeleniumDriverWrapper driver;
 
-    public WebElementsContainer(SeleniumDriverWrapper webDriver){
-        driver = webDriver;
-    }
+	public WebElementsContainer(SeleniumDriverWrapper webDriver){
+	  driver = webDriver;
+	}
 
-    public abstract boolean validateElements();
+	public abstract boolean validateElements();
 
-    public boolean isRendered(){
-        return validateElements();
-        //TODO: add more checks i.e all ajax requests resolved
-    }
+	public boolean isRendered(){
+	  return validateElements();
+	  //TODO: add more checks i.e all ajax requests resolved
+	}
 
-    public WebElementsContainer checkIsRendered(){
-        Assert.assertTrue(isRendered());
-        return this;
-    }
+	public WebElementsContainer checkIsRendered(){
+	  Assert.assertTrue(isRendered());
+	  return this;
+	}
 
-    protected By classSelector(String name){
-        return By.cssSelector("." + name);
-    }
+	/**
+	 * @deprecated use By.cssSelector directly instead.
+	 */
+	@Deprecated
+	protected By classSelector(String name){
+		return By.cssSelector("." + name);
+	}
 
-    protected By idSelector(String id){
-        return By.id(id);
-    }
+	protected By idSelector(String id){
+		return By.id(id);
+	}
 
-    protected By containsText(String text){
-        return By.xpath("//*[contains(text(), '" + text + "')]");
-    }
+	protected By containsText(String text){
+		return By.xpath("//*[contains(text(), '" + text + "')]");
+	}
 
-    protected By containsValue(String text){
-        return By.xpath("//*[contains(@value, '" + text + "')]");
-    }
+	protected By containsValue(String text){
+		return By.xpath("//*[contains(@value, '" + text + "')]");
+	}
 
-    protected By classContainsText(String name, String text){
-        return By.xpath("//*[contains(@class, '" + name + "') and contains(text(), '" + text + "')]");
-    }
+	protected By classContainsText(String name, String text){
+		return By.xpath("//*[contains(@class, '" + name + "') and contains(text(), '" + text + "')]");
+	}
 
-    protected By classWithText(String name, String text){
-        return By.xpath("//*[contains(@class, '" + name + "') and text() = '" + text + "']");
-    }
+	protected By classWithText(String name, String text){
+		return By.xpath("//*[contains(@class, '" + name + "') and text() = '" + text + "']");
+	}
 
-    protected By inputInParentDivClass(String name){
-        return By.xpath("//div[contains(@class, '" + name + "')]//input");
-    }
+	protected By inputInParentDivClass(String name){
+		return By.xpath("//div[contains(@class, '" + name + "')]//input");
+	}
 
-    protected By classInParentClass(String className, String subclassName){
-        return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "')]");
-    }
+	protected By classInParentClass(String className, String parentClassName){
+		return By.xpath("//*[contains(@class, '" + parentClassName + "')]//*[contains(@class, '" + className + "')]");
+	}
 
-    protected By classWithTextInParentClass(String className, String subclassName, String text){
-        return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "') and contains(text(), '" + text + "')]");
-    }
+	protected By classWithTextInParentClass(String className, String subClassName, String text){
+		return By.xpath("//*[contains(@class, '" + className + "')]//*[contains(@class, '" + subClassName + "') and contains(text(), '" + text + "')]");
+	}
 
-    protected By classBySubclass(String className, String subclassName){
-        return By.xpath("//div[contains(@class, '" + subclassName + "')]/ancestor::div[contains(@class, '" + className + "')]");
-    }
+	protected By classWithTextInChildClass(String className, String subclassName, String text){
+		return By.xpath("//*[contains(@class, '" + subclassName + "') and contains(text(), '" + text + "')]/ancestor::*[contains(@class, '" + className + "')]");
+	}
 
+	protected By classBySubclass(String className, String subclassName){
+	  return By.xpath("//*[contains(@class, '" + subclassName + "')]/ancestor::*[contains(@class, '" + className + "')]");
+	}
+
+	protected By mdcLictItemWithText(String text){
+		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li");
+	}
+
+	protected By mdcIconFontBtn(String iconClass){
+		return By.xpath("//span[contains(@class, '" + iconClass + "')]/parent::span[contains(@class, 'mdc-icon-toggle')]");
+	}
+
+	protected By mdcTextBtn(String btnText){
+		return By.xpath("//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
+	}
 }
