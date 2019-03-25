@@ -2,33 +2,70 @@ package com.objects;
 
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
-//Description:
-//Purpose of this class is to encapsulate formatting locators of web elements
-//inherited class should call getChildElements() to check if necessary web elements are available by web driver
-//TODO: add common methods to simplify instantiation and usage of web elements
-
+/**
+ * purpose of this class is to encapsulate formatting locators of web elements
+ * inherited class should call isRendered() or validateElements() to check if necessary web elements are rendered and available by web driver
+ */
 public abstract class WebElementsContainer {
 
     protected SeleniumDriverWrapper driver;
-
 
     public WebElementsContainer(SeleniumDriverWrapper webDriver){
         driver = webDriver;
     }
 
-    public abstract boolean getChildElements();
+    public abstract boolean validateElements();
 
-    protected By locatorByClass(String name){
+    public boolean isRendered(){
+        return validateElements();
+        //TODO: add more checks i.e all ajax requests resolved
+    }
+
+    public WebElementsContainer checkIsRendered(){
+        Assert.assertTrue(isRendered());
+        return this;
+    }
+
+    protected By classSelector(String name){
         return By.cssSelector("." + name);
     }
 
-    protected By locatorByInputInParentDivClass(String name){
-        return By.xpath("//div[contains(@class, '" + name + "')]/input");
+    protected By idSelector(String id){
+        return By.id(id);
     }
 
-    protected By locatorBySubclassInParentClass(String className, String subclassName){
+    protected By containsText(String text){
+        return By.xpath("//*[contains(text(), '" + text + "')]");
+    }
+
+    protected By containsValue(String text){
+        return By.xpath("//*[contains(@value, '" + text + "')]");
+    }
+
+    protected By classContainsText(String name, String text){
+        return By.xpath("//*[contains(@class, '" + name + "') and contains(text(), '" + text + "')]");
+    }
+
+    protected By classWithText(String name, String text){
+        return By.xpath("//*[contains(@class, '" + name + "') and text() = '" + text + "']");
+    }
+
+    protected By inputInParentDivClass(String name){
+        return By.xpath("//div[contains(@class, '" + name + "')]//input");
+    }
+
+    protected By classInParentClass(String className, String subclassName){
         return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "')]");
+    }
+
+    protected By classWithTextInParentClass(String className, String subclassName, String text){
+        return By.xpath("//div[contains(@class, '" + className + "')]//div[contains(@class, '" + subclassName + "') and contains(text(), '" + text + "')]");
+    }
+
+    protected By classBySubclass(String className, String subclassName){
+        return By.xpath("//div[contains(@class, '" + subclassName + "')]/ancestor::div[contains(@class, '" + className + "')]");
     }
 
 }
