@@ -52,13 +52,13 @@ public class CustomJsonParser {
 	 * [
 	 * 	{
 	 *	 		"name": "<name of the api-test>",
-	 *	 		"endpoint": "<api endpoint>" 					//unnecessary prop, overrides default
-	 *	 		"headers_set": "<name of header_set>", 	//unnecessary prop, overrides default
-	 *	 		"body": {<request body>}, 						//unnecessary prop
-	 *	 		"type": "<get|post|put|delete>",
+	 *	 		"endpoint": "<api endpoint>" 									//unnecessary prop, overrides default
+	 *	 		"headers_set": "<name of header_set>", 					//unnecessary prop, overrides default
+	 *	 		"body": {<request body>}, 										//unnecessary prop
+	 *	 		"type": "<http request method: get|post|put|delete>",
 	 *	 		"method": "<api method>",
-	 *	 		"code": <200|400.. etc.>,
-	 *	 		"response": {<response body>} 				//unnecessary prop
+	 *	 		"code": <expected response status code>,
+	 *	 		"response": {<expected response body>} 					//unnecessary prop
 	 *		}
 	 *	[
 	 */
@@ -84,6 +84,7 @@ public class CustomJsonParser {
      *
      * headers must be stored in json object format, with following structure:
      * {"<headers set name>": [{"name": "<header name>", "value": "header value"}]}
+	  * warning: "default" headers set must be declared in headers file to prevent npe
      */
     public static HashMap<String, HashMap<String, String>> parseHttpHeaders(JsonObject data) {
         HashMap<String, HashMap<String, String>> headersSets = new HashMap<>();
