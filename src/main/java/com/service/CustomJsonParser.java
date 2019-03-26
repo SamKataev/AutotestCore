@@ -46,6 +46,22 @@ public class CustomJsonParser {
         }
     }
 
+	/**
+	 *
+	 * requests must be stored in json array format, with following structure:
+	 * [
+	 * 	{
+	 *	 		"name": "<name of the api-test>",
+	 *	 		"endpoint": "<api endpoint>" 					//unnecessary prop, overrides default
+	 *	 		"headers_set": "<name of header_set>", 	//unnecessary prop, overrides default
+	 *	 		"body": {<request body>}, 						//unnecessary prop
+	 *	 		"type": "<get|post|put|delete>",
+	 *	 		"method": "<api method>",
+	 *	 		"code": <200|400.. etc.>,
+	 *	 		"response": {<response body>} 				//unnecessary prop
+	 *		}
+	 *	[
+	 */
     public static ArrayList<HttpRequestWrapper> parseHttpRequests(JsonArray data) {
         ArrayList<HttpRequestWrapper> list = new ArrayList<>();
         if (data != null) {
@@ -66,7 +82,7 @@ public class CustomJsonParser {
 
     /**
      *
-     * headers must be stored in json format, with following structure:
+     * headers must be stored in json object format, with following structure:
      * {"<headers set name>": [{"name": "<header name>", "value": "header value"}]}
      */
     public static HashMap<String, HashMap<String, String>> parseHttpHeaders(JsonObject data) {
@@ -105,7 +121,7 @@ public class CustomJsonParser {
                 && content.get("code") != null && getIntFromJsonObject("code", content) != 0;
     }
 
-    private static void parseHttpRequestContentToHttpRequest(HttpRequestWrapper request, JsonObject content) {
+	private static void parseHttpRequestContentToHttpRequest(HttpRequestWrapper request, JsonObject content) {
         parseValidatedProps (request, content);
         parseOptionalProps (request, content);
     }
