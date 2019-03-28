@@ -9,8 +9,8 @@ import com.service.ui.web.SeleniumDriverWrapper;
 
 public abstract class PageElement extends WebElementsContainer {
 
-    public PageElement(SeleniumDriverWrapper driver){
-        super(driver);
-    }
+	public PageElement(SeleniumDriverWrapper driver){
+		super(driver);
+	}
 
 }

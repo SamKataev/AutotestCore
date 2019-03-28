@@ -21,10 +21,15 @@
         </classes>
     </test>
 
-    <test verbose="1" name="3" annotations="JDK">
-        <parameter name="threadId" value="thread3"/>
-        <classes>
+    <test verbose="1" name="http1" annotations="JDK">
+        <parameter name="requestsFiles" value="
+            D:/Dev/AutotestCore/src/main/resources/api/sharing/GetLink.txt;"/>
 
+        <parameter name="headersFile" value="D:/Dev/AutotestCore/src/main/resources/api/headers.txt"/>
+        <parameter name="endpoint" value="http://app.newpeople.co/api/v1/"/>
+        <parameter name="ignoredProps" value="CreatedAt;ShareUrlCreateAt;SIG;Token"/>
+        <classes>
+            <class name="com.tests.http.HttpTestsRuntime"/>
         </classes>
     </test>
 

@@ -1,7 +1,7 @@
 package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
-import com.objects.npobjects.pageelements.PasswordResetDialog;
+import com.objects.npobjects.pageelements.dialogs.PasswordResetDialog;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;

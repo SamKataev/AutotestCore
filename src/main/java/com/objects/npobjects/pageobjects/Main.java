@@ -1,12 +1,15 @@
 package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
+import com.objects.npobjects.pageelements.dialogs.SelectDatasourceTypeDialog;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class Main extends NPPageObject
-{
+public class Main extends NPPageObject {
+
+	public SelectDatasourceTypeDialog selectDatasourceTypeDialog;
+
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
 	private final By createBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Create')]/parent::button[contains(@class, 'mdc-fab')]");
 	private final By addBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Add')]/parent::button[contains(@class, 'mdc-fab')]");
@@ -17,17 +20,18 @@ public class Main extends NPPageObject
 	private final By currentTeam = By.xpath("//div[contains(@class, 'account-panel__about-node')]//div[contains(@class, 'account-panel__about-node_email-nod')]");
 	private final By teamsMenuToggle = By.xpath("//div[contains(@class, 'account-panel__about-node')]//span[contains(@class, 'mdc-icon-toggle')]");
 	private final By drawerToggleBtn = mdcIconFontBtn("ic_menu");
-	private final By liReports = mdcLictItemWithText("Reports");
-	private final By liDataSources = mdcLictItemWithText("Data sources");
-	private final By liDelivery = mdcLictItemWithText("Delivery");
-	private final By liAlerts = mdcLictItemWithText("Alerts");
-	private final By liSettings = mdcLictItemWithText("Settings");
-	private final By liHelp = mdcLictItemWithText("Help");
-	private final By liAdmin = mdcLictItemWithText("Admin");
-	private final By liSignOut = mdcLictItemWithText("Sign out");
+	private final By liReports = mdcListItemWithText("Reports");
+	private final By liDataSources = mdcListItemWithText("Data sources");
+	private final By liDelivery = mdcListItemWithText("Delivery");
+	private final By liAlerts = mdcListItemWithText("Alerts");
+	private final By liSettings = mdcListItemWithText("Settings");
+	private final By liHelp = mdcListItemWithText("Help");
+	private final By liAdmin = mdcListItemWithText("Admin");
+	private final By liSignOut = mdcListItemWithText("Sign out");
 
 	public Main(SeleniumDriverWrapper driver){
 		super(driver.getBaseUrl() + "/reports", driver);
+		selectDatasourceTypeDialog = new SelectDatasourceTypeDialog(driver, this);
 	}
 
 	@Override
@@ -63,7 +67,6 @@ public class Main extends NPPageObject
 				  && driver.waitUntilClickable(liAlerts)
 				  && driver.waitUntilClickable(liSettings)
 				  && driver.waitUntilClickable(liHelp)
-				  && driver.waitUntilClickable(liAdmin)
 				  && driver.waitUntilClickable(liSignOut);
 	}
 
@@ -84,8 +87,8 @@ public class Main extends NPPageObject
 		if (!isTeamSelected(name))
 		{
 			Assert.assertTrue(driver.click(teamsMenuToggle));
-			Assert.assertTrue(driver.waitUntilClickable(By.xpath("//li[contains(@class, 'mdc-list-item') and contains(text(), '" + name + "')]"), 2));
-			Assert.assertTrue(driver.click(mdcLictItemWithText(name)));
+			Assert.assertTrue(driver.waitUntilClickable(mdcListItemWithText(name), 5));
+			Assert.assertTrue(driver.click(mdcListItemWithText(name)));
 			checkIsTeamSelected(name);
 			checkIsNavMenuRendered();
 		}
@@ -100,24 +103,19 @@ public class Main extends NPPageObject
 		}
 		if (currentUrl.contains("datasources")){
 			Assert.assertTrue(driver.click(createBtn));
-
 		}
 
 		if (currentUrl.contains("delivery")){
 			Assert.assertTrue(driver.click(createBtn));
-
 		}
 		if (currentUrl.contains("alerts")){
 			Assert.assertTrue(driver.click(createBtn));
-
 		}
 		if (currentUrl.contains("integrations")){
 			Assert.assertTrue(driver.click(createBtn));
-
 		}
 		if (currentUrl.contains("users")){
 			Assert.assertTrue(driver.click(addBtn));
-
 		}
 		return this;
 	}
