@@ -29,4 +29,9 @@ public class FileByUrlDialog extends Dialog {
 		Assert.assertTrue(driver.type(urlInput, url));
 		return this;
 	}
+
+	public FileByUrlDialog checkIsRendered() {
+		super.checkIsRendered();
+		return this;
+	}
 }

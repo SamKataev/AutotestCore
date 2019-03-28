@@ -32,13 +32,14 @@ public class SelectDatasourceTypeDialog extends Dialog {
 		return this;
 	}
 
-	public void clickUploadFile(){
+	public SelectDatasourceTypeDialog clickUploadFile(){
 		Assert.assertTrue(driver.click(uploadFileBtn));
+		return this;
 	}
 
-	public FileByUrlDialog clickFileByUrl(){
+	public SelectDatasourceTypeDialog clickFileByUrl(){
 		Assert.assertTrue(driver.click(fileByUrlBtn));
-		return new FileByUrlDialog(driver, parentPage);
+		return this;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
+import com.objects.npobjects.pageelements.dialogs.FileByUrlDialog;
 import com.objects.npobjects.pageelements.dialogs.SelectDatasourceTypeDialog;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
@@ -9,6 +10,7 @@ import org.testng.Assert;
 public class Main extends NPPageObject {
 
 	public SelectDatasourceTypeDialog selectDatasourceTypeDialog;
+	public FileByUrlDialog fileByUrlDialog;
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
 	private final By createBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Create')]/parent::button[contains(@class, 'mdc-fab')]");
@@ -32,6 +34,7 @@ public class Main extends NPPageObject {
 	public Main(SeleniumDriverWrapper driver){
 		super(driver.getBaseUrl() + "/reports", driver);
 		selectDatasourceTypeDialog = new SelectDatasourceTypeDialog(driver, this);
+		fileByUrlDialog = new FileByUrlDialog(driver, this);
 	}
 
 	@Override

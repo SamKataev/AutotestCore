@@ -8,15 +8,16 @@ import org.testng.annotations.BeforeMethod;
 
 public abstract class NPWebTest extends WebTest {
 
-    Auth authPage;
-	 Main mainPage;
+	Auth authPage;
+	Main mainPage;
+	DatasourceCreate datasourceCreatePage;
 
 	/**
 	 * each test class starts from reports page if not overridden
 	 */
 	@BeforeClass
 	public void startNPTestClass(){
-	  openReportsPage();
+		openReportsPage();
 	}
 
 	/**
@@ -29,8 +30,9 @@ public abstract class NPWebTest extends WebTest {
 
 	@Override
 	protected void initPages() {
-	  authPage = new Auth(driver);
-	  mainPage = new Main(driver);
+		authPage = new Auth(driver);
+		mainPage = new Main(driver);
+		datasourceCreatePage = new DatasourceCreate(driver);
 	}
 
 	protected void openHomePage(){
