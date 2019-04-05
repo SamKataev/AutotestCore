@@ -19,6 +19,8 @@ public class Main extends NPPageObject {
 	public IntegrationsDropDown integrationsDropDown;
 	public AddUserDialog addUserDialog;
 	public ReportDropDown reportDropDown;
+	public CreateDatabaseDialog createDatabaseDialog;
+    public CreateSaasDialog createSaasDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -38,6 +40,7 @@ public class Main extends NPPageObject {
 	private final By liSettings = mdcListItemWithText("Settings");
 	private final By liHelp = mdcListItemWithText("Help");
 	private final By liAdmin = mdcListItemWithText("Admin");
+	private final By liIntegrations = mdcListItemWithText("Integrations");
 	private final By liSignOut = mdcListItemWithText("Sign out");
 
 	public Main(SeleniumDriverWrapper driver){
@@ -51,7 +54,9 @@ public class Main extends NPPageObject {
 		integrationsDropDown = new IntegrationsDropDown(driver, this);
 		addUserDialog = new AddUserDialog(driver, this);
 		reportDropDown = new ReportDropDown(driver, this);
-	}
+		createDatabaseDialog = new CreateDatabaseDialog(driver, this);
+        createSaasDialog = new CreateSaasDialog(driver, this);
+			}
 
 	@Override
 	public boolean validateElements() {
@@ -69,6 +74,7 @@ public class Main extends NPPageObject {
 	public Main checkIsLoggedIn(){
 		checkIsRendered();
 		checkNavSection("Reports", "/reports");
+
 		//TODO: check account
 		return this;
 	}
@@ -86,6 +92,7 @@ public class Main extends NPPageObject {
 				  && driver.waitUntilClickable(liAlerts)
 				  && driver.waitUntilClickable(liSettings)
 				  && driver.waitUntilClickable(liHelp)
+				  && driver.waitUntilClickable(liAdmin)
 				  && driver.waitUntilClickable(liSignOut);
 	}
 
@@ -177,4 +184,17 @@ public class Main extends NPPageObject {
 		checkNavSection("Alerts", "/alerts");
 		return this;
 	}
+	public Main openIntegrations(){
+		Assert.assertTrue(driver.waitUntilClickable(liIntegrations));
+		Assert.assertTrue(driver.click(liIntegrations));
+		checkNavSection("Integrations", "/integrations");
+		return this;
+	}
+
+	public Main clickAdminBtn(){
+		Assert.assertTrue(driver.click(liAdmin));
+		return this;
+	}
+
+
 }

@@ -31,11 +31,11 @@ public class IntegrationsDropDown extends DropDown {
         return this;
     }
 
-    public IntegrationsDropDown ClickSaasBtn(){
+    public IntegrationsDropDown clickSaasBtn(){
         Assert.assertTrue(driver.click(saasBtn));
         return this;
     }
-    public IntegrationsDropDown ClickDatabaseBtn(){
+    public IntegrationsDropDown clickDatabaseBtn(){
         Assert.assertTrue(driver.click(databaseBtn));
         return this;
     }
