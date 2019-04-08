@@ -21,6 +21,8 @@ public class Main extends NPPageObject {
 	public ReportDropDown reportDropDown;
 	public CreateDatabaseDialog createDatabaseDialog;
     public CreateSaasDialog createSaasDialog;
+	public CreateIntegrationDialog createIntegrationDialog;
+	public MessageDialog messageDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -56,6 +58,8 @@ public class Main extends NPPageObject {
 		reportDropDown = new ReportDropDown(driver, this);
 		createDatabaseDialog = new CreateDatabaseDialog(driver, this);
         createSaasDialog = new CreateSaasDialog(driver, this);
+		createIntegrationDialog = new CreateIntegrationDialog(driver, this);
+		messageDialog = new MessageDialog(driver, this);
 			}
 
 	@Override

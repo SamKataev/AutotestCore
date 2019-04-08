@@ -9,13 +9,22 @@ public class Integrations extends NPWebTest {
 
     @Test
     public void CreateNewIntegrations(){
-        mainPage.checkIsRendered();
-        mainPage.clickAdminBtn();
-        mainPage.openIntegrations()
-                 .clickPlusBtn();
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
         mainPage.integrationsDropDown.checkIsRendered()
                 .clickDatabaseBtn();
         mainPage.createDatabaseDialog.checkIsRendered()
-                .ClickHerokuPostgresBtn();
+                .сlickHerokuPostgresBtn();
+        mainPage.createIntegrationDialog.checkIsRendered()
+                //heroku
+                .integrationIn("ec2-54-235-151-252.compute-1.amazonaws.com","dc3qukco027qjj","dxhfuxbpnspyrj", "ctrD2qQOwwDU5MfvLdSSYRzhtE");
+        mainPage.createIntegrationDialog.сlickGeneral()
+                .clickCheck();
+        mainPage.messageDialog.checkIsRendered()
+                .clickcloseBtn();
+        mainPage.createIntegrationDialog.clickCreate();
+
     }
 }

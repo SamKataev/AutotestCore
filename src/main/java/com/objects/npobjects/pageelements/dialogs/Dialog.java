@@ -71,7 +71,7 @@ public abstract class Dialog extends PageElement {
 	}
 
 
-//Accordion
+	//Accordion
 	protected By dialogMdcListAccordionWithText(String text) {
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]");
 	}
@@ -81,4 +81,8 @@ public abstract class Dialog extends PageElement {
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//label[contains(@class, text-field__label) and contains(text(), '" + text + "')]/following-sibling::div[contains(@class, 'select__native-control-container')]");
 	}
 
+	//текст сообщения
+	protected By dialogNpTextMessage(String text) {
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and contains(text(), '" + text + "')]");
+	}
 }

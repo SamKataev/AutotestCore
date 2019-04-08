@@ -90,7 +90,7 @@ public class CreateDatabaseDialog extends Dialog {
         return this;
     }
 
-    public CreateDatabaseDialog ClickHerokuPostgresBtn(){
+    public CreateDatabaseDialog сlickHerokuPostgresBtn(){
         Assert.assertTrue(driver.click(herokuPostgresBtn));
         return this;
     }
