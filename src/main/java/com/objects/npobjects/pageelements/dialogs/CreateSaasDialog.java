@@ -84,23 +84,38 @@ public class CreateSaasDialog extends Dialog {
         super.checkIsRendered();
         return this;
     }
-
-    public CreateSaasDialog ClickSearchBtn(){
+    public CreateSaasDialog clickSearchBtn(){
         Assert.assertTrue(driver.click(searchBtn));
         return this;
     }
-
     //click saas
-
-    public CreateSaasDialog ClickFacebookBtn(){
+    public CreateSaasDialog clickFacebookBtn(){
         Assert.assertTrue(driver.click(facebookBtn));
         return this;
     }
-
-    public CreateSaasDialog ClickFacebookAdsBtn(){
+    public CreateSaasDialog clickFacebookAdsBtn(){
         Assert.assertTrue(driver.click(facebookAdsBtn));
         return this;
     }
-
+    public CreateSaasDialog clickfreshdeskBtn(){
+        Assert.assertTrue(driver.click(freshdeskBtn));
+        return this;
+    }
+    public CreateSaasDialog clickfreshsalesBtn(){
+        Assert.assertTrue(driver.click(freshsalesBtn));
+        return this;
+    }
+    public CreateSaasDialog clickzendeskBtn(){
+        Assert.assertTrue(driver.click(zendeskBtn));
+        return this;
+    }
+    public CreateSaasDialog clickgoogleAdsBtn(){
+        Assert.assertTrue(driver.click(googleAdsBtn));
+        return this;
+    }
+    public CreateSaasDialog clickjiraBtn(){
+        Assert.assertTrue(driver.click(jiraBtn));
+        return this;
+    }
 }
 

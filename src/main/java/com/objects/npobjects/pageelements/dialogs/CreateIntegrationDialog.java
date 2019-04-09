@@ -19,13 +19,15 @@ public class CreateIntegrationDialog extends Dialog{
     private final By general = dialogMdcListAccordionWithText("General");
     private final By security = dialogMdcListAccordionWithText("Security");
     private final By dataRefresh = dialogMdcListAccordionWithText("Data refresh");
-
     private final By displaynameField = dialogNpTextFieldWithLabel("Display name");
+
     private final By hostField = dialogNpTextFieldWithLabel("Host");
     private final By portField = dialogNpTextFieldWithLabel("Port");
     private final By databaseNameField = dialogNpTextFieldWithLabel("Database Name");
     private final By usernameField = dialogNpTextFieldWithLabel("Username");
     private final By passwordField = dialogNpTextFieldWithLabel("Password");
+    private final By endpointField = dialogNpTextFieldWithLabel("Endpoint");
+
 
     private final By createBtn = mdcTextBtn ("Create");
     private final By checkBtn = mdcTextBtn ("Check connection");
@@ -58,13 +60,6 @@ public class CreateIntegrationDialog extends Dialog{
         return this;
     }
 
-    public void integrationIn(String host, String databasename, String username, String password){
-        enterHost(host);
-        enterDataBaseName(databasename);
-        enterUsername(username);
-        enterPassword(password);
-    }
-
     public CreateIntegrationDialog enterHost(String text){
         Assert.assertTrue(driver.type(hostField ,text));
         return this;
@@ -91,7 +86,7 @@ public class CreateIntegrationDialog extends Dialog{
         Assert.assertTrue(driver.click(checkBtn));
         return this;
     }
-//для того чтобы убрать фоку с поля "пароль"
+//для того чтобы убрать фокуc с поля "пароль"
     public CreateIntegrationDialog сlickGeneral(){
         Assert.assertTrue(driver.click(general));
         return this;
