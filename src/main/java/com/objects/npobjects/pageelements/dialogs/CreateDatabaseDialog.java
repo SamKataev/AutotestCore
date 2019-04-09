@@ -125,7 +125,7 @@ public class CreateDatabaseDialog extends Dialog {
         Assert.assertTrue(driver.click(oracleBtn));
         return this;
     }
-    public CreateDatabaseDialog ClickPostgreSQLBtn(){
+    public CreateDatabaseDialog clickPostgreSQLBtn(){
         Assert.assertTrue(driver.click(postgreSQLBtn));
         return this;
     }
