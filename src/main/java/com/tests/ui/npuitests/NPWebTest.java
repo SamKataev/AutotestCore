@@ -1,6 +1,9 @@
 package com.tests.ui.npuitests;
 
 import com.objects.npobjects.pageobjects.*;
+import com.objects.npobjects.pageobjects.oauthpages.FacebookLogIn;
+import com.objects.npobjects.pageobjects.oauthpages.InstagramLogIn;
+import com.objects.npobjects.pageobjects.oauthpages.PayPalLogIn;
 import com.service.TestProperties;
 import com.tests.ui.WebTest;
 import org.testng.annotations.BeforeClass;
@@ -11,6 +14,9 @@ public abstract class NPWebTest extends WebTest {
 	Auth authPage;
 	Main mainPage;
 	DatasourceCreate datasourceCreatePage;
+	FacebookLogIn facebookLogIn;
+	InstagramLogIn instagramLogIn;
+	PayPalLogIn payPalLogIn;
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -33,6 +39,9 @@ public abstract class NPWebTest extends WebTest {
 		authPage = new Auth(driver);
 		mainPage = new Main(driver);
 		datasourceCreatePage = new DatasourceCreate(driver);
+		facebookLogIn = new FacebookLogIn(driver);
+		instagramLogIn = new InstagramLogIn(driver);
+		payPalLogIn = new PayPalLogIn(driver);
 	}
 
 	protected void openHomePage(){

@@ -117,5 +117,13 @@ public class CreateSaasDialog extends Dialog {
         Assert.assertTrue(driver.click(jiraBtn));
         return this;
     }
+    public CreateSaasDialog clickinstagramBtn(){
+        Assert.assertTrue(driver.click(instagramBtn));
+        return this;
+    }
+    public CreateSaasDialog clickpaypalBtn(){
+        Assert.assertTrue(driver.click(paypalBtn));
+        return this;
+    }
 }
 

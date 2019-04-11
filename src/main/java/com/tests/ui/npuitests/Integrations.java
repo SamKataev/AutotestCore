@@ -41,8 +41,8 @@ public class Integrations extends NPWebTest {
                 .clickDatabaseBtn();
         mainPage.createDatabaseDialog.checkIsRendered()
                 .clickPostgreSQLBtn();
+        //PostgreSQL
         mainPage.createIntegrationDialog.checkIsRendered()
-                //PostgreSQL
                 .enterHost("77.247.243.161")
                 .enterDataBaseName("log")
                 .enterUsername("slemma")
@@ -64,9 +64,9 @@ public class Integrations extends NPWebTest {
                 .clickSaasBtn();
         mainPage.createSaasDialog.checkIsRendered()
                 .clickfreshdeskBtn();
-        mainPage.saaSParametersDialog.checkIsRendered();
-                //Freshdesk
-        mainPage.saaSParametersDialog.enterDomain("https://slemma.freshdesk.com")
+        //Freshdesk
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterDomain("https://slemma.freshdesk.com")
                 .enterAPI("9xmgaF4hddDHrOw2ay6e")
                 .clickOkBtn();
     }
@@ -81,9 +81,9 @@ public class Integrations extends NPWebTest {
                 .clickSaasBtn();
         mainPage.createSaasDialog.checkIsRendered()
                 .clickfreshsalesBtn();
-        mainPage.saaSParametersDialog.checkIsRendered();
         //Freshsales
-        mainPage.saaSParametersDialog.enterDomain("https://slemma.freshsales.io/")
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterDomain("https://slemma.freshsales.io/")
                 .enterAPI("ne3XTHy_Zu438e0ZN9s7OA")
                 .clickOkBtn();
     }
@@ -98,9 +98,9 @@ public class Integrations extends NPWebTest {
                 .clickSaasBtn();
         mainPage.createSaasDialog.checkIsRendered()
                 .clickzendeskBtn();
-        mainPage.saaSParametersDialog.checkIsRendered();
         //zendesk
-        mainPage.saaSParametersDialog.enterserverURLField("https://d3v-newpeople.zendesk.com")
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterserverURLField("https://d3v-newpeople.zendesk.com")
                 .clickOkBtn();
     }
 
@@ -114,13 +114,69 @@ public class Integrations extends NPWebTest {
                 .clickSaasBtn();
         mainPage.createSaasDialog.checkIsRendered()
                 .clickjiraBtn();
-        mainPage.saaSParametersDialog.checkIsRendered();
         //jira
-        mainPage.saaSParametersDialog.enterserverURLField ("https://npeople.atlassian.net")
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterserverURLField ("https://npeople.atlassian.net")
                 .enterloginField("matveeva.e")
                 .enterpasswordField("Matveeva0414")
                 .clickOkBtn();
     }
+    @Test
+    public void CreateFacebook(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickFacebookBtn();
+        //Facebook
+        driver.switchWindow();
+        facebookLogIn.checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .enterPassInput("Qwerty12345")
+                .clickSignInBtn()
+                .clickconfirmBtn()
+                .clickconfirmBtn();
+        driver.switchToMainWindow();
+    }
 
-
+    @Test
+    public void CreateInstagram(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickinstagramBtn();
+        //Instagram
+        driver.switchWindow();
+        instagramLogIn.checkIsRendered()
+                .enterEmailInput("Andrey@newpeople.co")
+                .enterPassInput("q1w2E#R$")
+                .clickcheckboxBtn()
+                .clickSignInBtn();
+        driver.switchToMainWindow();
+    }
+    @Test
+    public void CreatePayPal(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickpaypalBtn();
+        //paypal
+        driver.switchWindow();
+        payPalLogIn.checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .enterPassInput("q1w2E#R$")
+                .clickSignInBtn();
+        driver.switchToMainWindow();
+    }
 }

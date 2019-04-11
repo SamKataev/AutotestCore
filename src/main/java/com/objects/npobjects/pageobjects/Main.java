@@ -4,6 +4,7 @@ import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.IntegrationsDropDown;
 import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
+import com.objects.npobjects.pageobjects.oauthpages.FacebookLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -26,7 +27,7 @@ public class Main extends NPPageObject {
 	public SaaSParametersDialog saaSParametersDialog;
 
 
-	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
+    private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
 	private final By createBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Create')]/parent::button[contains(@class, 'mdc-fab')]");
 	private final By addBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Add')]/parent::button[contains(@class, 'mdc-fab')]");
 	private final By searchBtn = mdcIconFontBtn("ic_search");

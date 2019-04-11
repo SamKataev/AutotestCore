@@ -2,11 +2,14 @@ package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.PasswordResetDialog;
+import com.objects.npobjects.pageobjects.oauthpages.FacebookLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class Auth extends NPPageObject {
+
+    public FacebookLogIn facebookLogIn;
 
     private By emailInput = By.xpath("//input[@placeholder='Email']");
     private By passInput = By.xpath("//input[@placeholder='Password']");

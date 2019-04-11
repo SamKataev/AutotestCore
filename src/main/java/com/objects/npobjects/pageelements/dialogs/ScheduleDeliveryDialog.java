@@ -38,10 +38,4 @@ public class ScheduleDeliveryDialog extends Dialog {
         return this;
     }
 
-    public ScheduleDeliveryDialog ClickAttachmentBtn(){
-        Assert.assertTrue(driver.click(attachmentBtn));
-        return this;
-    }
-
-
 }
