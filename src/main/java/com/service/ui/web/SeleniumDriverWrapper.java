@@ -106,7 +106,20 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         return webDriver.getCurrentUrl().equals(url);
     }
 
-    public void switchWindow(){ //switches to random window other than main window
+    public void switchWindow(){
+        switchWindow(defaultWaitTime);
+    }
+
+    public void switchWindow(int timeout){
+        try {
+            Thread.sleep(timeout * 1000);
+            switchRandomWindow();
+        } catch (InterruptedException e){
+            System.out.println("error switching window with timeout" + timeout + " seconds: " + e.getMessage());
+        }
+    }
+
+    public void switchRandomWindow(){ //switches to random window other than main window
         Set<String> windowHandles = webDriver.getWindowHandles();
         if (windowHandles.size() > 1){
             windowHandles.forEach((handler)-> {
