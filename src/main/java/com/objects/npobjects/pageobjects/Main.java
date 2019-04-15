@@ -4,7 +4,6 @@ import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.IntegrationsDropDown;
 import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
-import com.objects.npobjects.pageobjects.oauthpages.FacebookLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -46,6 +45,7 @@ public class Main extends NPPageObject {
 	private final By liAdmin = mdcListItemWithText("Admin");
 	private final By liIntegrations = mdcListItemWithText("Integrations");
 	private final By liSignOut = mdcListItemWithText("Sign out");
+
 
 	public Main(SeleniumDriverWrapper driver){
 		super(driver.getBaseUrl() + "/reports", driver);
