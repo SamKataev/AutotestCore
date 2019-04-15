@@ -13,7 +13,6 @@ public class FacebookLogIn extends NPPageObject {
     private By signInBtn = By.xpath("//button[@id='loginbutton']");
     private By confirmBtn = By.xpath("//button[@data-testid='nextBtn']");
 
-
     public FacebookLogIn(SeleniumDriverWrapper driver){
         super("", driver);
     }

@@ -125,5 +125,14 @@ public class CreateSaasDialog extends Dialog {
         Assert.assertTrue(driver.click(paypalBtn));
         return this;
     }
+    public CreateSaasDialog clickintercomBtn(){
+        Assert.assertTrue(driver.click(intercomBtn));
+        return this;
+    }
+    public CreateSaasDialog clickPipedriveBtn(){
+        Assert.assertTrue(driver.click(pipedriveBtn));
+        return this;
+    }
+
 }
 

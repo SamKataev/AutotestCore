@@ -9,8 +9,8 @@ public class InstagramLogIn extends NPPageObject {
 
     private By emailInput = By.xpath("//input[@aria-label='Phone number, username, or email']");
     private By passInput = By.xpath("//input[@aria-label='Password']");
-    private By checkboxBtn = By.xpath("//div[@class='mwD2G']");
-    private By LogInBtn = By.xpath("//button[@class='_0mzm- sqdOP  L3NKy       ']");
+    private By checkboxBtn = By.xpath("//input[@type='checkbox']");
+    private By LogInBtn = By.xpath("//button[@type='submit']");
 
     public InstagramLogIn(SeleniumDriverWrapper driver){
         super("", driver);

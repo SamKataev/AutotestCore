@@ -9,8 +9,6 @@ import org.testng.Assert;
 
 public class Auth extends NPPageObject {
 
-    public FacebookLogIn facebookLogIn;
-
     private By emailInput = By.xpath("//input[@placeholder='Email']");
     private By passInput = By.xpath("//input[@placeholder='Password']");
     private By signInBtn = mdcTextBtn("Sign in");
