@@ -5,14 +5,14 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class InstagramLogIn extends NPPageObject {
+public class InfusionsoftLogIn extends NPPageObject {
 
-    private By emailInput = By.xpath("//input[@aria-label='Phone number, username, or email']");
-    private By passInput = By.xpath("//input[@aria-label='Password']");
-    private By checkboxBtn = By.xpath("//input[@type='checkbox']");
-    private By logInBtn = By.xpath("//button[@type='submit']");
+    private By emailInput =By.xpath("//input[@type='email']");
+    private By passInput =By.xpath("//input[@type='password']");
+    private By logInBtn =By.xpath("//button[@id='btn-login']");
+    private By allowBtn =By.xpath("//button[@name='allow']");
 
-    public InstagramLogIn(SeleniumDriverWrapper driver){
+    public InfusionsoftLogIn (SeleniumDriverWrapper driver){
         super("", driver);
     }
 
@@ -23,29 +23,26 @@ public class InstagramLogIn extends NPPageObject {
                 && driver.waitUntilExist(logInBtn);
     }
 
-    public InstagramLogIn checkIsRendered() {
+    public InfusionsoftLogIn checkIsRendered() {
         super.checkIsRendered();
         return this;
     }
 
-    public InstagramLogIn clickSignInBtn(){
+    public InfusionsoftLogIn clicklogInBtn(){
         Assert.assertTrue(driver.click(logInBtn));
         return this;
     }
 
-    public InstagramLogIn enterEmailInput (String text){
+    public InfusionsoftLogIn enterEmailInput (String text){
         Assert.assertTrue(driver.type(emailInput ,text));
         return this;
     }
-
-    public InstagramLogIn enterPassInput (String text){
+    public InfusionsoftLogIn enterPassInput (String text){
         Assert.assertTrue(driver.type(passInput ,text));
         return this;
     }
-
-    public InstagramLogIn clickcheckboxBtn (){
-        Assert.assertTrue(driver.click(checkboxBtn));
+    public InfusionsoftLogIn clickAllowBtn(){
+        Assert.assertTrue(driver.click(allowBtn));
         return this;
     }
-
 }

@@ -7,7 +7,7 @@ import org.testng.Assert;
 
 public class ZendeskLogIn extends NPPageObject {
 
-    private By emailInput = By.xpath("//input[@type='email']");
+    private By emailInput = By.xpath("//input[@id='user_email']");
     private By passwordInput = By.xpath("//input[@type='password']");
     private By signIn = By.xpath("//input[@type='submit']");
 
@@ -17,8 +17,8 @@ public class ZendeskLogIn extends NPPageObject {
 
     @Override
     public boolean validateElements() {
-        return driver.waitUntilClickable(emailInput, 10)
-                && driver.waitUntilClickable(passwordInput)
+        return driver.waitUntilExist(emailInput, 10)
+                && driver.waitUntilExist(passwordInput)
                 && driver.waitUntilExist(signIn);
     }
 

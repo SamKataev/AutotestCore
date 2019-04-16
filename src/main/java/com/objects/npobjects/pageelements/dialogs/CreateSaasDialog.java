@@ -133,6 +133,25 @@ public class CreateSaasDialog extends Dialog {
         Assert.assertTrue(driver.click(pipedriveBtn));
         return this;
     }
-
+    public CreateSaasDialog clickWrikeBtn(){
+        Assert.assertTrue(driver.click(wrikeBtn));
+        return this;
+    }
+    public CreateSaasDialog clickInfusionsoftBtn(){
+        Assert.assertTrue(driver.click(infusionsoftBtn));
+        return this;
+    }
+    public CreateSaasDialog clickSalesforceBtn(){
+        Assert.assertTrue(driver.click(salesforceBtn));
+        return this;
+    }
+    public CreateSaasDialog clickStripeBtn(){
+        Assert.assertTrue(driver.click(stripeBtn));
+        return this;
+    }
+    public CreateSaasDialog clickQuickbooksBtn(){
+        Assert.assertTrue(driver.click(quickbooksBtn));
+        return this;
+    }
 }
 

@@ -102,6 +102,6 @@ public abstract class WebElementsContainer {
 	protected By npTextFieldWithLabel(String label){
 		return By.xpath("//label[contains(@class, text-field__label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
-
+	
 
 }

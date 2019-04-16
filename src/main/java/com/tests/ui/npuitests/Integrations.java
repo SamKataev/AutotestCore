@@ -86,6 +86,65 @@ public class Integrations extends NPWebTest {
                 .enterAPI("ne3XTHy_Zu438e0ZN9s7OA")
                 .clickOkBtn();
     }
+    @Test
+    public void createSalesforce(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickSalesforceBtn();
+        //Salesforce
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterloginField("slemma.dev@gmail.com")
+                .enterpasswordField("Q!W@e3r4")
+                .entertokenField("7erMm0tOS8bxJU4xeKLKJmzM9")
+                .clickOkBtn();
+    }
+        @Test
+    public void createQB(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickQuickbooksBtn();
+        //QB
+        driver.switchWindow(1);
+        quickbooksLogIn.checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .enterPassInput("q1w2E#R$")
+                .clickSignInBt()
+                .clickconnectBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("QuickBooks",5)
+                .clickObjectInDataTableByName("QuickBooks",5);
+    }
+//    @Test
+//    public void createStripe(){
+//        mainPage.checkIsRendered()
+//                .clickAdminBtn()
+//                .openIntegrations()
+//                .clickPlusBtn();
+//        mainPage.integrationsDropDown.checkIsRendered()
+//                .clickSaasBtn();
+//        mainPage.createSaasDialog.checkIsRendered()
+//                .clickStripeBtn();
+//        //Stripe коннектор в разработке
+//        driver.switchWindow(1);
+//        stripeLogIn.checkIsRendered()
+//                .clicksignInStripeBtn()
+//                .enterEmailInput("developer@newpeople.co")
+//                .enterPassInput("q1w2E#R$")
+//                .clicksignInStripeAccountBtn();
+//        driver.switchToMainWindow();
+//        mainPage.checkObjectInDataTableByName("Stripe",5)
+//                .clickObjectInDataTableByName("Stripe",5);
+//    }
 
 //    @Test
 //    public void createZendesk(){
@@ -101,7 +160,7 @@ public class Integrations extends NPWebTest {
 //        mainPage.saaSParametersDialog.checkIsRendered()
 //                .enterserverURLField("https://d3v-newpeople.zendesk.com")
 //                .clickOkBtn();
-//        driver.switchWindow(1);
+//        driver.switchWindow(2);
 //        zendeskLogIn.checkIsRendered()
 //                .enterEmailInput("developer@newpeople.co")
 //                .enterPasswordInput("q1w2E#R$")
@@ -110,6 +169,49 @@ public class Integrations extends NPWebTest {
 //        mainPage.checkObjectInDataTableByName("Zendesk",5)
 //                .clickObjectInDataTableByName("Zendesk",5);
 //    }
+    @Test
+    public void createWrike(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickWrikeBtn();
+        //wrike
+        driver.switchWindow(1);
+        wrikeLogIn.checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .clickNextButton()
+                .enterPassInput("q1w2E#R$")
+                .clickNextButton();
+//                .clickForgetInput();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("Wrike Andrey Dobzhansky",5)
+                .clickObjectInDataTableByName("Wrike Andrey Dobzhansky",5);
+    }
+    @Test
+    public void createInfusionsoft(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickInfusionsoftBtn();
+        //Infusionsoft
+        driver.switchWindow(1);
+        infusionsoftLogIn.checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .enterPassInput("q1w2E#R$")
+                .clicklogInBtn()
+                .clickAllowBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("Infusionsoft",5)
+                .clickObjectInDataTableByName("Infusionsoft",5);
+    }
 
     @Test
     public void createJira(){

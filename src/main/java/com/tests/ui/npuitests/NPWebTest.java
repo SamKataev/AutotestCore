@@ -18,6 +18,10 @@ public abstract class NPWebTest extends WebTest {
 	IntercomLogIn intercomLogIn;
 	PipedriveLogIn pipedriveLogIn;
 	ZendeskLogIn zendeskLogIn;
+    WrikeLogIn wrikeLogIn;
+	InfusionsoftLogIn infusionsoftLogIn;
+	StripeLogIn stripeLogIn;
+	QuickbooksLogIn quickbooksLogIn;
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -46,6 +50,10 @@ public abstract class NPWebTest extends WebTest {
 		intercomLogIn=new IntercomLogIn(driver);
 		pipedriveLogIn=new PipedriveLogIn(driver);
 		zendeskLogIn = new ZendeskLogIn(driver);
+        wrikeLogIn = new WrikeLogIn(driver);
+		infusionsoftLogIn = new InfusionsoftLogIn(driver);
+		stripeLogIn = new StripeLogIn(driver);
+		quickbooksLogIn = new QuickbooksLogIn(driver);
 	}
 
 	protected void openHomePage(){
