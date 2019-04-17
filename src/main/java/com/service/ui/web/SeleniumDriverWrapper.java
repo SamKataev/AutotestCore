@@ -22,7 +22,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     private String mainHandle;
     private String baseUrl;
 
-    enum WaiterType {EXIST, VISIBLE, CLICKABLE, DISAPPEAR}
+    enum WaiterType {EXIST, VISIBLE, CLICKABLE, DISAPPEAR, FRAMEAVAILABLE}
     private int defaultWaitTime;
 
     private static final Logger log = Logger.getLogger(SeleniumDriverWrapper.class);
@@ -206,6 +206,14 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         return waitUntilDisappear(locator, defaultWaitTime);
     }
 
+    public boolean waitUntilFrameAvailableAndSwitchToIt(By locator) {
+        return waitUntilFrameAvailableAndSwitchToIt(locator, defaultWaitTime);
+    }
+
+    public boolean waitUntilFrameAvailableAndSwitchToIt(By locator, int time) {
+        return waitUntilConditions(locator, time, WaiterType.FRAMEAVAILABLE);
+    }
+
     private boolean waitUntilConditions(By locator, int time, WaiterType type) {
         try {
             WebDriverWait wait = new WebDriverWait(webDriver, time);
@@ -220,6 +228,9 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
             }
             if (type == WaiterType.DISAPPEAR) {
                 wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            }
+            if (type == WaiterType.FRAMEAVAILABLE) {
+                wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(locator));
             }
         } catch (TimeoutException ex) {
             System.out.println("timeout " + time + " expired, " + type.toString() + ", " + locator.toString());

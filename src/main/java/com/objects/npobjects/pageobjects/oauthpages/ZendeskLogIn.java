@@ -10,6 +10,7 @@ public class ZendeskLogIn extends NPPageObject {
     private By emailInput = By.xpath("//input[@id='user_email']");
     private By passwordInput = By.xpath("//input[@type='password']");
     private By signIn = By.xpath("//input[@type='submit']");
+    private By iframe = By.xpath("//iframe");
 
     public ZendeskLogIn(SeleniumDriverWrapper driver){
         super("", driver);
@@ -26,16 +27,24 @@ public class ZendeskLogIn extends NPPageObject {
         super.checkIsRendered();
         return this;
     }
+
     public ZendeskLogIn clickSignInBtn(){
         Assert.assertTrue(driver.click(signIn));
         return this;
     }
+
     public ZendeskLogIn enterEmailInput (String text){
         Assert.assertTrue(driver.type(emailInput ,text));
         return this;
     }
+
     public ZendeskLogIn enterPasswordInput (String text){
         Assert.assertTrue(driver.type(passwordInput ,text));
+        return this;
+    }
+
+    public ZendeskLogIn switchToIFrame(){
+        Assert.assertTrue(driver.waitUntilFrameAvailableAndSwitchToIt(iframe, 10));
         return this;
     }
 }

@@ -146,29 +146,31 @@ public class Integrations extends NPWebTest {
 //                .clickObjectInDataTableByName("Stripe",5);
 //    }
 
-//    @Test
-//    public void createZendesk(){
-//        mainPage.checkIsRendered()
-//                .clickAdminBtn()
-//                .openIntegrations()
-//                .clickPlusBtn();
-//        mainPage.integrationsDropDown.checkIsRendered()
-//                .clickSaasBtn();
-//        mainPage.createSaasDialog.checkIsRendered()
-//                .clickzendeskBtn();
-//        //zendesk
-//        mainPage.saaSParametersDialog.checkIsRendered()
-//                .enterserverURLField("https://d3v-newpeople.zendesk.com")
-//                .clickOkBtn();
-//        driver.switchWindow(2);
-//        zendeskLogIn.checkIsRendered()
-//                .enterEmailInput("developer@newpeople.co")
-//                .enterPasswordInput("q1w2E#R$")
-//                .clickSignInBtn();
-//        driver.switchToMainWindow();
-//        mainPage.checkObjectInDataTableByName("Zendesk",5)
-//                .clickObjectInDataTableByName("Zendesk",5);
-//    }
+    @Test
+    public void createZendesk(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickzendeskBtn();
+        //zendesk
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterserverURLField("https://d3v-newpeople.zendesk.com")
+                .clickOkBtn();
+        driver.switchWindow(2);
+        zendeskLogIn.switchToIFrame()
+                .checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .enterPasswordInput("q1w2E#R$")
+                .clickSignInBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("Zendesk",5)
+                .clickObjectInDataTableByName("Zendesk",5);
+    }
+
     @Test
     public void createWrike(){
         mainPage.checkIsRendered()
