@@ -22,6 +22,7 @@ public abstract class NPWebTest extends WebTest {
 	InfusionsoftLogIn infusionsoftLogIn;
 	StripeLogIn stripeLogIn;
 	QuickbooksLogIn quickbooksLogIn;
+	BoxLogIn boxLogIn;
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -54,6 +55,7 @@ public abstract class NPWebTest extends WebTest {
 		infusionsoftLogIn = new InfusionsoftLogIn(driver);
 		stripeLogIn = new StripeLogIn(driver);
 		quickbooksLogIn = new QuickbooksLogIn(driver);
+		boxLogIn = new BoxLogIn(driver);
 	}
 
 	protected void openHomePage(){

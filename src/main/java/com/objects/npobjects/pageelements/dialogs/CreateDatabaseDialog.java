@@ -34,10 +34,6 @@ public class CreateDatabaseDialog extends Dialog {
     private final By teradataBtn = dialogMdcListItemWithTextIcon("Teradata", "ic_teradata");
     private final By verticaBtn = dialogMdcListItemWithTextIcon("Vertica", "ic_vertica");
 
-
-
-
-
     public CreateDatabaseDialog (SeleniumDriverWrapper driver, Main pageObj) {
         super(driver);
         parentPage = pageObj;

@@ -24,6 +24,7 @@ public class Main extends NPPageObject {
 	public CreateIntegrationDialog createIntegrationDialog;
 	public MessageDialog messageDialog;
 	public SaaSParametersDialog saaSParametersDialog;
+	public CreateCloudIntegrationDialog createCloudIntegrationDialog;
 
 
     private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -63,6 +64,7 @@ public class Main extends NPPageObject {
 		createIntegrationDialog = new CreateIntegrationDialog(driver, this);
 		messageDialog = new MessageDialog(driver, this);
 		saaSParametersDialog = new SaaSParametersDialog(driver, this);
+		createCloudIntegrationDialog = new CreateCloudIntegrationDialog(driver, this);
 			}
 
 	@Override
@@ -202,6 +204,10 @@ public class Main extends NPPageObject {
 		Assert.assertTrue(driver.click(liAdmin));
 		return this;
 	}
+	public Main clickSettingsBtn(){
+		Assert.assertTrue(driver.click(liSettings));
+		return this;
+	}
 
 	public Main checkObjectInDataTableByName(String name){
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']")));
@@ -210,6 +216,10 @@ public class Main extends NPPageObject {
 
 	public Main checkObjectInDataTableByName(String name, int time){
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']"), time));
+		return this;
+	}
+	public Main checkObjectInDialogByName(String name, int time){
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'accordion__item__body')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']"), time));
 		return this;
 	}
 
@@ -224,4 +234,12 @@ public class Main extends NPPageObject {
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
+	public Main clickObjectInDialogByName(String name, int time){
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
+		return this;
+	}
+
+
+
 }

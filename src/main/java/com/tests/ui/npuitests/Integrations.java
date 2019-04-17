@@ -214,7 +214,6 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("Infusionsoft",5)
                 .clickObjectInDataTableByName("Infusionsoft",5);
     }
-
     @Test
     public void createJira(){
         mainPage.checkIsRendered()
@@ -232,7 +231,6 @@ public class Integrations extends NPWebTest {
                 .enterpasswordField("Matveeva0414")
                 .clickOkBtn();
     }
-
     @Test
     public void createFacebook(){
         mainPage.checkIsRendered()
@@ -257,7 +255,6 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("Facebook (Andrey)",5)
                 .clickObjectInDataTableByName("Facebook (Andrey)",5);
     }
-
     @Test
     public void createInstagram(){
         mainPage.checkIsRendered()
@@ -279,7 +276,6 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("Instagram",5)
                 .clickObjectInDataTableByName("Instagram",5);
     }
-
     @Test
     public void createPayPal(){
         mainPage.checkIsRendered()
@@ -301,7 +297,6 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("PayPal",5)
                 .clickObjectInDataTableByName("PayPal",5);
     }
-
     @Test
     public void createIntercom(){
         mainPage.checkIsRendered()
@@ -324,7 +319,6 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("Intercom",5)
                 .clickObjectInDataTableByName("Intercom",5);
     }
-
     @Test
     public void createPipedrive(){
         mainPage.checkIsRendered()
@@ -346,5 +340,24 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("New People",5)
                 .clickObjectInDataTableByName("New People",5);
     }
-
+    @Test
+    public void createBox(){
+        mainPage.checkIsRendered()
+                .clickSettingsBtn();
+        mainPage.userSettingsDialog.checkIsRendered()
+                .clickItemCloudStorage()
+                .clickaddIntegrationBtn();
+        mainPage.createCloudIntegrationDialog.checkIsRendered()
+                .clickBoxBtn();
+        //Box
+        driver.switchWindow(1);
+        boxLogIn.checkIsRendered()
+                .enterloginInput("developer@newpeople.co")
+                .enterpassInput("q1w2E#R$")
+                .clickauthorizeBtn()
+                .clickaccessBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDialogByName("Box",5)
+                .clickObjectInDialogByName("Box",5);
+    }
 }

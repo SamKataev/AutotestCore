@@ -40,10 +40,6 @@ public class CreateSaasDialog extends Dialog {
     private final By wrikeBtn = dialogMdcListItemWithTextIcon("Wrike", "ic_wrike");
     private final By zendeskBtn = dialogMdcListItemWithTextIcon("Zendesk", "ic_zendesk");
 
-
-
-
-
     public CreateSaasDialog(SeleniumDriverWrapper driver, Main pageObj) {
         super(driver);
         parentPage = pageObj;

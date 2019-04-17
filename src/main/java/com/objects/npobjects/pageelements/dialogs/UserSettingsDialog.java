@@ -21,6 +21,7 @@ public class UserSettingsDialog extends Dialog {
     private final By itemLanguage = dialogMdcListAccordionWithText("Language and region settings");
     private final By itemCloudStorage = dialogMdcListAccordionWithText("Cloud storage integrations");
     private final By itemNotification = dialogMdcListAccordionWithText("Notification settings");
+    private final By addIntegrationBtn = dialogMdcListItemWithTextIcon("Add integration", "ic_add");
 
 
     public UserSettingsDialog (SeleniumDriverWrapper driver, Main pageObj) {
@@ -47,6 +48,14 @@ public class UserSettingsDialog extends Dialog {
 
     public UserSettingsDialog clickitemDetails(){
         Assert.assertTrue(driver.click(itemDetails));
+        return this;
+    }
+    public UserSettingsDialog clickItemCloudStorage(){
+        Assert.assertTrue(driver.click(itemCloudStorage));
+        return this;
+    }
+    public UserSettingsDialog clickaddIntegrationBtn(){
+        Assert.assertTrue(driver.click(addIntegrationBtn));
         return this;
     }
 

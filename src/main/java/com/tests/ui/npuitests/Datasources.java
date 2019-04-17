@@ -17,5 +17,6 @@ public class Datasources extends NPWebTest {
 		datasourceCreatePage.checkIsRendered()
 				  .clickSave();
 	}
+
 }
 
