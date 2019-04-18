@@ -23,6 +23,8 @@ public abstract class NPWebTest extends WebTest {
 	StripeLogIn stripeLogIn;
 	QuickbooksLogIn quickbooksLogIn;
 	BoxLogIn boxLogIn;
+	DropboxLogIn dropboxLogIn;
+	GoogleDriveLogIn googleDriveLogIn;
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -56,6 +58,8 @@ public abstract class NPWebTest extends WebTest {
 		stripeLogIn = new StripeLogIn(driver);
 		quickbooksLogIn = new QuickbooksLogIn(driver);
 		boxLogIn = new BoxLogIn(driver);
+		dropboxLogIn = new DropboxLogIn(driver);
+		googleDriveLogIn = new GoogleDriveLogIn(driver);
 	}
 
 	protected void openHomePage(){

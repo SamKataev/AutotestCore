@@ -12,7 +12,6 @@ public class BoxLogIn extends NPPageObject {
     private By authorizeBtn =By.xpath("//input[@title='Authorize']");
     private By accessBtn =By.xpath("//button[@id='consent_accept_button']");
 
-
     public BoxLogIn(SeleniumDriverWrapper driver){
         super("", driver);
     }

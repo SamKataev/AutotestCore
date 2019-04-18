@@ -68,5 +68,9 @@ public class CreateCloudIntegrationDialog extends Dialog {
     public CreateCloudIntegrationDialog clickYandexdiskBtn () {
         Assert.assertTrue(driver.click(yandexdiskBtn));
         return this;
+   }
+    public CreateCloudIntegrationDialog clickcloseBtn () {
+        Assert.assertTrue(driver.click(closeBtn));
+        return this;
     }
 }

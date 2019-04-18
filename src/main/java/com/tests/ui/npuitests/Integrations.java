@@ -340,6 +340,7 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("New People",5)
                 .clickObjectInDataTableByName("New People",5);
     }
+    //cloud//
     @Test
     public void createBox(){
         mainPage.checkIsRendered()
@@ -352,12 +353,60 @@ public class Integrations extends NPWebTest {
         //Box
         driver.switchWindow(1);
         boxLogIn.checkIsRendered()
-                .enterloginInput("developer@newpeople.co")
-                .enterpassInput("q1w2E#R$")
+                .enterloginInput("a.kotomin@slemma.com")
+                .enterpassInput("123654")
                 .clickauthorizeBtn()
                 .clickaccessBtn();
         driver.switchToMainWindow();
         mainPage.checkObjectInDialogByName("Box",5)
                 .clickObjectInDialogByName("Box",5);
     }
+    @Test
+    public void createDropbox(){
+        mainPage.checkIsRendered()
+                .clickSettingsBtn();
+        mainPage.userSettingsDialog.checkIsRendered()
+                .clickItemCloudStorage()
+                .clickaddIntegrationBtn();
+        mainPage.createCloudIntegrationDialog.checkIsRendered()
+                .clickDropboxBtn();
+        //Dropbox
+        driver.switchWindow(1);
+        dropboxLogIn.checkIsRendered()
+                .enteremailInput("developer@newpeople.co")
+                .enterpassInput("q1w2E#R$")
+                .clicksignInBtn()
+                .clickcontinueBtn();
+        pause(5);
+        dropboxLogIn.clickallowBtn();
+        pause(5);
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDialogByName("Dropbox",20)
+                .clickObjectInDialogByName("Dropbox",5);
+    }
+    @Test
+    public void createGoogleDrive(){
+        mainPage.checkIsRendered()
+                .clickSettingsBtn();
+        mainPage.userSettingsDialog.checkIsRendered()
+                .clickItemCloudStorage()
+                .clickaddIntegrationBtn();
+        mainPage.createCloudIntegrationDialog.checkIsRendered()
+                .clickGoogledriveBtn();
+        //GoogleDrive
+        driver.switchWindow(1);
+        googleDriveLogIn.checkIsRendered()
+                .enteremailInput("s.kataev@slemma.com")
+                .clicknextBtn()
+                .enterpasswordInput("Q123#@!w")
+                .clicknextPassBtn()
+                .clickadvancedBtn()
+                .clickgotoBtn()
+                .clickallowBtn();
+        pause(5);
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDialogByName("Google Drive",10)
+                .clickObjectInDialogByName("Google Drive",5);
+    }
+
 }
