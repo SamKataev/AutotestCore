@@ -25,6 +25,8 @@ public abstract class NPWebTest extends WebTest {
 	BoxLogIn boxLogIn;
 	DropboxLogIn dropboxLogIn;
 	GoogleDriveLogIn googleDriveLogIn;
+	OneDriveLogIn oneDriveLogIn;
+	YandexDiskLogIn yandexDiskLogIn;
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -60,6 +62,8 @@ public abstract class NPWebTest extends WebTest {
 		boxLogIn = new BoxLogIn(driver);
 		dropboxLogIn = new DropboxLogIn(driver);
 		googleDriveLogIn = new GoogleDriveLogIn(driver);
+		oneDriveLogIn = new OneDriveLogIn(driver);
+		yandexDiskLogIn = new YandexDiskLogIn(driver);
 	}
 
 	protected void openHomePage(){

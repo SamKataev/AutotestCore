@@ -408,5 +408,46 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDialogByName("Google Drive",10)
                 .clickObjectInDialogByName("Google Drive",5);
     }
-
+    @Test
+    public void createOneDrive(){
+        mainPage.checkIsRendered()
+                .clickSettingsBtn();
+        mainPage.userSettingsDialog.checkIsRendered()
+                .clickItemCloudStorage()
+                .clickaddIntegrationBtn();
+        mainPage.createCloudIntegrationDialog.checkIsRendered()
+                .clickOnedriveBtn();
+        driver.switchWindow(1);
+        oneDriveLogIn.checkIsRendered()
+                .enterEmailInput("s.kataev@slemma.com")
+                .clickNextBtn()
+                .clickPersonalAccount()
+                .enterPassInput("Q123#@!w")
+                .clickNextBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDialogByName("OneDrive",5)
+                .clickObjectInDialogByName("OneDrive",5);
+    }
+        @Test
+    public void createYandexDisk(){
+        mainPage.checkIsRendered()
+                .clickSettingsBtn();
+        mainPage.userSettingsDialog.checkIsRendered()
+                .clickItemCloudStorage()
+                .clickaddIntegrationBtn();
+        mainPage.createCloudIntegrationDialog.checkIsRendered()
+                .clickYandexdiskBtn();
+        driver.switchWindow(1);
+        //yandex disk
+        yandexDiskLogIn.checkIsRendered()
+                .enterEmailInput("e.matveevaslemma.com")
+                .clicklogInBtn()
+                .enterPassInput("Matveeva0414")
+                .clicklogInBtn()
+                .clickallowBtn();
+        driver.switchToMainWindow();
+        pause(5);
+        mainPage.checkObjectInDialogByName("Yandex Disk",5)
+                .clickObjectInDialogByName("Yandex Disk",5);
+    }
 }
