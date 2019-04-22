@@ -10,7 +10,10 @@ public class DropboxLogIn extends NPPageObject {
     private By passInput = By.xpath("//input[@name='login_password']");
     private By signInBtn = By.xpath("//button/div[contains(@class, 'sign-in-text') and text()='Sign in']");
     private By continueBtn = By.xpath("//button[@type='reset']");
-    private By allowBtn = By.xpath("//button[@name='allow_access']");
+    private By allowBtn = By.xpath("//div[@style='display: block;']//button[@name='allow_access']");
+    private By securityBtn = By.xpath("//button[@id='primary-button']");
+    private By wait = By.xpath("//span[@class='login-loading-indicator'");
+
 
     public DropboxLogIn(SeleniumDriverWrapper driver){
         super("", driver);
@@ -43,14 +46,17 @@ public class DropboxLogIn extends NPPageObject {
         return this;
     }
     public DropboxLogIn clickcontinueBtn(){
-        Assert.assertTrue(driver.waitUntilClickable(continueBtn,25));
+        Assert.assertTrue(driver.waitUntilClickable(continueBtn,30));
         Assert.assertTrue(driver.click(continueBtn));
         return this;
     }
     public DropboxLogIn clickallowBtn(){
-        Assert.assertTrue(driver.waitUntilClickable(allowBtn,25));
+        Assert.assertTrue(driver.waitUntilClickable(allowBtn,30));
         Assert.assertTrue(driver.click(allowBtn));
         return this;
     }
-
+    public DropboxLogIn switchToWait(){
+        Assert.assertTrue(driver.waitUntilDisappear(wait,10));
+        return this;
+    }
 }

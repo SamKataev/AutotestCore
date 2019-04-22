@@ -145,8 +145,7 @@ public class Integrations extends NPWebTest {
 //        mainPage.checkObjectInDataTableByName("Stripe",5)
 //                .clickObjectInDataTableByName("Stripe",5);
 //    }
-
-    @Test
+        @Test
     public void createZendesk(){
         mainPage.checkIsRendered()
                 .clickAdminBtn()
@@ -373,16 +372,17 @@ public class Integrations extends NPWebTest {
         //Dropbox
         driver.switchWindow(1);
         dropboxLogIn.checkIsRendered()
-                .enteremailInput("developer@newpeople.co")
-                .enterpassInput("q1w2E#R$")
+                .enteremailInput("a.kotomin@slemma.com")
+                .enterpassInput("Q123#@!w")
                 .clicksignInBtn()
+                .switchToWait()
                 .clickcontinueBtn();
         pause(5);
         dropboxLogIn.clickallowBtn();
         pause(5);
         driver.switchToMainWindow();
         mainPage.checkObjectInDialogByName("Dropbox",20)
-                .clickObjectInDialogByName("Dropbox",5);
+                .clickObjectInDialogByName("Dropbox",20);
     }
     @Test
     public void createGoogleDrive(){
@@ -395,7 +395,7 @@ public class Integrations extends NPWebTest {
                 .clickGoogledriveBtn();
         //GoogleDrive
         driver.switchWindow(1);
-        googleDriveLogIn.checkIsRendered()
+        googleLogIn.checkIsRendered()
                 .enteremailInput("s.kataev@slemma.com")
                 .clicknextBtn()
                 .enterpasswordInput("Q123#@!w")
@@ -403,7 +403,7 @@ public class Integrations extends NPWebTest {
                 .clickadvancedBtn()
                 .clickgotoBtn()
                 .clickallowBtn();
-        pause(5);
+//        pause(5);
         driver.switchToMainWindow();
         mainPage.checkObjectInDialogByName("Google Drive",10)
                 .clickObjectInDialogByName("Google Drive",5);
@@ -450,4 +450,96 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDialogByName("Yandex Disk",5)
                 .clickObjectInDialogByName("Yandex Disk",5);
     }
+    @Test
+    public void createHubSpot(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickHubspotBtn();
+        //HubSpot
+        driver.switchWindow(1);
+        hubSpotLogIn.checkIsRendered()
+                .enterEmailInput("andrew@slemma.com")
+                .enterPassInput("Red_Herring123")
+                .clickLogInBtn()
+                .clickAccountChoose();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("Hubspot",5)
+                .clickObjectInDataTableByName("Hubspot",5);
+    }
+    @Test
+    public void createMailchimp(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickMailchimpBtn();
+        //mailchimp
+        driver.switchWindow(1);
+        mailChimpLogIn.checkIsRendered()
+                .enterEmailInput("dobzhansky")
+                .enterPasswordInput("Zurbagan0!")
+                .clickLogIn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("MailChimp (a.dobzhansky@slemma.com)",5)
+                .clickObjectInDataTableByName("MailChimp (a.dobzhansky@slemma.com)",5);
+    }
+    @Test
+    public void createGoogleAds() {
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickgoogleAdsBtn();
+        //googleAds коннектор не работает
+        mainPage.saaSParametersDialog.checkIsRendered()
+                .enterCustomerIDField("634-468-0664")
+                .clickOkBtn();
+        driver.switchWindow(1);
+        googleLogIn.checkIsRendered()
+                .enteremailInput("s.kataev@slemma.com")
+                .clicknextBtn()
+                .enterpasswordInput("Q123#@!w")
+                .clicknextPassBtn()
+                .clickallowBtn();
+        pause(5);
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("GoogleAds", 10)
+                .checkObjectInDataTableByName("GoogleAds", 5);
+    }
+    @Test
+    public void createGoogleAnalytics() {
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickGoogleAnalyticsBtn();
+        //googleAnalytics
+        driver.switchWindow(1);
+        googleLogIn.checkIsRendered()
+                .enteremailInput("s.kataev@slemma.com")
+                .clicknextBtn()
+                .enterpasswordInput("Q123#@!w")
+                .clicknextPassBtn();
+//        pause(5);
+//        googleLogIn.clickPermissionBtn();
+//        pause(5);
+        googleLogIn.clickallowBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5)
+                .checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5);
+           }
 }

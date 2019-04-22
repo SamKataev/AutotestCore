@@ -239,7 +239,5 @@ public class Main extends NPPageObject {
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
-
-
-
+	
 }

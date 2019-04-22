@@ -109,6 +109,10 @@ public class CreateSaasDialog extends Dialog {
         Assert.assertTrue(driver.click(googleAdsBtn));
         return this;
     }
+    public CreateSaasDialog clickGoogleAnalyticsBtn(){
+        Assert.assertTrue(driver.click(googleAnalyticsBtn));
+        return this;
+    }
     public CreateSaasDialog clickjiraBtn(){
         Assert.assertTrue(driver.click(jiraBtn));
         return this;
@@ -147,6 +151,14 @@ public class CreateSaasDialog extends Dialog {
     }
     public CreateSaasDialog clickQuickbooksBtn(){
         Assert.assertTrue(driver.click(quickbooksBtn));
+        return this;
+    }
+    public CreateSaasDialog clickHubspotBtn(){
+        Assert.assertTrue(driver.click(hubspotBtn));
+        return this;
+    }
+    public CreateSaasDialog clickMailchimpBtn(){
+        Assert.assertTrue(driver.click(mailchimpBtn));
         return this;
     }
 }

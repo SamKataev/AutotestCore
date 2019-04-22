@@ -24,9 +24,11 @@ public abstract class NPWebTest extends WebTest {
 	QuickbooksLogIn quickbooksLogIn;
 	BoxLogIn boxLogIn;
 	DropboxLogIn dropboxLogIn;
-	GoogleDriveLogIn googleDriveLogIn;
+	GoogleLogIn googleLogIn;
 	OneDriveLogIn oneDriveLogIn;
 	YandexDiskLogIn yandexDiskLogIn;
+	HubSpotLogIn hubSpotLogIn;
+	MailChimpLogIn mailChimpLogIn;
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -61,9 +63,11 @@ public abstract class NPWebTest extends WebTest {
 		quickbooksLogIn = new QuickbooksLogIn(driver);
 		boxLogIn = new BoxLogIn(driver);
 		dropboxLogIn = new DropboxLogIn(driver);
-		googleDriveLogIn = new GoogleDriveLogIn(driver);
+		googleLogIn = new GoogleLogIn(driver);
 		oneDriveLogIn = new OneDriveLogIn(driver);
 		yandexDiskLogIn = new YandexDiskLogIn(driver);
+		hubSpotLogIn= new HubSpotLogIn(driver);
+		mailChimpLogIn = new MailChimpLogIn(driver);
 	}
 
 	protected void openHomePage(){
