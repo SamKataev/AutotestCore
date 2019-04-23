@@ -85,4 +85,5 @@ public abstract class Dialog extends PageElement {
 	protected By dialogNpTextMessage(String text) {
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and contains(text(), '" + text + "')]");
 	}
+
 }

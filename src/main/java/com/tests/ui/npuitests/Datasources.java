@@ -17,6 +17,18 @@ public class Datasources extends NPWebTest {
 		datasourceCreatePage.checkIsRendered()
 				  .clickSave();
 	}
-
+   @Test
+    public void datasetGoogleAnalytics(){
+	   mainPage.checkIsRendered()
+			   .openDatasources()
+			   .clickPlusBtn();
+	   mainPage.selectDatasourceTypeDialog.checkIsRendered()
+               .clickIntegration("Google Analytics");
+	   mainPage.selectDatasetDialog.checkIsRendered()
+	           .clickObjectInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
+	   driver.switchToMainWindow();
+	   mainPage.checkObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER",5)
+			   .clickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER",5);
+   }
 }
 

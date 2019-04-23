@@ -50,11 +50,14 @@ public class DropboxLogIn extends NPPageObject {
         Assert.assertTrue(driver.click(continueBtn));
         return this;
     }
-    public DropboxLogIn clickallowBtn(){
+    public DropboxLogIn clickallowBtn()    {
+        pause(5);
         Assert.assertTrue(driver.waitUntilClickable(allowBtn,30));
         Assert.assertTrue(driver.click(allowBtn));
+        pause(5);
         return this;
     }
+
     public DropboxLogIn switchToWait(){
         Assert.assertTrue(driver.waitUntilDisappear(wait,10));
         return this;

@@ -25,6 +25,7 @@ public class Main extends NPPageObject {
 	public MessageDialog messageDialog;
 	public SaaSParametersDialog saaSParametersDialog;
 	public CreateCloudIntegrationDialog createCloudIntegrationDialog;
+	public SelectDatasetDialog selectDatasetDialog;
 
 
     private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -65,6 +66,7 @@ public class Main extends NPPageObject {
 		messageDialog = new MessageDialog(driver, this);
 		saaSParametersDialog = new SaaSParametersDialog(driver, this);
 		createCloudIntegrationDialog = new CreateCloudIntegrationDialog(driver, this);
+		selectDatasetDialog = new SelectDatasetDialog(driver, this);
 			}
 
 	@Override

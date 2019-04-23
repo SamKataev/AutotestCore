@@ -42,4 +42,8 @@ public class SelectDatasourceTypeDialog extends Dialog {
 		return this;
 	}
 
+	public SelectDatasourceTypeDialog clickIntegration(String text){
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '"+ text +"')]")));
+		return this;
+	}
 }

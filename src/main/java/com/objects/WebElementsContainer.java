@@ -28,6 +28,15 @@ public abstract class WebElementsContainer {
 	  return this;
 	}
 
+	protected void pause(int timeInSeconds) {
+		try {
+			if (timeInSeconds > 0) {
+				Thread.sleep(timeInSeconds * 1000);
+			}
+		} catch (InterruptedException e) {
+			System.out.println("thread sleep interrupted: " + e.getMessage());
+		}
+	}
 	/**
 	 * @deprecated use By.cssSelector directly instead.
 	 */

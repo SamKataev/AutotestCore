@@ -376,9 +376,8 @@ public class Integrations extends NPWebTest {
                 .enterpassInput("Q123#@!w")
                 .clicksignInBtn()
                 .switchToWait()
-                .clickcontinueBtn();
-        pause(5);
-        dropboxLogIn.clickallowBtn();
+                .clickcontinueBtn()
+                .clickallowBtn();
         pause(5);
         driver.switchToMainWindow();
         mainPage.checkObjectInDialogByName("Dropbox",20)
@@ -515,7 +514,7 @@ public class Integrations extends NPWebTest {
         pause(5);
         driver.switchToMainWindow();
         mainPage.checkObjectInDataTableByName("GoogleAds", 10)
-                .checkObjectInDataTableByName("GoogleAds", 5);
+                .clickObjectInDataTableByName("GoogleAds", 5);
     }
     @Test
     public void createGoogleAnalytics() {
@@ -540,6 +539,6 @@ public class Integrations extends NPWebTest {
         googleLogIn.clickallowBtn();
         driver.switchToMainWindow();
         mainPage.checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5)
-                .checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5);
+                .clickObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5);
            }
 }
