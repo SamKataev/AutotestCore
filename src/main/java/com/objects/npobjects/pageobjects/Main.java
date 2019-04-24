@@ -3,7 +3,7 @@ package com.objects.npobjects.pageobjects;
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.IntegrationsDropDown;
-import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
+import com.objects.npobjects.pageelements.dropdown.MoreOptionDropDown;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -18,7 +18,7 @@ public class Main extends NPPageObject {
 	public WorkspaceSettingsDialog workspaceSettingsDialog;
 	public IntegrationsDropDown integrationsDropDown;
 	public AddUserDialog addUserDialog;
-	public ReportDropDown reportDropDown;
+	public MoreOptionDropDown moreOptionDropDown;
 	public CreateDatabaseDialog createDatabaseDialog;
     public CreateSaasDialog createSaasDialog;
 	public CreateIntegrationDialog createIntegrationDialog;
@@ -26,6 +26,7 @@ public class Main extends NPPageObject {
 	public SaaSParametersDialog saaSParametersDialog;
 	public CreateCloudIntegrationDialog createCloudIntegrationDialog;
 	public SelectDatasetDialog selectDatasetDialog;
+	public RenameDialog renameDialog;
 
 
     private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -59,7 +60,7 @@ public class Main extends NPPageObject {
 		workspaceSettingsDialog = new WorkspaceSettingsDialog(driver, this);
 		integrationsDropDown = new IntegrationsDropDown(driver, this);
 		addUserDialog = new AddUserDialog(driver, this);
-		reportDropDown = new ReportDropDown(driver, this);
+		moreOptionDropDown = new MoreOptionDropDown(driver, this);
 		createDatabaseDialog = new CreateDatabaseDialog(driver, this);
         createSaasDialog = new CreateSaasDialog(driver, this);
 		createIntegrationDialog = new CreateIntegrationDialog(driver, this);
@@ -67,6 +68,7 @@ public class Main extends NPPageObject {
 		saaSParametersDialog = new SaaSParametersDialog(driver, this);
 		createCloudIntegrationDialog = new CreateCloudIntegrationDialog(driver, this);
 		selectDatasetDialog = new SelectDatasetDialog(driver, this);
+		renameDialog = new RenameDialog(driver, this);
 			}
 
 	@Override

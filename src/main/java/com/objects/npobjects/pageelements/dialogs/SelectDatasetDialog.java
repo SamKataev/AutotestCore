@@ -8,7 +8,6 @@ import org.testng.Assert;
 public class SelectDatasetDialog extends Dialog {
     private Main parentPage;
 
-    private final By title = dialogMdcAppBarTitle("Select dataset");
     private final By closeBtn = dialogMdcIconFontBtn("ic_close");
 
     public SelectDatasetDialog (SeleniumDriverWrapper driver, Main pageObj) {
@@ -17,17 +16,27 @@ public class SelectDatasetDialog extends Dialog {
     }
     @Override
     public boolean validateElements() {
-        return driver.waitUntilExist(title, 5)
-                && driver.waitUntilClickable(closeBtn);
+        return driver.waitUntilClickable(closeBtn, 5);
     }
     public SelectDatasetDialog checkIsRendered() {
         super.checkIsRendered();
         return this;
     }
-    public SelectDatasetDialog clickObjectInDialogByName(String text, String iconClass, int time){
+    public SelectDatasetDialog clickBasedInDialogByName(String text, String iconClass, int time){
         Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li"), time));
         Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
         return this;
     }
+
+    public SelectDatasetDialog clickFileInDialogByName(String text, String iconClass, int time){
+        Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/parent::span/preceding-sibling::span[contains(@class, '" + iconClass + "')]"), time));
+        Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/parent::span/preceding-sibling::span[contains(@class, '" + iconClass + "')]")));
+        return this;
+    }
+    public SelectDatasetDialog checkDialogTitle(String titleText){
+        Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]")));
+        return this;
+    }
+
 }
 

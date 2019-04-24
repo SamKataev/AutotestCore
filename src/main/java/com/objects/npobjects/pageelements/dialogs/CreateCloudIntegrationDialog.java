@@ -11,7 +11,6 @@ public class CreateCloudIntegrationDialog extends Dialog {
 
     private final By title = dialogMdcAppBarTitle("Create new");
     private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-//    private final By searchBtn = dialogMdcIconFontBtn("ic_search");
 
     private final By boxBtn = dialogMdcListItemWithTextIcon("Box", "ic_box");
     private final By dropboxBtn = dialogMdcListItemWithTextIcon("Dropbox", "ic_dropbox");
@@ -30,7 +29,6 @@ public class CreateCloudIntegrationDialog extends Dialog {
     public boolean validateElements() {
         return driver.waitUntilExist(title, 5)
                 && driver.waitUntilClickable(closeBtn)
-//                && driver.waitUntilClickable(searchBtn)
                 && driver.waitUntilClickable(boxBtn)
                 && driver.waitUntilClickable(dropboxBtn)
                 && driver.waitUntilClickable(dropboxBusinessBtn)

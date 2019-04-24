@@ -2,6 +2,7 @@ package com.service.ui.web;
 
 import com.service.ui.UIDriverWrapper;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.log4testng.Logger;
@@ -239,4 +240,12 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         return true;
     }
 
+    public void keyboardImitate(CharSequence keys) {
+        try {
+            Actions actions = new Actions(webDriver);
+            actions.sendKeys(keys).build().perform();
+        } catch (Exception e) {
+            System.out.println("Error imitating keys press");
+        }
+    }
 }

@@ -16,7 +16,7 @@ public class IntegrationsDropDown extends DropDown {
     private final By databaseBtn = dropDownMdcListItemWithText("Database");
     private final By saasBtn = dropDownMdcListItemWithText("SaaS");
 
-    public IntegrationsDropDown (SeleniumDriverWrapper driver, com.objects.npobjects.pageobjects.Main pageObj) {
+    public IntegrationsDropDown (SeleniumDriverWrapper driver, Main pageObj) {
         super(driver);
         parentPage = pageObj;
     }
