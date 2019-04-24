@@ -33,8 +33,8 @@ public class SelectDatasetDialog extends Dialog {
         Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/parent::span/preceding-sibling::span[contains(@class, '" + iconClass + "')]")));
         return this;
     }
-    public SelectDatasetDialog checkDialogTitle(String titleText){
-        Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]")));
+    public SelectDatasetDialog checkDialogTitle(String titleText, int time){
+        Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));
         return this;
     }
 
