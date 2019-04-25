@@ -18,6 +18,19 @@ public class Datasources extends NPWebTest {
 	              .clickAgViewport()
 				  .clickSave();
 	}
+		@Test
+	public void uploadFile(){
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+			      .uploadFile("C:\\Users\\User\\Downloads\\csv\\Testslemma.csv");
+		datasourceCreatePage.checkIsRendered()
+	              .clickAgViewport()
+				  .clickSave();
+		mainPage.checkObjectInDataTableByName("Testslemma",5)
+                .clickObjectInDataTableByName("Testslemma",5);
+	}
    @Test
     public void datasetGoogleAnalytics(){
 	   mainPage.checkIsRendered()
@@ -129,6 +142,21 @@ public class Datasources extends NPWebTest {
 		mainPage.checkObjectInDataTableByName("Posts Stats Lifetime",15)
 				.clickObjectInDataTableByName("Posts Stats Lifetime",15);
 	}
+    	@Test
+	public void datasetFacebookAds(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("Facebook Ads");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Ad Account Stats", "ic_facebook_ads", 20);
+		mainPage.saaSParametersDialog.checkIsRendered()
+				.clickOkBtn();
+		mainPage.checkObjectInDataTableByName("Ad Account Stats",15)
+				.clickObjectInDataTableByName("Ad Account Stats",15);
+	}
 	@Test
 	public void datasetHerokuPostgreSQL(){
 		mainPage.checkIsRendered()
@@ -175,12 +203,12 @@ public class Datasources extends NPWebTest {
 				.clickIntegration("Yandex Disk");
 		mainPage.selectDatasetDialog.checkIsRendered()
 				.checkDialogTitle("Yandex Disk",10)
-		        .clickFileInDialogByName("Non-residential outliers.csv", "ic_file", 10);
+		        .clickFileInDialogByName("Testslemma.csv", "ic_file", 10);
 		datasourceCreatePage.checkIsRendered()
 				 .clickAgViewport()
 				 .clickSave();
-		mainPage.checkObjectInDataTableByName("Non-residential outliers",15)
-				.clickObjectInDataTableByName("Non-residential outliers",15);
+		mainPage.checkObjectInDataTableByName("Testslemma",15)
+				.clickObjectInDataTableByName("Testslemma",15);
 	}
 	@Test
 	public void datasetOneDrive(){
@@ -197,6 +225,182 @@ public class Datasources extends NPWebTest {
 				.clickSave();
 		mainPage.checkObjectInDataTableByName("Testslemma",15)
 				.clickObjectInDataTableByName("Testslemma",15);
+	}
+    	@Test
+    public void datasetBox(){
+        mainPage.checkIsRendered()
+                .openDatasources()
+                .clickPlusBtn();
+        mainPage.selectDatasourceTypeDialog.checkIsRendered()
+                .clickIntegration("Box");
+        mainPage.selectDatasetDialog.checkIsRendered()
+                .checkDialogTitle("Box",10)
+                .clickBasedInDialogByName("Testslemma.xls", "ic_file", 10);
+        datasourceCreatePage.checkIsRendered()
+                .clickAgViewport()
+                .clickSave();
+        mainPage.checkObjectInDataTableByName("Testslemma",15)
+                .clickObjectInDataTableByName("Testslemma",15);
+    }
+    @Test
+    public void datasetGoogleDrive(){
+        mainPage.checkIsRendered()
+                .openDatasources()
+                .clickPlusBtn();
+        mainPage.selectDatasourceTypeDialog.checkIsRendered()
+                .clickIntegration("Google Drive");
+        mainPage.selectDatasetDialog.checkIsRendered()
+                .checkDialogTitle("Google Drive",10)
+                .clickFileInDialogByName("Test team number two.csv", "ic_file", 10);
+        datasourceCreatePage.checkIsRendered()
+                .clickAgViewport()
+                .clickSave();
+        mainPage.checkObjectInDataTableByName("Test team number two",15)
+                .clickObjectInDataTableByName("Test team number two",15);
+    }
+    	@Test
+	public void datasetPostgreSQLIntegrations(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("PostgreSQL");
+		datasourceCreatePage.checkIsRendered()
+				.clickCodeMirror();
+		driver.keyboardImitate("SELECT * from action_log");
+		datasourceCreatePage.clickQueryBtn()
+				.clickAgViewport()
+				.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				.clickSaveIcon();
+		mainPage.renameDialog.checkIsRendered()
+				.enterInputName("action_log")
+				.clickRenameBtn();
+		mainPage.checkObjectInDataTableByName("action_log",15)
+				.clickObjectInDataTableByName("action_log",15);
+	}
+    	@Test
+	public void datasetQuickBooks(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("QuickBooks");
+		mainPage.selectDatasetDialog.checkIsRendered()
+	            .checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Activities", "ic_quickbooks", 20);
+		mainPage.checkObjectInDataTableByName("Activities",15)
+				.clickObjectInDataTableByName("Activities",15);
+	}
+    @Test
+    public void datasetIntercom(){
+        mainPage.checkIsRendered()
+                .openDatasources()
+                .clickPlusBtn();
+        mainPage.selectDatasourceTypeDialog.checkIsRendered()
+                .clickIntegration("Intercom");
+        mainPage.selectDatasetDialog.checkIsRendered()
+                .checkDialogTitle("Select dataset",10)
+                .clickBasedInDialogByName("Leads", "ic_intercom", 20);
+        mainPage.checkObjectInDataTableByName("Leads",15)
+                .clickObjectInDataTableByName("Leads",15);
+    }
+	@Test
+	public void datasetPayPal(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("PayPal");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Invoices", "ic_paypal", 20);
+		mainPage.checkObjectInDataTableByName("Invoices",15)
+				.clickObjectInDataTableByName("Invoices",15);
+	}
+	@Test
+	public void datasetPipedrive(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("New People");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Deals", "ic_pipedrive", 20);
+		mainPage.saaSParametersDialog.checkIsRendered()
+     			.clickOkBtn();
+		mainPage.checkObjectInDataTableByName("Deals",15)
+				.clickObjectInDataTableByName("Deals",15);
+	}
+	@Test
+	public void datasetInstagram(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("Instagram");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Instagram Overview", "ic_instagram", 20);
+		mainPage.checkObjectInDataTableByName("Instagram Overview",15)
+				.clickObjectInDataTableByName("Instagram Overview",15);
+	}
+//	   @Test
+//    public void datasetGoogleAds(){
+//	   	//коннектор в разработке
+//	   mainPage.checkIsRendered()
+//			   .openDatasources()
+//			   .clickPlusBtn();
+//	   mainPage.selectDatasourceTypeDialog.checkIsRendered()
+//               .clickIntegration("Google Analytics");
+//	   mainPage.selectDatasetDialog.checkIsRendered()
+//			   .checkDialogTitle("Select dataset",10)
+//	           .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
+//	   driver.switchToMainWindow();
+//	   mainPage.checkObjectInDataTableByName("",5)
+//			   .clickObjectInDataTableByName("",5);
+//   }
+//	@Test
+//	public void datasetStripe(){
+//		//Stripe коннектор в разработке
+//		mainPage.checkIsRendered()
+//				.openDatasources()
+//				.clickPlusBtn();
+//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+//				.clickIntegration("Stripe");
+//		mainPage.selectDatasetDialog.checkIsRendered()
+//				.checkDialogTitle("Select dataset",10)
+//				.clickBasedInDialogByName("", "", 10);
+//		driver.switchToMainWindow();
+//		mainPage.checkObjectInDataTableByName("",5)
+//				.clickObjectInDataTableByName("",5);
+//	}
+		@Test
+	public void datasetInfusionsoft(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("Infusionsoft");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Appointments", "ic_infusionsoft", 20);
+		mainPage.checkObjectInDataTableByName("Appointments",15)
+				.clickObjectInDataTableByName("Appointments",15);
+	}
+			@Test
+	public void datasetWrike(){
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("Wrike");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("Contacts", "ic_wrike", 20);
+		mainPage.checkObjectInDataTableByName("Contacts",15)
+				.clickObjectInDataTableByName("Contacts",15);
 	}
 }
 

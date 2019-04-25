@@ -124,27 +124,27 @@ public class Integrations extends NPWebTest {
         mainPage.checkObjectInDataTableByName("QuickBooks",5)
                 .clickObjectInDataTableByName("QuickBooks",5);
     }
-//    @Test
-//    public void createStripe(){
-//        mainPage.checkIsRendered()
-//                .clickAdminBtn()
-//                .openIntegrations()
-//                .clickPlusBtn();
-//        mainPage.integrationsDropDown.checkIsRendered()
-//                .clickSaasBtn();
-//        mainPage.createSaasDialog.checkIsRendered()
-//                .clickStripeBtn();
-//        //Stripe коннектор в разработке
-//        driver.switchWindow(1);
-//        stripeLogIn.checkIsRendered()
-//                .clicksignInStripeBtn()
-//                .enterEmailInput("developer@newpeople.co")
-//                .enterPassInput("q1w2E#R$")
-//                .clicksignInStripeAccountBtn();
-//        driver.switchToMainWindow();
-//        mainPage.checkObjectInDataTableByName("Stripe",5)
-//                .clickObjectInDataTableByName("Stripe",5);
-//    }
+////    @Test
+////    public void createStripe(){
+////        mainPage.checkIsRendered()
+////                .clickAdminBtn()
+////                .openIntegrations()
+////                .clickPlusBtn();
+////        mainPage.integrationsDropDown.checkIsRendered()
+////                .clickSaasBtn();
+////        mainPage.createSaasDialog.checkIsRendered()
+////                .clickStripeBtn();
+////        //Stripe коннектор в разработке
+////        driver.switchWindow(1);
+////        stripeLogIn.checkIsRendered()
+////                .clicksignInStripeBtn()
+////                .enterEmailInput("developer@newpeople.co")
+////                .enterPassInput("q1w2E#R$")
+////                .clicksignInStripeAccountBtn();
+////        driver.switchToMainWindow();
+////        mainPage.checkObjectInDataTableByName("Stripe",5)
+////                .clickObjectInDataTableByName("Stripe",5);
+////    }
         @Test
     public void createZendesk(){
         mainPage.checkIsRendered()
@@ -253,6 +253,26 @@ public class Integrations extends NPWebTest {
                 driver.switchToMainWindow();
         mainPage.checkObjectInDataTableByName("Facebook (Andrey)",5)
                 .clickObjectInDataTableByName("Facebook (Andrey)",5);
+    }
+    @Test
+    public void createFacebookAds(){
+        mainPage.checkIsRendered()
+                .clickAdminBtn()
+                .openIntegrations()
+                .clickPlusBtn();
+        mainPage.integrationsDropDown.checkIsRendered()
+                .clickSaasBtn();
+        mainPage.createSaasDialog.checkIsRendered()
+                .clickFacebookAdsBtn();
+        //FacebookAds
+        driver.switchWindow(1);
+        facebookLogIn.checkIsRendered()
+                .enterEmailInput("developer@newpeople.co")
+                .enterPassInput("Qwerty12345")
+                .clickSignInBtn();
+        driver.switchToMainWindow();
+        mainPage.checkObjectInDataTableByName("Facebook Ads",5)
+                .clickObjectInDataTableByName("Facebook Ads",5);
     }
     @Test
     public void createInstagram(){

@@ -4,6 +4,7 @@ import com.objects.npobjects.pageobjects.Main;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class SelectDatasourceTypeDialog extends Dialog {
 
@@ -44,6 +45,11 @@ public class SelectDatasourceTypeDialog extends Dialog {
 
 	public SelectDatasourceTypeDialog clickIntegration(String text){
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '"+ text +"')]")));
+		return this;
+	}
+	public SelectDatasourceTypeDialog uploadFile(String text){
+		WebElement fileInput = driver.getElement(By.xpath("//input[@class='file-input']"));
+		fileInput.sendKeys(text);
 		return this;
 	}
 }

@@ -24,11 +24,12 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
     private String baseUrl;
 
     enum WaiterType {EXIST, VISIBLE, CLICKABLE, DISAPPEAR, FRAMEAVAILABLE}
+
     private int defaultWaitTime;
 
     private static final Logger log = Logger.getLogger(SeleniumDriverWrapper.class);
 
-    public boolean init(){
+    public boolean init() {
         if (initDriver()) {
             defaultWaitTime = 5;
             webDriver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -41,154 +42,152 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
 
     abstract boolean initDriver();
 
-    public void close(){
+    public void close() {
         try {
             webDriver.close();
-        }catch (WebDriverException e){
+        } catch (WebDriverException e) {
             System.out.println("error closing web driver in driver wrapper: " + e.getMessage());
         }
     }
 
-    public boolean click(Object object){
-        if (object instanceof By){
-           return clickWebElement((By) object, defaultWaitTime);
-        }
-        else{
+    public boolean click(Object object) {
+        if (object instanceof By) {
+            return clickWebElement((By) object, defaultWaitTime);
+        } else {
             System.out.println("wrong argument type");
         }
         return false;
     }
 
-    public boolean type(Object object, String text){
-        if (object instanceof By){
+    public boolean type(Object object, String text) {
+        if (object instanceof By) {
             return typeWebElement((By) object, text, defaultWaitTime);
-        }
-        else{
+        } else {
             System.out.println("wrong argument type");
         }
         return false;
     }
 
-    private boolean clickWebElement(By locator, int time){
+    private boolean clickWebElement(By locator, int time) {
         if (waitUntilClickable(locator, time)) {
             try {
                 getElement(locator, time).click();
                 return true;
-            }catch (WebDriverException e){
-                System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,200) + "...");
+            } catch (WebDriverException e) {
+                System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0, 200) + "...");
             }
         }
         return false;
     }
 
-    private boolean typeWebElement(By locator, String text, int time){
-        if (waitUntilClickable(locator, time)){
+    private boolean typeWebElement(By locator, String text, int time) {
+        if (waitUntilClickable(locator, time)) {
             try {
                 WebElement el = getElement(locator, time);
                 el.clear();
                 el.sendKeys(text);
                 return true;
-            }catch (WebDriverException e){
-                System.out.println("error typing in web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0,35) + "...");
+            } catch (WebDriverException e) {
+                System.out.println("error typing in web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0, 35) + "...");
             }
         }
         return false;
     }
 
-    public void goToUrl(String url){
+    public void goToUrl(String url) {
         webDriver.get(url);
     }
 
-    public void refreshPage(){
+    public void refreshPage() {
         goToUrl(getCurrentUrl());
     }
 
-    public boolean checkCurrentUrl(String url){
+    public boolean checkCurrentUrl(String url) {
         return webDriver.getCurrentUrl().equals(url);
     }
 
-    public void switchWindow(){
+    public void switchWindow() {
         switchWindow(defaultWaitTime);
     }
 
-    public void switchWindow(int timeout){
+    public void switchWindow(int timeout) {
         try {
             Thread.sleep(timeout * 1000);
             switchRandomWindow();
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             System.out.println("error switching window with timeout" + timeout + " seconds: " + e.getMessage());
         }
     }
 
-    public void switchRandomWindow(){ //switches to random window other than main window
+    public void switchRandomWindow() { //switches to random window other than main window
         Set<String> windowHandles = webDriver.getWindowHandles();
-        if (windowHandles.size() > 1){
-            windowHandles.forEach((handler)-> {
-                if (!handler.equals(mainHandle)){
+        if (windowHandles.size() > 1) {
+            windowHandles.forEach((handler) -> {
+                if (!handler.equals(mainHandle)) {
                     webDriver.switchTo().window(handler);
                 }
             });
         }
     }
 
-    public void switchToMainWindow(){
+    public void switchToMainWindow() {
         webDriver.switchTo().window(getMainWindowHandle());
     }
 
-    public String getBaseUrl(){
+    public String getBaseUrl() {
         return baseUrl;
     }
 
-    public String getCurrentUrl(){
+    public String getCurrentUrl() {
         return webDriver.getCurrentUrl();
     }
 
-    public void setBaseUrl(String url){
+    public void setBaseUrl(String url) {
         baseUrl = url;
     }
 
-    public String getMainWindowHandle(){
+    public String getMainWindowHandle() {
         return mainHandle;
     }
 
-    public void setMainWindowHandle(String arg){
+    public void setMainWindowHandle(String arg) {
         mainHandle = arg;
     }
 
-    public String getCurrentWindowHandle(){
+    public String getCurrentWindowHandle() {
         return webDriver.getWindowHandle();
     }
 
-    public void setDefaultWaitTime(int time){
+    public void setDefaultWaitTime(int time) {
         defaultWaitTime = time;
     }
 
-    public int getDefaultWaitTime(){
+    public int getDefaultWaitTime() {
         return defaultWaitTime;
     }
 
-    public WebElement getElement(By locator, int time){
+    public WebElement getElement(By locator, int time) {
         return waitUntilExist(locator, time) ? webDriver.findElement(locator) : null;
     }
 
-    public WebElement getElement(By locator){
+    public WebElement getElement(By locator) {
         return getElement(locator, defaultWaitTime);
     }
 
-    public boolean waitUntilExist(By locator, int time){
+    public boolean waitUntilExist(By locator, int time) {
         return waitUntilConditions(locator, time, WaiterType.EXIST);
     }
 
-    public boolean waitUntilExist(By locator){
-       return waitUntilExist(locator, defaultWaitTime);
+    public boolean waitUntilExist(By locator) {
+        return waitUntilExist(locator, defaultWaitTime);
     }
 
     public boolean waitUntilVisible(By locator, int time) {
-       return waitUntilConditions(locator, time, WaiterType.VISIBLE);
+        return waitUntilConditions(locator, time, WaiterType.VISIBLE);
     }
 
     public boolean waitUntilVisible(By locator) {
-       return waitUntilVisible(locator, defaultWaitTime);
+        return waitUntilVisible(locator, defaultWaitTime);
     }
 
     public boolean waitUntilClickable(By locator, int time) {
@@ -248,4 +247,5 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
             System.out.println("Error imitating keys press");
         }
     }
+
 }
