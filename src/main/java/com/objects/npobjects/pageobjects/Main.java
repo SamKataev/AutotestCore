@@ -29,6 +29,7 @@ public class Main extends NPPageObject {
 	public RenameDialog renameDialog;
 
 
+
     private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
 	private final By createBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Create')]/parent::button[contains(@class, 'mdc-fab')]");
 	private final By addBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Add')]/parent::button[contains(@class, 'mdc-fab')]");
