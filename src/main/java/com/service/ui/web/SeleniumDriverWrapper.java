@@ -134,6 +134,19 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper {
         webDriver.switchTo().window(getMainWindowHandle());
     }
 
+    public void switchToDefaultContent() {
+        switchToDefaultContent(defaultWaitTime);
+    }
+
+    public void switchToDefaultContent(int timeout) {
+        try {
+            Thread.sleep(timeout * 1000);
+            webDriver.switchTo().defaultContent();
+        } catch (InterruptedException e){
+            System.out.println("error switching to default content with timeout" + timeout + " seconds: " + e.getMessage());
+        }
+    }
+
     public String getBaseUrl() {
         return baseUrl;
     }
