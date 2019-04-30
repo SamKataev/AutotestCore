@@ -1,11 +1,15 @@
 package com.service.ui;
 
 
-public interface UIDriverWrapper {
+public interface UIDriverWrapper
+{
 
-    boolean init();
-    void close();
-    boolean click(Object o);
-    boolean type(Object o, String text);
+	boolean init();
+
+	void close();
+
+	boolean click(Object o);
+
+	boolean type(Object o, String text);
 
 }

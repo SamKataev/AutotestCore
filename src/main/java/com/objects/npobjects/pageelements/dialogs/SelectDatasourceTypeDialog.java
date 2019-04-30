@@ -6,7 +6,8 @@ import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class SelectDatasourceTypeDialog extends Dialog {
+public class SelectDatasourceTypeDialog extends Dialog
+{
 
 	private Main parentPage;
 
@@ -15,39 +16,47 @@ public class SelectDatasourceTypeDialog extends Dialog {
 	private final By fileByUrlBtn = dialogMdcListItemWithTextIcon("File by URL", "ic_link");
 	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
 
-	public SelectDatasourceTypeDialog(SeleniumDriverWrapper driver, Main pageObj) {
+	public SelectDatasourceTypeDialog(SeleniumDriverWrapper driver, Main pageObj)
+	{
 		super(driver);
 		parentPage = pageObj;
 	}
 
 	@Override
-	public boolean validateElements() {
-	  return driver.waitUntilExist(title, 5)
-				 && driver.waitUntilClickable(closeBtn)
-				 && driver.waitUntilClickable(uploadFileBtn)
-				 && driver.waitUntilClickable(fileByUrlBtn);
+	public boolean validateElements()
+	{
+		return driver.waitUntilExist(title, 5)
+				  && driver.waitUntilClickable(closeBtn)
+				  && driver.waitUntilClickable(uploadFileBtn)
+				  && driver.waitUntilClickable(fileByUrlBtn);
 	}
 
-	public SelectDatasourceTypeDialog checkIsRendered() {
+	public SelectDatasourceTypeDialog checkIsRendered()
+	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public SelectDatasourceTypeDialog clickUploadFile(){
+	public SelectDatasourceTypeDialog clickUploadFile()
+	{
 		Assert.assertTrue(driver.click(uploadFileBtn));
 		return this;
 	}
 
-	public SelectDatasourceTypeDialog clickFileByUrl(){
+	public SelectDatasourceTypeDialog clickFileByUrl()
+	{
 		Assert.assertTrue(driver.click(fileByUrlBtn));
 		return this;
 	}
 
-	public SelectDatasourceTypeDialog clickIntegration(String text){
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '"+ text +"')]")));
+	public SelectDatasourceTypeDialog clickIntegration(String text)
+	{
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
-	public SelectDatasourceTypeDialog uploadFile(String text){
+
+	public SelectDatasourceTypeDialog uploadFile(String text)
+	{
 		WebElement fileInput = driver.getElement(By.xpath("//input[@class='file-input']"));
 		fileInput.sendKeys(text);
 		return this;

@@ -7,18 +7,21 @@ import com.tests.ui.WebTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
-public abstract class NPWebTest extends WebTest {
+public abstract class NPWebTest extends WebTest
+{
 
 	Auth authPage;
 	Main mainPage;
 	DatasourceCreate datasourceCreatePage;
+	ReportsCreate reportsPage;
+
 	FacebookLogIn facebookLogIn;
 	InstagramLogIn instagramLogIn;
 	PayPalLogIn payPalLogIn;
 	IntercomLogIn intercomLogIn;
 	PipedriveLogIn pipedriveLogIn;
 	ZendeskLogIn zendeskLogIn;
-    WrikeLogIn wrikeLogIn;
+	WrikeLogIn wrikeLogIn;
 	InfusionsoftLogIn infusionsoftLogIn;
 	StripeLogIn stripeLogIn;
 	QuickbooksLogIn quickbooksLogIn;
@@ -34,7 +37,8 @@ public abstract class NPWebTest extends WebTest {
 	 * each test class starts from reports page if not overridden
 	 */
 	@BeforeClass
-	public void startNPTestClass(){
+	public void startNPTestClass()
+	{
 		openReportsPage();
 	}
 
@@ -42,22 +46,25 @@ public abstract class NPWebTest extends WebTest {
 	 * each test method starts from reports page if not overridden
 	 */
 	@BeforeMethod
-	public void startNPTestMethod(){
+	public void startNPTestMethod()
+	{
 		openReportsPage();
 	}
 
 	@Override
-	protected void initPages() {
+	protected void initPages()
+	{
 		authPage = new Auth(driver);
 		mainPage = new Main(driver);
 		datasourceCreatePage = new DatasourceCreate(driver);
+		reportsPage = new ReportsCreate(driver);
 		facebookLogIn = new FacebookLogIn(driver);
 		instagramLogIn = new InstagramLogIn(driver);
 		payPalLogIn = new PayPalLogIn(driver);
-		intercomLogIn=new IntercomLogIn(driver);
-		pipedriveLogIn=new PipedriveLogIn(driver);
+		intercomLogIn = new IntercomLogIn(driver);
+		pipedriveLogIn = new PipedriveLogIn(driver);
 		zendeskLogIn = new ZendeskLogIn(driver);
-        wrikeLogIn = new WrikeLogIn(driver);
+		wrikeLogIn = new WrikeLogIn(driver);
 		infusionsoftLogIn = new InfusionsoftLogIn(driver);
 		stripeLogIn = new StripeLogIn(driver);
 		quickbooksLogIn = new QuickbooksLogIn(driver);
@@ -66,29 +73,34 @@ public abstract class NPWebTest extends WebTest {
 		googleLogIn = new GoogleLogIn(driver);
 		oneDriveLogIn = new OneDriveLogIn(driver);
 		yandexDiskLogIn = new YandexDiskLogIn(driver);
-		hubSpotLogIn= new HubSpotLogIn(driver);
+		hubSpotLogIn = new HubSpotLogIn(driver);
 		mailChimpLogIn = new MailChimpLogIn(driver);
 	}
 
-	protected void openHomePage(){
-	  driver.goToUrl(driver.getBaseUrl()+"/home");
+	protected void openHomePage()
+	{
+		driver.goToUrl(driver.getBaseUrl() + "/home");
 	}
 
-	protected void openReportsPage(){
-		driver.goToUrl(driver.getBaseUrl()+"/reports");
-		if (!driver.getCurrentUrl().equals(driver.getBaseUrl()+"/reports")) {
+	protected void openReportsPage()
+	{
+		driver.goToUrl(driver.getBaseUrl() + "/reports");
+		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/reports"))
+		{
 			logIn();
 		}
 	}
 
-	protected void logIn(){
+	protected void logIn()
+	{
 		authPage.open();
 		authPage.logIn(TestProperties.getNPProp("email"), TestProperties.getNPProp("password"));
 		mainPage.checkIsLoggedIn();
 		changeTeam(TestProperties.getNPProp("team"));
 	}
 
-	protected void changeTeam(String name){
+	protected void changeTeam(String name)
+	{
 		mainPage.checkIsRendered();
 		mainPage.selectTeam(name);
 	}

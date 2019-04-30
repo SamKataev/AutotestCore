@@ -5,23 +5,27 @@ import com.objects.slemmaobjects.pageobjects.Dashboard;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.testng.Assert;
 
-public class ChartFiltersPanel extends PageElement{
+public class ChartFiltersPanel extends PageElement
+{
 
-    private Dashboard parentPage;
+	private Dashboard parentPage;
 
-    public ChartFiltersPanel(SeleniumDriverWrapper driver, Dashboard pageObj){
-        super(driver);
-        parentPage = pageObj;
-    }
+	public ChartFiltersPanel(SeleniumDriverWrapper driver, Dashboard pageObj)
+	{
+		super(driver);
+		parentPage = pageObj;
+	}
 
-    @Override
-    public boolean validateElements() {
-        return true;
-    }
+	@Override
+	public boolean validateElements()
+	{
+		return true;
+	}
 
-    public ChartFiltersPanel checkIsRendered(){
-        Assert.assertTrue(validateElements());
-        return this;
-    }
+	public ChartFiltersPanel checkIsRendered()
+	{
+		Assert.assertTrue(validateElements());
+		return this;
+	}
 
 }

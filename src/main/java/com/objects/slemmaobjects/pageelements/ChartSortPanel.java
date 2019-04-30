@@ -6,23 +6,27 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class ChartSortPanel extends PageElement{
+public class ChartSortPanel extends PageElement
+{
 
-    private Dashboard parentPage;
+	private Dashboard parentPage;
 
-    public ChartSortPanel(SeleniumDriverWrapper driver, Dashboard pageObj){
-        super(driver);
-        parentPage = pageObj;
-    }
+	public ChartSortPanel(SeleniumDriverWrapper driver, Dashboard pageObj)
+	{
+		super(driver);
+		parentPage = pageObj;
+	}
 
-    @Override
-    public boolean validateElements() {
-        return true;
-    }
+	@Override
+	public boolean validateElements()
+	{
+		return true;
+	}
 
-    public ChartSortPanel checkIsRendered(){
-        Assert.assertTrue(validateElements());
-        return this;
-    }
+	public ChartSortPanel checkIsRendered()
+	{
+		Assert.assertTrue(validateElements());
+		return this;
+	}
 
 }

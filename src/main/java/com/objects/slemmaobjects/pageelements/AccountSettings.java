@@ -6,31 +6,36 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class AccountSettings extends PageElement {
+public class AccountSettings extends PageElement
+{
 
-    private Home parentPage;
+	private Home parentPage;
 
-    private final By email = classSelector("account-panel__email");
-    private final By teamsList = classSelector("account-panel__teams");
+	private final By email = classSelector("account-panel__email");
+	private final By teamsList = classSelector("account-panel__teams");
 
 
-    public AccountSettings(SeleniumDriverWrapper driver, Home pageObj){
-        super(driver);
-        parentPage = pageObj ;
-    }
+	public AccountSettings(SeleniumDriverWrapper driver, Home pageObj)
+	{
+		super(driver);
+		parentPage = pageObj;
+	}
 
-    @Override
-    public boolean validateElements() {
-        return driver.waitUntilExist(email, 10)
-                && driver.waitUntilExist(teamsList, 10);
-    }
+	@Override
+	public boolean validateElements()
+	{
+		return driver.waitUntilExist(email, 10)
+				  && driver.waitUntilExist(teamsList, 10);
+	}
 
-    public AccountSettings checkIsRendered(){
-        Assert.assertTrue(validateElements());
-        return this;
-    }
+	public AccountSettings checkIsRendered()
+	{
+		Assert.assertTrue(validateElements());
+		return this;
+	}
 
-    public void selectTeam(String name){
-        Assert.assertTrue(driver.click(classWithTextInParentClass("account-panel__teams", "listitem__content", name)));
-    }
+	public void selectTeam(String name)
+	{
+		Assert.assertTrue(driver.click(classWithTextInParentClass("account-panel__teams", "listitem__content", name)));
+	}
 }

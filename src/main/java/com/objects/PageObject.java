@@ -7,22 +7,26 @@ import com.service.ui.web.SeleniumDriverWrapper;
  * inherited classes should specify their url in constructor
  * inherited classes can contain complex page elements inherited from PageElement
  */
-public abstract class PageObject extends WebElementsContainer {
+public abstract class PageObject extends WebElementsContainer
+{
 
-    protected String url;
+	protected String url;
 
-    public PageObject(String pageUrl, SeleniumDriverWrapper webDriver){
-        super(webDriver);
-        url = pageUrl;
-    }
+	public PageObject(String pageUrl, SeleniumDriverWrapper webDriver)
+	{
+		super(webDriver);
+		url = pageUrl;
+	}
 
-    public PageObject open(){
-        driver.goToUrl(url);
-        return this;
-    }
+	public PageObject open()
+	{
+		driver.goToUrl(url);
+		return this;
+	}
 
-    public String getUrl(){
-        return url;
-    }
+	public String getUrl()
+	{
+		return url;
+	}
 
 }

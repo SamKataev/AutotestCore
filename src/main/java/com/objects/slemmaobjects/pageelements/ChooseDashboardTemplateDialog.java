@@ -6,26 +6,30 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class ChooseDashboardTemplateDialog extends PageElement {
+public class ChooseDashboardTemplateDialog extends PageElement
+{
 
-    private Home parentPage;
+	private Home parentPage;
 
-    private final By labelTemplates = classContainsText("listitem__content", "Templates");
-    private final By blankBtn = classSelector("listitem_blank-object");
+	private final By labelTemplates = classContainsText("listitem__content", "Templates");
+	private final By blankBtn = classSelector("listitem_blank-object");
 
-    public ChooseDashboardTemplateDialog(SeleniumDriverWrapper driver, Home pageObj) {
-        super(driver);
-        parentPage = pageObj;
-    }
+	public ChooseDashboardTemplateDialog(SeleniumDriverWrapper driver, Home pageObj)
+	{
+		super(driver);
+		parentPage = pageObj;
+	}
 
-    @Override
-    public boolean validateElements() {
-        return driver.waitUntilExist(labelTemplates)
-                && driver.waitUntilExist(blankBtn);
-    }
+	@Override
+	public boolean validateElements()
+	{
+		return driver.waitUntilExist(labelTemplates)
+				  && driver.waitUntilExist(blankBtn);
+	}
 
-    public ChooseDashboardTemplateDialog checkIsRendered(){
-        Assert.assertTrue(validateElements());
-        return this;
-    }
+	public ChooseDashboardTemplateDialog checkIsRendered()
+	{
+		Assert.assertTrue(validateElements());
+		return this;
+	}
 }

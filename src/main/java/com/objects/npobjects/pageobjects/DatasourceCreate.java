@@ -6,7 +6,8 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class DatasourceCreate extends NPPageObject {
+public class DatasourceCreate extends NPPageObject
+{
 
 	private By saveBtn = mdcIconFontBtn("ic_save");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
@@ -16,41 +17,53 @@ public class DatasourceCreate extends NPPageObject {
 	private By codeMirror = By.xpath("//div[contains(@class,'CodeMirror cm-s-default')]");
 
 
-
-	public DatasourceCreate(SeleniumDriverWrapper driver){
-	  super(driver.getBaseUrl()+"/datasources/new", driver);
+	public DatasourceCreate(SeleniumDriverWrapper driver)
+	{
+		super(driver.getBaseUrl() + "/datasources/new", driver);
 	}
 
 	@Override
-	public boolean validateElements(){
+	public boolean validateElements()
+	{
 		return
 //				driver.waitUntilClickable(agViewport, 10)
 //				  &&
-				driver.waitUntilClickable(settingsBtn, 10);
+				  driver.waitUntilClickable(settingsBtn, 10);
 	}
 
-	public DatasourceCreate checkIsRendered() {
+	public DatasourceCreate checkIsRendered()
+	{
 		super.checkIsRendered();
 		return this;
 	}
-	public DatasourceCreate clickSave() {
+
+	public DatasourceCreate clickSave()
+	{
 		Assert.assertTrue(driver.click(saveBtn));
 		return this;
 	}
-	public DatasourceCreate clickMoreBtn() {
+
+	public DatasourceCreate clickMoreBtn()
+	{
 		Assert.assertTrue(driver.click(moreBtn));
 		return this;
 	}
-	public DatasourceCreate clickCodeMirror() {
+
+	public DatasourceCreate clickCodeMirror()
+	{
 		Assert.assertTrue(driver.click(codeMirror));
 		return this;
 	}
-	public DatasourceCreate clickQueryBtn() {
+
+	public DatasourceCreate clickQueryBtn()
+	{
 		Assert.assertTrue(driver.click(queryBtn));
 		return this;
 	}
-	public DatasourceCreate clickAgViewport() {
-		Assert.assertTrue(driver.waitUntilClickable(agViewport,10));
+
+	public DatasourceCreate clickAgViewport()
+	{
+		Assert.assertTrue(driver.waitUntilClickable(agViewport, 10));
 		return this;
 	}
 }
