@@ -7,42 +7,41 @@ import org.testng.annotations.Test;
 public class Reports extends NPWebTest
 {
 
-//    @Test
-//    public void insertSimpleObject() {
-//        mainPage.checkIsRendered()
-//                .openReports()
-//                .clickPlusBtn();
-//        reportsPage.checkIsRendered()
-//                .clickInsertBtn();
-//        reportsPage.chooseObjectDropDown.checkIsRendered()
-//                .uploadFile("C:\\Users\\User\\Downloads\\1472058088_05.jpg")
-//                .clickObjectByName("Text","ic_text");
-//        reportsPage.clickInsertBtn();
-//        reportsPage.chooseObjectDropDown.checkIsRendered()
-//                .clickObjectByName("URL embed","ic_code");
-//        reportsPage.hTTPSwebAddressDialog.checkIsRendered()
-//                .urlInput("http://app.newpeople.co/reports/1287")
-//                .clickOk();
-//        reportsPage.clickInsertBtn();
-//        reportsPage.chooseObjectDropDown.checkIsRendered()
-//                .clickObjectByName("Chart template","ic_chart_template");
-//        mainPage.selectDatasetDialog.checkIsRendered()
-//                .checkDialogTitle("Select connection",10)
-//                .clickFileInDialogByName("New People", "ic_pipedrive", 20)
-//                .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
-//        pause(5); //дописать вейтер или нахождение элемента на странице
-//        reportsPage.checkIsRendered()
-//                   .clickMoreBtn();
-//        mainPage.moreOptionDropDown.checkIsRendered()
-//                .clickSaveIcon();
-//        reportsPage.saveAsDialog.checkIsRendered()
-//                .enterInputName("SimpleObject")
-//                .clickOkBtn();
-//        reportsPage.clickCloseBtn();
-//        mainPage.checkObjectInDataTableByName("SimpleObject",15)
-//                .clickObjectInDataTableByName("SimpleObject",15);
-//   }
-
+    @Test
+    public void insertSimpleObject() {
+        mainPage.checkIsRendered()
+                .openReports()
+                .clickPlusBtn();
+        reportsPage.checkIsRendered()
+                .clickInsertBtn();
+        reportsPage.chooseObjectDropDown.checkIsRendered()
+                .uploadFile("C:\\Users\\User\\Downloads\\1472058088_05.jpg")
+                .clickObjectByName("Text","ic_text");
+        reportsPage.clickInsertBtn();
+        reportsPage.chooseObjectDropDown.checkIsRendered()
+                .clickObjectByName("URL embed","ic_code");
+        reportsPage.hTTPSwebAddressDialog.checkIsRendered()
+                .urlInput("http://app.newpeople.co/reports/1287")
+                .clickOk();
+        reportsPage.clickInsertBtn();
+        reportsPage.chooseObjectDropDown.checkIsRendered()
+                .clickObjectByName("Chart template","ic_chart_template");
+        mainPage.selectDatasetDialog.checkIsRendered()
+                .checkDialogTitle("Select connection",10)
+                .clickFileInDialogByName("New People", "ic_pipedrive", 20)
+                .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
+        pause(5); //дописать вейтер или нахождение элемента на странице
+        reportsPage.checkIsRendered()
+                   .clickMoreBtn();
+        mainPage.moreOptionDropDown.checkIsRendered()
+                .clickSaveIcon();
+        reportsPage.saveAsDialog.checkIsRendered()
+                .enterInputName("SimpleObject")
+                .clickOkBtn();
+        reportsPage.clickCloseBtn();
+        mainPage.checkObjectInDataTableByName("SimpleObject",15)
+                .clickObjectInDataTableByName("SimpleObject",15);
+   }
 	@Test
 	public void insertAllTypeChart()
 	{
@@ -257,7 +256,7 @@ public class Reports extends NPWebTest
 				  .clickDimensionInPanelByName("Company")
 				  .clickAddMeasureBtn()
 				  .clickDimensionInPanelByName("Number of records");
-		//Scatter plot
+	//	Scatter plot
 		reportsPage.checkIsRendered()
 				  .clickInsertBtn();
 		reportsPage.chooseObjectDropDown.checkIsRendered()
@@ -273,7 +272,7 @@ public class Reports extends NPWebTest
 				  .clickDimensionInPanelByName("Number of records")
 				  .clickAddMeasureBtn()
 				  .clickDimensionInPanelByName("Value1");
-		reportsPage.calculationDropDown.checkIsRendered()
+		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Sum");
 		//Funnel
 		reportsPage.checkIsRendered()
@@ -341,4 +340,51 @@ public class Reports extends NPWebTest
 		mainPage.checkObjectInDataTableByName("AllTypeChart", 15)
 				  .clickObjectInDataTableByName("AllTypeChart", 15);
 	}
+	    @Test
+    public void addCalculatedMeasure()
+		 {
+			 mainPage.checkIsRendered()
+						.openReports()
+						.clickPlusBtn();
+			 reportsPage.checkIsRendered()
+						.clickInsertBtn();
+			 reportsPage.chooseObjectDropDown.checkIsRendered()
+						.clickObjectByName("Chart", "ic_chart");
+			 reportsPage.selectaDataSourceDialog.checkIsRendered()
+						.clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
+			 reportsPage.chooseaChartTypeDialog.checkIsRendered()
+						.clickTypeChartInDialogByName("Column", "ic_column", 10);
+			 reportsPage.settingsChartDialog.checkIsRendered()
+						.clickAddDimensionBtn()
+						.clickDimensionInPanelByName("Company")
+						.clickItemInPanelByName("Data source", "ic_csv");
+			 reportsPage.reportDropDown.checkIsRendered()
+						.clickObjectByName("Calculations");
+			 reportsPage.сalculationsAddDialog.checkIsRendered()
+						.clickAddBtn();
+			 reportsPage.reportDropDown.checkIsRendered()
+						.clickObjectByName("Measure Names");
+			 reportsPage.calculationsDialog.checkIsRendered()
+						.clickMetricsByName("Number of records")
+						.clickCodeMirror();
+			 driver.keyboardImitate("*"); //переписать после доработки выч. метрик
+			 reportsPage.calculationsDialog.clickMetricsByName("Number of records")
+						.clickSaveBtn();
+			 reportsPage.сalculationsAddDialog.clickСloseBtn();
+			 reportsPage.settingsChartDialog.clickAddMeasureBtn()
+						.clickDimensionInPanelByName("New measure");
+			 		//сохранение отчета
+		reportsPage.checkIsRendered()
+				  .clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("CalculatedMeasure")
+				  .clickOkBtn();
+		reportsPage.clickCloseBtn();
+		mainPage.checkObjectInDataTableByName("CalculatedMeasure", 15)
+				  .clickObjectInDataTableByName("CalculatedMeasure", 15);
+	}
+
+
 }

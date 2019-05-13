@@ -12,10 +12,10 @@ public class SettingsChartDialog extends Dialog
 	private ReportsCreate parentPage;
 
 	private final By title = panelMdcAppBarTitle("Settings");
-	private final By addDimensionBtn = panelMdcListItemWithTextIcon("Add a dimension", "ic_add");
-	private final By addMeasureBtn = panelMdcListItemWithTextIcon("Add a Measure", "ic_add");
-	private final By addFilterBtn = panelMdcListItemWithTextIcon("Add a Filter", "ic_add");
-	private final By addFieldBtn = panelMdcListItemWithTextIcon("Add a field", "ic_add");
+	private final By addDimensionBtn = panelMdcListItemWithTextIconBtn("Add a dimension", "ic_add");
+	private final By addMeasureBtn = panelMdcListItemWithTextIconBtn("Add a Measure", "ic_add");
+	private final By addFilterBtn = panelMdcListItemWithTextIconBtn("Add a Filter", "ic_add");
+	private final By addFieldBtn = panelMdcListItemWithTextIconBtn("Add a field", "ic_add");
 
 	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
@@ -65,6 +65,13 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
+
+	public SettingsChartDialog clickItemInPanelByName(String text, String iconClass)
+	{
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item') and contains(text(), '" + text + "')]/preceding::span[contains(@class, '" + iconClass + "')]/parent::li")));
+		return this;
+	}
+
 }
 
 

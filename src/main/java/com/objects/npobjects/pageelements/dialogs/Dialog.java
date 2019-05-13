@@ -111,8 +111,25 @@ public abstract class Dialog extends PageElement
 		return By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
 	}
 
-	protected By panelMdcListItemWithTextIcon(String text, String iconClass)
+	protected By panelMdcListItemWithTextIconBtn(String text, String iconClass)
 	{
 		return By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
+	}
+
+	//app-bar btn
+	protected By dialogMdcAppBarTextBtn(String btnText)
+	{
+		return By.xpath("//div[contains(@class, 'mdc-top-app-bar')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
+	}
+
+	//settings-node
+	protected By nodeMdcAppBarTitle(String titleText)
+	{
+		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
+	}
+	//settings-node select
+	protected By nodeMdcAppBarSelect(String titleText, String valueText)
+	{
+		return By.xpath("//div[contains(@class, 'settings-node')]//h3[contains(@class, text-field__label) and contains(text(), '" + titleText + "')]/following::div[contains(@class, 'select__native-control-container')]//option[contains(@value, '" + valueText + "')]");
 	}
 }

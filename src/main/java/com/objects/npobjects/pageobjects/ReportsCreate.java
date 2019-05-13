@@ -1,13 +1,9 @@
 package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
-import com.objects.npobjects.pageelements.dialogs.HTTPSwebAddressDialog;
+import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.ChooseObjectDropDown;
-import com.objects.npobjects.pageelements.dialogs.SaveAsDialog;
-import com.objects.npobjects.pageelements.dialogs.ChooseaChartTypeDialog;
-import com.objects.npobjects.pageelements.dialogs.SelectaDataSourceDialog;
-import com.objects.npobjects.pageelements.dialogs.SettingsChartDialog;
-import com.objects.npobjects.pageelements.dropdown.СalculationDropDown;
+import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
 
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
@@ -22,7 +18,9 @@ public class ReportsCreate extends NPPageObject
 	public ChooseaChartTypeDialog chooseaChartTypeDialog;
 	public SelectaDataSourceDialog selectaDataSourceDialog;
 	public SettingsChartDialog settingsChartDialog;
-	public СalculationDropDown calculationDropDown;
+	public ReportDropDown reportDropDown;
+	public CalculationsAddDialog сalculationsAddDialog;
+	public CalculationsDialog calculationsDialog;
 
 	private final By closeBtn = mdcIconFontBtn("ic_close");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
@@ -40,7 +38,9 @@ public class ReportsCreate extends NPPageObject
 		chooseaChartTypeDialog = new ChooseaChartTypeDialog(driver, this);
 		selectaDataSourceDialog = new SelectaDataSourceDialog(driver, this);
 		settingsChartDialog = new SettingsChartDialog(driver, this);
-		calculationDropDown = new СalculationDropDown(driver, this);
+		reportDropDown = new ReportDropDown(driver, this);
+		сalculationsAddDialog = new CalculationsAddDialog(driver, this);
+		calculationsDialog = new CalculationsDialog(driver, this);
 	}
 
 	@Override

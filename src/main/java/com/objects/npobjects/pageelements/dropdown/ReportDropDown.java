@@ -6,14 +6,14 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class СalculationDropDown extends DropDown
+public class ReportDropDown extends DropDown
 {
 	private ReportsCreate parentPage;
 
 	private final By sumBtn = dropDownMdcListItemWithText("Sum");
 	private final By averageBtn = dropDownMdcListItemWithText("Average");
 
-	public СalculationDropDown(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public ReportDropDown(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -22,17 +22,16 @@ public class СalculationDropDown extends DropDown
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilClickable(sumBtn, 5)
-				  && driver.waitUntilClickable(averageBtn);
+		return true;
 	}
 
-	public СalculationDropDown checkIsRendered()
+	public ReportDropDown checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public СalculationDropDown clickObjectByName(String text)
+	public ReportDropDown clickObjectByName(String text)
 	{
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'np-menu dropdown_vis')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li")));
 		return this;
