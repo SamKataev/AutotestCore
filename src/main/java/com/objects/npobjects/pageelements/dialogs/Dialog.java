@@ -128,8 +128,8 @@ public abstract class Dialog extends PageElement
 		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
 	}
 	//settings-node select
-	protected By nodeMdcAppBarSelect(String titleText, String valueText)
+	protected By nodeMdcAppBarSelect(String titleText)
 	{
-		return By.xpath("//div[contains(@class, 'settings-node')]//h3[contains(@class, text-field__label) and contains(text(), '" + titleText + "')]/following::div[contains(@class, 'select__native-control-container')]//option[contains(@value, '" + valueText + "')]");
+		return By.xpath("//option[contains(text(), '" + titleText + "')]//parent::select[@class='select__native-control']");
 	}
 }

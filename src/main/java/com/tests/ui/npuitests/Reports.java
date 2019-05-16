@@ -386,5 +386,29 @@ public class Reports extends NPWebTest
 				  .clickObjectInDataTableByName("CalculatedMeasure", 15);
 	}
 
-
+	@Test
+    public void checkFloatingTiled()
+	{
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
+		reportsPage.checkIsRendered();
+		reportsPage.settingsReportDialog.checkIsRendered()
+				  .createSelectSize().selectByVisibleText("Floating");
+		reportsPage.settingsReportDialog.FloatingNodeFalse();
+		reportsPage.settingsReportDialog.checkIsRendered()
+			  .createSelectSize().selectByVisibleText("Tiled");
+		reportsPage.settingsReportDialog.tiledNodeTrue();
+//		сохранение отчета
+		reportsPage.checkIsRendered()
+				  .clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("Tiled")
+				  .clickOkBtn();
+		reportsPage.clickCloseBtn();
+		mainPage.checkObjectInDataTableByName("Tiled", 15)
+				  .clickObjectInDataTableByName("Tiled", 15);
+	}
 }

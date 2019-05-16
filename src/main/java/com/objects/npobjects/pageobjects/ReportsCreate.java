@@ -7,6 +7,7 @@ import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
 
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 public class ReportsCreate extends NPPageObject
@@ -21,6 +22,7 @@ public class ReportsCreate extends NPPageObject
 	public ReportDropDown reportDropDown;
 	public CalculationsAddDialog сalculationsAddDialog;
 	public CalculationsDialog calculationsDialog;
+	public SettingsReportDialog settingsReportDialog;
 
 	private final By closeBtn = mdcIconFontBtn("ic_close");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
@@ -28,6 +30,7 @@ public class ReportsCreate extends NPPageObject
 	private By insertBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Insert')]/parent::button[contains(@class, 'mdc-fab')]");
 	private By panelcontent = By.xpath("//div[@class='panelcontent']");
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
+	private By editBtn = mdcTextBtn("Edit");
 
 	public ReportsCreate(SeleniumDriverWrapper driver)
 	{
@@ -41,6 +44,7 @@ public class ReportsCreate extends NPPageObject
 		reportDropDown = new ReportDropDown(driver, this);
 		сalculationsAddDialog = new CalculationsAddDialog(driver, this);
 		calculationsDialog = new CalculationsDialog(driver, this);
+		settingsReportDialog = new SettingsReportDialog(driver, this);
 	}
 
 	@Override
@@ -77,6 +81,11 @@ public class ReportsCreate extends NPPageObject
 	public ReportsCreate clickInsertBtn()
 	{
 		Assert.assertTrue(driver.click(insertBtn));
+		return this;
+	}
+	public ReportsCreate clickEditBtn()
+	{
+		Assert.assertTrue(driver.click(editBtn));
 		return this;
 	}
 }
