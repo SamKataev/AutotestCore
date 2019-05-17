@@ -393,7 +393,7 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("Instagram Overview", 15);
 	}
 
-	//	   @Test
+//		   @Test
 //    public void datasetGoogleAds(){
 //	   	//коннектор в разработке
 //	   mainPage.checkIsRendered()
@@ -451,6 +451,115 @@ public class Datasources extends NPWebTest
 				  .clickBasedInDialogByName("Contacts", "ic_wrike", 20);
 		mainPage.checkObjectInDataTableByName("Contacts", 15)
 				  .clickObjectInDataTableByName("Contacts", 15);
+	}
+
+	@Test
+public void renameMeusureDimentionCloud()
+//TestTeam2
+{
+	mainPage.checkIsRendered()
+			  .openDatasources()
+			  .clickObjectInDataTableByName("Testslemma", 5);
+	datasourceCreatePage.checkIsRendered();
+	datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+			  .clickField()
+			  .clickFieldsInDialogByName("Name","ic_dimension",15);
+	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+			  .fieldNameInput("Name1")
+			  .okBtn();
+	datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("Summ","ic_measure",15);
+	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+			  .fieldNameInput("Summ1")
+			  .okBtn();
+	datasourceCreatePage.clickMoreBtn();
+	mainPage.moreOptionDropDown.checkIsRendered()
+			  .clickSaveIcon();
+	//		проверка в отчете источника применение изменений
+	mainPage.checkIsRendered()
+			  .openReports()
+			  .clickObjectInDataTableByName("OneDriveSource", 5);
+	reportsPage.checkIsRendered()
+			  .clickEditBtn()
+			  .clickChartByName("changeMeusureDimention");
+	reportsPage.settingsChartDialog.checkIsRendered()
+			  .clickDimensionInPanelByName("Name1")
+			  .clickDimensionInPanelByName("Summ1");
+	reportsPage.clickCloseBtn();
+	//обратное переименование метрик
+	mainPage.checkIsRendered()
+			  .openDatasources()
+			  .clickObjectInDataTableByName("Testslemma", 5);
+	datasourceCreatePage.checkIsRendered();
+	datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+			  .clickField()
+			  .clickFieldsInDialogByName("Name1","ic_dimension",15);
+	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+			  .fieldNameInput("Name")
+			  .okBtn();
+	datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("Summ1","ic_measure",15);
+	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+			  .fieldNameInput("Summ")
+			  .okBtn();
+	datasourceCreatePage.clickMoreBtn();
+	mainPage.moreOptionDropDown.checkIsRendered()
+			  .clickSaveIcon();
+}
+	@Test
+	public void renameMeusureDimentionDB()
+//TestTeam2
+	{
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("dc3qukco027qjj", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport()
+				  .clickSettingsBtn();
+		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+				  .clickField()
+				  .clickFieldsInDialogByName("data_varchar","ic_dimension",15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("data_varchar1")
+				  .okBtn();
+		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("month","ic_measure",15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("month1")
+				  .okBtn();
+		datasourceCreatePage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		pause(5);
+		//		проверка в отчете источника применение изменений
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickObjectInDataTableByName("DBSource", 5);
+		reportsPage.checkIsRendered()
+				  .clickEditBtn()
+				  .clickChartByName("changeMeusureDimention");
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .clickDimensionInPanelByName("data_varchar1")
+				  .clickDimensionInPanelByName("month1");
+		reportsPage.clickCloseBtn();
+		//обратное переименование метрик
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("dc3qukco027qjj", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport()
+				  .clickSettingsBtn();
+		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+				  .clickField()
+				  .clickFieldsInDialogByName("data_varchar1","ic_dimension",15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("data_varchar")
+				  .okBtn();
+		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("month1","ic_measure",15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("month")
+				  .okBtn();
+		datasourceCreatePage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		pause(5);
 	}
 }
 

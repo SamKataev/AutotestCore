@@ -50,7 +50,7 @@ public class ReportsCreate extends NPPageObject
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilClickable(settingsBtn, 10)
+		return driver.waitUntilExist(settingsBtn, 10)
 				  && driver.waitUntilExist(moreBtn);
 	}
 
@@ -86,6 +86,12 @@ public class ReportsCreate extends NPPageObject
 	public ReportsCreate clickEditBtn()
 	{
 		Assert.assertTrue(driver.click(editBtn));
+		return this;
+	}
+	public ReportsCreate clickChartByName(String text)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]")));
 		return this;
 	}
 }

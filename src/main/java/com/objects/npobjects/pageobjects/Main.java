@@ -112,7 +112,7 @@ public class Main extends NPPageObject
 				  && driver.waitUntilClickable(liAlerts)
 				  && driver.waitUntilClickable(liSettings)
 				  && driver.waitUntilClickable(liHelp)
-				  && driver.waitUntilClickable(liAdmin)
+				  && driver.waitUntilExist(liAdmin)
 				  && driver.waitUntilClickable(liSignOut);
 	}
 
@@ -273,6 +273,7 @@ public class Main extends NPPageObject
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
+
 
 	public Main clickObjectInDialogByName(String name, int time)
 	{
