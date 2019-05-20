@@ -482,8 +482,8 @@ public void renameMeusureDimentionCloud()
 			  .clickEditBtn()
 			  .clickChartByName("changeMeusureDimention");
 	reportsPage.settingsChartDialog.checkIsRendered()
-			  .clickDimensionInPanelByName("Name1")
-			  .clickDimensionInPanelByName("Summ1");
+			  .checkDimensionInPanelByName("Name1")
+			  .checkDimensionInPanelByName("Summ1");
 	reportsPage.clickCloseBtn();
 	//обратное переименование метрик
 	mainPage.checkIsRendered()
@@ -536,8 +536,8 @@ public void renameMeusureDimentionCloud()
 				  .clickEditBtn()
 				  .clickChartByName("changeMeusureDimention");
 		reportsPage.settingsChartDialog.checkIsRendered()
-				  .clickDimensionInPanelByName("data_varchar1")
-				  .clickDimensionInPanelByName("month1");
+				  .checkDimensionInPanelByName("data_varchar1")
+				  .checkDimensionInPanelByName("month1");
 		reportsPage.clickCloseBtn();
 		//обратное переименование метрик
 		mainPage.checkIsRendered()

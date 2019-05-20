@@ -65,7 +65,11 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
-
+	public SettingsChartDialog checkDimensionInPanelByName(String text)
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
+		return this;
+	}
 	public SettingsChartDialog clickItemInPanelByName(String text, String iconClass)
 	{
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item') and contains(text(), '" + text + "')]/preceding::span[contains(@class, '" + iconClass + "')]/parent::li")));

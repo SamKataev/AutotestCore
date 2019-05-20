@@ -411,4 +411,22 @@ public class Reports extends NPWebTest
 		mainPage.checkObjectInDataTableByName("Tiled", 15)
 				  .clickObjectInDataTableByName("Tiled", 15);
 	}
+	@Test
+	public void checkDateRangeFilter()
+	{
+		//TestTeam2
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickObjectInDataTableByName("filter", 5);
+		reportsPage.checkIsRendered()
+				  .clickFilterBtn();
+		reportsPage.reportFiltersDialog.checkIsRendered()
+				  .clickFilterInNodeByName("Date range - (Last 365 days)");
+		reportsPage.dataRangeSelectionDialog.checkIsRendered()
+				  .clickFilterInNodeByName("Last N weeks")
+				  .clickDoneBtn();
+		reportsPage.reportFiltersDialog.checkIsRendered()
+				  .checkFilterInNodeByName("Date range - (Last 365 weeks)");
+		reportsPage.clickCloseBtn();
+	}
 }

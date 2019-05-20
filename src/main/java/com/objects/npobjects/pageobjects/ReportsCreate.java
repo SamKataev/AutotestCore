@@ -23,6 +23,8 @@ public class ReportsCreate extends NPPageObject
 	public CalculationsAddDialog сalculationsAddDialog;
 	public CalculationsDialog calculationsDialog;
 	public SettingsReportDialog settingsReportDialog;
+	public ReportFiltersDialog reportFiltersDialog;
+	public DataRangeSelectionDialog dataRangeSelectionDialog;
 
 	private final By closeBtn = mdcIconFontBtn("ic_close");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
@@ -31,6 +33,7 @@ public class ReportsCreate extends NPPageObject
 	private By panelcontent = By.xpath("//div[@class='panelcontent']");
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
 	private By editBtn = mdcTextBtn("Edit");
+	private By filterBtn = mdcIconFontBtn("ic_filter");
 
 	public ReportsCreate(SeleniumDriverWrapper driver)
 	{
@@ -45,6 +48,8 @@ public class ReportsCreate extends NPPageObject
 		сalculationsAddDialog = new CalculationsAddDialog(driver, this);
 		calculationsDialog = new CalculationsDialog(driver, this);
 		settingsReportDialog = new SettingsReportDialog(driver, this);
+		reportFiltersDialog = new ReportFiltersDialog (driver,this);
+		dataRangeSelectionDialog = new DataRangeSelectionDialog (driver, this);
 	}
 
 	@Override
@@ -94,4 +99,10 @@ public class ReportsCreate extends NPPageObject
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]")));
 		return this;
 	}
+	public ReportsCreate clickFilterBtn()
+	{
+		Assert.assertTrue(driver.click(filterBtn));
+		return this;
+	}
+
 }
