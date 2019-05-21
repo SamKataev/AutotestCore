@@ -104,5 +104,9 @@ public class ReportsCreate extends NPPageObject
 		Assert.assertTrue(driver.click(filterBtn));
 		return this;
 	}
-
+	public ReportsCreate checkChartNoDate()
+	{
+		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]")));
+		return this;
+	}
 }

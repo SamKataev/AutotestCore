@@ -149,4 +149,9 @@ public abstract class Dialog extends PageElement
 	{
 		return By.xpath("//div[contains(@class, 'settings-node')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
 	}
+	//node btn with icon
+	protected By nodeMdcListItemWithTextIconBtn(String text, String iconClass)
+	{
+		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
+	}
 }

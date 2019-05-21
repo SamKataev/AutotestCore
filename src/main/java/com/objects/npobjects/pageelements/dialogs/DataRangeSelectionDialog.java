@@ -51,5 +51,4 @@ public class DataRangeSelectionDialog extends Dialog
 	Assert.assertTrue(driver.click(doneBtn));
 	return this;
 	}
-//обратное переименование фильтра
 }

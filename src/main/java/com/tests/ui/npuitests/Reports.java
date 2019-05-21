@@ -429,4 +429,35 @@ public class Reports extends NPWebTest
 				  .checkFilterInNodeByName("Date range - (Last 365 weeks)");
 		reportsPage.clickCloseBtn();
 	}
+	@Test
+	public void checkSelectFilter()
+	{
+		//TestTeam2
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickObjectInDataTableByName("filter2", 5);
+		reportsPage.checkIsRendered()
+				  .clickEditBtn()
+				  .clickFilterBtn();
+		reportsPage.reportFiltersDialog.checkIsRendered()
+				  .checkDialogTitle("Report Filters", 5)
+				  .clickAddBtn()
+				  .checkDialogTitle("Choose item", 5)
+				  .clickFieldsInDialogByName("Name", "ic_dimension",5);
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Select");
+		reportsPage.reportFiltersDialog.checkIsRendered()
+				  .checkDialogTitle("Dependent objects",5)
+				  .clickFieldsInDialogByName("Entire report","ic_radiobutton_checked",5)
+				  .clickDoneBtn()
+				  .clickFieldsInDialogByName("One","ic_check_box_outline",5)
+				  .clickFieldsInDialogByName("Two","ic_check_box_outline",5)
+				  .clickFieldsInDialogByName("Three","ic_check_box_outline",5)
+		        .clickDoneBtn()
+				  .checkDialogTitle("Report Filters",5)
+				  .checkFilterInNodeByName("Name - (3 of 9)");
+		reportsPage.checkIsRendered()
+				  .checkChartNoDate()
+				  .clickCloseBtn();
+	}
 }
