@@ -10,6 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
+import java.sql.Time;
+
 public class ReportsCreate extends NPPageObject
 {
 
@@ -34,6 +36,7 @@ public class ReportsCreate extends NPPageObject
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
 	private By editBtn = mdcTextBtn("Edit");
 	private By filterBtn = mdcIconFontBtn("ic_filter");
+
 
 	public ReportsCreate(SeleniumDriverWrapper driver)
 	{
@@ -107,6 +110,11 @@ public class ReportsCreate extends NPPageObject
 	public ReportsCreate checkChartNoDate()
 	{
 		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]")));
+		return this;
+	}
+	public ReportsCreate contextClick(String text,  int time)
+	{
+		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]"),10));
 		return this;
 	}
 }

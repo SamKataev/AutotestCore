@@ -36,4 +36,11 @@ public class ReportDropDown extends DropDown
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'np-menu dropdown_vis')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li")));
 		return this;
 	}
+	public ReportDropDown checkSelectedItem(String text, String iconClass)
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'np-menu dropdown_vis')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
+		return this;
+
+	}
+
 }

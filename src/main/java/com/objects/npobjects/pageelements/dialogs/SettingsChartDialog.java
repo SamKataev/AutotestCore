@@ -6,16 +6,22 @@ import com.objects.npobjects.pageobjects.ReportsCreate;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class SettingsChartDialog extends Dialog
 {
 	private ReportsCreate parentPage;
+	public Select selectSize;
 
 	private final By title = panelMdcAppBarTitle("Settings");
 	private final By addDimensionBtn = panelMdcListItemWithTextIconBtn("Add a dimension", "ic_add");
 	private final By addMeasureBtn = panelMdcListItemWithTextIconBtn("Add a Measure", "ic_add");
 	private final By addFilterBtn = panelMdcListItemWithTextIconBtn("Add a Filter", "ic_add");
 	private final By addFieldBtn = panelMdcListItemWithTextIconBtn("Add a field", "ic_add");
+	private final By styleBtn = tabScrollerMdcWithTextBtn("Style");
+	private final By fontSizeSelect = nodeMdcAppBarSelect("8");
+	private final By lineWeight = mdcIconFontBtn ("ic_line_weight");
 
 	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
@@ -53,7 +59,12 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(addFilterBtn));
 		return this;
 	}
-
+	public SettingsChartDialog clickTabStyleBtn()
+	{
+		Assert.assertTrue(driver.waitUntilClickable(styleBtn));
+		Assert.assertTrue(driver.click(styleBtn));
+		return this;
+	}
 	public SettingsChartDialog clickAddFieldBtn()
 	{
 		Assert.assertTrue(driver.click(addFieldBtn));
@@ -76,6 +87,26 @@ public class SettingsChartDialog extends Dialog
 		return this;
 	}
 
+	public SettingsChartDialog clickAccordionByName(String text)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '"+text+"')]")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '"+text+"')]")));
+		return this;
+	}
+
+	public Select createSelectSize()
+	{
+		WebElement selectElem = driver.getElement(fontSizeSelect);
+		Select selectSize = new Select(selectElem);
+		return selectSize;
+	}
+
+	public SettingsChartDialog clickLineWeight()
+	{
+		Assert.assertTrue(driver.waitUntilClickable(lineWeight));
+		Assert.assertTrue(driver.click(lineWeight));
+		return this;
+	}
 }
 
 

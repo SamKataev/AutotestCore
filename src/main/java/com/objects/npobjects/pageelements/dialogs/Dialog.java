@@ -154,4 +154,10 @@ public abstract class Dialog extends PageElement
 	{
 		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
 	}
+	//mdc-tab-scroller
+	protected By tabScrollerMdcWithTextBtn(String text)
+	{
+		return By.xpath("//div[contains(@class, 'mdc-tab-scroller')]//span[contains(@class, 'mdc-tab__text-label') and contains(text(), '"+text+"')]//ancestor::button");
+	}
+
 }

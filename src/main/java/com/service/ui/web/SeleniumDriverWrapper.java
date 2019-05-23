@@ -4,6 +4,7 @@ import com.service.ui.UIDriverWrapper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.log4testng.Logger;
 
@@ -338,6 +339,14 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		{
 			System.out.println("Error imitating keys press");
 		}
+	}
+
+	public boolean contextClick (By locator, int time)
+	{
+		Actions action = new Actions(webDriver);
+		WebElement element = webDriver.findElement(locator);
+		action.contextClick(element).perform();
+		return false;
 	}
 
 }

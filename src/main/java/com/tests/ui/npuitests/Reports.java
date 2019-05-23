@@ -1,6 +1,8 @@
 package com.tests.ui.npuitests;
 
 import com.service.ui.web.SeleniumDriverWrapper;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -418,8 +420,9 @@ public class Reports extends NPWebTest
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickObjectInDataTableByName("filter", 5);
-		reportsPage.checkIsRendered()
-				  .clickFilterBtn();
+		reportsPage.checkIsRendered();
+		pause(5);
+		reportsPage.clickFilterBtn();
 		reportsPage.reportFiltersDialog.checkIsRendered()
 				  .clickFilterInNodeByName("Date range - (Last 365 days)");
 		reportsPage.dataRangeSelectionDialog.checkIsRendered()
@@ -459,5 +462,32 @@ public class Reports extends NPWebTest
 		reportsPage.checkIsRendered()
 				  .checkChartNoDate()
 				  .clickCloseBtn();
+	}
+		@Test
+	public void CopyStyle()
+	{
+		//TestTeam2
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickObjectInDataTableByName("filter", 5);
+		reportsPage.checkIsRendered()
+				  .clickEditBtn()
+	           .contextClick("jira tickets",10);
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Copy style");
+		reportsPage.checkIsRendered()
+				  .contextClick("chart Copy style",10);
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Paste style");
+		//проверка применимости стилей
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .clickTabStyleBtn()
+				  .clickAccordionByName("Title");
+		Assert.assertTrue(reportsPage.settingsChartDialog.createSelectSize().getFirstSelectedOption().getText().matches("24"));
+		reportsPage.settingsChartDialog.clickAccordionByName("General")
+		        .clickLineWeight();
+		reportsPage.reportDropDown.checkIsRendered()
+				  .checkSelectedItem("4px","ic_check");
+      reportsPage.clickCloseBtn();
 	}
 }

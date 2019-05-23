@@ -76,6 +76,7 @@ public class CreateIntegrationDialog extends Dialog
 		return this;
 	}
 
+
 	public CreateIntegrationDialog enterUsername(String text)
 	{
 		Assert.assertTrue(driver.type(usernameField, text));
