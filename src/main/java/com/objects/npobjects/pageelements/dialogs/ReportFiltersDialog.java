@@ -60,7 +60,7 @@ public class ReportFiltersDialog extends Dialog
 	}
 	public ReportFiltersDialog checkDialogTitle(String titleText, int time)
 	{
-		org.testng.Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));
 		return this;
 	}
 }

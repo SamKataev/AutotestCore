@@ -13,6 +13,8 @@ public class FieldSettingsDialog extends Dialog
 	private final By fieldName = dialogNpTextFieldWithLabel ("Field name");
 	private final By okBtn = dialogMdcTextBtn("OK");
 	private final By cancelBtn = dialogMdcTextBtn("Cancel");
+	private final By splitBtn = dialogMdcListItemWithTextIcon("Split...","ic_check_box_outline");
+	private final By separatorInput = dialogNpTextFieldWithLabel("Set multi dimension separator");
 
 	public FieldSettingsDialog (SeleniumDriverWrapper driver, DatasourceCreate pageObj)
 	{
@@ -51,6 +53,21 @@ public class FieldSettingsDialog extends Dialog
 		return this;
 	}
 
-
+	public FieldSettingsDialog clickSplitBtn()
+	{
+		Assert.assertTrue(driver.click(splitBtn));
+		return this;
+	}
+	public FieldSettingsDialog separatorInput(String text)
+	{
+		Assert.assertTrue(driver.type(separatorInput, text));
+		return this;
+	}
+	public FieldSettingsDialog clickFieldsInDialogByName(String text, String iconClass, int time)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li"), time));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
+		return this;
+	}
 }
 

@@ -32,8 +32,7 @@ public class SettingsChartDialog extends Dialog
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilExist(title, 5)
-				  && driver.waitUntilClickable(addFilterBtn);
+		return true;
 	}
 
 	public SettingsChartDialog checkIsRendered()
@@ -105,6 +104,11 @@ public class SettingsChartDialog extends Dialog
 	{
 		Assert.assertTrue(driver.waitUntilClickable(lineWeight));
 		Assert.assertTrue(driver.click(lineWeight));
+		return this;
+	}
+	public SettingsChartDialog checkDialogTitle(String titleText, int time)
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));
 		return this;
 	}
 }

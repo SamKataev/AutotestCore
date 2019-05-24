@@ -36,6 +36,7 @@ public class ReportsCreate extends NPPageObject
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
 	private By editBtn = mdcTextBtn("Edit");
 	private By filterBtn = mdcIconFontBtn("ic_filter");
+	private final By refreshBtn = mdcIconFontBtn("ic_refresh");
 
 
 	public ReportsCreate(SeleniumDriverWrapper driver)
@@ -109,12 +110,17 @@ public class ReportsCreate extends NPPageObject
 	}
 	public ReportsCreate checkChartNoDate()
 	{
-		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]")));
+		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]"),5));
 		return this;
 	}
 	public ReportsCreate contextClick(String text,  int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]"),10));
+		return this;
+	}
+	public ReportsCreate clickRefreshBtn()
+	{
+		Assert.assertTrue(driver.click(refreshBtn));
 		return this;
 	}
 }

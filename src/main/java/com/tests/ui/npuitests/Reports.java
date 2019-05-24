@@ -8,9 +8,9 @@ import org.testng.annotations.Test;
 
 public class Reports extends NPWebTest
 {
-
     @Test
-    public void insertSimpleObject() {
+    public void insertSimpleObject()
+    {
         mainPage.checkIsRendered()
                 .openReports()
                 .clickPlusBtn();
@@ -357,8 +357,11 @@ public class Reports extends NPWebTest
 			 reportsPage.chooseaChartTypeDialog.checkIsRendered()
 						.clickTypeChartInDialogByName("Column", "ic_column", 10);
 			 reportsPage.settingsChartDialog.checkIsRendered()
+						.checkDialogTitle("Settings",2)
 						.clickAddDimensionBtn()
+						.checkDialogTitle("Choose dimension",5)
 						.clickDimensionInPanelByName("Company")
+						.checkDialogTitle("Settings",2)
 						.clickItemInPanelByName("Data source", "ic_csv");
 			 reportsPage.reportDropDown.checkIsRendered()
 						.clickObjectByName("Calculations");
@@ -372,8 +375,11 @@ public class Reports extends NPWebTest
 			 driver.keyboardImitate("*"); //переписать после доработки выч. метрик
 			 reportsPage.calculationsDialog.clickMetricsByName("Number of records")
 						.clickSaveBtn();
-			 reportsPage.сalculationsAddDialog.clickСloseBtn();
-			 reportsPage.settingsChartDialog.clickAddMeasureBtn()
+			 reportsPage.сalculationsAddDialog.checkIsRendered()
+						.clickСloseBtn();
+			 reportsPage.settingsChartDialog.checkIsRendered()
+						.checkDialogTitle("Settings",2)
+			          .clickAddMeasureBtn()
 						.clickDimensionInPanelByName("New measure");
 			 		//сохранение отчета
 		reportsPage.checkIsRendered()
@@ -417,6 +423,7 @@ public class Reports extends NPWebTest
 	public void checkDateRangeFilter()
 	{
 		//TestTeam2
+      changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickObjectInDataTableByName("filter", 5);
@@ -435,7 +442,7 @@ public class Reports extends NPWebTest
 	@Test
 	public void checkSelectFilter()
 	{
-		//TestTeam2
+		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickObjectInDataTableByName("filter2", 5);
@@ -464,9 +471,9 @@ public class Reports extends NPWebTest
 				  .clickCloseBtn();
 	}
 		@Test
-	public void CopyStyle()
+	public void checkCopyStyle()
 	{
-		//TestTeam2
+     changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickObjectInDataTableByName("filter", 5);
@@ -488,6 +495,23 @@ public class Reports extends NPWebTest
 		        .clickLineWeight();
 		reportsPage.reportDropDown.checkIsRendered()
 				  .checkSelectedItem("4px","ic_check");
-      reportsPage.clickCloseBtn();
+      reportsPage.checkIsRendered()
+				  .clickCloseBtn();
 	}
+	@Test
+	public void checkChartRefresh()
+	{
+		//TestTeam2
+		changeTeam("TestTeam2");
+		mainPage.checkIsRendered()
+				   .openReports()
+				  .clickObjectInDataTableByName("filter2", 5);
+		reportsPage.checkIsRendered()
+				  .clickEditBtn()
+				  .clickChartByName("Refresh")
+				  .clickRefreshBtn()
+				  .checkChartNoDate()
+				  .clickCloseBtn();
+	}
+
 }

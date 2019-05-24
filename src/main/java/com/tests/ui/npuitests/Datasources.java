@@ -1,5 +1,8 @@
 package com.tests.ui.npuitests;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Datasources extends NPWebTest
@@ -393,36 +396,36 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("Instagram Overview", 15);
 	}
 
-//		   @Test
-//    public void datasetGoogleAds(){
-//	   	//коннектор в разработке
-//	   mainPage.checkIsRendered()
-//			   .openDatasources()
-//			   .clickPlusBtn();
-//	   mainPage.selectDatasourceTypeDialog.checkIsRendered()
-//               .clickIntegration("Google Analytics");
-//	   mainPage.selectDatasetDialog.checkIsRendered()
-//			   .checkDialogTitle("Select dataset",10)
-//	           .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
-//	   driver.switchToMainWindow();
-//	   mainPage.checkObjectInDataTableByName("",5)
-//			   .clickObjectInDataTableByName("",5);
-//   }
-//	@Test
-//	public void datasetStripe(){
-//		//Stripe коннектор в разработке
-//		mainPage.checkIsRendered()
-//				.openDatasources()
-//				.clickPlusBtn();
-//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-//				.clickIntegration("Stripe");
-//		mainPage.selectDatasetDialog.checkIsRendered()
-//				.checkDialogTitle("Select dataset",10)
-//				.clickBasedInDialogByName("", "", 10);
-//		driver.switchToMainWindow();
-//		mainPage.checkObjectInDataTableByName("",5)
-//				.clickObjectInDataTableByName("",5);
-//	}
+			   @Test
+    public void datasetGoogleAds(){
+	   	//коннектор в разработке
+	   mainPage.checkIsRendered()
+			   .openDatasources()
+			   .clickPlusBtn();
+	   mainPage.selectDatasourceTypeDialog.checkIsRendered()
+               .clickIntegration("Google Analytics");
+	   mainPage.selectDatasetDialog.checkIsRendered()
+			   .checkDialogTitle("Select dataset",10)
+	           .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
+	   driver.switchToMainWindow();
+	   mainPage.checkObjectInDataTableByName("",5)
+			   .clickObjectInDataTableByName("",5);
+   }
+	@Test
+	public void datasetStripe(){
+		//Stripe коннектор в разработке
+		mainPage.checkIsRendered()
+				.openDatasources()
+				.clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				.clickIntegration("Stripe");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				.checkDialogTitle("Select dataset",10)
+				.clickBasedInDialogByName("", "", 10);
+		driver.switchToMainWindow();
+		mainPage.checkObjectInDataTableByName("",5)
+				.clickObjectInDataTableByName("",5);
+	}
 	@Test
 	public void datasetInfusionsoft()
 	{
@@ -457,6 +460,7 @@ public class Datasources extends NPWebTest
 public void renameMeusureDimentionCloud()
 //TestTeam2
 {
+	changeTeam("TestTeam2");
 	mainPage.checkIsRendered()
 			  .openDatasources()
 			  .clickObjectInDataTableByName("Testslemma", 5);
@@ -508,6 +512,7 @@ public void renameMeusureDimentionCloud()
 	public void renameMeusureDimentionDB()
 //TestTeam2
 	{
+		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickObjectInDataTableByName("dc3qukco027qjj", 5);
@@ -561,5 +566,45 @@ public void renameMeusureDimentionCloud()
 				  .clickSaveIcon();
 		pause(5);
 	}
+	@Test
+	public void splitFileSource()
+	{
+		changeTeam("TestTeam2");
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("Non-residential outliers", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport();
+		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+				  .clickFieldsInDialogByName("Series_reference", "ic_dimension", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .clickFieldsInDialogByName("Split...","ic_check_box_outline",2)
+				  .separatorInput(",")
+				  .okBtn();
+//		String asd = driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText();
+		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));
+		datasourceCreatePage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		pause(5);
+		mainPage.clickObjectInDataTableByName("Non-residential outliers", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport();
+		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+				  .clickFieldsInDialogByName("Series_reference", "ic_dimension", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .clickFieldsInDialogByName("Split...","ic_check_box",2)
+				  .okBtn();
+//		String asd = driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText();
+		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));
+		datasourceCreatePage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		pause(5);
+		mainPage.clickObjectInDataTableByName("Non-residential outliers", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport();
+		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));
+		datasourceCreatePage.clickbackBtn();
+	}
 }
-
