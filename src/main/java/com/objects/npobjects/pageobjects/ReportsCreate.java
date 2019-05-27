@@ -36,8 +36,9 @@ public class ReportsCreate extends NPPageObject
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
 	private By editBtn = mdcTextBtn("Edit");
 	private By filterBtn = mdcIconFontBtn("ic_filter");
+	private By shareBtn = mdcIconFontBtn("ic_person_add");
 	private final By refreshBtn = mdcIconFontBtn("ic_refresh");
-
+	private By editTextBtn = mdcIconFontBtn("ic_edit");
 
 	public ReportsCreate(SeleniumDriverWrapper driver)
 	{
@@ -123,4 +124,25 @@ public class ReportsCreate extends NPPageObject
 		Assert.assertTrue(driver.click(refreshBtn));
 		return this;
 	}
+//	public ReportsCreate doubleClick(  int time)
+//	{
+//		Assert.assertFalse(driver.doubleClick(By.xpath("//textarea[contains(@class,'text-block__user-select')]/ancestor::div[contains(@class,'blockcontainer')]"),10));
+//		return this;
+//	}
+	public ReportsCreate clickShareBtn()
+	{
+		Assert.assertTrue(driver.click(shareBtn));
+		return this;
+	}
+
+//	public ReportsCreate сlickText( )
+//	{
+//		Assert.assertTrue(driver.click(By.xpath("//textarea[contains(@class,'text-block__user-select')]/ancestor::div[contains(@class,'blockcontainer')]")));
+//		return this;
+//	}
+   public ReportsCreate clickEditTextBtn()
+{
+	Assert.assertTrue(driver.click(editTextBtn));
+	return this;
+}
 }

@@ -513,5 +513,39 @@ public class Reports extends NPWebTest
 				  .checkChartNoDate()
 				  .clickCloseBtn();
 	}
+	@Test
+	public void createShare ()
+	{
+	    mainPage.checkIsRendered()
+          .openReports()
+					.clickPlusBtn();
+	    reportsPage.checkIsRendered()
+           .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("Text","ic_text");
+		reportsPage.checkIsRendered()
+		        .clickEditTextBtn();
+		driver.keyboardImitate("Здесь вставляется новый текст!");
+		reportsPage.checkIsRendered()
+				  .clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+					 .enterInputName("shareObject")
+				    .clickOk();
+		reportsPage.checkIsRendered()
+				  .clickShareBtn();
+		mainPage.addPeopleDialog.checkIsRendered()
+				  .selectPeople("s.kataev@slemma.com",2)
+				  .clickSendBtn();
+		reportsPage.clickCloseBtn();
+      mainPage.checkObjectInDataTableByName("shareObject",5)
+				  .contextClickObjectInDataTableByName("shareObject",5);
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickPermissionsIcon();
+		mainPage.permissionsDialog.checkIsRendered()
+				  .checkSelectPeople("s.kataev@slemma.com",2)
+				  .clickCloseBtn();
+	}
 
 }

@@ -24,6 +24,7 @@ public class MoreOptionDropDown extends DropDown
 	private final By detailsBtn = dropDownMdcListItemWithText("View details");
 	private final By removeBtn = dropDownMdcListItemWithText("Remove");
 	private final By saveIcon = dropDownMdcListItemWithTextIcon("Save", "ic_save");
+	private final By permissionsIcon = dropDownMdcListItemWithText("Who has access");
 
 
 	public MoreOptionDropDown(SeleniumDriverWrapper driver, Main pageObj)
@@ -54,35 +55,35 @@ public class MoreOptionDropDown extends DropDown
 		super.checkIsRendered();
 		return this;
 	}
-
 	public MoreOptionDropDown ClickRenameBtn()
 	{
 		Assert.assertTrue(driver.click(renameBtn));
 		return this;
 	}
-
 	public MoreOptionDropDown ClickDetailsBtn()
 	{
 		Assert.assertTrue(driver.click(detailsBtn));
 		return this;
 	}
-
 	public MoreOptionDropDown ClickPdfIcon()
 	{
 		Assert.assertTrue(driver.click(pdfIcon));
 		return this;
 	}
-
 	public MoreOptionDropDown ClickLinkIcon()
 	{
 		Assert.assertTrue(driver.click(linkIcon));
 		return this;
 	}
-
 	public MoreOptionDropDown clickSaveIcon()
 	{
 		Assert.assertTrue(driver.waitUntilClickable(saveIcon));
 		Assert.assertTrue(driver.click(saveIcon));
+		return this;
+	}
+	public MoreOptionDropDown clickPermissionsIcon()
+	{
+		Assert.assertTrue(driver.click(permissionsIcon));
 		return this;
 	}
 
