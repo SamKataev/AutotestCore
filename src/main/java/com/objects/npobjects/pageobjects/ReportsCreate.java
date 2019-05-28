@@ -98,6 +98,16 @@ public class ReportsCreate extends NPPageObject
 		Assert.assertTrue(driver.click(editBtn));
 		return this;
 	}
+	public ReportsCreate checkEditBtn()
+	{
+		Assert.assertTrue(driver.waitUntilExist(editBtn));
+		return this;
+	}
+	public ReportsCreate checkAbsenceEditBtn()
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//button[contains(@class, 'mdc-button--black hide') and contains(text(), 'Edit')]")));
+		return this;
+	}
 	public ReportsCreate clickChartByName(String text)
 	{
 		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]")));

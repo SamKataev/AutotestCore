@@ -4,6 +4,7 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Reports extends NPWebTest
@@ -517,7 +518,7 @@ public class Reports extends NPWebTest
 	public void createShare ()
 	{
 	    mainPage.checkIsRendered()
-          .openReports()
+               .openReports()
 					.clickPlusBtn();
 	    reportsPage.checkIsRendered()
            .clickInsertBtn();
@@ -545,6 +546,29 @@ public class Reports extends NPWebTest
 				  .clickPermissionsIcon();
 		mainPage.permissionsDialog.checkIsRendered()
 				  .checkSelectPeople("s.kataev@slemma.com",2)
+				  .clickCloseBtn();
+	}
+
+
+
+	@Test
+	public void checkPermissions()
+	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest2@mail.ru", "Q123#@!w");
+		mainPage.checkIsRendered()
+				   .openReports()
+				  .clickObjectInDataTableByName("filter", 5);
+		//проверить что есть кнопка "edit"
+		reportsPage.checkIsRendered()
+				  .checkEditBtn()
+				  .clickCloseBtn();
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickObjectInDataTableByName("filter2", 5);
+		//проверить что НЕТ кнопки "edit"
+		reportsPage.checkIsRendered()
+				  .checkAbsenceEditBtn()
 				  .clickCloseBtn();
 	}
 
