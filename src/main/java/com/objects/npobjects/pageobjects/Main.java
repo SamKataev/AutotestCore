@@ -30,6 +30,7 @@ public class Main extends NPPageObject
 	public RenameDialog renameDialog;
 	public AddPeopleDialog addPeopleDialog;
 	public PermissionsDialog permissionsDialog;
+	public LinkSharingDialog linkSharingDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -53,7 +54,6 @@ public class Main extends NPPageObject
 	private final By liSignOut = mdcListItemWithText("Sign out");
 
 
-
 	public Main(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/reports", driver);
@@ -74,8 +74,9 @@ public class Main extends NPPageObject
 		createCloudIntegrationDialog = new CreateCloudIntegrationDialog(driver, this);
 		selectDatasetDialog = new SelectDatasetDialog(driver, this);
 		renameDialog = new RenameDialog(driver, this);
-		addPeopleDialog = new AddPeopleDialog(driver,this);
-		permissionsDialog = new PermissionsDialog (driver,this);
+		addPeopleDialog = new AddPeopleDialog(driver, this);
+		permissionsDialog = new PermissionsDialog(driver, this);
+		linkSharingDialog = new LinkSharingDialog (driver, this);
 	}
 
 	@Override
@@ -286,6 +287,7 @@ public class Main extends NPPageObject
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
+
 	public Main contextClickObjectInDataTableByName(String name, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));

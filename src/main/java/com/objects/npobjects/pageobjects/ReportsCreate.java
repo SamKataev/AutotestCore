@@ -53,8 +53,8 @@ public class ReportsCreate extends NPPageObject
 		сalculationsAddDialog = new CalculationsAddDialog(driver, this);
 		calculationsDialog = new CalculationsDialog(driver, this);
 		settingsReportDialog = new SettingsReportDialog(driver, this);
-		reportFiltersDialog = new ReportFiltersDialog (driver,this);
-		dataRangeSelectionDialog = new DataRangeSelectionDialog (driver, this);
+		reportFiltersDialog = new ReportFiltersDialog(driver, this);
+		dataRangeSelectionDialog = new DataRangeSelectionDialog(driver, this);
 	}
 
 	@Override
@@ -93,48 +93,57 @@ public class ReportsCreate extends NPPageObject
 		Assert.assertTrue(driver.click(insertBtn));
 		return this;
 	}
+
 	public ReportsCreate clickEditBtn()
 	{
 		Assert.assertTrue(driver.click(editBtn));
 		return this;
 	}
+
 	public ReportsCreate checkEditBtn()
 	{
 		Assert.assertTrue(driver.waitUntilExist(editBtn));
 		return this;
 	}
+
 	public ReportsCreate checkAbsenceEditBtn()
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//button[contains(@class, 'mdc-button--black hide') and contains(text(), 'Edit')]")));
 		return this;
 	}
+
 	public ReportsCreate clickChartByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]")));
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]")));
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]")));
 		return this;
 	}
+
 	public ReportsCreate clickFilterBtn()
 	{
 		Assert.assertTrue(driver.click(filterBtn));
 		return this;
 	}
+
 	public ReportsCreate checkChartNoDate()
 	{
-		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]"),5));
+		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]"), 5));
 		return this;
 	}
-	public ReportsCreate contextClick(String text,  int time)
+
+	public ReportsCreate contextClick(String text, int time)
 	{
-		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'"+text+"')]/ancestor::div[contains(@class,'blockcontainer')]"),10));
+		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]"), 10));
 		return this;
 	}
+
 	public ReportsCreate clickRefreshBtn()
 	{
 		Assert.assertTrue(driver.click(refreshBtn));
 		return this;
 	}
-//	public ReportsCreate doubleClick(  int time)
+
+	//	public ReportsCreate doubleClick(  int time)
 //	{
 //		Assert.assertFalse(driver.doubleClick(By.xpath("//textarea[contains(@class,'text-block__user-select')]/ancestor::div[contains(@class,'blockcontainer')]"),10));
 //		return this;
@@ -145,14 +154,14 @@ public class ReportsCreate extends NPPageObject
 		return this;
 	}
 
-//	public ReportsCreate сlickText( )
+	//	public ReportsCreate сlickText( )
 //	{
 //		Assert.assertTrue(driver.click(By.xpath("//textarea[contains(@class,'text-block__user-select')]/ancestor::div[contains(@class,'blockcontainer')]")));
 //		return this;
 //	}
-   public ReportsCreate clickEditTextBtn()
-{
-	Assert.assertTrue(driver.click(editTextBtn));
-	return this;
-}
+	public ReportsCreate clickEditTextBtn()
+	{
+		Assert.assertTrue(driver.click(editTextBtn));
+		return this;
+	}
 }

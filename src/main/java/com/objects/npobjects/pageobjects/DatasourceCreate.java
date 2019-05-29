@@ -27,7 +27,7 @@ public class DatasourceCreate extends NPPageObject
 	{
 		super(driver.getBaseUrl() + "/datasources/new", driver);
 		settingsDataSourcesDialog = new SettingsDataSourcesDialog(driver, this);
-		fieldSettingsDialog = new FieldSettingsDialog(driver,this);
+		fieldSettingsDialog = new FieldSettingsDialog(driver, this);
 	}
 
 	@Override
@@ -50,11 +50,13 @@ public class DatasourceCreate extends NPPageObject
 		Assert.assertTrue(driver.click(saveBtn));
 		return this;
 	}
+
 	public DatasourceCreate clickSettingsBtn()
 	{
 		Assert.assertTrue(driver.click(settingsBtn));
 		return this;
 	}
+
 	public DatasourceCreate clickMoreBtn()
 	{
 		Assert.assertTrue(driver.click(moreBtn));
@@ -78,6 +80,7 @@ public class DatasourceCreate extends NPPageObject
 		Assert.assertTrue(driver.click(backBtn));
 		return this;
 	}
+
 	public DatasourceCreate clickAgViewport()
 	{
 		Assert.assertTrue(driver.waitUntilClickable(agViewport, 10));

@@ -341,14 +341,15 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		}
 	}
 
-	public boolean contextClick (By locator, int time)
+	public boolean contextClick(By locator, int time)
 	{
 		Actions action = new Actions(webDriver);
 		WebElement element = webDriver.findElement(locator);
 		action.contextClick(element).perform();
 		return false;
 	}
-	public boolean doubleClick (By locator, int time)
+
+	public boolean doubleClick(By locator, int time)
 	{
 		Actions action = new Actions(webDriver);
 		WebElement element = webDriver.findElement(locator);

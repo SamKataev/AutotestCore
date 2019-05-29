@@ -396,36 +396,40 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("Instagram Overview", 15);
 	}
 
-			   @Test
-    public void datasetGoogleAds(){
-	   	//коннектор в разработке
-	   mainPage.checkIsRendered()
-			   .openDatasources()
-			   .clickPlusBtn();
-	   mainPage.selectDatasourceTypeDialog.checkIsRendered()
-               .clickIntegration("Google Analytics");
-	   mainPage.selectDatasetDialog.checkIsRendered()
-			   .checkDialogTitle("Select dataset",10)
-	           .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
-	   driver.switchToMainWindow();
-	   mainPage.checkObjectInDataTableByName("",5)
-			   .clickObjectInDataTableByName("",5);
-   }
 	@Test
-	public void datasetStripe(){
+	public void datasetGoogleAds()
+	{
+		//коннектор в разработке
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickPlusBtn();
+		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+				  .clickIntegration("Google Analytics");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				  .checkDialogTitle("Select dataset", 10)
+				  .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
+		driver.switchToMainWindow();
+		mainPage.checkObjectInDataTableByName("", 5)
+				  .clickObjectInDataTableByName("", 5);
+	}
+
+	@Test
+	public void datasetStripe()
+	{
 		//Stripe коннектор в разработке
 		mainPage.checkIsRendered()
-				.openDatasources()
-				.clickPlusBtn();
+				  .openDatasources()
+				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				.clickIntegration("Stripe");
+				  .clickIntegration("Stripe");
 		mainPage.selectDatasetDialog.checkIsRendered()
-				.checkDialogTitle("Select dataset",10)
-				.clickBasedInDialogByName("", "", 10);
+				  .checkDialogTitle("Select dataset", 10)
+				  .clickBasedInDialogByName("", "", 10);
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("",5)
-				.clickObjectInDataTableByName("",5);
+		mainPage.checkObjectInDataTableByName("", 5)
+				  .clickObjectInDataTableByName("", 5);
 	}
+
 	@Test
 	public void datasetInfusionsoft()
 	{
@@ -457,57 +461,58 @@ public class Datasources extends NPWebTest
 	}
 
 	@Test
-public void renameMeusureDimentionCloud()
+	public void renameMeusureDimentionCloud()
 //TestTeam2
-{
-	changeTeam("TestTeam2");
-	mainPage.checkIsRendered()
-			  .openDatasources()
-			  .clickObjectInDataTableByName("Testslemma", 5);
-	datasourceCreatePage.checkIsRendered();
-	datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
-			  .clickField()
-			  .clickFieldsInDialogByName("Name","ic_dimension",15);
-	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
-			  .fieldNameInput("Name1")
-			  .okBtn();
-	datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("Summ","ic_measure",15);
-	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
-			  .fieldNameInput("Summ1")
-			  .okBtn();
-	datasourceCreatePage.clickMoreBtn();
-	mainPage.moreOptionDropDown.checkIsRendered()
-			  .clickSaveIcon();
-	//		проверка в отчете источника применение изменений
-	mainPage.checkIsRendered()
-			  .openReports()
-			  .clickObjectInDataTableByName("OneDriveSource", 5);
-	reportsPage.checkIsRendered()
-			  .clickEditBtn()
-			  .clickChartByName("changeMeusureDimention");
-	reportsPage.settingsChartDialog.checkIsRendered()
-			  .checkDimensionInPanelByName("Name1")
-			  .checkDimensionInPanelByName("Summ1");
-	reportsPage.clickCloseBtn();
-	//обратное переименование метрик
-	mainPage.checkIsRendered()
-			  .openDatasources()
-			  .clickObjectInDataTableByName("Testslemma", 5);
-	datasourceCreatePage.checkIsRendered();
-	datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
-			  .clickField()
-			  .clickFieldsInDialogByName("Name1","ic_dimension",15);
-	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
-			  .fieldNameInput("Name")
-			  .okBtn();
-	datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("Summ1","ic_measure",15);
-	datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
-			  .fieldNameInput("Summ")
-			  .okBtn();
-	datasourceCreatePage.clickMoreBtn();
-	mainPage.moreOptionDropDown.checkIsRendered()
-			  .clickSaveIcon();
-}
+	{
+		changeTeam("TestTeam2");
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("Testslemma", 5);
+		datasourceCreatePage.checkIsRendered();
+		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+				  .clickField()
+				  .clickFieldsInDialogByName("Name", "ic_dimension", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("Name1")
+				  .okBtn();
+		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("Summ", "ic_measure", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("Summ1")
+				  .okBtn();
+		datasourceCreatePage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		//		проверка в отчете источника применение изменений
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickObjectInDataTableByName("OneDriveSource", 5);
+		reportsPage.checkIsRendered()
+				  .clickEditBtn()
+				  .clickChartByName("changeMeusureDimention");
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .checkDimensionInPanelByName("Name1")
+				  .checkDimensionInPanelByName("Summ1");
+		reportsPage.clickCloseBtn();
+		//обратное переименование метрик
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("Testslemma", 5);
+		datasourceCreatePage.checkIsRendered();
+		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+				  .clickField()
+				  .clickFieldsInDialogByName("Name1", "ic_dimension", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("Name")
+				  .okBtn();
+		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("Summ1", "ic_measure", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .fieldNameInput("Summ")
+				  .okBtn();
+		datasourceCreatePage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+	}
+
 	@Test
 	public void renameMeusureDimentionDB()
 //TestTeam2
@@ -521,11 +526,11 @@ public void renameMeusureDimentionCloud()
 				  .clickSettingsBtn();
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 				  .clickField()
-				  .clickFieldsInDialogByName("data_varchar","ic_dimension",15);
+				  .clickFieldsInDialogByName("data_varchar", "ic_dimension", 15);
 		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
 				  .fieldNameInput("data_varchar1")
 				  .okBtn();
-		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("month","ic_measure",15);
+		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("month", "ic_measure", 15);
 		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
 				  .fieldNameInput("month1")
 				  .okBtn();
@@ -553,11 +558,11 @@ public void renameMeusureDimentionCloud()
 				  .clickSettingsBtn();
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 				  .clickField()
-				  .clickFieldsInDialogByName("data_varchar1","ic_dimension",15);
+				  .clickFieldsInDialogByName("data_varchar1", "ic_dimension", 15);
 		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
 				  .fieldNameInput("data_varchar")
 				  .okBtn();
-		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("month1","ic_measure",15);
+		datasourceCreatePage.settingsDataSourcesDialog.clickFieldsInDialogByName("month1", "ic_measure", 15);
 		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
 				  .fieldNameInput("month")
 				  .okBtn();
@@ -566,6 +571,7 @@ public void renameMeusureDimentionCloud()
 				  .clickSaveIcon();
 		pause(5);
 	}
+
 	@Test
 	public void splitFileSource()
 	{
@@ -578,7 +584,7 @@ public void renameMeusureDimentionCloud()
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 				  .clickFieldsInDialogByName("Series_reference", "ic_dimension", 15);
 		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
-				  .clickFieldsInDialogByName("Split...","ic_check_box_outline",2)
+				  .clickFieldsInDialogByName("Split...", "ic_check_box_outline", 2)
 				  .separatorInput(",")
 				  .okBtn();
 //		String asd = driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText();
@@ -593,7 +599,7 @@ public void renameMeusureDimentionCloud()
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 				  .clickFieldsInDialogByName("Series_reference", "ic_dimension", 15);
 		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
-				  .clickFieldsInDialogByName("Split...","ic_check_box",2)
+				  .clickFieldsInDialogByName("Split...", "ic_check_box", 2)
 				  .okBtn();
 //		String asd = driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText();
 		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));

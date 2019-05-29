@@ -9,10 +9,10 @@ public class ReportFiltersDialog extends Dialog
 {
 	private ReportsCreate parentPage;
 
-	private final By addBtn = nodeMdcListItemWithTextIconBtn ("Add a Filter", "ic_add");
+	private final By addBtn = nodeMdcListItemWithTextIconBtn("Add a Filter", "ic_add");
 	private final By doneBtn = nodeMdcAppBarTextBtn("Done");
 
-	public ReportFiltersDialog (SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public ReportFiltersDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -32,16 +32,18 @@ public class ReportFiltersDialog extends Dialog
 
 	public ReportFiltersDialog clickFilterInNodeByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//li[contains(@title, '"+ text +"')]")));
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//li[contains(@title, '"+ text +"')]")));
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//li[contains(@title, '" + text + "')]")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//li[contains(@title, '" + text + "')]")));
 		return this;
 	}
+
 	public ReportFiltersDialog checkFilterInNodeByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//li[contains(@title, '"+ text +"')]")));
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//li[contains(@title, '" + text + "')]")));
 		return this;
 	}
-	public ReportFiltersDialog clickAddBtn ()
+
+	public ReportFiltersDialog clickAddBtn()
 	{
 		Assert.assertTrue(driver.click(addBtn));
 		return this;
@@ -53,11 +55,13 @@ public class ReportFiltersDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
 		return this;
 	}
-	public ReportFiltersDialog clickDoneBtn ()
+
+	public ReportFiltersDialog clickDoneBtn()
 	{
 		Assert.assertTrue(driver.click(doneBtn));
 		return this;
 	}
+
 	public ReportFiltersDialog checkDialogTitle(String titleText, int time)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));

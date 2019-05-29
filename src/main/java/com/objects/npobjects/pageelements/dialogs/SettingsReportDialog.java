@@ -28,7 +28,7 @@ public class SettingsReportDialog extends Dialog
 	public boolean validateElements()
 	{
 		return driver.waitUntilExist(title, 5)
-                &&driver.waitUntilExist(canvasSizeSelect, 5);
+				  && driver.waitUntilExist(canvasSizeSelect, 5);
 	}
 
 	public SettingsReportDialog checkIsRendered()
@@ -49,6 +49,7 @@ public class SettingsReportDialog extends Dialog
 		Assert.assertTrue(driver.waitUntilExist(tiledNode));
 		return this;
 	}
+
 	public SettingsReportDialog FloatingNodeFalse()
 	{
 		Assert.assertFalse(driver.waitUntilExist(tiledNode));

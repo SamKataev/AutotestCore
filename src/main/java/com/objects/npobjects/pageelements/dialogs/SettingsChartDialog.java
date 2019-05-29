@@ -21,7 +21,7 @@ public class SettingsChartDialog extends Dialog
 	private final By addFieldBtn = panelMdcListItemWithTextIconBtn("Add a field", "ic_add");
 	private final By styleBtn = tabScrollerMdcWithTextBtn("Style");
 	private final By fontSizeSelect = nodeMdcAppBarSelect("8");
-	private final By lineWeight = mdcIconFontBtn ("ic_line_weight");
+	private final By lineWeight = mdcIconFontBtn("ic_line_weight");
 
 	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
@@ -58,12 +58,14 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(addFilterBtn));
 		return this;
 	}
+
 	public SettingsChartDialog clickTabStyleBtn()
 	{
 		Assert.assertTrue(driver.waitUntilClickable(styleBtn));
 		Assert.assertTrue(driver.click(styleBtn));
 		return this;
 	}
+
 	public SettingsChartDialog clickAddFieldBtn()
 	{
 		Assert.assertTrue(driver.click(addFieldBtn));
@@ -75,11 +77,13 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
+
 	public SettingsChartDialog checkDimensionInPanelByName(String text)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
+
 	public SettingsChartDialog clickItemInPanelByName(String text, String iconClass)
 	{
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item') and contains(text(), '" + text + "')]/preceding::span[contains(@class, '" + iconClass + "')]/parent::li")));
@@ -88,8 +92,8 @@ public class SettingsChartDialog extends Dialog
 
 	public SettingsChartDialog clickAccordionByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '"+text+"')]")));
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '"+text+"')]")));
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
 
@@ -106,6 +110,7 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(lineWeight));
 		return this;
 	}
+
 	public SettingsChartDialog checkDialogTitle(String titleText, int time)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));

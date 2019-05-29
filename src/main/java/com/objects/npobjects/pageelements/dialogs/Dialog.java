@@ -139,25 +139,29 @@ public abstract class Dialog extends PageElement
 	{
 		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]");
 	}
+
 	//settings-node input
 	protected By nodeNpTextFieldWithLabel(String label)
 	{
 		return By.xpath("//div[contains(@class, 'settings-node')]//label[contains(@class, text-field__label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
+
 	//node btn
 	protected By nodeMdcAppBarTextBtn(String btnText)
 	{
 		return By.xpath("//div[contains(@class, 'settings-node')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
 	}
+
 	//node btn with icon
 	protected By nodeMdcListItemWithTextIconBtn(String text, String iconClass)
 	{
 		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
 	}
+
 	//mdc-tab-scroller
 	protected By tabScrollerMdcWithTextBtn(String text)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-tab-scroller')]//span[contains(@class, 'mdc-tab__text-label') and contains(text(), '"+text+"')]//ancestor::button");
+		return By.xpath("//div[contains(@class, 'mdc-tab-scroller')]//span[contains(@class, 'mdc-tab__text-label') and contains(text(), '" + text + "')]//ancestor::button");
 	}
 
 }

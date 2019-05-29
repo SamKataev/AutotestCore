@@ -1,50 +1,50 @@
 package com.tests.ui.npuitests;
 
-import com.service.ui.web.SeleniumDriverWrapper;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Reports extends NPWebTest
+
 {
-    @Test
-    public void insertSimpleObject()
-    {
-        mainPage.checkIsRendered()
-                .openReports()
-                .clickPlusBtn();
-        reportsPage.checkIsRendered()
-                .clickInsertBtn();
-        reportsPage.chooseObjectDropDown.checkIsRendered()
-                .uploadFile("C:\\Users\\User\\Downloads\\1472058088_05.jpg")
-                .clickObjectByName("Text","ic_text");
-        reportsPage.clickInsertBtn();
-        reportsPage.chooseObjectDropDown.checkIsRendered()
-                .clickObjectByName("URL embed","ic_code");
-        reportsPage.hTTPSwebAddressDialog.checkIsRendered()
-                .urlInput("http://app.newpeople.co/reports/1287")
-                .clickOk();
-        reportsPage.clickInsertBtn();
-        reportsPage.chooseObjectDropDown.checkIsRendered()
-                .clickObjectByName("Chart template","ic_chart_template");
-        mainPage.selectDatasetDialog.checkIsRendered()
-                .checkDialogTitle("Select connection",10)
-                .clickFileInDialogByName("New People", "ic_pipedrive", 20)
-                .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
-        pause(5); //дописать вейтер или нахождение элемента на странице
-        reportsPage.checkIsRendered()
-                   .clickMoreBtn();
-        mainPage.moreOptionDropDown.checkIsRendered()
-                .clickSaveIcon();
-        reportsPage.saveAsDialog.checkIsRendered()
-                .enterInputName("SimpleObject")
-                .clickOkBtn();
-        reportsPage.clickCloseBtn();
-        mainPage.checkObjectInDataTableByName("SimpleObject",15)
-                .clickObjectInDataTableByName("SimpleObject",15);
-   }
+	@Test
+	public void insertSimpleObject()
+	{
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .uploadFile("C:\\Users\\User\\Downloads\\1472058088_05.jpg")
+				  .clickObjectByName("Text", "ic_text");
+		reportsPage.clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("URL embed", "ic_code");
+		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
+				  .urlInput("http://app.newpeople.co/reports/1287")
+				  .clickOk();
+		reportsPage.clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("Chart template", "ic_chart_template");
+		mainPage.selectDatasetDialog.checkIsRendered()
+				  .checkDialogTitle("Select connection", 10)
+				  .clickFileInDialogByName("New People", "ic_pipedrive", 20)
+				  .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
+		pause(5); //дописать вейтер или нахождение элемента на странице
+		reportsPage.checkIsRendered()
+				  .clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("SimpleObject")
+				  .clickOkBtn();
+		reportsPage.clickCloseBtn();
+		mainPage.checkObjectInDataTableByName("SimpleObject", 15)
+				  .clickObjectInDataTableByName("SimpleObject", 15);
+	}
+
 	@Test
 	public void insertAllTypeChart()
 	{
@@ -259,7 +259,7 @@ public class Reports extends NPWebTest
 				  .clickDimensionInPanelByName("Company")
 				  .clickAddMeasureBtn()
 				  .clickDimensionInPanelByName("Number of records");
-	//	Scatter plot
+		//	Scatter plot
 		reportsPage.checkIsRendered()
 				  .clickInsertBtn();
 		reportsPage.chooseObjectDropDown.checkIsRendered()
@@ -343,46 +343,47 @@ public class Reports extends NPWebTest
 		mainPage.checkObjectInDataTableByName("AllTypeChart", 15)
 				  .clickObjectInDataTableByName("AllTypeChart", 15);
 	}
-	    @Test
-    public void addCalculatedMeasure()
-		 {
-			 mainPage.checkIsRendered()
-						.openReports()
-						.clickPlusBtn();
-			 reportsPage.checkIsRendered()
-						.clickInsertBtn();
-			 reportsPage.chooseObjectDropDown.checkIsRendered()
-						.clickObjectByName("Chart", "ic_chart");
-			 reportsPage.selectaDataSourceDialog.checkIsRendered()
-						.clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-			 reportsPage.chooseaChartTypeDialog.checkIsRendered()
-						.clickTypeChartInDialogByName("Column", "ic_column", 10);
-			 reportsPage.settingsChartDialog.checkIsRendered()
-						.checkDialogTitle("Settings",2)
-						.clickAddDimensionBtn()
-						.checkDialogTitle("Choose dimension",5)
-						.clickDimensionInPanelByName("Company")
-						.checkDialogTitle("Settings",2)
-						.clickItemInPanelByName("Data source", "ic_csv");
-			 reportsPage.reportDropDown.checkIsRendered()
-						.clickObjectByName("Calculations");
-			 reportsPage.сalculationsAddDialog.checkIsRendered()
-						.clickAddBtn();
-			 reportsPage.reportDropDown.checkIsRendered()
-						.clickObjectByName("Measure Names");
-			 reportsPage.calculationsDialog.checkIsRendered()
-						.clickMetricsByName("Number of records")
-						.clickCodeMirror();
-			 driver.keyboardImitate("*"); //переписать после доработки выч. метрик
-			 reportsPage.calculationsDialog.clickMetricsByName("Number of records")
-						.clickSaveBtn();
-			 reportsPage.сalculationsAddDialog.checkIsRendered()
-						.clickСloseBtn();
-			 reportsPage.settingsChartDialog.checkIsRendered()
-						.checkDialogTitle("Settings",2)
-			          .clickAddMeasureBtn()
-						.clickDimensionInPanelByName("New measure");
-			 		//сохранение отчета
+
+	@Test
+	public void addCalculatedMeasure()
+	{
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("Chart", "ic_chart");
+		reportsPage.selectaDataSourceDialog.checkIsRendered()
+				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
+		reportsPage.chooseaChartTypeDialog.checkIsRendered()
+				  .clickTypeChartInDialogByName("Column", "ic_column", 10);
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .checkDialogTitle("Settings", 2)
+				  .clickAddDimensionBtn()
+				  .checkDialogTitle("Choose dimension", 5)
+				  .clickDimensionInPanelByName("Company")
+				  .checkDialogTitle("Settings", 2)
+				  .clickItemInPanelByName("Data source", "ic_csv");
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Calculations");
+		reportsPage.сalculationsAddDialog.checkIsRendered()
+				  .clickAddBtn();
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Measure Names");
+		reportsPage.calculationsDialog.checkIsRendered()
+				  .clickMetricsByName("Number of records")
+				  .clickCodeMirror();
+		driver.keyboardImitate("*"); //переписать после доработки выч. метрик
+		reportsPage.calculationsDialog.clickMetricsByName("Number of records")
+				  .clickSaveBtn();
+		reportsPage.сalculationsAddDialog.checkIsRendered()
+				  .clickСloseBtn();
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .checkDialogTitle("Settings", 2)
+				  .clickAddMeasureBtn()
+				  .clickDimensionInPanelByName("New measure");
+		//сохранение отчета
 		reportsPage.checkIsRendered()
 				  .clickMoreBtn();
 		mainPage.moreOptionDropDown.checkIsRendered()
@@ -396,7 +397,7 @@ public class Reports extends NPWebTest
 	}
 
 	@Test
-    public void checkFloatingTiled()
+	public void checkFloatingTiled()
 	{
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -406,7 +407,7 @@ public class Reports extends NPWebTest
 				  .createSelectSize().selectByVisibleText("Floating");
 		reportsPage.settingsReportDialog.FloatingNodeFalse();
 		reportsPage.settingsReportDialog.checkIsRendered()
-			  .createSelectSize().selectByVisibleText("Tiled");
+				  .createSelectSize().selectByVisibleText("Tiled");
 		reportsPage.settingsReportDialog.tiledNodeTrue();
 //		сохранение отчета
 		reportsPage.checkIsRendered()
@@ -420,11 +421,12 @@ public class Reports extends NPWebTest
 		mainPage.checkObjectInDataTableByName("Tiled", 15)
 				  .clickObjectInDataTableByName("Tiled", 15);
 	}
+
 	@Test
 	public void checkDateRangeFilter()
 	{
 		//TestTeam2
-      changeTeam("TestTeam2");
+		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickObjectInDataTableByName("filter", 5);
@@ -440,6 +442,7 @@ public class Reports extends NPWebTest
 				  .checkFilterInNodeByName("Date range - (Last 365 weeks)");
 		reportsPage.clickCloseBtn();
 	}
+
 	@Test
 	public void checkSelectFilter()
 	{
@@ -454,37 +457,38 @@ public class Reports extends NPWebTest
 				  .checkDialogTitle("Report Filters", 5)
 				  .clickAddBtn()
 				  .checkDialogTitle("Choose item", 5)
-				  .clickFieldsInDialogByName("Name", "ic_dimension",5);
+				  .clickFieldsInDialogByName("Name", "ic_dimension", 5);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Select");
 		reportsPage.reportFiltersDialog.checkIsRendered()
-				  .checkDialogTitle("Dependent objects",5)
-				  .clickFieldsInDialogByName("Entire report","ic_radiobutton_checked",5)
+				  .checkDialogTitle("Dependent objects", 5)
+				  .clickFieldsInDialogByName("Entire report", "ic_radiobutton_checked", 5)
 				  .clickDoneBtn()
-				  .clickFieldsInDialogByName("One","ic_check_box_outline",5)
-				  .clickFieldsInDialogByName("Two","ic_check_box_outline",5)
-				  .clickFieldsInDialogByName("Three","ic_check_box_outline",5)
-		        .clickDoneBtn()
-				  .checkDialogTitle("Report Filters",5)
+				  .clickFieldsInDialogByName("One", "ic_check_box_outline", 5)
+				  .clickFieldsInDialogByName("Two", "ic_check_box_outline", 5)
+				  .clickFieldsInDialogByName("Three", "ic_check_box_outline", 5)
+				  .clickDoneBtn()
+				  .checkDialogTitle("Report Filters", 5)
 				  .checkFilterInNodeByName("Name - (3 of 9)");
 		reportsPage.checkIsRendered()
 				  .checkChartNoDate()
 				  .clickCloseBtn();
 	}
-		@Test
+
+	@Test
 	public void checkCopyStyle()
 	{
-     changeTeam("TestTeam2");
+		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickObjectInDataTableByName("filter", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
-	           .contextClick("jira tickets",10);
+				  .contextClick("jira tickets", 10);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Copy style");
 		reportsPage.checkIsRendered()
-				  .contextClick("chart Copy style",10);
+				  .contextClick("chart Copy style", 10);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Paste style");
 		//проверка применимости стилей
@@ -493,19 +497,20 @@ public class Reports extends NPWebTest
 				  .clickAccordionByName("Title");
 		Assert.assertTrue(reportsPage.settingsChartDialog.createSelectSize().getFirstSelectedOption().getText().matches("24"));
 		reportsPage.settingsChartDialog.clickAccordionByName("General")
-		        .clickLineWeight();
+				  .clickLineWeight();
 		reportsPage.reportDropDown.checkIsRendered()
-				  .checkSelectedItem("4px","ic_check");
-      reportsPage.checkIsRendered()
+				  .checkSelectedItem("4px", "ic_check");
+		reportsPage.checkIsRendered()
 				  .clickCloseBtn();
 	}
+
 	@Test
 	public void checkChartRefresh()
 	{
 		//TestTeam2
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				   .openReports()
+				  .openReports()
 				  .clickObjectInDataTableByName("filter2", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
@@ -514,42 +519,41 @@ public class Reports extends NPWebTest
 				  .checkChartNoDate()
 				  .clickCloseBtn();
 	}
+
 	@Test
-	public void createShare ()
+	public void createShare()
 	{
-	    mainPage.checkIsRendered()
-               .openReports()
-					.clickPlusBtn();
-	    reportsPage.checkIsRendered()
-           .clickInsertBtn();
-		reportsPage.chooseObjectDropDown.checkIsRendered()
-				  .clickObjectByName("Text","ic_text");
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
 		reportsPage.checkIsRendered()
-		        .clickEditTextBtn();
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("Text", "ic_text");
+		reportsPage.checkIsRendered()
+				  .clickEditTextBtn();
 		driver.keyboardImitate("Здесь вставляется новый текст!");
 		reportsPage.checkIsRendered()
 				  .clickMoreBtn();
 		mainPage.moreOptionDropDown.checkIsRendered()
 				  .clickSaveIcon();
 		reportsPage.saveAsDialog.checkIsRendered()
-					 .enterInputName("shareObject")
-				    .clickOk();
+				  .enterInputName("shareObject")
+				  .clickOk();
 		reportsPage.checkIsRendered()
 				  .clickShareBtn();
 		mainPage.addPeopleDialog.checkIsRendered()
-				  .selectPeople("s.kataev@slemma.com",2)
+				  .selectPeople("s.kataev@slemma.com", 2)
 				  .clickSendBtn();
 		reportsPage.clickCloseBtn();
-      mainPage.checkObjectInDataTableByName("shareObject",5)
-				  .contextClickObjectInDataTableByName("shareObject",5);
+		mainPage.checkObjectInDataTableByName("shareObject", 5)
+				  .contextClickObjectInDataTableByName("shareObject", 5);
 		mainPage.moreOptionDropDown.checkIsRendered()
 				  .clickPermissionsIcon();
 		mainPage.permissionsDialog.checkIsRendered()
-				  .checkSelectPeople("s.kataev@slemma.com",2)
+				  .checkSelectPeople("s.kataev@slemma.com", 2)
 				  .clickCloseBtn();
 	}
-
-
 
 	@Test
 	public void checkPermissions()
@@ -557,7 +561,7 @@ public class Reports extends NPWebTest
 		authPage.open().checkIsRendered();
 		authPage.logIn("slemmatest2@mail.ru", "Q123#@!w");
 		mainPage.checkIsRendered()
-				   .openReports()
+				  .openReports()
 				  .clickObjectInDataTableByName("filter", 5);
 		//проверить что есть кнопка "edit"
 		reportsPage.checkIsRendered()
@@ -571,5 +575,20 @@ public class Reports extends NPWebTest
 				  .checkAbsenceEditBtn()
 				  .clickCloseBtn();
 	}
+@Test
+public void goToShareLink()
+{
+	changeTeam("TestTeam2");
+	mainPage.checkIsRendered()
+			  .checkObjectInDataTableByName("with share link",5)
+			  .contextClickObjectInDataTableByName("with share link",5);
+	mainPage.moreOptionDropDown.checkIsRendered()
+			  .clickLinkIcon();
+	mainPage.linkSharingDialog.checkIsRendered();
+   driver.goToUrl(driver.getElement(By.xpath("//div[contains(@class,'mdc-dialog--open')]//label[contains(@class,text-field__label) and contains(text(),'Link to share')]/following-sibling::div[contains(@class,'text-field__input-container')]/input"),2) .getAttribute("value") );
+	reportsPage.checkIsRendered()
+			  .checkChartNoDate()
+			  .clickCloseBtn();
 
+}
 }

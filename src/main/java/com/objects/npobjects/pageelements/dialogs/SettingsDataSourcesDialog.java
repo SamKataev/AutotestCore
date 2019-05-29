@@ -11,10 +11,10 @@ public class SettingsDataSourcesDialog extends Dialog
 	private DatasourceCreate parentPage;
 
 	private final By title = nodeMdcAppBarTitle("Settings");
-   private final By fields = nodeMdcListAccordionWithText("Fields");
+	private final By fields = nodeMdcListAccordionWithText("Fields");
 
 
-	public SettingsDataSourcesDialog (SeleniumDriverWrapper driver, DatasourceCreate pageObj)
+	public SettingsDataSourcesDialog(SeleniumDriverWrapper driver, DatasourceCreate pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -24,7 +24,7 @@ public class SettingsDataSourcesDialog extends Dialog
 	public boolean validateElements()
 	{
 		return driver.waitUntilExist(title, 5)
-				  &&driver.waitUntilExist(fields, 5);
+				  && driver.waitUntilExist(fields, 5);
 	}
 
 	public SettingsDataSourcesDialog checkIsRendered()

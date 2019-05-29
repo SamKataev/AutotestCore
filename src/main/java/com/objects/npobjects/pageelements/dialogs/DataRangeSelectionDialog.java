@@ -14,8 +14,7 @@ public class DataRangeSelectionDialog extends Dialog
 	private final By doneBtn = nodeMdcAppBarTextBtn("Done");
 
 
-
-	public DataRangeSelectionDialog (SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public DataRangeSelectionDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -36,19 +35,20 @@ public class DataRangeSelectionDialog extends Dialog
 
 	public DataRangeSelectionDialog clickFilterInNodeByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" +text+ "')]/parent::li")));
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" +text+ "')]/parent::li")));
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li")));
 		return this;
 	}
+
 	public DataRangeSelectionDialog enterNInput(String text)
 	{
 		Assert.assertTrue(driver.type(nInput, text));
 		return this;
 	}
 
-   public DataRangeSelectionDialog clickDoneBtn ()
+	public DataRangeSelectionDialog clickDoneBtn()
 	{
-	Assert.assertTrue(driver.click(doneBtn));
-	return this;
+		Assert.assertTrue(driver.click(doneBtn));
+		return this;
 	}
 }
