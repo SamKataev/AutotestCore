@@ -76,7 +76,7 @@ public class Main extends NPPageObject
 		renameDialog = new RenameDialog(driver, this);
 		addPeopleDialog = new AddPeopleDialog(driver, this);
 		permissionsDialog = new PermissionsDialog(driver, this);
-		linkSharingDialog = new LinkSharingDialog (driver, this);
+		linkSharingDialog = new LinkSharingDialog(driver, this);
 	}
 
 	@Override
@@ -280,7 +280,6 @@ public class Main extends NPPageObject
 		return this;
 	}
 
-
 	public Main clickObjectInDialogByName(String name, int time)
 	{
 		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
@@ -291,6 +290,12 @@ public class Main extends NPPageObject
 	public Main contextClickObjectInDataTableByName(String name, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
+		return this;
+	}
+
+	public Main contextClickObjectInDataTableByName(String name, String iconClass, int time)
+	{
+		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/parent::span/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
 		return this;
 	}
 }

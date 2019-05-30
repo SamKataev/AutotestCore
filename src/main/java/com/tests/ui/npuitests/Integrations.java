@@ -27,6 +27,7 @@ public class Integrations extends NPWebTest
 				  .сlickGeneral()
 				  .clickCheck();
 		mainPage.messageDialog.checkIsRendered()
+				  .checkMessage("Success", 2)
 				  .clickcloseBtn();
 		mainPage.createIntegrationDialog.clickCreate();
 	}
@@ -51,6 +52,7 @@ public class Integrations extends NPWebTest
 				  .сlickGeneral()
 				  .clickCheck();
 		mainPage.messageDialog.checkIsRendered()
+				  .checkMessage("Success", 2)
 				  .clickcloseBtn();
 		mainPage.createIntegrationDialog.clickCreate();
 	}
@@ -134,6 +136,7 @@ public class Integrations extends NPWebTest
 	}
 
 	////    @Test
+	//в разработке
 ////    public void createStripe(){
 ////        mainPage.checkIsRendered()
 ////                .clickAdminBtn()

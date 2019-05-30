@@ -32,8 +32,8 @@ public class ChooseObjectDropDown extends DropDown
 		return driver.waitUntilClickable(ImageIcon, 5)
 				  && driver.waitUntilClickable(embedIcon)
 				  && driver.waitUntilClickable(textIcon)
-				  && driver.waitUntilClickable(chartTemplateIcon)
-				  && driver.waitUntilClickable(chartIcon);
+				  && driver.waitUntilExist(chartTemplateIcon)
+				  && driver.waitUntilExist(chartIcon, 5);
 	}
 
 	public ChooseObjectDropDown checkIsRendered()

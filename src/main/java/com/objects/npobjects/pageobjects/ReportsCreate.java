@@ -143,22 +143,12 @@ public class ReportsCreate extends NPPageObject
 		return this;
 	}
 
-	//	public ReportsCreate doubleClick(  int time)
-//	{
-//		Assert.assertFalse(driver.doubleClick(By.xpath("//textarea[contains(@class,'text-block__user-select')]/ancestor::div[contains(@class,'blockcontainer')]"),10));
-//		return this;
-//	}
 	public ReportsCreate clickShareBtn()
 	{
 		Assert.assertTrue(driver.click(shareBtn));
 		return this;
 	}
 
-	//	public ReportsCreate сlickText( )
-//	{
-//		Assert.assertTrue(driver.click(By.xpath("//textarea[contains(@class,'text-block__user-select')]/ancestor::div[contains(@class,'blockcontainer')]")));
-//		return this;
-//	}
 	public ReportsCreate clickEditTextBtn()
 	{
 		Assert.assertTrue(driver.click(editTextBtn));

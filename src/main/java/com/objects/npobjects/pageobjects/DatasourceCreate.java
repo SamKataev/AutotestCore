@@ -16,11 +16,14 @@ public class DatasourceCreate extends NPPageObject
 
 	private By saveBtn = mdcIconFontBtn("ic_save");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
-	private By settingsBtn = mdcIconFontBtn("ic_tune");
+	private By tuneBtn = mdcIconFontBtn("ic_tune");
+	private By settingsBtn = mdcIconFontBtn("ic_settings");
 	private By agViewport = By.cssSelector(".ag-body-viewport");
 	private By queryBtn = mdcTextBtn("Run Query");
 	private By codeMirror = By.xpath("//div[contains(@class,'CodeMirror cm-s-default')]");
 	private By backBtn = mdcIconFontBtn("ic_arrow_back");
+	private By editTextBtn = mdcIconFontBtn("ic_edit");
+	private By chooseAfile = By.xpath("//div[contains(@class, 'mdc-button') and contains(text(), 'Choose a file...')]");
 
 
 	public DatasourceCreate(SeleniumDriverWrapper driver)
@@ -36,7 +39,7 @@ public class DatasourceCreate extends NPPageObject
 		return
 //				driver.waitUntilClickable(agViewport, 10)
 //				  &&
-				  driver.waitUntilClickable(settingsBtn, 10);
+				  driver.waitUntilClickable(tuneBtn, 10);
 	}
 
 	public DatasourceCreate checkIsRendered()
@@ -51,9 +54,9 @@ public class DatasourceCreate extends NPPageObject
 		return this;
 	}
 
-	public DatasourceCreate clickSettingsBtn()
+	public DatasourceCreate clickTuneBtn()
 	{
-		Assert.assertTrue(driver.click(settingsBtn));
+		Assert.assertTrue(driver.click(tuneBtn));
 		return this;
 	}
 
@@ -87,4 +90,17 @@ public class DatasourceCreate extends NPPageObject
 		return this;
 	}
 
+	public DatasourceCreate existSettingsBtn()
+	{
+		Assert.assertTrue(driver.waitUntilExist(settingsBtn, 10));
+		Assert.assertTrue(driver.waitUntilClickable(settingsBtn, 10));
+		return this;
+	}
+
+	public DatasourceCreate existChooseAfile()
+	{
+		Assert.assertTrue(driver.waitUntilExist(chooseAfile, 10));
+		Assert.assertTrue(driver.waitUntilClickable(chooseAfile, 10));
+		return this;
+	}
 }

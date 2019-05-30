@@ -575,20 +575,59 @@ public class Reports extends NPWebTest
 				  .checkAbsenceEditBtn()
 				  .clickCloseBtn();
 	}
-@Test
-public void goToShareLink()
-{
-	changeTeam("TestTeam2");
-	mainPage.checkIsRendered()
-			  .checkObjectInDataTableByName("with share link",5)
-			  .contextClickObjectInDataTableByName("with share link",5);
-	mainPage.moreOptionDropDown.checkIsRendered()
-			  .clickLinkIcon();
-	mainPage.linkSharingDialog.checkIsRendered();
-   driver.goToUrl(driver.getElement(By.xpath("//div[contains(@class,'mdc-dialog--open')]//label[contains(@class,text-field__label) and contains(text(),'Link to share')]/following-sibling::div[contains(@class,'text-field__input-container')]/input"),2) .getAttribute("value") );
-	reportsPage.checkIsRendered()
-			  .checkChartNoDate()
-			  .clickCloseBtn();
 
-}
+	@Test
+	public void goToShareLink()
+	{
+		changeTeam("TestTeam2");
+		mainPage.checkIsRendered()
+				  .checkObjectInDataTableByName("with share link", 5)
+				  .contextClickObjectInDataTableByName("with share link", 5);
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickLinkIcon();
+		mainPage.linkSharingDialog.checkIsRendered()
+				  .getLinkSharing();
+		String url = mainPage.linkSharingDialog.getLinkSharing();
+		driver.goToUrl(url);
+		reportsPage.checkIsRendered()
+				  .checkChartNoDate()
+				  .checkAbsenceEditBtn()
+				  .clickCloseBtn();
+	}
+
+	@Test
+	public void getEmbedCode()
+	{
+		changeTeam("TestTeam2");
+		mainPage.checkIsRendered()
+				  .checkObjectInDataTableByName("with share link", 5)
+				  .contextClickObjectInDataTableByName("with share link", 5);
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickLinkIcon();
+		mainPage.linkSharingDialog.checkIsRendered()
+				  .getEmbedCode();
+		String embedCode = mainPage.linkSharingDialog.getEmbedCode();
+		mainPage.linkSharingDialog.clickCloseBtn();
+		changeTeam("TestTeam");
+		mainPage.clickPlusBtn();
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("URL embed", "ic_code");
+		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
+				  .urlInput(embedCode)
+				  .clickOk();
+		reportsPage.checkIsRendered()
+				  .checkChartNoDate();
+		reportsPage.checkIsRendered()
+				  .clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("EmbedCode")
+				  .clickOkBtn();
+		reportsPage.clickCloseBtn();
+		mainPage.checkObjectInDataTableByName("EmbedCode", 15)
+				  .clickObjectInDataTableByName("EmbedCode", 15);
+	}
 }

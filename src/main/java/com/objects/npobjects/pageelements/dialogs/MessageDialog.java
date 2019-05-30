@@ -27,9 +27,9 @@ public class MessageDialog extends Dialog
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilExist(title, 5)
-				  && driver.waitUntilClickable(closeBtn)
-				  && driver.waitUntilClickable(message);
+		return driver.waitUntilExist(title, 20)
+				  && driver.waitUntilClickable(closeBtn);
+//				  && driver.waitUntilClickable(message);
 	}
 
 	public MessageDialog checkIsRendered()
@@ -41,6 +41,12 @@ public class MessageDialog extends Dialog
 	public MessageDialog clickcloseBtn()
 	{
 		Assert.assertTrue(driver.click(closeBtn));
+		return this;
+	}
+
+	public MessageDialog checkMessage(String text, int time)
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and contains(text(), '" + text + "')]"), time));
 		return this;
 	}
 }

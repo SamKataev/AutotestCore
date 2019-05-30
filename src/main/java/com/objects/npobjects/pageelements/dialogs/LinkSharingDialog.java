@@ -15,9 +15,9 @@ public class LinkSharingDialog extends Dialog
 	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
 	private final By searchBtn = dialogMdcIconFontBtn("ic_delete");
 	private final By linkInput = dialogNpTextFieldWithLabel("Link to share");
+	private final By EmbedCodeInput = dialogNpTextFieldWithLabel("Embed code");
 
-
-	public LinkSharingDialog (SeleniumDriverWrapper driver, Main pageObj)
+	public LinkSharingDialog(SeleniumDriverWrapper driver, Main pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -43,4 +43,13 @@ public class LinkSharingDialog extends Dialog
 		return this;
 	}
 
+	public String getLinkSharing()
+	{
+		return driver.getElement(linkInput, 2).getAttribute("value");
 	}
+
+	public String getEmbedCode()
+	{
+		return driver.getElement(EmbedCodeInput, 2).getAttribute("value");
+	}
+}

@@ -3,6 +3,7 @@ package com.tests.ui.npuitests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Datasources extends NPWebTest
@@ -523,7 +524,7 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("dc3qukco027qjj", 5);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
-				  .clickSettingsBtn();
+				  .clickTuneBtn();
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 				  .clickField()
 				  .clickFieldsInDialogByName("data_varchar", "ic_dimension", 15);
@@ -555,7 +556,7 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("dc3qukco027qjj", 5);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
-				  .clickSettingsBtn();
+				  .clickTuneBtn();
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 				  .clickField()
 				  .clickFieldsInDialogByName("data_varchar1", "ic_dimension", 15);
@@ -612,5 +613,33 @@ public class Datasources extends NPWebTest
 				  .clickAgViewport();
 		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));
 		datasourceCreatePage.clickbackBtn();
+	}
+
+	@Test
+	public void CVSrefresh()
+	{
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .contextClickObjectInDataTableByName("Testslemma", "ic_csv", 5);
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickRefreshIcon();
+		datasourceCreatePage.checkIsRendered()
+				  .existChooseAfile()
+				  .existSettingsBtn()
+				  .clickbackBtn();
+	}
+
+	@Test
+	public void SaaSrefresh()
+	{
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .contextClickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", "ic_google_analytics", 5);
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickRefreshIcon();
+		mainPage.messageDialog.checkIsRendered()
+				  .checkMessage("Done", 10)
+				  .clickcloseBtn();
+
 	}
 }
