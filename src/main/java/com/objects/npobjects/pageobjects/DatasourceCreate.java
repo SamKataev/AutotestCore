@@ -3,6 +3,7 @@ package com.objects.npobjects.pageobjects;
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.SettingsDataSourcesDialog;
 import com.objects.npobjects.pageelements.dialogs.FieldSettingsDialog;
+import com.objects.npobjects.pageelements.dialogs.DistinctCountSettingsDialog;
 import com.objects.npobjects.pageobjects.oauthpages.BoxLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
@@ -13,6 +14,7 @@ public class DatasourceCreate extends NPPageObject
 
 	public SettingsDataSourcesDialog settingsDataSourcesDialog;
 	public FieldSettingsDialog fieldSettingsDialog;
+	public DistinctCountSettingsDialog distinctCountSettingsDialog;
 
 	private By saveBtn = mdcIconFontBtn("ic_save");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
@@ -31,6 +33,7 @@ public class DatasourceCreate extends NPPageObject
 		super(driver.getBaseUrl() + "/datasources/new", driver);
 		settingsDataSourcesDialog = new SettingsDataSourcesDialog(driver, this);
 		fieldSettingsDialog = new FieldSettingsDialog(driver, this);
+		distinctCountSettingsDialog = new DistinctCountSettingsDialog(driver, this);
 	}
 
 	@Override
