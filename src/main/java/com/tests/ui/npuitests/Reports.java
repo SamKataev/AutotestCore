@@ -630,4 +630,19 @@ public class Reports extends NPWebTest
 		mainPage.checkObjectInDataTableByName("EmbedCode", 15)
 				  .clickObjectInDataTableByName("EmbedCode", 15);
 	}
+
+	@Test
+	public void checkAllFiltersReport()
+	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest2@mail.ru", "Q123#@!w");
+		mainPage.checkIsRendered();
+		driver.goToUrl("http://app.newpeople.co/share/filters");
+		mainPage.passwordProtectedDialog.checkIsRendered()
+				  .enterPasswordInput("123!@#qwe")
+				  .clickViewReportBtn();
+		reportsPage.checkIsRendered()
+				  .checkChartNoDate();
+	}
+
 }

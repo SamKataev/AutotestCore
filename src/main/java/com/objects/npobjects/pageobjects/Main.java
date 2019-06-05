@@ -32,6 +32,7 @@ public class Main extends NPPageObject
 	public PermissionsDialog permissionsDialog;
 	public LinkSharingDialog linkSharingDialog;
 	public SaveChangeDialog saveChangeDialog;
+	public PasswordProtectedDialog passwordProtectedDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -79,6 +80,7 @@ public class Main extends NPPageObject
 		permissionsDialog = new PermissionsDialog(driver, this);
 		linkSharingDialog = new LinkSharingDialog(driver, this);
 		saveChangeDialog = new SaveChangeDialog(driver, this);
+		passwordProtectedDialog = new PasswordProtectedDialog (driver, this);
 	}
 
 	@Override
