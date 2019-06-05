@@ -31,6 +31,7 @@ public class Main extends NPPageObject
 	public AddPeopleDialog addPeopleDialog;
 	public PermissionsDialog permissionsDialog;
 	public LinkSharingDialog linkSharingDialog;
+	public SaveChangeDialog saveChangeDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -77,6 +78,7 @@ public class Main extends NPPageObject
 		addPeopleDialog = new AddPeopleDialog(driver, this);
 		permissionsDialog = new PermissionsDialog(driver, this);
 		linkSharingDialog = new LinkSharingDialog(driver, this);
+		saveChangeDialog = new SaveChangeDialog(driver, this);
 	}
 
 	@Override

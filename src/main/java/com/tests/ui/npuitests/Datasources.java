@@ -3,6 +3,7 @@ package com.tests.ui.npuitests;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -641,5 +642,66 @@ public class Datasources extends NPWebTest
 				  .checkMessage("Done", 10)
 				  .clickcloseBtn();
 
+	}
+
+	@Test
+	public void AddingDistinctCount()
+	{
+		changeTeam("TestTeam2");
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("countries", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport();
+		datasourceCreatePage.settingsDataSourcesDialog.clickField()
+				  .clickFieldsInDialogByName("Russian name", "ic_dimension", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .clickFieldsInDialogByName("Add distinct-count measure", "ic_check_box_outline", 2)
+				  .clickDistinctCountSettingsBtn();
+		datasourceCreatePage.distinctCountSettingsDialog.checkIsRendered()
+				  .enterMeasureName("")
+				  .enterMeasureName("New Name")
+				  .selectNumberFormat().selectByVisibleText("Number");
+		datasourceCreatePage.distinctCountSettingsDialog.clickCloseBtn();
+		datasourceCreatePage.fieldSettingsDialog.okBtn();
+		datasourceCreatePage.clickbackBtn();
+		mainPage.saveChangeDialog.checkIsRendered()
+				  .clickSaveBtn();
+		//проверка метрики в отчете
+		pause(5);
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("Chart", "ic_chart");
+		reportsPage.selectaDataSourceDialog.checkIsRendered()
+				  .clickDataSourceInDialogByName("countries", "ic_dropbox", 30);
+		reportsPage.chooseaChartTypeDialog.checkIsRendered()
+				  .clickTypeChartInDialogByName("Column", "ic_column", 10);
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .checkDialogTitle("Settings", 2)
+				  .clickAddMeasureBtn()
+				  .checkDialogTitle("Choose measure", 5)
+				  .checkDimensionInPanelByName("New Name");
+		reportsPage.clickCloseBtn();
+		mainPage.saveChangeDialog.checkIsRendered()
+				  .clickDontSaveBtn();
+		//удалить distinct count
+		pause(5);
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickObjectInDataTableByName("countries", 5);
+		datasourceCreatePage.checkIsRendered()
+				  .clickAgViewport();
+		datasourceCreatePage.settingsDataSourcesDialog.clickField()
+				  .clickFieldsInDialogByName("Russian name", "ic_dimension", 15);
+		datasourceCreatePage.fieldSettingsDialog.checkIsRendered()
+				  .clickFieldsInDialogByName("Add distinct-count measure", "ic_check_box", 2)
+				  .okBtn();
+		datasourceCreatePage.clickbackBtn();
+		mainPage.saveChangeDialog.checkIsRendered()
+				  .clickSaveBtn();
 	}
 }
