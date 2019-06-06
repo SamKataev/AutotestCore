@@ -131,6 +131,12 @@ public class ReportsCreate extends NPPageObject
 		return this;
 	}
 
+	public ReportsCreate checkChartNoNaN()
+	{
+		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@title,'NaN')]"), 5));
+		return this;
+	}
+
 	public ReportsCreate contextClick(String text, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]"), 10));
