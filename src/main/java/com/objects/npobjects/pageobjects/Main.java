@@ -33,6 +33,7 @@ public class Main extends NPPageObject
 	public LinkSharingDialog linkSharingDialog;
 	public SaveChangeDialog saveChangeDialog;
 	public PasswordProtectedDialog passwordProtectedDialog;
+	public RequestAccessDialog requestAccessDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -81,6 +82,7 @@ public class Main extends NPPageObject
 		linkSharingDialog = new LinkSharingDialog(driver, this);
 		saveChangeDialog = new SaveChangeDialog(driver, this);
 		passwordProtectedDialog = new PasswordProtectedDialog (driver, this);
+		requestAccessDialog= new RequestAccessDialog(driver,this);
 	}
 
 	@Override
@@ -118,8 +120,8 @@ public class Main extends NPPageObject
 	{
 		return driver.waitUntilClickable(liReports, 10)
 				  && driver.waitUntilClickable(liDataSources)
-				  && driver.waitUntilClickable(liDelivery)
-				  && driver.waitUntilClickable(liAlerts)
+//				  && driver.waitUntilClickable(liDelivery)
+//				  && driver.waitUntilClickable(liAlerts)
 				  && driver.waitUntilClickable(liSettings)
 				  && driver.waitUntilClickable(liHelp)
 				  && driver.waitUntilExist(liAdmin)

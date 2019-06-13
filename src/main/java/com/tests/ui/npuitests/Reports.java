@@ -642,7 +642,46 @@ public class Reports extends NPWebTest
 				  .enterPasswordInput("123!@#qwe")
 				  .clickViewReportBtn();
 		reportsPage.checkIsRendered()
-				  .checkChartNoDate();
+				  .checkChartNoDate()
+				  .clickCloseBtn();
+	}
+	@Test
+	public void checkGrandTotal()
+	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest2@mail.ru", "Q123#@!w");
+		mainPage.checkIsRendered();
+		driver.goToUrl("http://app.newpeople.co/share/mediana");
+		reportsPage.checkIsRendered()
+				  .checkChartNoDate()
+				  .checkChartNoNaN()
+				  .clickCloseBtn();
+	}
+
+	@Test
+	public void checkLevelByDay()
+	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest2@mail.ru", "Q123#@!w");
+		mainPage.checkIsRendered();
+		driver.goToUrl("http://app.newpeople.co/share/levelbyday");
+		reportsPage.checkIsRendered()
+				  .checkChartNoDate()
+				  .checkChartNoNaN()
+				  .clickCloseBtn();
+	}
+
+	@Test
+	public void checkOpenDashByChangingAccount()
+	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("e.matveeva@slemma.com", "Matveeva0414");
+		mainPage.checkIsRendered();
+		driver.goToUrl("http://app.newpeople.co/reports/4108");
+		mainPage.requestAccessDialog.checkIsRendered()
+				  .checkLogoutBtn()
+				  .checkRequestBtn()
+				  .clickCloseBtn();
 	}
 
 }

@@ -40,6 +40,7 @@ public class ReportsCreate extends NPPageObject
 	private final By refreshBtn = mdcIconFontBtn("ic_refresh");
 	private By editTextBtn = mdcIconFontBtn("ic_edit");
 
+
 	public ReportsCreate(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/reports/new", driver);
@@ -160,4 +161,5 @@ public class ReportsCreate extends NPPageObject
 		Assert.assertTrue(driver.click(editTextBtn));
 		return this;
 	}
+
 }
