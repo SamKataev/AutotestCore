@@ -45,5 +45,9 @@ public class SettingsDataSourcesDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
 		return this;
 	}
-
+	public SettingsDataSourcesDialog checkFieldsInDialogByName(String text, String iconClass, int time)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li"), time));
+		return this;
+	}
 }

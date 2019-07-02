@@ -704,4 +704,68 @@ public class Datasources extends NPWebTest
 		mainPage.saveChangeDialog.checkIsRendered()
 				  .clickSaveBtn();
 	}
+
+	@Test
+public void CalculationField()
+{
+	mainPage.checkIsRendered()
+			  .openDatasources()
+			  .clickPlusBtn();
+	mainPage.selectDatasourceTypeDialog.checkIsRendered()
+			  .uploadFile("C:\\Users\\User\\Downloads\\csv\\DemoData.csv");
+	datasourceCreatePage.checkIsRendered()
+			  .clickAgViewport()
+			  //выч. поле case when Region= 'Central' then 1 else 0 end
+           .clickCalculationBtn();
+	datasourceCreatePage.calculationFieldDialog.checkIsRendered()
+           .fieldNameInput("")
+			  .fieldNameInput("region_central")
+			  .clickCodeMirror();
+	driver.keyboardImitate("case when Region= 'Central' then 1 else 0 end");
+	datasourceCreatePage.calculationFieldDialog.clickOkBtn();
+	datasourceCreatePage.checkIsRendered()
+			  .clickAgViewport();
+	pause(5);
+	//преобразование типа cast
+	datasourceCreatePage.checkIsRendered()
+			  .clickCalculationBtn();
+	datasourceCreatePage.calculationFieldDialog.checkIsRendered()
+			  .fieldNameInput("")
+			  .fieldNameInput("OrderDate_Text")
+			  .clickCodeMirror();
+	driver.keyboardImitate("cast(Order Date as Text) ");
+	datasourceCreatePage.calculationFieldDialog.clickOkBtn();
+	datasourceCreatePage.checkIsRendered()
+			  .clickAgViewport();
+	pause(5);
+	//работа с датой
+	datasourceCreatePage.checkIsRendered()
+			  .clickCalculationBtn();
+	datasourceCreatePage.calculationFieldDialog.checkIsRendered()
+			  .fieldNameInput("")
+			  .fieldNameInput("OrderDate_timestamp")
+			  .clickCodeMirror();
+	driver.keyboardImitate("Order Date::timestamp + '1 year' ");
+	datasourceCreatePage.calculationFieldDialog.clickOkBtn();
+	datasourceCreatePage.checkIsRendered()
+			  .clickAgViewport();
+	pause(5);
+//// дописать и допроверить после починки
+	//проверка в настройках добавленных полей
+	datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
+			  .checkFieldsInDialogByName("region_central", "ic_calculation", 5)
+			  .checkFieldsInDialogByName("OrderDate_Text", "ic_dimension", 5)
+			  .checkFieldsInDialogByName("OrderDate_timestamp","ic_date_range",5);
+	//проверка в таблице добавленных полей
+//	datasourceCreatePage.checkIsRendered()
+//			  .clickAgViewport();
+//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("1"));
+//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("2012-03-09 19:00:00+03"));
+//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("2013-03-09 22:00:00.0"));
+//	datasourceCreatePage.checkIsRendered()
+//			  .clickSave()
+	datasourceCreatePage.clickbackBtn();
+}
+
+
 }

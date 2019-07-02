@@ -65,6 +65,7 @@ public class Auth extends NPPageObject
 		return this;
 	}
 
+
 	public Auth clickGoogleSignIn()
 	{
 		//TODO: return google oauth form

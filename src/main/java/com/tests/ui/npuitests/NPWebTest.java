@@ -84,8 +84,8 @@ public abstract class NPWebTest extends WebTest
 
 	protected void openReportsPage()
 	{
-		driver.goToUrl(driver.getBaseUrl() + "/reports");
-		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/reports"))
+		driver.goToUrl(driver.getBaseUrl() + "/library");
+		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/library"))
 		{
 			logIn();
 		}

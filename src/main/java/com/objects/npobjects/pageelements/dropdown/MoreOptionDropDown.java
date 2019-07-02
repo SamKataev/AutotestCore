@@ -57,7 +57,7 @@ public class MoreOptionDropDown extends DropDown
 		return this;
 	}
 
-	public MoreOptionDropDown ClickRenameBtn()
+	public MoreOptionDropDown clickRenameBtn()
 	{
 		Assert.assertTrue(driver.click(renameBtn));
 		return this;

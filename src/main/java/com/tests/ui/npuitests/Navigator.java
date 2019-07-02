@@ -10,8 +10,9 @@ public class Navigator extends NPWebTest
 	{
 		mainPage.openReports()
 				  .openDatasources()
-				  .openDelivery()
-				  .openAlerts();
+				  .openNotifications();
+//				  .openDelivery()
+//				  .openAlerts();
 	}
 
 }

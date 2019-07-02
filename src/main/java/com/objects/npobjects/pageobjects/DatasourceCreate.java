@@ -4,6 +4,7 @@ import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.SettingsDataSourcesDialog;
 import com.objects.npobjects.pageelements.dialogs.FieldSettingsDialog;
 import com.objects.npobjects.pageelements.dialogs.DistinctCountSettingsDialog;
+import com.objects.npobjects.pageelements.dialogs.CalculationFieldDialog;
 import com.objects.npobjects.pageobjects.oauthpages.BoxLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
@@ -15,6 +16,7 @@ public class DatasourceCreate extends NPPageObject
 	public SettingsDataSourcesDialog settingsDataSourcesDialog;
 	public FieldSettingsDialog fieldSettingsDialog;
 	public DistinctCountSettingsDialog distinctCountSettingsDialog;
+	public CalculationFieldDialog calculationFieldDialog;
 
 	private By saveBtn = mdcIconFontBtn("ic_save");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
@@ -26,6 +28,7 @@ public class DatasourceCreate extends NPPageObject
 	private By backBtn = mdcIconFontBtn("ic_arrow_back");
 	private By editTextBtn = mdcIconFontBtn("ic_edit");
 	private By chooseAfile = By.xpath("//div[contains(@class, 'mdc-button') and contains(text(), 'Choose a file...')]");
+	private By calculationBtn = mdcIconFontBtn("ic_calculation");
 
 
 	public DatasourceCreate(SeleniumDriverWrapper driver)
@@ -34,6 +37,7 @@ public class DatasourceCreate extends NPPageObject
 		settingsDataSourcesDialog = new SettingsDataSourcesDialog(driver, this);
 		fieldSettingsDialog = new FieldSettingsDialog(driver, this);
 		distinctCountSettingsDialog = new DistinctCountSettingsDialog(driver, this);
+		calculationFieldDialog = new CalculationFieldDialog (driver, this);
 	}
 
 	@Override
@@ -89,7 +93,7 @@ public class DatasourceCreate extends NPPageObject
 
 	public DatasourceCreate clickAgViewport()
 	{
-		Assert.assertTrue(driver.waitUntilClickable(agViewport, 10));
+		Assert.assertTrue(driver.waitUntilClickable(agViewport, 20));
 		return this;
 	}
 
@@ -104,6 +108,12 @@ public class DatasourceCreate extends NPPageObject
 	{
 		Assert.assertTrue(driver.waitUntilExist(chooseAfile, 10));
 		Assert.assertTrue(driver.waitUntilClickable(chooseAfile, 10));
+		return this;
+	}
+
+	public DatasourceCreate clickCalculationBtn()
+	{
+		Assert.assertTrue(driver.click(calculationBtn));
 		return this;
 	}
 }

@@ -372,11 +372,9 @@ public class Reports extends NPWebTest
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Measure Names");
 		reportsPage.calculationsDialog.checkIsRendered()
-				  .clickMetricsByName("Number of records")
 				  .clickCodeMirror();
-		driver.keyboardImitate("*"); //переписать после доработки выч. метрик
-		reportsPage.calculationsDialog.clickMetricsByName("Number of records")
-				  .clickSaveBtn();
+		driver.keyboardImitate("[Measures].[Fact Count]*[Measures].[Fact Count]");
+		reportsPage.calculationsDialog.clickSaveBtn();
 		reportsPage.сalculationsAddDialog.checkIsRendered()
 				  .clickСloseBtn();
 		reportsPage.settingsChartDialog.checkIsRendered()
@@ -432,7 +430,8 @@ public class Reports extends NPWebTest
 				  .clickObjectInDataTableByName("filter", 5);
 		reportsPage.checkIsRendered();
 		pause(5);
-		reportsPage.clickFilterBtn();
+		reportsPage.clickEditBtn()
+				  .clickFilterBtn();
 		reportsPage.reportFiltersDialog.checkIsRendered()
 				  .clickFilterInNodeByName("Date range - (Last 365 days)");
 		reportsPage.dataRangeSelectionDialog.checkIsRendered()
@@ -449,7 +448,7 @@ public class Reports extends NPWebTest
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
-				  .clickObjectInDataTableByName("filter2", 5);
+				  .clickObjectInDataTableByName("ChartRefresh", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
 				  .clickFilterBtn();
@@ -462,7 +461,6 @@ public class Reports extends NPWebTest
 				  .clickObjectByName("Select");
 		reportsPage.reportFiltersDialog.checkIsRendered()
 				  .checkDialogTitle("Dependent objects", 5)
-				  .clickFieldsInDialogByName("Entire report", "ic_radiobutton_checked", 5)
 				  .clickDoneBtn()
 				  .clickFieldsInDialogByName("One", "ic_check_box_outline", 5)
 				  .clickFieldsInDialogByName("Two", "ic_check_box_outline", 5)
@@ -511,7 +509,7 @@ public class Reports extends NPWebTest
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
-				  .clickObjectInDataTableByName("filter2", 5);
+				  .clickObjectInDataTableByName("ChartRefresh", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
 				  .clickChartByName("Refresh")
@@ -523,6 +521,7 @@ public class Reports extends NPWebTest
 	@Test
 	public void createShare()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickPlusBtn();
@@ -569,7 +568,7 @@ public class Reports extends NPWebTest
 				  .clickCloseBtn();
 		mainPage.checkIsRendered()
 				  .openReports()
-				  .clickObjectInDataTableByName("filter2", 5);
+				  .clickObjectInDataTableByName("ChartRefresh", 5);
 		//проверить что НЕТ кнопки "edit"
 		reportsPage.checkIsRendered()
 				  .checkAbsenceEditBtn()
@@ -669,6 +668,7 @@ public class Reports extends NPWebTest
 				  .checkChartNoDate()
 				  .checkChartNoNaN()
 				  .clickCloseBtn();
+
 	}
 
 	@Test
@@ -682,6 +682,7 @@ public class Reports extends NPWebTest
 				  .checkLogoutBtn()
 				  .checkRequestBtn()
 				  .clickCloseBtn();
+
 	}
 
 }

@@ -46,15 +46,18 @@ public class Main extends NPPageObject
 	private final By currentTeam = By.xpath("//div[contains(@class, 'account-panel__about-node')]//div[contains(@class, 'account-panel__about-node_email-nod')]");
 	private final By teamsMenuToggle = By.xpath("//div[contains(@class, 'account-panel__about-node')]//span[contains(@class, 'mdc-icon-toggle')]");
 	private final By drawerToggleBtn = mdcIconFontBtn("ic_menu");
+	private final By liLibrary = mdcListItemWithText("Library");
 	private final By liReports = mdcListItemWithText("Reports");
 	private final By liDataSources = mdcListItemWithText("Data sources");
-	private final By liDelivery = mdcListItemWithText("Delivery");
-	private final By liAlerts = mdcListItemWithText("Alerts");
+	private final By liNotifications = mdcListItemWithText("Notifications");
+//	private final By liDelivery = mdcListItemWithText("Delivery");
+//	private final By liAlerts = mdcListItemWithText("Alerts");
 	private final By liSettings = mdcListItemWithText("Settings");
 	private final By liHelp = mdcListItemWithText("Help");
 	private final By liAdmin = mdcListItemWithText("Admin");
-	private final By liIntegrations = mdcListItemWithText("Integrations");
 	private final By liSignOut = mdcListItemWithText("Sign out");
+	private final By liIntegrations = mdcListItemWithText("Integrations");
+
 
 
 	public Main(SeleniumDriverWrapper driver)
@@ -103,7 +106,7 @@ public class Main extends NPPageObject
 	public Main checkIsLoggedIn()
 	{
 		checkIsRendered();
-		checkNavSection("Reports", "/reports");
+		checkNavSection("Library", "/library");
 
 		//TODO: check account
 		return this;
@@ -120,8 +123,8 @@ public class Main extends NPPageObject
 	{
 		return driver.waitUntilClickable(liReports, 10)
 				  && driver.waitUntilClickable(liDataSources)
-//				  && driver.waitUntilClickable(liDelivery)
-//				  && driver.waitUntilClickable(liAlerts)
+				  && driver.waitUntilClickable(liLibrary)
+				  && driver.waitUntilClickable(liNotifications)
 				  && driver.waitUntilClickable(liSettings)
 				  && driver.waitUntilClickable(liHelp)
 				  && driver.waitUntilExist(liAdmin)
@@ -160,24 +163,30 @@ public class Main extends NPPageObject
 	public Main clickPlusBtn()
 	{
 		String currentUrl = driver.getCurrentUrl();
+		if (currentUrl.contains("library"))
+		{
+			Assert.assertTrue(driver.click(createBtn));
+		}
 		if (currentUrl.contains("reports"))
 		{
 			Assert.assertTrue(driver.click(createBtn));
-
 		}
 		if (currentUrl.contains("datasources"))
 		{
 			Assert.assertTrue(driver.click(createBtn));
 		}
-
-		if (currentUrl.contains("delivery"))
+		if (currentUrl.contains("notifications"))
 		{
 			Assert.assertTrue(driver.click(createBtn));
 		}
-		if (currentUrl.contains("alerts"))
-		{
-			Assert.assertTrue(driver.click(createBtn));
-		}
+//		if (currentUrl.contains("delivery"))
+//		{
+//			Assert.assertTrue(driver.click(createBtn));
+//		}
+//		if (currentUrl.contains("alerts"))
+//		{
+//			Assert.assertTrue(driver.click(createBtn));
+//		}
 		if (currentUrl.contains("integrations"))
 		{
 			Assert.assertTrue(driver.click(createBtn));
@@ -206,6 +215,13 @@ public class Main extends NPPageObject
 
 	//simple actions/////////////////////
 
+	public Main openLibrary()
+	{
+		Assert.assertTrue(driver.click(liReports));
+		checkNavSection("Library", "/library");
+		return this;
+	}
+
 	public Main openReports()
 	{
 		Assert.assertTrue(driver.click(liReports));
@@ -216,23 +232,28 @@ public class Main extends NPPageObject
 	public Main openDatasources()
 	{
 		Assert.assertTrue(driver.click(liDataSources));
-		checkNavSection("Data sources", "/datasources");
+		checkNavSection("Datasets", "/datasources");
 		return this;
 	}
-
-	public Main openDelivery()
+	public Main openNotifications()
 	{
-		Assert.assertTrue(driver.click(liDelivery));
-		checkNavSection("Delivery", "/delivery");
+		Assert.assertTrue(driver.click(liNotifications));
+		checkNavSection("Notifications", "/notifications");
 		return this;
 	}
-
-	public Main openAlerts()
-	{
-		Assert.assertTrue(driver.click(liAlerts));
-		checkNavSection("Alerts", "/alerts");
-		return this;
-	}
+//	public Main openDelivery()
+//	{
+//		Assert.assertTrue(driver.click(liDelivery));
+//		checkNavSection("Delivery", "/delivery");
+//		return this;
+//	}
+//
+//	public Main openAlerts()
+//	{
+//		Assert.assertTrue(driver.click(liAlerts));
+//		checkNavSection("Alerts", "/alerts");
+//		return this;
+//	}
 
 	public Main openIntegrations()
 	{
@@ -251,6 +272,12 @@ public class Main extends NPPageObject
 	public Main clickSettingsBtn()
 	{
 		Assert.assertTrue(driver.click(liSettings));
+		return this;
+	}
+
+	public Main clickSignOutBtn()
+	{
+		Assert.assertTrue(driver.click(liSignOut));
 		return this;
 	}
 
