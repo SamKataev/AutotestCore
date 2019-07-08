@@ -22,6 +22,7 @@ public class SettingsChartDialog extends Dialog
 	private final By styleBtn = tabScrollerMdcWithTextBtn("Style");
 	private final By fontSizeSelect = nodeMdcAppBarSelect("8");
 	private final By lineWeight = mdcIconFontBtn("ic_line_weight");
+	private final By applyBtn = nodeMdcAppBarTextBtn("Apply");
 
 	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
@@ -74,6 +75,7 @@ public class SettingsChartDialog extends Dialog
 
 	public SettingsChartDialog clickDimensionInPanelByName(String text)
 	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]"),10));
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
@@ -116,6 +118,19 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]"), time));
 		return this;
 	}
+
+	public SettingsChartDialog clickItemInSelectByName(String text, String iconClass, int time)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li"), time));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
+		return this;
+	}
+	public SettingsChartDialog clickApplyBtn()
+	{
+		Assert.assertTrue(driver.click(applyBtn));
+		return this;
+	}
+
 }
 
 

@@ -467,7 +467,7 @@ public class Reports extends NPWebTest
 				  .clickFieldsInDialogByName("Three", "ic_check_box_outline", 5)
 				  .clickDoneBtn()
 				  .checkDialogTitle("Report Filters", 5)
-				  .checkFilterInNodeByName("Name - (3 of 9)");
+				  .checkFilterInNodeByName("3 of 9");
 		reportsPage.checkIsRendered()
 				  .checkChartNoDate()
 				  .clickCloseBtn();
@@ -644,6 +644,7 @@ public class Reports extends NPWebTest
 				  .checkChartNoDate()
 				  .clickCloseBtn();
 	}
+
 	@Test
 	public void checkGrandTotal()
 	{
@@ -668,7 +669,6 @@ public class Reports extends NPWebTest
 				  .checkChartNoDate()
 				  .checkChartNoNaN()
 				  .clickCloseBtn();
-
 	}
 
 	@Test
@@ -682,7 +682,66 @@ public class Reports extends NPWebTest
 				  .checkLogoutBtn()
 				  .checkRequestBtn()
 				  .clickCloseBtn();
-
 	}
 
+	@Test
+	public void addNewItem()
+	{
+		changeTeam("TestTeam");
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown.checkIsRendered()
+				  .clickObjectByName("Chart", "ic_chart");
+	   reportsPage.selectaDataSourceDialog.checkIsRendered()
+		        .clickDataSourceInDialogByName("DemoData","ic_csv", 30);
+		reportsPage.chooseaChartTypeDialog.checkIsRendered()
+				  .clickTypeChartInDialogByName("Column","ic_column",5);
+		reportsPage.settingsChartDialog.checkIsRendered()
+				   .checkDialogTitle("Settings", 2)
+				  .clickItemInPanelByName("Data source", "ic_csv");
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Calculations");
+		reportsPage.сalculationsAddDialog.checkIsRendered()
+				  .clickAddBtn();
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Region");
+		reportsPage.calculationsDialog.checkIsRendered()
+				  .enterNameInput("Region item")
+				  .clickCodeMirror();
+		driver.keyboardImitate("[Region.Hierarchy].[Central]-[Region.Hierarchy].[West]");
+		pause(5);
+		reportsPage.calculationsDialog.clickSaveBtn();
+		reportsPage.сalculationsAddDialog.clickСloseBtn();
+		reportsPage.settingsChartDialog.clickAddDimensionBtn()
+				  .checkDialogTitle("Choose dimension",5)
+				  .clickDimensionInPanelByName("Region")
+				  .clickAddMeasureBtn()
+				  .checkDialogTitle("Choose measure",5)
+				  .clickDimensionInPanelByName("Sales");
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Sum");
+		//проверка что измерение добавилось фильтры-селект-проверка самого значения
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .clickAddFilterBtn();
+		reportsPage.reportFiltersDialog.checkIsRendered()
+				  .checkDialogTitle("Choose item",2);
+		Assert.assertTrue(driver.click(By.xpath("(//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), 'Region')])[2]")));
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Select");
+		reportsPage.settingsChartDialog.checkIsRendered()
+				  .checkDialogTitle("Selection",5)
+		        .clickItemInSelectByName ("Region item","ic_check_box_outline",5 )
+				  .clickItemInSelectByName ("Central", "ic_check_box_outline",5)
+				  .clickApplyBtn();
+		reportsPage.checkIsRendered()
+				  .clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("CalculatedItem")
+				  .clickOkBtn();
+	}
 }

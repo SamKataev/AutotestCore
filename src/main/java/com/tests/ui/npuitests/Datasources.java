@@ -13,6 +13,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void uploadFileByUrl()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -29,6 +30,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void uploadFile()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -44,6 +46,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetGoogleAnalytics()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -60,6 +63,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetZendesk()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -76,6 +80,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetMailChimp()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -92,6 +97,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetHubspot()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -108,6 +114,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetDropbox()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -126,6 +133,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetFreshSales()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -141,6 +149,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetFreshDesk()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -156,6 +165,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetFacebook()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -171,6 +181,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetFacebookAds()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -188,6 +199,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetHerokuPostgreSQL()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -212,6 +224,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetJira()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -229,6 +242,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetYandexDisk()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -247,6 +261,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetOneDrive()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -265,6 +280,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetBox()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -283,6 +299,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetGoogleDrive()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -301,6 +318,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetPostgreSQLIntegrations()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -324,6 +342,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetQuickBooks()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -339,6 +358,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetIntercom()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -354,6 +374,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetPayPal()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -369,6 +390,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetPipedrive()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -386,6 +408,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetInstagram()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -401,6 +424,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetGoogleAds()
 	{
+		changeTeam("TestTeam");
 		//коннектор в разработке
 		mainPage.checkIsRendered()
 				  .openDatasources()
@@ -418,6 +442,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetStripe()
 	{
+		changeTeam("TestTeam");
 		//Stripe коннектор в разработке
 		mainPage.checkIsRendered()
 				  .openDatasources()
@@ -435,6 +460,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetInfusionsoft()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -450,6 +476,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void datasetWrike()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .clickPlusBtn();
@@ -619,6 +646,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void CVSrefresh()
 	{
+		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .contextClickObjectInDataTableByName("Testslemma", "ic_csv", 5);
@@ -633,6 +661,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void SaaSrefresh()
 	{
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .contextClickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", "ic_google_analytics", 5);
@@ -708,6 +737,7 @@ public class Datasources extends NPWebTest
 	@Test
 public void CalculationField()
 {
+	changeTeam("TestTeam");
 	mainPage.checkIsRendered()
 			  .openDatasources()
 			  .clickPlusBtn();
@@ -750,21 +780,20 @@ public void CalculationField()
 	datasourceCreatePage.checkIsRendered()
 			  .clickAgViewport();
 	pause(5);
-//// дописать и допроверить после починки
 	//проверка в настройках добавленных полей
 	datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
 			  .checkFieldsInDialogByName("region_central", "ic_calculation", 5)
 			  .checkFieldsInDialogByName("OrderDate_Text", "ic_dimension", 5)
 			  .checkFieldsInDialogByName("OrderDate_timestamp","ic_date_range",5);
 	//проверка в таблице добавленных полей
-//	datasourceCreatePage.checkIsRendered()
-//			  .clickAgViewport();
-//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("1"));
-//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("2012-03-09 19:00:00+03"));
-//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("2013-03-09 22:00:00.0"));
-//	datasourceCreatePage.checkIsRendered()
-//			  .clickSave()
-	datasourceCreatePage.clickbackBtn();
+	datasourceCreatePage.checkIsRendered()
+			  .clickAgViewport();
+	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='17']")).getText().matches("1"));
+//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='18']")).getText().matches("2012-03-09 19:00:00+03"));
+//	Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='19']")).getText().matches("2013-03-09 22:00:00.0"));
+	datasourceCreatePage.checkIsRendered()
+	                    .clickSave()
+                       .clickbackBtn();
 }
 
 

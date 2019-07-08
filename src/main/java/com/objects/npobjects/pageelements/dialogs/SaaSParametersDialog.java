@@ -22,6 +22,7 @@ public class SaaSParametersDialog extends Dialog
 	private final By customerIDField = dialogNpTextFieldWithLabel("Customer ID");
 	private final By loginField = dialogNpTextFieldWithLabel("Login");
 	private final By passwordField = dialogNpTextFieldWithLabel("Password");
+	private final By apitokenField = dialogNpTextFieldWithLabel("API token");
 	private final By tokenField = dialogNpTextFieldWithLabel("Security token");
 	private final By cancelBtn = dialogMdcTextBtn("Cancel");
 	private final By okBtn = dialogMdcTextBtn("OK");
@@ -85,6 +86,12 @@ public class SaaSParametersDialog extends Dialog
 	public SaaSParametersDialog enterpasswordField(String text)
 	{
 		Assert.assertTrue(driver.type(passwordField, text));
+		return this;
+	}
+
+	public SaaSParametersDialog enterAPItokenField(String text)
+	{
+		Assert.assertTrue(driver.type(apitokenField, text));
 		return this;
 	}
 

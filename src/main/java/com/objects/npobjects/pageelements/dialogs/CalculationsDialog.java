@@ -12,6 +12,7 @@ public class CalculationsDialog extends Dialog
 	private final By title = dialogMdcAppBarTitle("Calculations");
 	private final By SaveBtn = dialogMdcAppBarTextBtn("Save");
 	private By codeMirror = By.xpath("//div[contains(@class,'CodeMirror cm-s-default')]");
+	private final By NameInput = By.xpath("//div[contains(@class, 'dropdown__content')]//label[contains(@class, text-field__label) and contains(text(), 'Name')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 
 	public CalculationsDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
 	{
@@ -23,7 +24,8 @@ public class CalculationsDialog extends Dialog
 	public boolean validateElements()
 	{
 		return driver.waitUntilClickable(SaveBtn, 5)
-				  && driver.waitUntilExist(title);
+				  && driver.waitUntilExist(title)
+				  && driver.waitUntilExist(NameInput);
 	}
 
 	public CalculationsDialog checkIsRendered()
@@ -49,4 +51,12 @@ public class CalculationsDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'calculations-edit__metrics')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li")));
 		return this;
 	}
+
+	public CalculationsDialog enterNameInput(String text)
+	{
+		Assert.assertTrue(driver.type(NameInput, text));
+		return this;
+	}
+
+
 }

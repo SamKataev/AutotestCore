@@ -44,7 +44,7 @@ public class RenameDialog extends Dialog
 
 	public RenameDialog enterInputName(String text)
 	{
-		org.testng.Assert.assertTrue(driver.type(inputName, text));
+		Assert.assertTrue(driver.type(inputName, text));
 		return this;
 	}
 }
