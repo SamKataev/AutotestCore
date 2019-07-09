@@ -139,5 +139,9 @@ public abstract class WebElementsContainer
 		return By.xpath("//label[contains(@class, text-field__label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
 
+	protected By mdcTabWithText(String text)
+	{
+		return By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab')]");
+	}
 
 }

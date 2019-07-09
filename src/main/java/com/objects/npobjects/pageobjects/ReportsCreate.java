@@ -39,6 +39,7 @@ public class ReportsCreate extends NPPageObject
 	private By shareBtn = mdcIconFontBtn("ic_person_add");
 	private final By refreshBtn = mdcIconFontBtn("ic_refresh");
 	private By editTextBtn = mdcIconFontBtn("ic_edit");
+	private By sheetBtn = mdcTabWithText ("+");
 
 
 	public ReportsCreate(SeleniumDriverWrapper driver)
@@ -61,8 +62,8 @@ public class ReportsCreate extends NPPageObject
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilExist(settingsBtn, 10)
-				  && driver.waitUntilExist(moreBtn);
+		return driver.waitUntilExist(moreBtn)
+				  && driver.waitUntilExist(settingsBtn, 10);
 	}
 
 	public ReportsCreate checkIsRendered()
@@ -159,6 +160,24 @@ public class ReportsCreate extends NPPageObject
 	public ReportsCreate clickEditTextBtn()
 	{
 		Assert.assertTrue(driver.click(editTextBtn));
+		return this;
+	}
+
+	public ReportsCreate clickSheetBtn()
+	{
+		Assert.assertTrue(driver.click(sheetBtn));
+		return this;
+	}
+
+	public ReportsCreate contextClickSheet(String text, int time)
+	{
+		Assert.assertFalse(driver.contextClick(By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab')]"),10));
+		return this;
+	}
+
+	public ReportsCreate checkActiveSheet (String text, String buttonClass, int time)
+	{
+		Assert.assertFalse(driver.waitUntilClickable(By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab') and contains(@class, '" + buttonClass + "')]"),5));
 		return this;
 	}
 

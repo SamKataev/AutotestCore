@@ -1,9 +1,9 @@
 package com.tests.ui.npuitests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.By;
 
 public class Reports extends NPWebTest
 
@@ -743,5 +743,36 @@ public class Reports extends NPWebTest
 		reportsPage.saveAsDialog.checkIsRendered()
 				  .enterInputName("CalculatedItem")
 				  .clickOkBtn();
+	}
+
+	@Test
+	public void addNewSheet()
+	{
+		changeTeam("TestTeam");
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .clickPlusBtn();
+		reportsPage.checkIsRendered()
+				  .clickSheetBtn()
+				  .clickSheetBtn()
+				  .contextClickSheet("Sheet 2",10);
+		reportsPage.reportDropDown.checkIsRendered()
+				  .clickObjectByName("Rename");
+		mainPage.renameDialog.checkIsRendered()
+				  .enterInputName("New name sheet")
+              .clickRenameBtn();
+		reportsPage.settingsReportDialog.checkIsRendered()
+				  .createStartSheet().selectByVisibleText("New name sheet");
+		reportsPage.clickMoreBtn();
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickSaveIcon();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("addSheet")
+				  .clickOkBtn();
+		reportsPage.clickCloseBtn();
+		mainPage.checkIsRendered()
+		        .clickObjectInDataTableByName("addSheet", 5);
+		reportsPage.checkIsRendered()
+				  	.checkActiveSheet("New name sheet","mdc-tab--active",5);
 	}
 }

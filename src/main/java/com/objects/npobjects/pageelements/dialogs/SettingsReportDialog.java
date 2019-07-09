@@ -11,10 +11,12 @@ public class SettingsReportDialog extends Dialog
 {
 	private ReportsCreate parentPage;
 	public Select selectSize;
+	public Select selectStartSheet;
 
 	private final By title = nodeMdcAppBarTitle("Settings");
 	private final By canvasSizeSelect = nodeMdcAppBarSelect("Floating");
 	private final By tiledNode = By.className("dataview-tile-node");
+	private final By startSheet = nodeMdcAppBarSelectWithLabel("Start sheet");
 
 
 	public SettingsReportDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
@@ -54,5 +56,12 @@ public class SettingsReportDialog extends Dialog
 	{
 		Assert.assertFalse(driver.waitUntilExist(tiledNode));
 		return this;
+	}
+
+	public Select createStartSheet()
+	{
+		WebElement selectElem = driver.getElement(startSheet);
+		Select selectStartSheet = new Select(selectElem);
+		return selectStartSheet;
 	}
 }

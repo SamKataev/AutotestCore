@@ -134,6 +134,12 @@ public abstract class Dialog extends PageElement
 		return By.xpath("//option[contains(text(), '" + titleText + "')]//parent::select[@class='select__native-control']");
 	}
 
+	//settings-node select with label
+	protected By nodeMdcAppBarSelectWithLabel(String text)
+	{
+		return By.xpath("//label[contains(@class, 'select__label') and contains(text(), '" + text + "')]/following-sibling::div/child::select[contains(@class, 'select__native-control')]");
+	}
+
 	//settings-node accordion
 	protected By nodeMdcListAccordionWithText(String text)
 	{
