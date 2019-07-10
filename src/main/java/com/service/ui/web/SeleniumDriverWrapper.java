@@ -1,5 +1,6 @@
 package com.service.ui.web;
 
+import com.service.ScreenShooter;
 import com.service.ui.UIDriverWrapper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -25,6 +26,8 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 	WebDriver webDriver;
 	private String mainHandle;
 	private String baseUrl;
+	private String userFolder;
+
 
 	enum WaiterType
 	{
@@ -59,6 +62,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		catch (WebDriverException e)
 		{
 			System.out.println("error closing web driver in driver wrapper: " + e.getMessage());
+			getScreenshot("close");
 		}
 	}
 
@@ -71,6 +75,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		else
 		{
 			System.out.println("wrong argument type");
+			getScreenshot("click");
 		}
 		return false;
 	}
@@ -84,6 +89,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		else
 		{
 			System.out.println("wrong argument type");
+			getScreenshot("type");
 		}
 		return false;
 	}
@@ -100,6 +106,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 			catch (WebDriverException e)
 			{
 				System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0, 200) + "...");
+				getScreenshot("clickWebElement");
 			}
 		}
 		return false;
@@ -119,6 +126,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 			catch (WebDriverException e)
 			{
 				System.out.println("error typing in web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0, 35) + "...");
+				getScreenshot("typeWebElement");
 			}
 		}
 		return false;
@@ -154,6 +162,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		catch (InterruptedException e)
 		{
 			System.out.println("error switching window with timeout" + timeout + " seconds: " + e.getMessage());
+			getScreenshot("switchWindow");
 		}
 	}
 
@@ -191,6 +200,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		catch (InterruptedException e)
 		{
 			System.out.println("error switching to default content with timeout" + timeout + " seconds: " + e.getMessage());
+			getScreenshot("switchToDefaultContent");
 		}
 	}
 
@@ -217,6 +227,16 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 	public void setMainWindowHandle(String arg)
 	{
 		mainHandle = arg;
+	}
+
+	public void setUserFolder(String Folder)
+	{
+		userFolder = Folder;
+	}
+
+	public String getUserFolder()
+	{
+		return userFolder;
 	}
 
 	public String getCurrentWindowHandle()
@@ -323,6 +343,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		catch (TimeoutException ex)
 		{
 			System.out.println("timeout " + time + " expired, " + type.toString() + ", " + locator.toString());
+			getScreenshot("waitUntilConditions");
 			return false;
 		}
 		return true;
@@ -338,6 +359,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		catch (Exception e)
 		{
 			System.out.println("Error imitating keys press");
+			getScreenshot("keyboardImitate");
 		}
 	}
 
@@ -357,4 +379,9 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		return false;
 	}
 
+	public void getScreenshot(String problem)
+	{
+   	ScreenShooter shooter = new ScreenShooter(getUserFolder() + "/Screenshots/");
+		shooter.getScreenShot(webDriver, problem);
+	}
 }
