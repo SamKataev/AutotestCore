@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="slemma test" parallel="tests" thread-count="3">
+    <parameter name="baseURL" value="https://app.newpeople.co"/>
+
+    <listeners>
+        <listener class-name="com.service.CustomTestListener"/>
+    </listeners>
+
+    <test verbose="1" name="web1" annotations="JDK">
+        <parameter name="threadId" value="thread2"/>
+        <classes>
+            <class name="com.tests.ui.npuitests.Datasources"/>
+            <class name="com.tests.ui.npuitests.Integrations"/>
+            <class name="com.tests.ui.npuitests.Navigator"/>
+            <class name="com.tests.ui.npuitests.LoginPage"/>
+            <class name="com.tests.ui.npuitests.Reports"/>
+
+        </classes>
+    </test>
+
+    <!--<test verbose="1" name="web2" annotations="JDK">-->
+    <!--<parameter name="threadId" value="thread2"/>-->
+    <!--<classes>-->
+    <!--<class name="com.tests.ui.npuitests.LoginPage"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+
+    <!--<test verbose="1" name="http1" annotations="JDK">-->
+    <!--<parameter name="requestsFiles" value="-->
+    <!--D:/projects/AutotestCore/src/main/resources/api/sharing/GetLink.txt;"/>-->
+
+    <!--<parameter name="headersFile" value="D:/projects/AutotestCore/src/main/resources/api/headers.txt"/>-->
+    <!--<parameter name="endpoint" value="http://app.newpeople.co/api/v1/"/>-->
+    <!--<parameter name="ignoredProps" value="CreatedAt;ShareUrlCreateAt;SIG;Token"/>-->
+    <!--<classes>-->
+    <!--<class name="com.tests.http.HttpTestsRuntime"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+
+
+</suite>
+
+

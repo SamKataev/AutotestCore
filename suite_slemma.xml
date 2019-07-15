@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="slemma test" parallel="tests" thread-count="3">
+    <parameter name="baseURL" value="https://slemma.com"/>
+
+    <listeners>
+        <listener class-name="com.service.CustomTestListener"/>
+    </listeners>
+
+    <test verbose="1" name="http2" annotations="JDK">
+        <parameter name="threadId" value="thread1"/>
+
+        <classes>
+            <!--<class name="com.tests.ui.slemmauitests.LoginPage"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.Editors"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.Navigator"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.test"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.CreateDashbord"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.RegistrationPage"/>-->
+            <!--<class name="com.tests.ui.slemmauitests.SlemmaWebTest"/>-->
+
+        </classes>
+    </test>
+
+
+    <!--<test verbose="1" name="web1" annotations="JDK">-->
+    <!--<parameter name="threadId" value="thread2"/>-->
+    <!--<classes>-->
+    <!--<class name="com.tests.ui.slemmauitests.Login"/>-->
+    <!--<class name="com.tests.ui.slemmauitests.Navigator"/>-->
+    <!--</classes>-->
+    <!--</test>-->
+
+
+</suite>

@@ -31,7 +31,7 @@
                 <inherited>true</inherited>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>suite.xml</suiteXmlFile>
+                        <suiteXmlFile>suite_np.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
