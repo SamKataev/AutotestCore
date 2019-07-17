@@ -59,7 +59,6 @@ public class Main extends NPPageObject
 	private final By liIntegrations = mdcListItemWithText("Integrations");
 
 
-
 	public Main(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/reports", driver);
@@ -330,5 +329,10 @@ public class Main extends NPPageObject
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/parent::span/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
 		return this;
+	}
+
+	public boolean clickdrawerToggleBtn()
+	{
+		return driver.waitUntilExist(drawerToggleBtn,2)? driver.click(drawerToggleBtn): false;
 	}
 }

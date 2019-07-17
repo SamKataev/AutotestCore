@@ -1,6 +1,5 @@
 package com.tests.ui.npuitests;
 
-import com.objects.npobjects.pageobjects.Main;
 import org.testng.annotations.Test;
 
 public class Integrations extends NPWebTest
@@ -10,7 +9,8 @@ public class Integrations extends NPWebTest
 	public void createHerokuIntegrations()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+		       .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -36,7 +36,8 @@ public class Integrations extends NPWebTest
 	public void createPostgreSQLIntegrations()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -61,7 +62,8 @@ public class Integrations extends NPWebTest
 	public void createFreshdesk()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -79,7 +81,8 @@ public class Integrations extends NPWebTest
 	public void createFreshsales()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -97,7 +100,8 @@ public class Integrations extends NPWebTest
 	public void createSalesforce()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -116,7 +120,8 @@ public class Integrations extends NPWebTest
 	public void createQB()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -161,7 +166,8 @@ public class Integrations extends NPWebTest
 	public void createZendesk()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -187,7 +193,8 @@ public class Integrations extends NPWebTest
 	public void createWrike()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -211,7 +218,8 @@ public class Integrations extends NPWebTest
 	public void createInfusionsoft()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -234,7 +242,8 @@ public class Integrations extends NPWebTest
 	public void createJira()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -245,7 +254,7 @@ public class Integrations extends NPWebTest
 		mainPage.saaSParametersDialog.checkIsRendered()
 				  .enterserverURLField("https://npeople.atlassian.net")
 				  .enterloginField("matveeva.e")
-				  .enterpasswordField("Matveeva0414")
+				  .enterAPItokenField("Matveeva0414")
 				  .clickOkBtn();
 	}
 
@@ -253,7 +262,8 @@ public class Integrations extends NPWebTest
 	public void createFacebook()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -279,7 +289,8 @@ public class Integrations extends NPWebTest
 	public void createFacebookAds()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -301,7 +312,8 @@ public class Integrations extends NPWebTest
 	public void createInstagram()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -324,7 +336,8 @@ public class Integrations extends NPWebTest
 	public void createPayPal()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -347,7 +360,8 @@ public class Integrations extends NPWebTest
 	public void createIntercom()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -371,7 +385,8 @@ public class Integrations extends NPWebTest
 	public void createPipedrive()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -395,7 +410,8 @@ public class Integrations extends NPWebTest
 	public void createBox()
 	{
 		mainPage.checkIsRendered()
-				  .clickSettingsBtn();
+				  .clickdrawerToggleBtn();
+		mainPage.clickSettingsBtn();
 		mainPage.userSettingsDialog.checkIsRendered()
 				  .clickItemCloudStorage()
 				  .clickaddIntegrationBtn();
@@ -417,7 +433,8 @@ public class Integrations extends NPWebTest
 	public void createDropbox()
 	{
 		mainPage.checkIsRendered()
-				  .clickSettingsBtn();
+				  .clickdrawerToggleBtn();
+		mainPage.clickSettingsBtn();
 		mainPage.userSettingsDialog.checkIsRendered()
 				  .clickItemCloudStorage()
 				  .clickaddIntegrationBtn();
@@ -442,7 +459,8 @@ public class Integrations extends NPWebTest
 	public void createGoogleDrive()
 	{
 		mainPage.checkIsRendered()
-				  .clickSettingsBtn();
+				  .clickdrawerToggleBtn();
+		mainPage.clickSettingsBtn();
 		mainPage.userSettingsDialog.checkIsRendered()
 				  .clickItemCloudStorage()
 				  .clickaddIntegrationBtn();
@@ -468,7 +486,8 @@ public class Integrations extends NPWebTest
 	public void createOneDrive()
 	{
 		mainPage.checkIsRendered()
-				  .clickSettingsBtn();
+				  .clickdrawerToggleBtn();
+		mainPage.clickSettingsBtn();
 		mainPage.userSettingsDialog.checkIsRendered()
 				  .clickItemCloudStorage()
 				  .clickaddIntegrationBtn();
@@ -490,7 +509,8 @@ public class Integrations extends NPWebTest
 	public void createYandexDisk()
 	{
 		mainPage.checkIsRendered()
-				  .clickSettingsBtn();
+				  .clickdrawerToggleBtn();
+		mainPage.clickSettingsBtn();
 		mainPage.userSettingsDialog.checkIsRendered()
 				  .clickItemCloudStorage()
 				  .clickaddIntegrationBtn();
@@ -514,7 +534,8 @@ public class Integrations extends NPWebTest
 	public void createHubSpot()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -537,7 +558,8 @@ public class Integrations extends NPWebTest
 	public void createMailchimp()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -559,7 +581,8 @@ public class Integrations extends NPWebTest
 	public void createGoogleAds()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
@@ -587,7 +610,8 @@ public class Integrations extends NPWebTest
 	public void createGoogleAnalytics()
 	{
 		mainPage.checkIsRendered()
-				  .clickAdminBtn()
+				  .clickdrawerToggleBtn();
+		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
