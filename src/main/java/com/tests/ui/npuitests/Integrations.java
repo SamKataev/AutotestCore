@@ -140,28 +140,28 @@ public class Integrations extends NPWebTest
 				  .clickObjectInDataTableByName("QuickBooks", 5);
 	}
 
-	////    @Test
-	//в разработке
-////    public void createStripe(){
-////        mainPage.checkIsRendered()
-////                .clickAdminBtn()
-////                .openIntegrations()
-////                .clickPlusBtn();
-////        mainPage.integrationsDropDown.checkIsRendered()
-////                .clickSaasBtn();
-////        mainPage.createSaasDialog.checkIsRendered()
-////                .clickStripeBtn();
-////        //Stripe коннектор в разработке
-////        driver.switchWindow(1);
-////        stripeLogIn.checkIsRendered()
-////                .clicksignInStripeBtn()
-////                .enterEmailInput("developer@newpeople.co")
-////                .enterPassInput("q1w2E#R$")
-////                .clicksignInStripeAccountBtn();
-////        driver.switchToMainWindow();
-////        mainPage.checkObjectInDataTableByName("Stripe",5)
-////                .clickObjectInDataTableByName("Stripe",5);
-////    }
+	//    @Test
+//	в разработке
+//    public void createStripe(){
+//        mainPage.checkIsRendered()
+//                .clickAdminBtn()
+//                .openIntegrations()
+//                .clickPlusBtn();
+//        mainPage.integrationsDropDown.checkIsRendered()
+//                .clickSaasBtn();
+//        mainPage.createSaasDialog.checkIsRendered()
+//                .clickStripeBtn();
+//        //Stripe коннектор в разработке
+//        driver.switchWindow(1);
+//        stripeLogIn.checkIsRendered()
+//                .clicksignInStripeBtn()
+//                .enterEmailInput("developer@newpeople.co")
+//                .enterPassInput("q1w2E#R$")
+//                .clicksignInStripeAccountBtn();
+//        driver.switchToMainWindow();
+//        mainPage.checkObjectInDataTableByName("Stripe",5)
+//                .clickObjectInDataTableByName("Stripe",5);
+//    }
 	@Test
 	public void createZendesk()
 	{
@@ -230,7 +230,7 @@ public class Integrations extends NPWebTest
 		driver.switchWindow(1);
 		infusionsoftLogIn.checkIsRendered()
 				  .enterEmailInput("developer@newpeople.co")
-				  .enterPassInput("q1w2E#R$")
+				  .enterPassInput("q1w2E#R$6")
 				  .clicklogInBtn()
 				  .clickAllowBtn();
 		driver.switchToMainWindow();
@@ -349,6 +349,7 @@ public class Integrations extends NPWebTest
 		payPalLogIn.checkIsRendered();
 		pause(5);
 		payPalLogIn.enterEmailInput("developer@newpeople.co")
+		        .clickNextBtn()
 				  .enterPassInput("q1w2E#R$")
 				  .clickSignInBtn();
 		driver.switchToMainWindow();
@@ -375,7 +376,7 @@ public class Integrations extends NPWebTest
 		intercomLogIn.enterEmailInput("developer@newpeople.co")
 				  .enterPasswordInput("q1w2E#R$")
 				  .clickSignInBtn()
-				  .clickAuthorizeAccessn();
+				  .clickAuthorizeAccess();
 		driver.switchToMainWindow();
 		mainPage.checkObjectInDataTableByName("Intercom", 5)
 				  .clickObjectInDataTableByName("Intercom", 5);
@@ -497,7 +498,6 @@ public class Integrations extends NPWebTest
 		oneDriveLogIn.checkIsRendered()
 				  .enterEmailInput("s.kataev@slemma.com")
 				  .clickNextBtn()
-				  .clickPersonalAccount()
 				  .enterPassInput("Q123#@!w")
 				  .clickNextBtn();
 		driver.switchToMainWindow();
@@ -577,60 +577,62 @@ public class Integrations extends NPWebTest
 				  .clickObjectInDataTableByName("MailChimp (a.dobzhansky@slemma.com)", 5);
 	}
 
-	@Test
-	public void createGoogleAds()
-	{
-		mainPage.checkIsRendered()
-				  .clickdrawerToggleBtn();
-		mainPage.clickAdminBtn()
-				  .openIntegrations()
-				  .clickPlusBtn();
-		mainPage.integrationsDropDown.checkIsRendered()
-				  .clickSaasBtn();
-		mainPage.createSaasDialog.checkIsRendered()
-				  .clickgoogleAdsBtn();
-		//googleAds коннектор не работает
-		mainPage.saaSParametersDialog.checkIsRendered()
-				  .enterCustomerIDField("634-468-0664")
-				  .clickOkBtn();
-		driver.switchWindow(1);
-		googleLogIn.checkIsRendered()
-				  .enteremailInput("s.kataev@slemma.com")
-				  .clicknextBtn()
-				  .enterpasswordInput("Q123#@!w")
-				  .clicknextPassBtn()
-				  .clickallowBtn();
-		pause(5);
-		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("GoogleAds", 10)
-				  .clickObjectInDataTableByName("GoogleAds", 5);
-	}
-
-	@Test
-	public void createGoogleAnalytics()
-	{
-		mainPage.checkIsRendered()
-				  .clickdrawerToggleBtn();
-		mainPage.clickAdminBtn()
-				  .openIntegrations()
-				  .clickPlusBtn();
-		mainPage.integrationsDropDown.checkIsRendered()
-				  .clickSaasBtn();
-		mainPage.createSaasDialog.checkIsRendered()
-				  .clickGoogleAnalyticsBtn();
-		//googleAnalytics
-		driver.switchWindow(1);
-		googleLogIn.checkIsRendered()
-				  .enteremailInput("s.kataev@slemma.com")
-				  .clicknextBtn()
-				  .enterpasswordInput("Q123#@!w")
-				  .clicknextPassBtn();
-//        pause(5);
-//        googleLogIn.clickPermissionBtn();
-//        pause(5);
-		googleLogIn.clickallowBtn();
-		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5)
-				  .clickObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5);
-	}
+//	@Test
+//	public void createGoogleAds()
+//			  //коннектор в разработке
+//	{
+//		mainPage.checkIsRendered()
+//				  .clickdrawerToggleBtn();
+//		mainPage.clickAdminBtn()
+//				  .openIntegrations()
+//				  .clickPlusBtn();
+//		mainPage.integrationsDropDown.checkIsRendered()
+//				  .clickSaasBtn();
+//		mainPage.createSaasDialog.checkIsRendered()
+//				  .clickgoogleAdsBtn();
+//		//googleAds коннектор не работает
+//		mainPage.saaSParametersDialog.checkIsRendered()
+//				  .enterCustomerIDField("634-468-0664")
+//				  .clickOkBtn();
+//		driver.switchWindow(1);
+//		googleLogIn.checkIsRendered()
+//				  .enteremailInput("s.kataev@slemma.com")
+//				  .clicknextBtn()
+//				  .enterpasswordInput("Q123#@!w")
+//				  .clicknextPassBtn()
+//				  .clickallowBtn();
+//		pause(5);
+//		driver.switchToMainWindow();
+//		mainPage.checkObjectInDataTableByName("GoogleAds", 10)
+//				  .clickObjectInDataTableByName("GoogleAds", 5);
+//	}
+//
+//	@Test
+//	public void createGoogleAnalytics()
+//	{
+//		//коннектор в разработке
+//		mainPage.checkIsRendered()
+//				  .clickdrawerToggleBtn();
+//		mainPage.clickAdminBtn()
+//				  .openIntegrations()
+//				  .clickPlusBtn();
+//		mainPage.integrationsDropDown.checkIsRendered()
+//				  .clickSaasBtn();
+//		mainPage.createSaasDialog.checkIsRendered()
+//				  .clickGoogleAnalyticsBtn();
+//		//googleAnalytics
+//		driver.switchWindow(1);
+//		googleLogIn.checkIsRendered()
+//				  .enteremailInput("s.kataev@slemma.com")
+//				  .clicknextBtn()
+//				  .enterpasswordInput("Q123#@!w")
+//				  .clicknextPassBtn();
+////        pause(5);
+////        googleLogIn.clickPermissionBtn();
+////        pause(5);
+//		googleLogIn.clickallowBtn();
+//		driver.switchToMainWindow();
+//		mainPage.checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5)
+//				  .clickObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5);
+//	}
 }

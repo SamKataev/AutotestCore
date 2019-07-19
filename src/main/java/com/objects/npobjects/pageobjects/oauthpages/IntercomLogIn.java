@@ -11,7 +11,7 @@ public class IntercomLogIn extends NPPageObject
 	private By emailInput = By.xpath("//input[@placeholder='name@company.com']");
 	private By passwordInput = By.xpath("//input[@placeholder='password']");
 	private By signIn = By.xpath("//button[@type='submit']");
-	private By authorizeAccess = By.xpath("//button[@id='ember113']");
+	private By authorizeAccess = By.xpath("//button[@class='btn o__primary-live ember-view oauth__connect-buttons u__ml__5']");
 
 	public IntercomLogIn(SeleniumDriverWrapper driver)
 	{
@@ -50,7 +50,7 @@ public class IntercomLogIn extends NPPageObject
 		return this;
 	}
 
-	public IntercomLogIn clickAuthorizeAccessn()
+	public IntercomLogIn clickAuthorizeAccess()
 	{
 		Assert.assertTrue(driver.click(authorizeAccess));
 		return this;

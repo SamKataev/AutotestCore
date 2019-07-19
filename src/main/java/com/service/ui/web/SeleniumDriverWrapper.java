@@ -266,8 +266,8 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public boolean waitUntilExist(By locator, int time)
 	{
-		return waitUntilConditions(locator, time, WaiterType.EXIST);
-	}
+		return waitUntilConditions(locator, time, WaiterType.EXIST, true);
+   }
 
 	public boolean waitUntilExist(By locator)
 	{
@@ -276,7 +276,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public boolean waitUntilVisible(By locator, int time)
 	{
-		return waitUntilConditions(locator, time, WaiterType.VISIBLE);
+		return waitUntilConditions(locator, time, WaiterType.VISIBLE, true);
 	}
 
 	public boolean waitUntilVisible(By locator)
@@ -286,7 +286,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public boolean waitUntilClickable(By locator, int time)
 	{
-		return waitUntilConditions(locator, time, WaiterType.CLICKABLE);
+		return waitUntilConditions(locator, time, WaiterType.CLICKABLE, true);
 	}
 
 	public boolean waitUntilClickable(By locator)
@@ -296,7 +296,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public boolean waitUntilDisappear(By locator, int time)
 	{
-		return waitUntilConditions(locator, time, WaiterType.DISAPPEAR);
+		return waitUntilConditions(locator, time, WaiterType.DISAPPEAR, true);
 	}
 
 	public boolean waitUntilDisappear(By locator)
@@ -311,10 +311,10 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public boolean waitUntilFrameAvailableAndSwitchToIt(By locator, int time)
 	{
-		return waitUntilConditions(locator, time, WaiterType.FRAMEAVAILABLE);
+		return waitUntilConditions(locator, time, WaiterType.FRAMEAVAILABLE, true);
 	}
 
-	private boolean waitUntilConditions(By locator, int time, WaiterType type)
+	private boolean waitUntilConditions(By locator, int time, WaiterType type, boolean log)
 	{
 		try
 		{
@@ -342,11 +342,16 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		}
 		catch (TimeoutException ex)
 		{
-			System.out.println("timeout " + time + " expired, " + type.toString() + ", " + locator.toString());
-			getScreenshot("waitUntilConditions");
+			if (log)
+			{
+				System.out.println("timeout " + time + " expired, " + type.toString() + ", " + locator.toString());
+				getScreenshot("waitUntilConditions");
+			}
 			return false;
 		}
+
 		return true;
+
 	}
 
 	public void keyboardImitate(CharSequence keys)

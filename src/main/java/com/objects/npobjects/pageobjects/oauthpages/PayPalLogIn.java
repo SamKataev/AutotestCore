@@ -11,7 +11,7 @@ public class PayPalLogIn extends NPPageObject
 	private By emailInput = By.xpath("//input[@id='email']");
 	private By passInput = By.xpath("//input[@id='password']");
 	private By signInBtn = By.xpath("//button[@id='btnLogin']");
-
+	private By nextBtn = By.xpath("//button[@id='btnNext']");
 
 	public PayPalLogIn(SeleniumDriverWrapper driver)
 	{
@@ -22,8 +22,7 @@ public class PayPalLogIn extends NPPageObject
 	public boolean validateElements()
 	{
 		return driver.waitUntilClickable(emailInput, 10)
-				  && driver.waitUntilClickable(passInput)
-				  && driver.waitUntilClickable(signInBtn);
+				  && driver.waitUntilClickable(nextBtn);
 	}
 
 	public PayPalLogIn checkIsRendered()
@@ -35,6 +34,12 @@ public class PayPalLogIn extends NPPageObject
 	public PayPalLogIn clickSignInBtn()
 	{
 		Assert.assertTrue(driver.click(signInBtn));
+		return this;
+	}
+
+	public PayPalLogIn clickNextBtn()
+	{
+		Assert.assertTrue(driver.click(nextBtn));
 		return this;
 	}
 

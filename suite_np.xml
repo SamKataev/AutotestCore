@@ -7,17 +7,24 @@
         <listener class-name="com.service.CustomTestListener"/>
     </listeners>
 
-    <test verbose="1" name="web1" annotations="JDK">
-        <parameter name="threadId" value="thread2"/>
+    <test verbose="1" name="integrations, datasources, reports" annotations="JDK">
+        <parameter name="threadId" value="thread1"/>
         <classes>
-            <class name="com.tests.ui.npuitests.Datasources"/>
             <class name="com.tests.ui.npuitests.Integrations"/>
-            <class name="com.tests.ui.npuitests.Navigator"/>
-            <class name="com.tests.ui.npuitests.LoginPage"/>
+            <class name="com.tests.ui.npuitests.Datasources"/>
             <class name="com.tests.ui.npuitests.Reports"/>
 
         </classes>
     </test>
+
+    <test verbose="1" name="LoginPage, Navigator" annotations="JDK">
+        <parameter name="threadId" value="thread2"/>
+        <classes>
+            <class name="com.tests.ui.npuitests.LoginPage"/>
+            <class name="com.tests.ui.npuitests.Navigator"/>
+        </classes>
+    </test>
+
 
     <!--<test verbose="1" name="web2" annotations="JDK">-->
     <!--<parameter name="threadId" value="thread2"/>-->

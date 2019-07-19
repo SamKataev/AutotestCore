@@ -10,7 +10,7 @@ public class HubSpotLogIn extends NPPageObject
 	private By emailInput = By.xpath("//input[@id='username']");
 	private By passInput = By.xpath("//input[@id='password']");
 	private By logInBtn = By.xpath("//button[@id='loginBtn']");
-	private By accountChoose = By.xpath("//tr[@data-reactid='.0.1.1.0.0.0.1.$0']");
+	private By accountChoose = By.xpath("//span[@class='private-truncated-string__inner']/span[text()='slemma.com']/ancestor::tr");
 
 	public HubSpotLogIn(SeleniumDriverWrapper driver)
 	{

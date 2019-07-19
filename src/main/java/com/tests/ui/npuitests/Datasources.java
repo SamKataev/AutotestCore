@@ -43,22 +43,23 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("Testslemma", 5);
 	}
 
-	@Test
-	public void datasetGoogleAnalytics()
-	{
-		changeTeam("TestTeam");
-		mainPage.checkIsRendered()
-				  .openDatasources()
-				  .clickPlusBtn();
-		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				  .clickIntegration("Google Analytics");
-		mainPage.selectDatasetDialog.checkIsRendered()
-				  .checkDialogTitle("Select dataset", 10)
-				  .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
-		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", 5)
-				  .clickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", 5);
-	}
+//	@Test
+//	public void datasetGoogleAnalytics()
+//	{
+//		//коннектор в разработке
+//		changeTeam("TestTeam");
+//		mainPage.checkIsRendered()
+//				  .openDatasources()
+//				  .clickPlusBtn();
+//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+//				  .clickIntegration("Google Analytics");
+//		mainPage.selectDatasetDialog.checkIsRendered()
+//				  .checkDialogTitle("Select dataset", 10)
+//				  .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
+//		driver.switchToMainWindow();
+//		mainPage.checkObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", 5)
+//				  .clickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", 5);
+//	}
 
 	@Test
 	public void datasetZendesk()
@@ -421,41 +422,41 @@ public class Datasources extends NPWebTest
 				  .clickObjectInDataTableByName("Instagram Overview", 15);
 	}
 
-	@Test
-	public void datasetGoogleAds()
-	{
-		changeTeam("TestTeam");
-		//коннектор в разработке
-		mainPage.checkIsRendered()
-				  .openDatasources()
-				  .clickPlusBtn();
-		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				  .clickIntegration("Google Analytics");
-		mainPage.selectDatasetDialog.checkIsRendered()
-				  .checkDialogTitle("Select dataset", 10)
-				  .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
-		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("", 5)
-				  .clickObjectInDataTableByName("", 5);
-	}
+//	@Test
+//	public void datasetGoogleAds()
+//	{
+//		changeTeam("TestTeam");
+//		//коннектор в разработке
+//		mainPage.checkIsRendered()
+//				  .openDatasources()
+//				  .clickPlusBtn();
+//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+//				  .clickIntegration("Google Analytics");
+//		mainPage.selectDatasetDialog.checkIsRendered()
+//				  .checkDialogTitle("Select dataset", 10)
+//				  .clickBasedInDialogByName("Slemma/slemma.com - STAG/slemma.com", "ic_google_analytics", 10);
+//		driver.switchToMainWindow();
+//		mainPage.checkObjectInDataTableByName("", 5)
+//				  .clickObjectInDataTableByName("", 5);
+//	}
 
-	@Test
-	public void datasetStripe()
-	{
-		changeTeam("TestTeam");
-		//Stripe коннектор в разработке
-		mainPage.checkIsRendered()
-				  .openDatasources()
-				  .clickPlusBtn();
-		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				  .clickIntegration("Stripe");
-		mainPage.selectDatasetDialog.checkIsRendered()
-				  .checkDialogTitle("Select dataset", 10)
-				  .clickBasedInDialogByName("", "", 10);
-		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("", 5)
-				  .clickObjectInDataTableByName("", 5);
-	}
+//	@Test
+//	public void datasetStripe()
+//	{
+//		changeTeam("TestTeam");
+//		//Stripe коннектор в разработке
+//		mainPage.checkIsRendered()
+//				  .openDatasources()
+//				  .clickPlusBtn();
+//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
+//				  .clickIntegration("Stripe");
+//		mainPage.selectDatasetDialog.checkIsRendered()
+//				  .checkDialogTitle("Select dataset", 10)
+//				  .clickBasedInDialogByName("", "", 10);
+//		driver.switchToMainWindow();
+//		mainPage.checkObjectInDataTableByName("", 5)
+//				  .clickObjectInDataTableByName("", 5);
+//	}
 
 	@Test
 	public void datasetInfusionsoft()
@@ -661,7 +662,7 @@ public class Datasources extends NPWebTest
 	@Test
 	public void SaaSrefresh()
 	{
-		changeTeam("TestTeam");
+		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openDatasources()
 				  .contextClickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", "ic_google_analytics", 5);

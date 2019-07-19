@@ -8,8 +8,13 @@ public class Navigator extends NPWebTest
 	@Test
 	public void goThroughNavigationMenu()
 	{
-		mainPage.openReports()
+		mainPage.checkIsRendered()
+				  .openLibrary()
+				  .checkIsRendered()
+				  .openReports()
+				  .checkIsRendered()
 				  .openDatasources()
+				  .checkIsRendered()
 				  .openNotifications();
 //				  .openDelivery()
 //				  .openAlerts();
