@@ -267,11 +267,16 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 	public boolean waitUntilExist(By locator, int time)
 	{
 		return waitUntilConditions(locator, time, WaiterType.EXIST, true);
-   }
+	}
 
 	public boolean waitUntilExist(By locator)
 	{
 		return waitUntilExist(locator, defaultWaitTime);
+	}
+
+	public boolean waitUntilExist(By locator, int time, boolean log)
+	{
+		return waitUntilConditions(locator, time, WaiterType.EXIST, log);
 	}
 
 	public boolean waitUntilVisible(By locator, int time)
@@ -386,7 +391,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public void getScreenshot(String problem)
 	{
-   	ScreenShooter shooter = new ScreenShooter((getUserFolder() == null ? System.getProperty("user.dir") : getUserFolder()) + "/screenshots/");
+		ScreenShooter shooter = new ScreenShooter((getUserFolder() == null ? System.getProperty("user.dir") : getUserFolder()) + "/screenshots/");
 		shooter.getScreenShot(webDriver, problem);
 	}
 }

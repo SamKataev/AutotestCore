@@ -15,7 +15,7 @@ public class CalculationFieldDialog extends Dialog
 	private final By okBtn = dialogMdcTextBtn("OK");
 	private final By cancelBtn = dialogMdcTextBtn("Cancel");
 
-	public CalculationFieldDialog (SeleniumDriverWrapper driver, DatasourceCreate pageObj)
+	public CalculationFieldDialog(SeleniumDriverWrapper driver, DatasourceCreate pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -42,11 +42,13 @@ public class CalculationFieldDialog extends Dialog
 		Assert.assertTrue(driver.type(fieldName, text));
 		return this;
 	}
+
 	public CalculationFieldDialog clickCodeMirror()
 	{
 		Assert.assertTrue(driver.click(codeMirror));
 		return this;
 	}
+
 	public CalculationFieldDialog clickOkBtn()
 	{
 		Assert.assertTrue(driver.click(okBtn));

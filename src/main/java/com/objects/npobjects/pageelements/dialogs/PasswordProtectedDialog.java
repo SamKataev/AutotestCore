@@ -14,7 +14,7 @@ public class PasswordProtectedDialog extends Dialog
 	private final By passwordInput = dialogNpTextFieldWithLabel("Enter the password below to view the report");
 
 
-	public PasswordProtectedDialog (SeleniumDriverWrapper driver, Main pageObj)
+	public PasswordProtectedDialog(SeleniumDriverWrapper driver, Main pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

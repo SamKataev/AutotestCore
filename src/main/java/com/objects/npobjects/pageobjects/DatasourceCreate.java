@@ -37,7 +37,7 @@ public class DatasourceCreate extends NPPageObject
 		settingsDataSourcesDialog = new SettingsDataSourcesDialog(driver, this);
 		fieldSettingsDialog = new FieldSettingsDialog(driver, this);
 		distinctCountSettingsDialog = new DistinctCountSettingsDialog(driver, this);
-		calculationFieldDialog = new CalculationFieldDialog (driver, this);
+		calculationFieldDialog = new CalculationFieldDialog(driver, this);
 	}
 
 	@Override

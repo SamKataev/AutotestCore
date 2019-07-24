@@ -100,5 +100,10 @@ public class MoreOptionDropDown extends DropDown
 		return this;
 	}
 
+	public MoreOptionDropDown clickRemoveBtn()
+	{
+		Assert.assertTrue(driver.click(removeBtn));
+		return this;
+	}
 
 }

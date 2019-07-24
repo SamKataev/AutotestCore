@@ -34,6 +34,7 @@ public class Main extends NPPageObject
 	public SaveChangeDialog saveChangeDialog;
 	public PasswordProtectedDialog passwordProtectedDialog;
 	public RequestAccessDialog requestAccessDialog;
+	public ConfirmDialog confirmDialog;
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
@@ -50,7 +51,7 @@ public class Main extends NPPageObject
 	private final By liReports = mdcListItemWithText("Reports");
 	private final By liDataSources = mdcListItemWithText("Data sources");
 	private final By liNotifications = mdcListItemWithText("Notifications");
-//	private final By liDelivery = mdcListItemWithText("Delivery");
+	//	private final By liDelivery = mdcListItemWithText("Delivery");
 //	private final By liAlerts = mdcListItemWithText("Alerts");
 	private final By liSettings = mdcListItemWithText("Settings");
 	private final By liHelp = mdcListItemWithText("Help");
@@ -83,8 +84,9 @@ public class Main extends NPPageObject
 		permissionsDialog = new PermissionsDialog(driver, this);
 		linkSharingDialog = new LinkSharingDialog(driver, this);
 		saveChangeDialog = new SaveChangeDialog(driver, this);
-		passwordProtectedDialog = new PasswordProtectedDialog (driver, this);
-		requestAccessDialog= new RequestAccessDialog(driver,this);
+		passwordProtectedDialog = new PasswordProtectedDialog(driver, this);
+		requestAccessDialog = new RequestAccessDialog(driver, this);
+		confirmDialog = new ConfirmDialog(driver, this);
 	}
 
 	@Override
@@ -234,6 +236,7 @@ public class Main extends NPPageObject
 		checkNavSection("Datasets", "/datasources");
 		return this;
 	}
+
 	public Main openNotifications()
 	{
 		Assert.assertTrue(driver.click(liNotifications));
@@ -333,6 +336,6 @@ public class Main extends NPPageObject
 
 	public boolean clickdrawerToggleBtn()
 	{
-		return driver.waitUntilExist(drawerToggleBtn,2)? driver.click(drawerToggleBtn): false;
+		return driver.waitUntilExist(drawerToggleBtn, 2, false) ? driver.click(drawerToggleBtn) : false;
 	}
 }

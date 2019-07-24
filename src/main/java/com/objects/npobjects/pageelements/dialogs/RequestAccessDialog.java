@@ -29,11 +29,13 @@ public class RequestAccessDialog extends Dialog
 				  && driver.waitUntilExist(message)
 				  && driver.waitUntilClickable(requestBtn);
 	}
+
 	public RequestAccessDialog checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
+
 	public RequestAccessDialog checkLogoutBtn()
 	{
 		Assert.assertTrue(driver.waitUntilClickable(logoutBtn));

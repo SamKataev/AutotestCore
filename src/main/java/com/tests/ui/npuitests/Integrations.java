@@ -9,7 +9,7 @@ public class Integrations extends NPWebTest
 	public void createHerokuIntegrations()
 	{
 		mainPage.checkIsRendered()
-		       .clickdrawerToggleBtn();
+				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
 				  .clickPlusBtn();
@@ -349,7 +349,7 @@ public class Integrations extends NPWebTest
 		payPalLogIn.checkIsRendered();
 		pause(5);
 		payPalLogIn.enterEmailInput("developer@newpeople.co")
-		        .clickNextBtn()
+				  .clickNextBtn()
 				  .enterPassInput("q1w2E#R$")
 				  .clickSignInBtn();
 		driver.switchToMainWindow();

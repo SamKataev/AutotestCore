@@ -36,7 +36,7 @@ public class CalculationsAddDialog extends Dialog
 
 	public CalculationsAddDialog clickAddBtn()
 	{
-		Assert.assertTrue(driver.waitUntilClickable(addBtn,10));
+		Assert.assertTrue(driver.waitUntilClickable(addBtn, 10));
 		Assert.assertTrue(driver.click(addBtn));
 		return this;
 	}

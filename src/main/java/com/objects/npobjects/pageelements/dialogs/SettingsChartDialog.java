@@ -75,7 +75,7 @@ public class SettingsChartDialog extends Dialog
 
 	public SettingsChartDialog clickDimensionInPanelByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]"),10));
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]"), 10));
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
@@ -125,6 +125,7 @@ public class SettingsChartDialog extends Dialog
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
 		return this;
 	}
+
 	public SettingsChartDialog clickApplyBtn()
 	{
 		Assert.assertTrue(driver.click(applyBtn));

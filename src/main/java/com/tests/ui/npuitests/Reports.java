@@ -695,12 +695,12 @@ public class Reports extends NPWebTest
 				  .clickInsertBtn();
 		reportsPage.chooseObjectDropDown.checkIsRendered()
 				  .clickObjectByName("Chart", "ic_chart");
-	   reportsPage.selectaDataSourceDialog.checkIsRendered()
-		        .clickDataSourceInDialogByName("DemoData","ic_csv", 30);
+		reportsPage.selectaDataSourceDialog.checkIsRendered()
+				  .clickDataSourceInDialogByName("DemoData", "ic_csv", 30);
 		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-				  .clickTypeChartInDialogByName("Column","ic_column",5);
+				  .clickTypeChartInDialogByName("Column", "ic_column", 5);
 		reportsPage.settingsChartDialog.checkIsRendered()
-				   .checkDialogTitle("Settings", 2)
+				  .checkDialogTitle("Settings", 2)
 				  .clickItemInPanelByName("Data source", "ic_csv");
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Calculations");
@@ -716,10 +716,10 @@ public class Reports extends NPWebTest
 		reportsPage.calculationsDialog.clickSaveBtn();
 		reportsPage.сalculationsAddDialog.clickСloseBtn();
 		reportsPage.settingsChartDialog.clickAddDimensionBtn()
-				  .checkDialogTitle("Choose dimension",5)
+				  .checkDialogTitle("Choose dimension", 5)
 				  .clickDimensionInPanelByName("Region")
 				  .clickAddMeasureBtn()
-				  .checkDialogTitle("Choose measure",5)
+				  .checkDialogTitle("Choose measure", 5)
 				  .clickDimensionInPanelByName("Sales");
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Sum");
@@ -727,14 +727,14 @@ public class Reports extends NPWebTest
 		reportsPage.settingsChartDialog.checkIsRendered()
 				  .clickAddFilterBtn();
 		reportsPage.reportFiltersDialog.checkIsRendered()
-				  .checkDialogTitle("Choose item",2);
+				  .checkDialogTitle("Choose item", 2);
 		Assert.assertTrue(driver.click(By.xpath("(//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), 'Region')])[2]")));
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Select");
 		reportsPage.settingsChartDialog.checkIsRendered()
-				  .checkDialogTitle("Selection",5)
-		        .clickItemInSelectByName ("Region item","ic_check_box_outline",5 )
-				  .clickItemInSelectByName ("Central", "ic_check_box_outline",5)
+				  .checkDialogTitle("Selection", 5)
+				  .clickItemInSelectByName("Region item", "ic_check_box_outline", 5)
+				  .clickItemInSelectByName("Central", "ic_check_box_outline", 5)
 				  .clickApplyBtn();
 		reportsPage.checkIsRendered()
 				  .clickMoreBtn();
@@ -755,12 +755,12 @@ public class Reports extends NPWebTest
 		reportsPage.checkIsRendered()
 				  .clickSheetBtn()
 				  .clickSheetBtn()
-				  .contextClickSheet("Sheet 2",10);
+				  .contextClickSheet("Sheet 2", 10);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Rename");
 		mainPage.renameDialog.checkIsRendered()
 				  .enterInputName("New name sheet")
-              .clickRenameBtn();
+				  .clickRenameBtn();
 		reportsPage.settingsReportDialog.checkIsRendered()
 				  .createStartSheet().selectByVisibleText("New name sheet");
 		reportsPage.clickMoreBtn();
@@ -771,8 +771,25 @@ public class Reports extends NPWebTest
 				  .clickOkBtn();
 		reportsPage.clickCloseBtn();
 		mainPage.checkIsRendered()
-		        .clickObjectInDataTableByName("addSheet", 5);
+				  .clickObjectInDataTableByName("addSheet", 5);
 		reportsPage.checkIsRendered()
-				  	.checkActiveSheet("New name sheet","mdc-tab--active",5);
+				  .checkActiveSheet("New name sheet", "mdc-tab--active", 5)
+				  .clickCloseBtn();
 	}
+
+	@Test
+	public void deleteAddNewSheet()
+	{
+		changeTeam("TestTeam");
+		mainPage.checkIsRendered()
+				  .openReports()
+				  .contextClickObjectInDataTableByName("addSheet", 5);
+		mainPage.moreOptionDropDown.checkIsRendered()
+				  .clickRemoveBtn();
+		mainPage.confirmDialog.checkIsRendered()
+				  .clickDeleteBtn();
+		mainPage.checkIsRendered();
+		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class , 'accordion__item__body')]//span[contains(@class, 'mdc-list-item') and text()='addSheet']")));
+	}
+
 }
