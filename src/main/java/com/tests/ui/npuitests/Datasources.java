@@ -15,7 +15,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickFileByUrl();
@@ -32,15 +33,16 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				  .uploadFile("C:\\Users\\User\\Downloads\\csv\\Testslemma.csv");
+				  .uploadFile("C:\\resources\\TestslemmaUpload.csv");
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
 				  .clickSave();
-		mainPage.checkObjectInDataTableByName("Testslemma", 5)
-				  .clickObjectInDataTableByName("Testslemma", 5);
+		mainPage.checkObjectInDataTableByName("TestslemmaUpload", 5)
+				  .clickObjectInDataTableByName("TestslemmaUpload", 5);
 	}
 
 //	@Test
@@ -66,7 +68,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Zendesk");
@@ -83,7 +86,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("MailChimp");
@@ -100,7 +104,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Hubspot");
@@ -117,7 +122,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Dropbox");
@@ -136,7 +142,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("FreshSales");
@@ -152,7 +159,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("FreshDesk");
@@ -168,7 +176,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Facebook");
@@ -184,7 +193,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Facebook Ads");
@@ -202,7 +212,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Heroku PostgreSQL");
@@ -227,10 +238,11 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				  .clickIntegration("Jira");
+				  .clickIntegration("Jira (https://npeople.atlassian.net)");
 		mainPage.selectDatasetDialog.checkIsRendered()
 				  .checkDialogTitle("Select dataset", 10)
 				  .clickBasedInDialogByName("Jira ticket statuses", "ic_jira", 20);
@@ -245,18 +257,19 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Yandex Disk");
 		mainPage.selectDatasetDialog.checkIsRendered()
 				  .checkDialogTitle("Yandex Disk", 10)
-				  .clickFileInDialogByName("Testslemma.csv", "ic_file", 10);
+				  .clickFileInDialogByName("TestslemmaYandex.csv", "ic_file", 10);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
 				  .clickSave();
-		mainPage.checkObjectInDataTableByName("Testslemma", 15)
-				  .clickObjectInDataTableByName("Testslemma", 15);
+		mainPage.checkObjectInDataTableByName("TestslemmaYandex", 15)
+				  .clickObjectInDataTableByName("TestslemmaYandex", 15);
 	}
 
 	@Test
@@ -264,18 +277,19 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("OneDrive");
 		mainPage.selectDatasetDialog.checkIsRendered()
 				  .checkDialogTitle("OneDrive", 10)
-				  .clickFileInDialogByName("Testslemma.csv", "ic_file", 10);
+				  .clickFileInDialogByName("African Mobile Transactions Dummy Data_values.csv", "ic_file", 10);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
 				  .clickSave();
-		mainPage.checkObjectInDataTableByName("Testslemma", 15)
-				  .clickObjectInDataTableByName("Testslemma", 15);
+		mainPage.checkObjectInDataTableByName("African Mobile Transactions Dummy Data_values", 15)
+				  .clickObjectInDataTableByName("African Mobile Transactions Dummy Data_values", 15);
 	}
 
 	@Test
@@ -283,7 +297,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Box");
@@ -302,7 +317,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Google Drive");
@@ -321,7 +337,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("PostgreSQL");
@@ -345,7 +362,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("QuickBooks");
@@ -361,7 +379,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Intercom");
@@ -377,7 +396,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("PayPal");
@@ -393,7 +413,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("New People");
@@ -411,7 +432,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Instagram");
@@ -463,7 +485,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Infusionsoft");
@@ -479,7 +502,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
 				  .clickIntegration("Wrike");
@@ -496,7 +520,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickObjectInDataTableByName("Testslemma", 5);
 		datasourceCreatePage.checkIsRendered();
 		datasourceCreatePage.settingsDataSourcesDialog.checkIsRendered()
@@ -549,7 +574,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickObjectInDataTableByName("dc3qukco027qjj", 5);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
@@ -607,7 +633,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickObjectInDataTableByName("Non-residential outliers", 5);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport();
@@ -649,7 +676,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .contextClickObjectInDataTableByName("Testslemma", "ic_csv", 5);
 		mainPage.moreOptionDropDown.checkIsRendered()
 				  .clickRefreshIcon();
@@ -664,7 +692,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .contextClickObjectInDataTableByName("Slemma/slemma.com - STAG/slemma.com - STAG - MASTER", "ic_google_analytics", 5);
 		mainPage.moreOptionDropDown.checkIsRendered()
 				  .clickRefreshIcon();
@@ -679,7 +708,8 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickObjectInDataTableByName("countries", 5);
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport();
@@ -740,10 +770,11 @@ public class Datasources extends NPWebTest
 	{
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openDatasources()
+				  .clickdrawerToggleBtn();
+		mainPage.openDatasources()
 				  .clickPlusBtn();
 		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-				  .uploadFile("C:\\Users\\User\\Downloads\\csv\\DemoData.csv");
+				  .uploadFile("C:\\resources\\DemoData.csv");
 		datasourceCreatePage.checkIsRendered()
 				  .clickAgViewport()
 				  //выч. поле case when Region= 'Central' then 1 else 0 end

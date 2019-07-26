@@ -75,6 +75,8 @@ public class Integrations extends NPWebTest
 				  .enterDomain("https://slemma.freshdesk.com")
 				  .enterAPI("9xmgaF4hddDHrOw2ay6e")
 				  .clickOkBtn();
+		mainPage.checkObjectInDataTableByName("FreshDesk", 5)
+				  .clickObjectInDataTableByName("FreshDesk", 5);
 	}
 
 	@Test
@@ -94,6 +96,8 @@ public class Integrations extends NPWebTest
 				  .enterDomain("https://slemma.freshsales.io/")
 				  .enterAPI("ne3XTHy_Zu438e0ZN9s7OA")
 				  .clickOkBtn();
+		mainPage.checkObjectInDataTableByName("FreshSales", 5)
+				  .clickObjectInDataTableByName("FreshSales", 5);
 	}
 
 	@Test
@@ -111,9 +115,11 @@ public class Integrations extends NPWebTest
 		//Salesforce
 		mainPage.saaSParametersDialog.checkIsRendered()
 				  .enterloginField("slemma.dev@gmail.com")
-				  .enterpasswordField("Q!W@e3r4")
-				  .entertokenField("7erMm0tOS8bxJU4xeKLKJmzM9")
+				  .enterpasswordField("r4e3W@Q!")
+				  .entertokenField("18B4xSXqcDm2LhLDggptoRI9")
 				  .clickOkBtn();
+		mainPage.checkObjectInDataTableByName("Salesforce", 5)
+				  .clickObjectInDataTableByName("Salesforce", 5);
 	}
 
 	@Test
@@ -185,8 +191,8 @@ public class Integrations extends NPWebTest
 				  .enterPasswordInput("q1w2E#R$")
 				  .clickSignInBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Zendesk", 5)
-				  .clickObjectInDataTableByName("Zendesk", 5);
+		mainPage.checkObjectInDataTableByName("Zendesk (d3v-newpeople)", 5)
+				  .clickObjectInDataTableByName("Zendesk (d3v-newpeople)", 5);
 	}
 
 	@Test
@@ -254,8 +260,10 @@ public class Integrations extends NPWebTest
 		mainPage.saaSParametersDialog.checkIsRendered()
 				  .enterserverURLField("https://npeople.atlassian.net")
 				  .enterloginField("matveeva.e")
-				  .enterAPItokenField("Matveeva0414")
+				  .enterAPItokenField("BC7Vo4grSjMP7Xv9wJ8EFDEA")
 				  .clickOkBtn();
+		mainPage.checkObjectInDataTableByName("Jira (https://npeople.atlassian.net)", 5)
+				  .clickObjectInDataTableByName("Jira (https://npeople.atlassian.net)", 5);
 	}
 
 	@Test

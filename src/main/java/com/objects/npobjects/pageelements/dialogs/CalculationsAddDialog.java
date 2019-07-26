@@ -46,4 +46,10 @@ public class CalculationsAddDialog extends Dialog
 		Assert.assertTrue(driver.click(closeBtn));
 		return this;
 	}
+
+	public CalculationsAddDialog checkMeasureTableByName(String text, int time)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//span[contains(@class,'mdc-list-item__text')]//span[contains(@class,'mdc-list-item__primary-text') and (text()='" + text + "')]/ancestor::li"),time));
+		return this;
+	}
 }

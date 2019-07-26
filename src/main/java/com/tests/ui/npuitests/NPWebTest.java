@@ -84,6 +84,7 @@ public abstract class NPWebTest extends WebTest
 
 	protected void openReportsPage()
 	{
+		driver.isAlertPresent();//может быть стоит убрать?
 		driver.goToUrl(driver.getBaseUrl() + "/library");
 		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/library"))
 		{

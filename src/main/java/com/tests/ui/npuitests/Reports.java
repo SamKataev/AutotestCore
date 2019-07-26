@@ -11,28 +11,31 @@ public class Reports extends NPWebTest
 	@Test
 	public void insertSimpleObject()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickPlusBtn();
 		reportsPage.checkIsRendered()
 				  .clickInsertBtn();
 		reportsPage.chooseObjectDropDown.checkIsRendered()
-				  .uploadFile("C:\\Users\\User\\Downloads\\1472058088_05.jpg")
+				  .uploadFile("C:\\resources\\1472058088_05.jpg")
 				  .clickObjectByName("Text", "ic_text");
 		reportsPage.clickInsertBtn();
 		reportsPage.chooseObjectDropDown.checkIsRendered()
 				  .clickObjectByName("URL embed", "ic_code");
 		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
-				  .urlInput("http://app.newpeople.co/reports/1287")
+				  .urlInput("http://app.newpeople.co/reports/2982")
 				  .clickOk();
-		reportsPage.clickInsertBtn();
-		reportsPage.chooseObjectDropDown.checkIsRendered()
-				  .clickObjectByName("Chart template", "ic_chart_template");
-		mainPage.selectDatasetDialog.checkIsRendered()
-				  .checkDialogTitle("Select connection", 10)
-				  .clickFileInDialogByName("New People", "ic_pipedrive", 20)
-				  .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
-		pause(5); //дописать вейтер или нахождение элемента на странице
+//		reportsPage.clickInsertBtn();
+//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//				  .clickObjectByName("Chart template", "ic_chart_template");
+//		mainPage.selectDatasetDialog.checkIsRendered()
+//			  .checkDialogTitle("Select connection", 10)
+//			  .clickFileInDialogByName("New People", "ic_pipedrive", 20)
+//			  .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
+//		pause(5); //дописать вейтер или нахождение элемента на странице
 		reportsPage.checkIsRendered()
 				  .clickMoreBtn();
 		mainPage.moreOptionDropDown.checkIsRendered()
@@ -48,6 +51,9 @@ public class Reports extends NPWebTest
 	@Test
 	public void insertAllTypeChart()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickPlusBtn();
@@ -347,6 +353,9 @@ public class Reports extends NPWebTest
 	@Test
 	public void addCalculatedMeasure()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickPlusBtn();
@@ -369,6 +378,7 @@ public class Reports extends NPWebTest
 				  .clickObjectByName("Calculations");
 		reportsPage.сalculationsAddDialog.checkIsRendered()
 				  .clickAddBtn();
+	pause(5);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Measure Names");
 		reportsPage.calculationsDialog.checkIsRendered()
@@ -376,6 +386,7 @@ public class Reports extends NPWebTest
 		driver.keyboardImitate("[Measures].[Fact Count]*[Measures].[Fact Count]");
 		reportsPage.calculationsDialog.clickSaveBtn();
 		reportsPage.сalculationsAddDialog.checkIsRendered()
+              .checkMeasureTableByName("New measure",5)
 				  .clickСloseBtn();
 		reportsPage.settingsChartDialog.checkIsRendered()
 				  .checkDialogTitle("Settings", 2)
@@ -397,6 +408,9 @@ public class Reports extends NPWebTest
 	@Test
 	public void checkFloatingTiled()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
+		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
 				  .clickPlusBtn();
@@ -424,6 +438,8 @@ public class Reports extends NPWebTest
 	public void checkDateRangeFilter()
 	{
 		//TestTeam2
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -445,6 +461,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void checkSelectFilter()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -476,6 +494,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void checkCopyStyle()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -485,6 +505,7 @@ public class Reports extends NPWebTest
 				  .contextClick("jira tickets", 10);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Copy style");
+		pause(5);
 		reportsPage.checkIsRendered()
 				  .contextClick("chart Copy style", 10);
 		reportsPage.reportDropDown.checkIsRendered()
@@ -506,6 +527,8 @@ public class Reports extends NPWebTest
 	public void checkChartRefresh()
 	{
 		//TestTeam2
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -521,6 +544,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void createShare()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -573,11 +598,14 @@ public class Reports extends NPWebTest
 		reportsPage.checkIsRendered()
 				  .checkAbsenceEditBtn()
 				  .clickCloseBtn();
+		mainPage.clickSignOutBtn();
 	}
 
 	@Test
 	public void goToShareLink()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .checkObjectInDataTableByName("with share link", 5)
@@ -597,6 +625,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void getEmbedCode()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
 				  .checkObjectInDataTableByName("with share link", 5)
@@ -687,6 +717,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void addNewItem()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -706,15 +738,18 @@ public class Reports extends NPWebTest
 				  .clickObjectByName("Calculations");
 		reportsPage.сalculationsAddDialog.checkIsRendered()
 				  .clickAddBtn();
+		pause(5);
 		reportsPage.reportDropDown.checkIsRendered()
 				  .clickObjectByName("Region");
 		reportsPage.calculationsDialog.checkIsRendered()
 				  .enterNameInput("Region item")
 				  .clickCodeMirror();
 		driver.keyboardImitate("[Region.Hierarchy].[Central]-[Region.Hierarchy].[West]");
-		pause(5);
+//		pause(5);
 		reportsPage.calculationsDialog.clickSaveBtn();
-		reportsPage.сalculationsAddDialog.clickСloseBtn();
+		reportsPage.сalculationsAddDialog.checkIsRendered()
+				  .checkMeasureTableByName("Region item",5)
+				  .clickСloseBtn();
 		reportsPage.settingsChartDialog.clickAddDimensionBtn()
 				  .checkDialogTitle("Choose dimension", 5)
 				  .clickDimensionInPanelByName("Region")
@@ -748,6 +783,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void addNewSheet()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()
@@ -780,6 +817,8 @@ public class Reports extends NPWebTest
 	@Test
 	public void deleteAddNewSheet()
 	{
+		authPage.open().checkIsRendered();
+		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
 				  .openReports()

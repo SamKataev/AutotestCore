@@ -38,7 +38,7 @@ public class RequestAccessDialog extends Dialog
 
 	public RequestAccessDialog checkLogoutBtn()
 	{
-		Assert.assertTrue(driver.waitUntilClickable(logoutBtn));
+		Assert.assertTrue(driver.waitUntilClickable(logoutBtn,10));
 		return this;
 	}
 

@@ -211,6 +211,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public String getCurrentUrl()
 	{
+		isAlertPresent();
 		return webDriver.getCurrentUrl();
 	}
 
@@ -394,4 +395,23 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		ScreenShooter shooter = new ScreenShooter((getUserFolder() == null ? System.getProperty("user.dir") : getUserFolder()) + "/screenshots/");
 		shooter.getScreenShot(webDriver, problem);
 	}
+
+
+	public void isAlertPresent()
+	{
+		try
+		{
+			Alert alert=webDriver.switchTo().alert();
+   		System.out.println("Всплывающее окно-"+alert.getText());
+			alert.accept();
+		}
+		catch(NoAlertPresentException e)
+		{
+		}
+
+	}
+
+
+
+
 }
