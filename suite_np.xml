@@ -7,24 +7,48 @@
         <listener class-name="com.service.CustomTestListener"/>
     </listeners>
 
-    <test verbose="1" name="integrations, datasources, reports" annotations="JDK">
-        <parameter name="threadId" value="thread1"/>
-        <classes>
-            <class name="com.tests.ui.npuitests.Integrations"/>
-            <class name="com.tests.ui.npuitests.Datasources"/>
-            <class name="com.tests.ui.npuitests.Reports"/>
 
+    <test verbose="1" name="LoginPage" annotations="JDK">
+        <classes>
+            <class name="com.tests.ui.npuitests.LoginPage">
+               <methods>
+                   <exclude name="loginWithAllEmptyFieldsFails"/>
+                   <exclude name="loginWithEmptyPassFails"/>
+                   <exclude name="loginWithWrongPassFails"/>
+                   <exclude name="loginWithWrongEmailFails"/>
+                   <exclude name="loginWithEmptyEmailFails"/>
+               </methods>
+            </class>
         </classes>
     </test>
 
-    <test verbose="1" name="LoginPage, Navigator" annotations="JDK">
-        <parameter name="threadId" value="thread2"/>
+    <test verbose="1" name="Navigator" annotations="JDK">
+
         <classes>
-            <class name="com.tests.ui.npuitests.LoginPage"/>
             <class name="com.tests.ui.npuitests.Navigator"/>
         </classes>
     </test>
 
+    <test verbose="1" name="Integrations" annotations="JDK">
+
+        <classes>
+            <class name="com.tests.ui.npuitests.Integrations"/>
+        </classes>
+    </test>
+
+    <test verbose="1" name="Datasources" annotations="JDK">
+
+        <classes>
+            <class name="com.tests.ui.npuitests.Datasources"/>
+        </classes>
+    </test>
+
+    <test verbose="1" name="Reports" annotations="JDK">
+
+        <classes>
+            <class name="com.tests.ui.npuitests.Reports"/>
+        </classes>
+    </test>
 
     <!--<test verbose="1" name="web2" annotations="JDK">-->
     <!--<parameter name="threadId" value="thread2"/>-->
