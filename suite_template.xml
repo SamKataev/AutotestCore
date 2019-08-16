@@ -8,14 +8,14 @@
     </listeners>
 
     <test verbose="1" name="1" annotations="JDK">
-        <parameter name="threadId" value="thread1"/>
+        <parameter name="threadId" value="thread4"/>
         <classes>
 
         </classes>
     </test>
 
     <test verbose="1" name="2" annotations="JDK">
-        <parameter name="threadId" value="thread2"/>
+        <parameter name="threadId" value="thread5"/>
         <classes>
 
         </classes>

@@ -8,7 +8,7 @@
     </listeners>
 
     <test verbose="1" name="http2" annotations="JDK">
-        <parameter name="threadId" value="thread1"/>
+        <parameter name="threadId" value="thread3"/>
 
         <classes>
             <!--<class name="com.tests.ui.slemmauitests.LoginPage"/>-->

@@ -17,7 +17,7 @@
     </test>
 
     <test verbose="1" name="Check Integrations, Datasources, Reports" annotations="JDK">
-        <parameter name="threadId" value="thread1"/>
+        <parameter name="threadId" value="thread2"/>
         <classes>
             <class name="com.tests.ui.npuitests.Integrations"/>
             <class name="com.tests.ui.npuitests.Datasources"/>
