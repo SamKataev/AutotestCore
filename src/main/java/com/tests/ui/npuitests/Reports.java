@@ -15,7 +15,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickPlusBtn();
 		reportsPage.checkIsRendered()
 				  .clickInsertBtn();
@@ -55,7 +56,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickPlusBtn();
 		//тип чарта Column
 		reportsPage.checkIsRendered()
@@ -357,7 +359,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickPlusBtn();
 		reportsPage.checkIsRendered()
 				  .clickInsertBtn();
@@ -412,7 +415,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickPlusBtn();
 		reportsPage.checkIsRendered();
 		reportsPage.settingsReportDialog.checkIsRendered()
@@ -442,7 +446,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickObjectInDataTableByName("filter", 5);
 		reportsPage.checkIsRendered();
 		pause(5);
@@ -465,7 +470,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickObjectInDataTableByName("ChartRefresh", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
@@ -498,7 +504,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickObjectInDataTableByName("filter", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
@@ -531,7 +538,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam2");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickObjectInDataTableByName("ChartRefresh", 5);
 		reportsPage.checkIsRendered()
 				  .clickEditBtn()
@@ -548,7 +556,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickPlusBtn();
 		reportsPage.checkIsRendered()
 				  .clickInsertBtn();
@@ -585,7 +594,8 @@ public class Reports extends NPWebTest
 		authPage.open().checkIsRendered();
 		authPage.logIn("slemmatest2@mail.ru", "Q123#@!w");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickObjectInDataTableByName("filter", 5);
 		//проверить что есть кнопка "edit"
 		reportsPage.checkIsRendered()
@@ -787,7 +797,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .clickPlusBtn();
 		reportsPage.checkIsRendered()
 				  .clickSheetBtn()
@@ -821,7 +832,8 @@ public class Reports extends NPWebTest
 		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
 		changeTeam("TestTeam");
 		mainPage.checkIsRendered()
-				  .openReports()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
 				  .contextClickObjectInDataTableByName("addSheet", 5);
 		mainPage.moreOptionDropDown.checkIsRendered()
 				  .clickRemoveBtn();

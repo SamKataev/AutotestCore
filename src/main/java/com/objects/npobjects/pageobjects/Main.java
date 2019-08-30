@@ -295,6 +295,7 @@ public class Main extends NPPageObject
 		return this;
 	}
 
+
 	public Main checkObjectInDialogByName(String name, int time)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'accordion__item__body')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']"), time));
@@ -336,6 +337,6 @@ public class Main extends NPPageObject
 
 	public boolean clickdrawerToggleBtn()
 	{
-		return driver.waitUntilExist(drawerToggleBtn, 2, false) ? driver.click(drawerToggleBtn) : false;
+		return driver.waitUntilExist(drawerToggleBtn, 5, false) ? driver.click(drawerToggleBtn) : false;
 	}
 }
