@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 public class SettingsReportDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 	public Select selectSize;
 	public Select selectStartSheet;
 
@@ -19,7 +19,7 @@ public class SettingsReportDialog extends Dialog
 	private final By startSheet = nodeMdcAppBarSelectWithLabel("Start sheet");
 
 
-	public SettingsReportDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public SettingsReportDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

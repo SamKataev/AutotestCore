@@ -1,20 +1,20 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class PasswordProtectedDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("This link is password protected");
+	private final By title = dialogAppBarTitle("This link is password protected");
 	private final By viewReportBtn = mdcTextBtn("View report");
-	private final By passwordInput = dialogNpTextFieldWithLabel("Enter the password below to view the report");
+	private final By passwordInput = dialogTextFieldWithLabel("Enter the password below to view the report");
 
 
-	public PasswordProtectedDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public PasswordProtectedDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

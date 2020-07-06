@@ -2,13 +2,14 @@ package com.objects.npobjects.pageelements.dialogs;
 
 import com.objects.PageElement;
 import com.service.ui.web.SeleniumDriverWrapper;
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public abstract class Dialog extends PageElement
 {
-	protected final By cancelBtn = dialogMdcTextBtn("Cancel");
-	protected final By okBtn = dialogMdcTextBtn("OK");
+	protected final By closeBtn = dialogIconFontBtn("ic_close");
+	protected final By cancelBtn = dialogTextBtn("Cancel");
+	protected final By doneBtn = dialogTextBtn("Done");
+	protected final By okBtn = dialogTextBtn("OK");
 
 
 	public Dialog(SeleniumDriverWrapper driver)
@@ -16,108 +17,113 @@ public abstract class Dialog extends PageElement
 		super(driver);
 	}
 
+	public boolean validateElements()
+	{
+		return driver.waitUntilClickable(closeBtn);
+	}
+
 	public void clickOk()
 	{
-		Assert.assertTrue(driver.click(okBtn));
+		driver.click(okBtn);
 	}
 
 	public void clickCancel()
 	{
-		Assert.assertTrue(driver.click(cancelBtn));
+		driver.click(cancelBtn);
 	}
 
-	protected By dialogMdcListItemWithText(String text)
+	public void clickClose()
+	{
+		driver.click(closeBtn);
+	}
+
+	protected By dialogListItemWithText(String text)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li");
 	}
 
-	protected By dialogMdcListItemWithText(String text, String dialogClass)
+	protected By dialogListItemWithText(String text, String dialogClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li");
 	}
 
-	protected By dialogMdcListItemWithTextIcon(String text, String iconClass)
+	protected By dialogListItemWithTextIcon(String text, String iconClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
 	}
 
-	protected By dialogMdcListItemWithTextIcon(String text, String iconClass, String dialogClass)
-	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
-	}
-
-	protected By dialogMdcIconFontBtn(String iconClass)
+	protected By dialogIconFontBtn(String iconClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, '" + iconClass + "')]/parent::span[contains(@class, 'mdc-icon-toggle')]");
 	}
 
-	protected By dialogMdcIconFontBtn(String iconClass, String dialogClass)
+	protected By dialogIconFontBtn(String iconClass, String dialogClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, '" + iconClass + "')]/parent::span[contains(@class, 'mdc-icon-toggle')]");
 	}
 
-	protected By dialogMdcTextBtn(String btnText)
+	protected By dialogTextBtn(String btnText)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
 	}
 
-	protected By dialogMdcTextBtn(String btnText, String dialogClass)
+	protected By dialogTextBtn(String btnText, String dialogClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
 	}
 
-	protected By dialogMdcAppBarTitle(String titleText)
+	protected By dialogAppBarTitle(String titleText)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
 	}
 
-	protected By dialogMdcAppBarTitle(String titleText, String dialogClass)
+	protected By dialogAppBarTitle(String titleText, String dialogClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
 	}
 
-	protected By dialogNpTextFieldWithLabel(String label)
+	protected By dialogTextFieldWithLabel(String label)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//label[contains(@class, text-field__label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
 
-	protected By dialogNpTextFieldWithLabel(String label, String dialogClass)
+	protected By dialogTextFieldWithLabel(String label, String dialogClass)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//label[contains(@class, text-field__label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
 
 
 	//Accordion
-	protected By dialogMdcListAccordionWithText(String text)
+	protected By dialogListAccordionWithText(String text)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]");
 	}
 //селект
 
-	protected By dialogNpTextSelectdWithLabel(String text)
+	protected By dialogSelectWithLabel(String text)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//label[contains(@class, text-field__label) and contains(text(), '" + text + "')]/following-sibling::div[contains(@class, 'select__native-control-container')]");
 	}
 
 	//текст сообщения
-	protected By dialogNpTextMessage(String text)
+	protected By dialogTextMessage(String text)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and contains(text(), '" + text + "')]");
 	}
 
 	//block-setting-panel
-	protected By panelMdcAppBarTitle(String titleText)
+	protected By panelAppBarTitle(String titleText)
 	{
 		return By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
 	}
 
-	protected By panelMdcListItemWithTextIconBtn(String text, String iconClass)
+	protected By panelListItemWithTextIconBtn(String text, String iconClass)
 	{
 		return By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
 	}
 
 	//app-bar btn
-	protected By dialogMdcAppBarTextBtn(String btnText)
+	protected By dialogAppBarTextBtn(String btnText)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-top-app-bar')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
 	}

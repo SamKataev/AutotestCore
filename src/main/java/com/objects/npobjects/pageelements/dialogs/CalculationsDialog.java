@@ -1,20 +1,20 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class CalculationsDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Calculations");
-	private final By SaveBtn = dialogMdcAppBarTextBtn("Save");
+	private final By title = dialogAppBarTitle("Calculations");
+	private final By SaveBtn = dialogAppBarTextBtn("Save");
 	private By codeMirror = By.xpath("//div[contains(@class,'CodeMirror cm-s-default')]");
 	private final By NameInput = By.xpath("//div[contains(@class, 'dropdown__content')]//label[contains(@class, text-field__label) and contains(text(), 'Name')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 
-	public CalculationsDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public CalculationsDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

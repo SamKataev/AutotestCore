@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -11,37 +11,37 @@ import org.openqa.selenium.By;
 public class CreateSaasDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Create new");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By searchBtn = dialogMdcIconFontBtn("ic_search");
+	private final By title = dialogAppBarTitle("Create new");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By searchBtn = dialogIconFontBtn("ic_search");
 
-	private final By facebookBtn = dialogMdcListItemWithTextIcon("Facebook", "ic_facebook");
-	private final By facebookAdsBtn = dialogMdcListItemWithTextIcon("Facebook Ads", "ic_facebook_ads");
-	private final By freshdeskBtn = dialogMdcListItemWithTextIcon("Freshdesk", "ic_freshdesk");
-	private final By freshsalesBtn = dialogMdcListItemWithTextIcon("Freshsales", "ic_freshsales");
-	private final By googleAdsBtn = dialogMdcListItemWithTextIcon("Google Ads", "ic_google_ads");
-	private final By googleAnalyticsBtn = dialogMdcListItemWithTextIcon("Google Analytics", "ic_google_analytics");
-	private final By hubspotBtn = dialogMdcListItemWithTextIcon("Hubspot", "ic_hubspot");
-	private final By infusionsoftBtn = dialogMdcListItemWithTextIcon("Infusionsoft", "ic_infusionsoft");
-	private final By insightlyBtn = dialogMdcListItemWithTextIcon("Insightly", "ic_insightly");
-	private final By instagramBtn = dialogMdcListItemWithTextIcon("Instagram", "ic_instagram");
-	private final By intercomBtn = dialogMdcListItemWithTextIcon("Intercom", "ic_intercom");
-	private final By jiraBtn = dialogMdcListItemWithTextIcon("Jira", "ic_jira");
-	private final By mailchimpBtn = dialogMdcListItemWithTextIcon("Mailchimp", "ic_mailchimp");
-	private final By paypalBtn = dialogMdcListItemWithTextIcon("PayPal", "ic_paypal");
-	private final By pipedriveBtn = dialogMdcListItemWithTextIcon("Pipedrive", "ic_pipedrive");
-	private final By quickbooksBtn = dialogMdcListItemWithTextIcon("QuickBooks", "ic_quickbooks");
-	private final By salesforceBtn = dialogMdcListItemWithTextIcon("Salesforce", "ic_salesforce");
-	private final By shopifyBtn = dialogMdcListItemWithTextIcon("Shopify", "ic_shopify");
-	private final By smartsheetBtn = dialogMdcListItemWithTextIcon("Smartsheet", "ic_smartsheet");
-	private final By stripeBtn = dialogMdcListItemWithTextIcon("Stripe", "ic_stripe");
-	private final By surveymonkeyBtn = dialogMdcListItemWithTextIcon("SurveyMonkey", "ic_surveymonkey");
-	private final By wrikeBtn = dialogMdcListItemWithTextIcon("Wrike", "ic_wrike");
-	private final By zendeskBtn = dialogMdcListItemWithTextIcon("Zendesk", "ic_zendesk");
+	private final By facebookBtn = dialogListItemWithTextIcon("Facebook", "ic_facebook");
+	private final By facebookAdsBtn = dialogListItemWithTextIcon("Facebook Ads", "ic_facebook_ads");
+	private final By freshdeskBtn = dialogListItemWithTextIcon("Freshdesk", "ic_freshdesk");
+	private final By freshsalesBtn = dialogListItemWithTextIcon("Freshsales", "ic_freshsales");
+	private final By googleAdsBtn = dialogListItemWithTextIcon("Google Ads", "ic_google_ads");
+	private final By googleAnalyticsBtn = dialogListItemWithTextIcon("Google Analytics", "ic_google_analytics");
+	private final By hubspotBtn = dialogListItemWithTextIcon("Hubspot", "ic_hubspot");
+	private final By infusionsoftBtn = dialogListItemWithTextIcon("Infusionsoft", "ic_infusionsoft");
+	private final By insightlyBtn = dialogListItemWithTextIcon("Insightly", "ic_insightly");
+	private final By instagramBtn = dialogListItemWithTextIcon("Instagram", "ic_instagram");
+	private final By intercomBtn = dialogListItemWithTextIcon("Intercom", "ic_intercom");
+	private final By jiraBtn = dialogListItemWithTextIcon("Jira", "ic_jira");
+	private final By mailchimpBtn = dialogListItemWithTextIcon("Mailchimp", "ic_mailchimp");
+	private final By paypalBtn = dialogListItemWithTextIcon("PayPal", "ic_paypal");
+	private final By pipedriveBtn = dialogListItemWithTextIcon("Pipedrive", "ic_pipedrive");
+	private final By quickbooksBtn = dialogListItemWithTextIcon("QuickBooks", "ic_quickbooks");
+	private final By salesforceBtn = dialogListItemWithTextIcon("Salesforce", "ic_salesforce");
+	private final By shopifyBtn = dialogListItemWithTextIcon("Shopify", "ic_shopify");
+	private final By smartsheetBtn = dialogListItemWithTextIcon("Smartsheet", "ic_smartsheet");
+	private final By stripeBtn = dialogListItemWithTextIcon("Stripe", "ic_stripe");
+	private final By surveymonkeyBtn = dialogListItemWithTextIcon("SurveyMonkey", "ic_surveymonkey");
+	private final By wrikeBtn = dialogListItemWithTextIcon("Wrike", "ic_wrike");
+	private final By zendeskBtn = dialogListItemWithTextIcon("Zendesk", "ic_zendesk");
 
-	public CreateSaasDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public CreateSaasDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -1,17 +1,17 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class SelectDatasetDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
 
-	public SelectDatasetDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public SelectDatasetDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

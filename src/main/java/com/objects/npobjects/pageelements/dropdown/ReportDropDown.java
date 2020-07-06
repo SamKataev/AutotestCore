@@ -1,19 +1,19 @@
 package com.objects.npobjects.pageelements.dropdown;
 
 
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class ReportDropDown extends DropDown
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
 	private final By sumBtn = dropDownMdcListItemWithText("Sum");
 	private final By averageBtn = dropDownMdcListItemWithText("Average");
 
-	public ReportDropDown(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public ReportDropDown(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

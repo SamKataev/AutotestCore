@@ -1,21 +1,21 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.DatasourceCreate;
+import com.objects.npobjects.pageobjects.DatasourcePage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class CalculationFieldDialog extends Dialog
 {
-	private DatasourceCreate parentPage;
+	private DatasourcePage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Calculation field");
-	private final By fieldName = dialogNpTextFieldWithLabel("Name");
+	private final By title = dialogAppBarTitle("Calculation field");
+	private final By fieldName = dialogTextFieldWithLabel("Name");
 	private final By codeMirror = By.xpath("//div[contains(@class,'CodeMirror cm-s-default')]");
-	private final By okBtn = dialogMdcTextBtn("OK");
-	private final By cancelBtn = dialogMdcTextBtn("Cancel");
+	private final By okBtn = dialogTextBtn("OK");
+	private final By cancelBtn = dialogTextBtn("Cancel");
 
-	public CalculationFieldDialog(SeleniumDriverWrapper driver, DatasourceCreate pageObj)
+	public CalculationFieldDialog(SeleniumDriverWrapper driver, DatasourcePage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

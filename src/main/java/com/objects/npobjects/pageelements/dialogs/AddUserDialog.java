@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -10,15 +10,15 @@ import org.openqa.selenium.By;
  */
 public class AddUserDialog extends Dialog
 {
-	public Main parentPage;
+	public NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Add user");
-	private final By emailInput = dialogNpTextFieldWithLabel("Email");
-	private final By roleSelect = dialogNpTextSelectdWithLabel("Role");
-	private final By cancel = dialogMdcTextBtn("Cancel");
-	private final By addBtn = dialogMdcTextBtn("Add");
+	private final By title = dialogAppBarTitle("Add user");
+	private final By emailInput = dialogTextFieldWithLabel("Email");
+	private final By roleSelect = dialogSelectWithLabel("Role");
+	private final By cancel = dialogTextBtn("Cancel");
+	private final By addBtn = dialogTextBtn("Add");
 
-	public AddUserDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public AddUserDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

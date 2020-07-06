@@ -1,7 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.DatasourceCreate;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.DatasourcePage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -10,17 +9,17 @@ import org.openqa.selenium.support.ui.Select;
 
 public class DistinctCountSettingsDialog extends Dialog
 {
-	private DatasourceCreate parentPage;
+	private DatasourcePage parentPage;
 
 	private Select selectNumberFormat;
 
-	private final By measureNameInput = dialogNpTextFieldWithLabel("Distinct-count measure name");
+	private final By measureNameInput = dialogTextFieldWithLabel("Distinct-count measure name");
 	private final By numberFormatSelect = By.xpath("(//option[contains(text(), 'Same as source data')]//parent::select[@class='select__native-control'])[2]");
-	private final By title = dialogMdcAppBarTitle("Distinct-count settings");
+	private final By title = dialogAppBarTitle("Distinct-count settings");
 	private final By closeBtn = mdcIconFontBtn("ic_close");
 
 
-	public DistinctCountSettingsDialog(SeleniumDriverWrapper driver, DatasourceCreate pageObj)
+	public DistinctCountSettingsDialog(SeleniumDriverWrapper driver, DatasourcePage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -1,8 +1,7 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 /**
@@ -11,16 +10,16 @@ import org.openqa.selenium.By;
 public class ScheduleDeliveryDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Schedule Delivery");
-	private final By inputNameDelivery = dialogNpTextFieldWithLabel("New Delivery");
-	private final By attachmentBtn = dialogMdcListItemWithTextIcon("Add attachment", "ic_add");
-	private final By cancel = dialogMdcTextBtn("Cancel");
-	private final By saveChanges = dialogMdcTextBtn("Save changes");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
+	private final By title = dialogAppBarTitle("Schedule Delivery");
+	private final By inputNameDelivery = dialogTextFieldWithLabel("New Delivery");
+	private final By attachmentBtn = dialogListItemWithTextIcon("Add attachment", "ic_add");
+	private final By cancel = dialogTextBtn("Cancel");
+	private final By saveChanges = dialogTextBtn("Save changes");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
 
-	public ScheduleDeliveryDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public ScheduleDeliveryDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -2,23 +2,20 @@ package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.PasswordResetDialog;
-import com.objects.npobjects.pageobjects.oauthpages.FacebookLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class Auth extends NPPageObject
+public class AuthPage extends NPPageObject
 {
-
 	private By emailInput = By.xpath("//input[@placeholder='Email']");
 	private By passInput = By.xpath("//input[@placeholder='Password']");
 	private By signInBtn = mdcTextBtn("Sign in");
 	private By googleSignInBtn = mdcTextBtn("Sign in with Google");
 	private By registerBtn = mdcTextBtn("Sign up");
-	private By errorMessage = By.cssSelector(".label--error");
-	private By passResetBtn = mdcTextBtn("Forgot password?");
+	private By passResetBtn = mdcTextBtn("Forgot Password?");
 
-	public Auth(SeleniumDriverWrapper driver)
+	public AuthPage(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/auth", driver);
 	}
@@ -34,7 +31,7 @@ public class Auth extends NPPageObject
 				  && driver.waitUntilExist(signInBtn);
 	}
 
-	public Auth checkIsRendered()
+	public AuthPage checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
@@ -47,33 +44,33 @@ public class Auth extends NPPageObject
 		clickSignIn();
 	}
 
-	public Auth enterEmail(String text)
+	public AuthPage enterEmail(String text)
 	{
 		Assert.assertTrue(driver.type(emailInput, text));
 		return this;
 	}
 
-	public Auth enterPass(String text)
+	public AuthPage enterPass(String text)
 	{
 		Assert.assertTrue(driver.type(passInput, text));
 		return this;
 	}
 
-	public Auth clickSignIn()
+	public AuthPage clickSignIn()
 	{
 		Assert.assertTrue(driver.click(signInBtn));
 		return this;
 	}
 
 
-	public Auth clickGoogleSignIn()
+	public AuthPage clickGoogleSignIn()
 	{
 		//TODO: return google oauth form
 		Assert.assertTrue(driver.click(googleSignInBtn));
 		return this;
 	}
 
-	public Auth clickRegister()
+	public AuthPage clickRegister()
 	{
 		Assert.assertTrue(driver.click(registerBtn));
 		return this;
@@ -85,23 +82,8 @@ public class Auth extends NPPageObject
 		return new PasswordResetDialog(driver, this);
 	}
 
-	public String getErrorMessageText()
+	public void checkErrorMessage(String text)
 	{
-		if (driver.waitUntilClickable(errorMessage, 2))
-		{
-			return driver.getElement(errorMessage).getText();
-		}
-		return "";
+		Assert.assertTrue(driver.waitUntilVisible(classWithText("label--error", text), 2));
 	}
-
-	public void checkErrorMessageText(String text)
-	{
-		Assert.assertTrue(getErrorMessageText().equals(text));
-	}
-
-	public void checkErrorMessageTextContains(String text)
-	{
-		Assert.assertTrue(getErrorMessageText().contains(text));
-	}
-
 }

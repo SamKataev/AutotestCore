@@ -1,20 +1,20 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class CalculationsAddDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By title = dialogMdcAppBarTitle("Calculations");
-	private final By addBtn = dialogMdcTextBtn("Add");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By title = dialogAppBarTitle("Calculations");
+	private final By addBtn = dialogTextBtn("Add");
 
 
-	public CalculationsAddDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public CalculationsAddDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class Datasources extends NPWebTest
+public class DataSourcesTest extends NPWebTest
 {
 
 	@Test

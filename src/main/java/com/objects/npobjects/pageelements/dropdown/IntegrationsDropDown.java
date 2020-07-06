@@ -1,7 +1,6 @@
 package com.objects.npobjects.pageelements.dropdown;
 
-import com.objects.npobjects.pageelements.dialogs.CreateAlertDialog;
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -12,12 +11,12 @@ import org.openqa.selenium.By;
 public class IntegrationsDropDown extends DropDown
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
 	private final By databaseBtn = dropDownMdcListItemWithText("Database");
 	private final By saasBtn = dropDownMdcListItemWithText("SaaS");
 
-	public IntegrationsDropDown(SeleniumDriverWrapper driver, Main pageObj)
+	public IntegrationsDropDown(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

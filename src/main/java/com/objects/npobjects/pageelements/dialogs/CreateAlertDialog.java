@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -11,16 +11,16 @@ import org.openqa.selenium.By;
 public class CreateAlertDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Create Alert");
-	private final By inputNameAlert = dialogNpTextFieldWithLabel("New Alert");
-	private final By addSourceBtn = dialogMdcListItemWithTextIcon("Add data source", "ic_add");
-	private final By cancel = dialogMdcTextBtn("Cancel");
-	private final By saveChanges = dialogMdcTextBtn("Save changes");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
+	private final By title = dialogAppBarTitle("Create Alert");
+	private final By inputNameAlert = dialogTextFieldWithLabel("New Alert");
+	private final By addSourceBtn = dialogListItemWithTextIcon("Add data source", "ic_add");
+	private final By cancel = dialogTextBtn("Cancel");
+	private final By saveChanges = dialogTextBtn("Save changes");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
 
-	public CreateAlertDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public CreateAlertDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

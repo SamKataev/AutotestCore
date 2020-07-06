@@ -7,12 +7,9 @@ import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
 
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import java.sql.Time;
-
-public class ReportsCreate extends NPPageObject
+public class ReportPage extends NPPageObject
 {
 
 	public ChooseObjectDropDown chooseObjectDropDown;
@@ -42,7 +39,7 @@ public class ReportsCreate extends NPPageObject
 	private By sheetBtn = mdcTabWithText("+");
 
 
-	public ReportsCreate(SeleniumDriverWrapper driver)
+	public ReportPage(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/reports/new", driver);
 		chooseObjectDropDown = new ChooseObjectDropDown(driver, this);
@@ -66,116 +63,116 @@ public class ReportsCreate extends NPPageObject
 				  && driver.waitUntilExist(settingsBtn, 10);
 	}
 
-	public ReportsCreate checkIsRendered()
+	public ReportPage checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public ReportsCreate clickSettingsBtn()
+	public ReportPage clickSettingsBtn()
 	{
 		Assert.assertTrue(driver.click(settingsBtn));
 		return this;
 	}
 
-	public ReportsCreate clickMoreBtn()
+	public ReportPage clickMoreBtn()
 	{
 		Assert.assertTrue(driver.click(moreBtn));
 		return this;
 	}
 
-	public ReportsCreate clickCloseBtn()
+	public ReportPage clickCloseBtn()
 	{
 		Assert.assertTrue(driver.click(closeBtn));
 		return this;
 	}
 
-	public ReportsCreate clickInsertBtn()
+	public ReportPage clickInsertBtn()
 	{
 		Assert.assertTrue(driver.click(insertBtn));
 		return this;
 	}
 
-	public ReportsCreate clickEditBtn()
+	public ReportPage clickEditBtn()
 	{
 		Assert.assertTrue(driver.click(editBtn));
 		return this;
 	}
 
-	public ReportsCreate checkEditBtn()
+	public ReportPage checkEditBtn()
 	{
 		Assert.assertTrue(driver.waitUntilExist(editBtn));
 		return this;
 	}
 
-	public ReportsCreate checkAbsenceEditBtn()
+	public ReportPage checkAbsenceEditBtn()
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//button[contains(@class, 'mdc-button--black hide') and contains(text(), 'Edit')]")));
 		return this;
 	}
 
-	public ReportsCreate clickChartByName(String text)
+	public ReportPage clickChartByName(String text)
 	{
 		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]")));
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]")));
 		return this;
 	}
 
-	public ReportsCreate clickFilterBtn()
+	public ReportPage clickFilterBtn()
 	{
 		Assert.assertTrue(driver.click(filterBtn));
 		return this;
 	}
 
-	public ReportsCreate checkChartNoDate()
+	public ReportPage checkChartNoDate()
 	{
 		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class,'blockcontainer')]/following::div[contains(@class,'nodata_node') and contains(text(),'No data')]"), 5));
 		return this;
 	}
 
-	public ReportsCreate checkChartNoNaN()
+	public ReportPage checkChartNoNaN()
 	{
 		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@title,'NaN')]"), 5));
 		return this;
 	}
 
-	public ReportsCreate contextClick(String text, int time)
+	public ReportPage contextClick(String text, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class,'lbl-cnt') and contains(text(),'" + text + "')]/ancestor::div[contains(@class,'blockcontainer')]"), 10));
 		return this;
 	}
 
-	public ReportsCreate clickRefreshBtn()
+	public ReportPage clickRefreshBtn()
 	{
 		Assert.assertTrue(driver.click(refreshBtn));
 		return this;
 	}
 
-	public ReportsCreate clickShareBtn()
+	public ReportPage clickShareBtn()
 	{
 		Assert.assertTrue(driver.click(shareBtn));
 		return this;
 	}
 
-	public ReportsCreate clickEditTextBtn()
+	public ReportPage clickEditTextBtn()
 	{
 		Assert.assertTrue(driver.click(editTextBtn));
 		return this;
 	}
 
-	public ReportsCreate clickSheetBtn()
+	public ReportPage clickSheetBtn()
 	{
 		Assert.assertTrue(driver.click(sheetBtn));
 		return this;
 	}
 
-	public ReportsCreate contextClickSheet(String text, int time)
+	public ReportPage contextClickSheet(String text, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab')]"), 10));
 		return this;
 	}
 
-	public ReportsCreate checkActiveSheet(String text, String buttonClass, int time)
+	public ReportPage checkActiveSheet(String text, String buttonClass, int time)
 	{
 		Assert.assertFalse(driver.waitUntilClickable(By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab') and contains(@class, '" + buttonClass + "')]"), 5));
 		return this;

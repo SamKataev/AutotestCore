@@ -1,7 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -9,14 +8,14 @@ import org.openqa.selenium.By;
 public class SaveAsDialog extends Dialog
 {
 
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
-	private final By cancelBtn = dialogMdcTextBtn("Cancel");
-	private final By okBtn = dialogMdcTextBtn("OK");
-	private final By inputName = dialogNpTextFieldWithLabel("Name");
+	private final By cancelBtn = dialogTextBtn("Cancel");
+	private final By okBtn = dialogTextBtn("OK");
+	private final By inputName = dialogTextFieldWithLabel("Name");
 
 
-	public SaveAsDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public SaveAsDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

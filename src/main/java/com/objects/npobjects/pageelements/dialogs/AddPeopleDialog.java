@@ -1,20 +1,20 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class AddPeopleDialog extends Dialog
 {
-	public Main parentPage;
+	public NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Add people");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By searchBtn = dialogMdcIconFontBtn("ic_search");
+	private final By title = dialogAppBarTitle("Add people");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By searchBtn = dialogIconFontBtn("ic_search");
 	private final By sendBtn = By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'ic_send')]/parent::button[contains(@class, 'mdc-fab')]");
 
-	public AddPeopleDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public AddPeopleDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

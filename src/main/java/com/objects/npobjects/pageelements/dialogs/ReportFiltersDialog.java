@@ -1,18 +1,18 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class ReportFiltersDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
 	private final By addBtn = nodeMdcListItemWithTextIconBtn("Add a Filter", "ic_add");
 	private final By doneBtn = nodeMdcAppBarTextBtn("Done");
 
-	public ReportFiltersDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public ReportFiltersDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

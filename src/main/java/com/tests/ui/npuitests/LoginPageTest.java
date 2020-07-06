@@ -4,18 +4,18 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class LoginPage extends NPWebTest
+public class LoginPageTest extends NPWebTest
 {
 
 	@BeforeClass
 	@Override
-	public void startNPTestClass()
+	public void startTestClass()
 	{
 		//empty to cancel default behavior
 	}
 
 	@BeforeMethod
-	public void startMethod()
+	public void startTestMethod()
 	{
 		authPage.open().checkIsRendered();
 	}
@@ -24,35 +24,35 @@ public class LoginPage extends NPWebTest
 	public void loginWithAllEmptyFieldsFails()
 	{
 		authPage.logIn("", "");
-		authPage.checkErrorMessageText("Invalid email or password");
+		authPage.checkErrorMessage("Invalid Email or Password");
 	}
 
 	@Test
 	public void loginWithEmptyPassFails()
 	{
 		authPage.logIn("slemmatest@mail.ru", "");
-		authPage.checkErrorMessageText("Invalid email or password");
+		authPage.checkErrorMessage("Invalid Email or Password");
 	}
 
 	@Test
 	public void loginWithWrongPassFails()
 	{
 		authPage.logIn("slemmatest@mail.ru", "111111");
-		authPage.checkErrorMessageText("Invalid email or password");
+		authPage.checkErrorMessage("Invalid Email or Password");
 	}
 
 	@Test
 	public void loginWithWrongEmailFails()
 	{
 		authPage.logIn("slemmatest222@mail.ru", "jF!1234asd");
-		authPage.checkErrorMessageText("Invalid email or password");
+		authPage.checkErrorMessage("Invalid Email or Password");
 	}
 
 	@Test
 	public void loginWithEmptyEmailFails()
 	{
 		authPage.logIn("", "111111");
-		authPage.checkErrorMessageText("Invalid email or password");
+		authPage.checkErrorMessage("Invalid Email or Password");
 	}
 
 //    @Test
@@ -67,6 +67,6 @@ public class LoginPage extends NPWebTest
 //                .clickPassReset()
 //                .checkIsRendered()
 //                .clickReset();
-//        authPage.checkMessageDialogText("Invalid email or password");
+//        authPage.checkMessageDialogText("Invalid Email or Password");
 //    }
 }

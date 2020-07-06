@@ -1,7 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Auth;
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -13,21 +12,21 @@ public class SaaSParametersDialog extends Dialog
 {
 
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Parameters");
-	private final By domainField = dialogNpTextFieldWithLabel("Domain");
-	private final By serverURLField = dialogNpTextFieldWithLabel("Server URL");
-	private final By apiField = dialogNpTextFieldWithLabel("API key");
-	private final By customerIDField = dialogNpTextFieldWithLabel("Customer ID");
-	private final By loginField = dialogNpTextFieldWithLabel("Login");
-	private final By passwordField = dialogNpTextFieldWithLabel("Password");
-	private final By apitokenField = dialogNpTextFieldWithLabel("API token");
-	private final By tokenField = dialogNpTextFieldWithLabel("Security token");
-	private final By cancelBtn = dialogMdcTextBtn("Cancel");
-	private final By okBtn = dialogMdcTextBtn("OK");
+	private final By title = dialogAppBarTitle("Parameters");
+	private final By domainField = dialogTextFieldWithLabel("Domain");
+	private final By serverURLField = dialogTextFieldWithLabel("Server URL");
+	private final By apiField = dialogTextFieldWithLabel("API key");
+	private final By customerIDField = dialogTextFieldWithLabel("Customer ID");
+	private final By loginField = dialogTextFieldWithLabel("Login");
+	private final By passwordField = dialogTextFieldWithLabel("Password");
+	private final By apitokenField = dialogTextFieldWithLabel("API token");
+	private final By tokenField = dialogTextFieldWithLabel("Security token");
+	private final By cancelBtn = dialogTextBtn("Cancel");
+	private final By okBtn = dialogTextBtn("OK");
 
-	public SaaSParametersDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public SaaSParametersDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

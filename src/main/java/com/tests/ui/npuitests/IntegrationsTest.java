@@ -2,7 +2,7 @@ package com.tests.ui.npuitests;
 
 import org.testng.annotations.Test;
 
-public class Integrations extends NPWebTest
+public class IntegrationsTest extends NPWebTest
 {
 
 	@Test

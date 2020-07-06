@@ -142,11 +142,6 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		goToUrl(getCurrentUrl());
 	}
 
-	public boolean checkCurrentUrl(String url)
-	{
-		return webDriver.getCurrentUrl().equals(url);
-	}
-
 	public void switchWindow()
 	{
 		switchWindow(defaultWaitTime);
@@ -265,6 +260,11 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		return getElement(locator, defaultWaitTime);
 	}
 
+	public boolean waitUntilExist(By locator, int time, boolean log)
+	{
+		return waitUntilConditions(locator, time, WaiterType.EXIST, log);
+	}
+
 	public boolean waitUntilExist(By locator, int time)
 	{
 		return waitUntilConditions(locator, time, WaiterType.EXIST, true);
@@ -273,11 +273,6 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 	public boolean waitUntilExist(By locator)
 	{
 		return waitUntilExist(locator, defaultWaitTime);
-	}
-
-	public boolean waitUntilExist(By locator, int time, boolean log)
-	{
-		return waitUntilConditions(locator, time, WaiterType.EXIST, log);
 	}
 
 	public boolean waitUntilVisible(By locator, int time)
@@ -290,6 +285,11 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		return waitUntilVisible(locator, defaultWaitTime);
 	}
 
+	public boolean waitUntilClickable(By locator, int time, boolean log)
+	{
+		return waitUntilConditions(locator, time, WaiterType.CLICKABLE, log);
+	}
+
 	public boolean waitUntilClickable(By locator, int time)
 	{
 		return waitUntilConditions(locator, time, WaiterType.CLICKABLE, true);
@@ -298,6 +298,11 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 	public boolean waitUntilClickable(By locator)
 	{
 		return waitUntilClickable(locator, defaultWaitTime);
+	}
+
+	public boolean waitUntilDisappear(By locator, int time, boolean log)
+	{
+		return waitUntilConditions(locator, time, WaiterType.DISAPPEAR, log);
 	}
 
 	public boolean waitUntilDisappear(By locator, int time)

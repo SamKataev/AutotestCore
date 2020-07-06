@@ -45,17 +45,16 @@ public class Home extends SlemmaPageObject
 
 	public Home checkIsLoggedIn()
 	{
-		Assert.assertTrue(isRendered()
-				  && checkMenuSection("Library", "/home"));
+		checkMenuSection("Library", "/home");
 		//TODO: check account
 		return this;
 	}
 
-	public boolean checkMenuSection(String name, String path)
+	public void checkMenuSection(String name, String path)
 	{
-		return isRendered()
-				  && driver.checkCurrentUrl(driver.getBaseUrl() + path)
-				  && driver.getElement(pageModeLabel, 10).getText().equals(name);
+		isRendered();
+		Assert.assertEquals(driver.getCurrentUrl(), driver.getBaseUrl() + path);
+		Assert.assertEquals(driver.getElement(pageModeLabel, 10).getText(), name);
 	}
 
 	public WebElementsContainer clickPlusBtn()

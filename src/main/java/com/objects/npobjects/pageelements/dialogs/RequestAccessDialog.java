@@ -1,21 +1,20 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class RequestAccessDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
 	private By logoutBtn = mdcTextBtn("Switch Account");
 	private By requestBtn = mdcTextBtn("Request Access");
 	private By closeBtn = mdcIconFontBtn("ic_close");
 	private By message = By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content')]//span[contains(text(),'You need permission')]");
 
-	public RequestAccessDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public RequestAccessDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -1,19 +1,19 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class PermissionsDialog extends Dialog
 {
-	public Main parentPage;
+	public NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Permissions");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By searchBtn = dialogMdcIconFontBtn("ic_search");
+	private final By title = dialogAppBarTitle("Permissions");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By searchBtn = dialogIconFontBtn("ic_search");
 
-	public PermissionsDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public PermissionsDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

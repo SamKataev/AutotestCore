@@ -1,8 +1,7 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 /**
@@ -10,16 +9,15 @@ import org.openqa.selenium.By;
  */
 public class WorkspaceSettingsDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Workspace settings");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By itemWorkspaceName = dialogMdcListAccordionWithText("Workspace name");
-	private final By itemSecurity = dialogMdcListAccordionWithText("Security");
-	private final By itemOwner = dialogMdcListAccordionWithText("Owner");
+	private final By title = dialogAppBarTitle("Workspace Settings");
+	private final By inputWorkspaceName = dialogTextFieldWithLabel("Workspace Name");
+	private final By itemShareableLinks = dialogListItemWithText("Allow Users to Generate Shareable Links");
+	private final By inputOwner = dialogSelectWithLabel("Owner");
 
 
-	public WorkspaceSettingsDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public WorkspaceSettingsDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -30,21 +28,17 @@ public class WorkspaceSettingsDialog extends Dialog
 	{
 		return driver.waitUntilExist(title, 5)
 				  && driver.waitUntilClickable(closeBtn)
-				  && driver.waitUntilClickable(itemWorkspaceName)
-				  && driver.waitUntilClickable(itemSecurity)
-				  && driver.waitUntilClickable(itemOwner);
+				  && driver.waitUntilVisible(doneBtn)
+				  && !driver.waitUntilClickable(doneBtn, 1, false)
+				  && driver.waitUntilClickable(inputWorkspaceName)
+				  && driver.waitUntilClickable(itemShareableLinks)
+				  && driver.waitUntilClickable(inputOwner);
 
 	}
 
 	public WorkspaceSettingsDialog checkIsRendered()
 	{
 		super.checkIsRendered();
-		return this;
-	}
-
-	public WorkspaceSettingsDialog clickitemDetails()
-	{
-		Assert.assertTrue(driver.click(itemWorkspaceName));
 		return this;
 	}
 }

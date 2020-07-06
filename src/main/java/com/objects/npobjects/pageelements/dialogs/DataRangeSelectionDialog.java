@@ -1,20 +1,20 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class DataRangeSelectionDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
 	private final By title = nodeMdcAppBarTitle("Selection");
 	private final By nInput = nodeNpTextFieldWithLabel("N");
 	private final By doneBtn = nodeMdcAppBarTextBtn("Done");
 
 
-	public DataRangeSelectionDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public DataRangeSelectionDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

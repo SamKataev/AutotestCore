@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Auth;
+import com.objects.npobjects.pageobjects.AuthPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -8,12 +8,12 @@ import org.testng.Assert;
 public class PasswordResetDialog extends Dialog
 {
 
-	private Auth parentPage;
+	private AuthPage parentPage;
 
-	private final By emailInput = dialogNpTextFieldWithLabel("Your e-mail:");
-	private final By resetBtn = dialogMdcTextBtn("Reset");
+	private final By emailInput = dialogTextFieldWithLabel("Your e-mail:");
+	private final By resetBtn = dialogTextBtn("Reset");
 
-	public PasswordResetDialog(SeleniumDriverWrapper driver, Auth pageObj)
+	public PasswordResetDialog(SeleniumDriverWrapper driver, AuthPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

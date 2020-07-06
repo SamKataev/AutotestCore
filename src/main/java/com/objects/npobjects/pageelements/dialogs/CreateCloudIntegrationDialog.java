@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -8,20 +8,20 @@ import org.openqa.selenium.By;
 public class CreateCloudIntegrationDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Create new");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
+	private final By title = dialogAppBarTitle("Create new");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
 
-	private final By boxBtn = dialogMdcListItemWithTextIcon("Box", "ic_box");
-	private final By dropboxBtn = dialogMdcListItemWithTextIcon("Dropbox", "ic_dropbox");
-	private final By dropboxBusinessBtn = dialogMdcListItemWithTextIcon("DropBox Business", "ic_dropbox");
-	private final By googledriveBtn = dialogMdcListItemWithTextIcon("Google Drive", "ic_google_drive");
-	private final By onedriveBtn = dialogMdcListItemWithTextIcon("OneDrive", "ic_onedrive");
-	private final By yandexdiskBtn = dialogMdcListItemWithTextIcon("Yandex Disk", "ic_yandex_disk");
+	private final By boxBtn = dialogListItemWithTextIcon("Box", "ic_box");
+	private final By dropboxBtn = dialogListItemWithTextIcon("Dropbox", "ic_dropbox");
+	private final By dropboxBusinessBtn = dialogListItemWithTextIcon("DropBox Business", "ic_dropbox");
+	private final By googledriveBtn = dialogListItemWithTextIcon("Google Drive", "ic_google_drive");
+	private final By onedriveBtn = dialogListItemWithTextIcon("OneDrive", "ic_onedrive");
+	private final By yandexdiskBtn = dialogListItemWithTextIcon("Yandex Disk", "ic_yandex_disk");
 
 
-	public CreateCloudIntegrationDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public CreateCloudIntegrationDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

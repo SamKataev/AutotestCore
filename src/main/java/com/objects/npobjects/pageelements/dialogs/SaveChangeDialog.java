@@ -1,7 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -9,15 +8,15 @@ import org.openqa.selenium.By;
 public class SaveChangeDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By cancelBtn = dialogMdcTextBtn("Cancel");
-	private final By saveBtn = dialogMdcTextBtn("Save");
-	private final By dontSaveBtn = dialogMdcTextBtn("t save");
-	private final By title = dialogMdcAppBarTitle("Save changes?");
+	private final By cancelBtn = dialogTextBtn("Cancel");
+	private final By saveBtn = dialogTextBtn("Save");
+	private final By dontSaveBtn = dialogTextBtn("t save");
+	private final By title = dialogAppBarTitle("Save changes?");
 
 
-	public SaveChangeDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public SaveChangeDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

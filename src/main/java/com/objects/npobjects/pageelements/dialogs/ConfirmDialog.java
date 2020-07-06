@@ -1,19 +1,19 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class ConfirmDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Confirm");
-	private final By deleteBtn = dialogMdcTextBtn("Delete");
+	private final By title = dialogAppBarTitle("Confirm");
+	private final By deleteBtn = dialogTextBtn("Delete");
 
 
-	public ConfirmDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public ConfirmDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

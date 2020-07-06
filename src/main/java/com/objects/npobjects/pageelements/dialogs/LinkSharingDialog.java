@@ -1,23 +1,21 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 public class LinkSharingDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Link sharing");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By searchBtn = dialogMdcIconFontBtn("ic_delete");
-	private final By linkInput = dialogNpTextFieldWithLabel("Link to share");
-	private final By EmbedCodeInput = dialogNpTextFieldWithLabel("Embed code");
+	private final By title = dialogAppBarTitle("Link sharing");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By searchBtn = dialogIconFontBtn("ic_delete");
+	private final By linkInput = dialogTextFieldWithLabel("Link to share");
+	private final By EmbedCodeInput = dialogTextFieldWithLabel("Embed code");
 
-	public LinkSharingDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public LinkSharingDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

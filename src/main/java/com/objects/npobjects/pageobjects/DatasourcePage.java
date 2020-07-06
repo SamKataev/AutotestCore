@@ -5,12 +5,11 @@ import com.objects.npobjects.pageelements.dialogs.SettingsDataSourcesDialog;
 import com.objects.npobjects.pageelements.dialogs.FieldSettingsDialog;
 import com.objects.npobjects.pageelements.dialogs.DistinctCountSettingsDialog;
 import com.objects.npobjects.pageelements.dialogs.CalculationFieldDialog;
-import com.objects.npobjects.pageobjects.oauthpages.BoxLogIn;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class DatasourceCreate extends NPPageObject
+public class DatasourcePage extends NPPageObject
 {
 
 	public SettingsDataSourcesDialog settingsDataSourcesDialog;
@@ -31,7 +30,7 @@ public class DatasourceCreate extends NPPageObject
 	private By calculationBtn = mdcIconFontBtn("ic_calculation");
 
 
-	public DatasourceCreate(SeleniumDriverWrapper driver)
+	public DatasourcePage(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/datasources/new", driver);
 		settingsDataSourcesDialog = new SettingsDataSourcesDialog(driver, this);
@@ -49,69 +48,69 @@ public class DatasourceCreate extends NPPageObject
 				  driver.waitUntilClickable(tuneBtn, 10);
 	}
 
-	public DatasourceCreate checkIsRendered()
+	public DatasourcePage checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public DatasourceCreate clickSave()
+	public DatasourcePage clickSave()
 	{
 		Assert.assertTrue(driver.click(saveBtn));
 		return this;
 	}
 
-	public DatasourceCreate clickTuneBtn()
+	public DatasourcePage clickTuneBtn()
 	{
 		Assert.assertTrue(driver.click(tuneBtn));
 		return this;
 	}
 
-	public DatasourceCreate clickMoreBtn()
+	public DatasourcePage clickMoreBtn()
 	{
 		Assert.assertTrue(driver.click(moreBtn));
 		return this;
 	}
 
-	public DatasourceCreate clickCodeMirror()
+	public DatasourcePage clickCodeMirror()
 	{
 		Assert.assertTrue(driver.click(codeMirror));
 		return this;
 	}
 
-	public DatasourceCreate clickQueryBtn()
+	public DatasourcePage clickQueryBtn()
 	{
 		Assert.assertTrue(driver.click(queryBtn));
 		return this;
 	}
 
-	public DatasourceCreate clickbackBtn()
+	public DatasourcePage clickbackBtn()
 	{
 		Assert.assertTrue(driver.click(backBtn));
 		return this;
 	}
 
-	public DatasourceCreate clickAgViewport()
+	public DatasourcePage clickAgViewport()
 	{
 		Assert.assertTrue(driver.waitUntilClickable(agViewport, 20));
 		return this;
 	}
 
-	public DatasourceCreate existSettingsBtn()
+	public DatasourcePage existSettingsBtn()
 	{
 		Assert.assertTrue(driver.waitUntilExist(settingsBtn, 10));
 		Assert.assertTrue(driver.waitUntilClickable(settingsBtn, 10));
 		return this;
 	}
 
-	public DatasourceCreate existChooseAfile()
+	public DatasourcePage existChooseAfile()
 	{
 		Assert.assertTrue(driver.waitUntilExist(chooseAfile, 10));
 		Assert.assertTrue(driver.waitUntilClickable(chooseAfile, 10));
 		return this;
 	}
 
-	public DatasourceCreate clickCalculationBtn()
+	public DatasourcePage clickCalculationBtn()
 	{
 		Assert.assertTrue(driver.click(calculationBtn));
 		return this;

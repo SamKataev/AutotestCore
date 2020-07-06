@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -8,12 +8,12 @@ import org.openqa.selenium.By;
 public class FileByUrlDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("File by URL");
-	private final By urlInput = dialogNpTextFieldWithLabel("Url to upload");
+	private final By title = dialogAppBarTitle("File by URL");
+	private final By urlInput = dialogTextFieldWithLabel("Url to upload");
 
-	public FileByUrlDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public FileByUrlDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -1,22 +1,21 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.oauthpages.DropboxLogIn;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public class RenameDialog extends Dialog
 {
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Rename");
-	private final By cancelBtn = dialogMdcTextBtn("Cancel");
-	private final By renameBtn = dialogMdcTextBtn("Rename");
-	private final By inputName = dialogNpTextFieldWithLabel("Please enter a new name for the item:");
+	private final By title = dialogAppBarTitle("Rename");
+	private final By cancelBtn = dialogTextBtn("Cancel");
+	private final By renameBtn = dialogTextBtn("Rename");
+	private final By inputName = dialogTextFieldWithLabel("Please enter a new name for the item:");
 
 
-	public RenameDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public RenameDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

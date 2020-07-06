@@ -10,10 +10,10 @@ import org.testng.annotations.BeforeMethod;
 public abstract class NPWebTest extends WebTest
 {
 
-	Auth authPage;
-	Main mainPage;
-	DatasourceCreate datasourceCreatePage;
-	ReportsCreate reportsPage;
+	AuthPage authPage;
+	NavigatorPage mainPage;
+	DatasourcePage datasourceCreatePage;
+	ReportPage reportsPage;
 
 	FacebookLogIn facebookLogIn;
 	InstagramLogIn instagramLogIn;
@@ -37,7 +37,7 @@ public abstract class NPWebTest extends WebTest
 	 * each test class starts from reports page if not overridden
 	 */
 	@BeforeClass
-	public void startNPTestClass()
+	public void startTestClass()
 	{
 		openReportsPage();
 	}
@@ -46,7 +46,7 @@ public abstract class NPWebTest extends WebTest
 	 * each test method starts from reports page if not overridden
 	 */
 	@BeforeMethod
-	public void startNPTestMethod()
+	public void startTestMethod()
 	{
 		openReportsPage();
 	}
@@ -54,10 +54,10 @@ public abstract class NPWebTest extends WebTest
 	@Override
 	protected void initPages()
 	{
-		authPage = new Auth(driver);
-		mainPage = new Main(driver);
-		datasourceCreatePage = new DatasourceCreate(driver);
-		reportsPage = new ReportsCreate(driver);
+		authPage = new AuthPage(driver);
+		mainPage = new NavigatorPage(driver);
+		datasourceCreatePage = new DatasourcePage(driver);
+		reportsPage = new ReportPage(driver);
 		facebookLogIn = new FacebookLogIn(driver);
 		instagramLogIn = new InstagramLogIn(driver);
 		payPalLogIn = new PayPalLogIn(driver);
@@ -84,9 +84,8 @@ public abstract class NPWebTest extends WebTest
 
 	protected void openReportsPage()
 	{
-		driver.isAlertPresent();//может быть стоит убрать?
-		driver.goToUrl(driver.getBaseUrl() + "/library");
-		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/library"))
+		driver.goToUrl(driver.getBaseUrl() + "/reports");
+		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/reports"))
 		{
 			logIn();
 		}
@@ -96,8 +95,7 @@ public abstract class NPWebTest extends WebTest
 	{
 		authPage.open();
 		authPage.logIn(TestProperties.getNPProp("email"), TestProperties.getNPProp("password"));
-		mainPage.checkIsLoggedIn();
-		changeTeam(TestProperties.getNPProp("team"));
+		mainPage.checkIsLoggedIn(TestProperties.getNPProp("user"), TestProperties.getNPProp("team"));
 	}
 
 	protected void changeTeam(String name)

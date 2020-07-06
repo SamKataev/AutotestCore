@@ -1,7 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Auth;
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -12,28 +11,28 @@ import org.testng.Assert;
 public class CreateIntegrationDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Create integration");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
+	private final By title = dialogAppBarTitle("Create integration");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
 
-	private final By general = dialogMdcListAccordionWithText("General");
-	private final By security = dialogMdcListAccordionWithText("Security");
-	private final By dataRefresh = dialogMdcListAccordionWithText("Data refresh");
-	private final By displaynameField = dialogNpTextFieldWithLabel("Display name");
+	private final By general = dialogListAccordionWithText("General");
+	private final By security = dialogListAccordionWithText("Security");
+	private final By dataRefresh = dialogListAccordionWithText("Data refresh");
+	private final By displaynameField = dialogTextFieldWithLabel("Display name");
 
-	private final By hostField = dialogNpTextFieldWithLabel("Host");
-	private final By portField = dialogNpTextFieldWithLabel("Port");
-	private final By databaseNameField = dialogNpTextFieldWithLabel("Database Name");
-	private final By usernameField = dialogNpTextFieldWithLabel("Username");
-	private final By passwordField = dialogNpTextFieldWithLabel("Password");
-	private final By endpointField = dialogNpTextFieldWithLabel("Endpoint");
+	private final By hostField = dialogTextFieldWithLabel("Host");
+	private final By portField = dialogTextFieldWithLabel("Port");
+	private final By databaseNameField = dialogTextFieldWithLabel("Database Name");
+	private final By usernameField = dialogTextFieldWithLabel("Username");
+	private final By passwordField = dialogTextFieldWithLabel("Password");
+	private final By endpointField = dialogTextFieldWithLabel("Endpoint");
 
 
 	private final By createBtn = mdcTextBtn("Create");
 	private final By checkBtn = mdcTextBtn("Check connection");
 
-	public CreateIntegrationDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public CreateIntegrationDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

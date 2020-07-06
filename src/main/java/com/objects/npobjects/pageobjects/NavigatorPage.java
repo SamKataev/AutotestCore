@@ -8,7 +8,7 @@ import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
-public class Main extends NPPageObject
+public class NavigatorPage extends NPPageObject
 {
 
 	public SelectDatasourceTypeDialog selectDatasourceTypeDialog;
@@ -38,29 +38,27 @@ public class Main extends NPPageObject
 
 
 	private final By pageModeLabel = classInParentClass("mdc-top-app-bar__title", "librarybox__content-node");
-	private final By createBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Create')]/parent::button[contains(@class, 'mdc-fab')]");
-	private final By addBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Add')]/parent::button[contains(@class, 'mdc-fab')]");
+	private final By createBtn = mdcTextBtn("Create");
+	private final By addBtn = mdcTextBtn("Add");
 	private final By searchBtn = mdcIconFontBtn("ic_search");
 	private final By searchInput = By.cssSelector(".mdc-top-app-bar__search-input");
 	private final By startSearchBtn = By.xpath("//input[contains(@class, 'mdc-top-app-bar__search-input')]/preceding-sibling::span[contains(@class, 'mdc-icon-toggle')]");
-	private final By accountName = By.xpath("//div[contains(@class, 'account-panel__about-node')]//div[contains(@class, 'mdc-top-app-bar__title')]");
-	private final By currentTeam = By.xpath("//div[contains(@class, 'account-panel__about-node')]//div[contains(@class, 'account-panel__about-node_email-nod')]");
-	private final By teamsMenuToggle = By.xpath("//div[contains(@class, 'account-panel__about-node')]//span[contains(@class, 'mdc-icon-toggle')]");
+	private final By accountName = By.xpath("//div[contains(@class, 'page-mode-panel__footer')]//span[contains(@class, 'mdc-list-item__primary-text')]");
+	private final By currentTeam = By.xpath("//div[contains(@class, 'page-mode-panel__footer')]//span[contains(@class, 'mdc-list-item__secondary-text')]");
 	private final By drawerToggleBtn = mdcIconFontBtn("ic_menu");
-	private final By liLibrary = mdcListItemWithText("Library");
+
 	private final By liReports = mdcListItemWithText("Reports");
-	private final By liDataSources = mdcListItemWithText("Data sources");
-	private final By liNotifications = mdcListItemWithText("Notifications");
-	//	private final By liDelivery = mdcListItemWithText("Delivery");
-//	private final By liAlerts = mdcListItemWithText("Alerts");
+	private final By liDataSources = mdcListItemWithText("Data Sources");
 	private final By liSettings = mdcListItemWithText("Settings");
 	private final By liHelp = mdcListItemWithText("Help");
 	private final By liAdmin = mdcListItemWithText("Admin");
-	private final By liSignOut = mdcListItemWithText("Sign out");
 	private final By liIntegrations = mdcListItemWithText("Integrations");
+	private final By liUsers = mdcListItemWithText("Users");
+	private final By liWorkspace = mdcListItemWithText("Workspace Settings");
+	private final By liSignOut = mdcListItemWithText("Sign out");
 
 
-	public Main(SeleniumDriverWrapper driver)
+	public NavigatorPage(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/reports", driver);
 		selectDatasourceTypeDialog = new SelectDatasourceTypeDialog(driver, this);
@@ -93,75 +91,95 @@ public class Main extends NPPageObject
 	public boolean validateElements()
 	{
 		return driver.waitUntilExist(pageModeLabel, 10)
-				  && driver.waitUntilClickable(createBtn)
 				  && (isNavMenuRendered()
 				  || driver.waitUntilClickable(drawerToggleBtn));
 	}
 
-	public Main checkIsRendered()
+	public NavigatorPage checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public Main checkIsLoggedIn()
+	public NavigatorPage checkIsLoggedIn(String accountName, String teamName)
 	{
 		checkIsRendered();
-		checkNavSection("Library", "/library");
-
-		//TODO: check account
+		checkNavSection("Reports", "/reports");
+		checkAccount(accountName);
+		checkTeam(teamName);
 		return this;
 	}
 
+
+
 	public void checkNavSection(String name, String path)
 	{
-		checkIsRendered();
-		Assert.assertTrue(driver.checkCurrentUrl(driver.getBaseUrl() + path));
-		Assert.assertTrue(driver.getElement(pageModeLabel, 10).getText().equals(name));
+		Assert.assertEquals(driver.getCurrentUrl(), driver.getBaseUrl() + path);
+		Assert.assertEquals(driver.getElement(pageModeLabel, 10).getText(), name);
+	}
+
+	private boolean isNavMenuRendered(boolean withAdmin)
+	{
+		return driver.waitUntilClickable(liReports, 10)
+				  && driver.waitUntilClickable(liDataSources)
+				  && driver.waitUntilClickable(liSettings)
+				  && driver.waitUntilClickable(liHelp)
+				  && driver.waitUntilExist(liAdmin)
+				  && driver.waitUntilClickable(liSignOut)
+				  && (!withAdmin || driver.waitUntilClickable(liIntegrations)
+				  			&& driver.waitUntilClickable(liUsers)
+				  			&& driver.waitUntilClickable(liWorkspace));
 	}
 
 	private boolean isNavMenuRendered()
 	{
-		return driver.waitUntilClickable(liReports, 10)
-				  && driver.waitUntilClickable(liDataSources)
-				  && driver.waitUntilClickable(liLibrary)
-				  && driver.waitUntilClickable(liNotifications)
-				  && driver.waitUntilClickable(liSettings)
-				  && driver.waitUntilClickable(liHelp)
-				  && driver.waitUntilExist(liAdmin)
-				  && driver.waitUntilClickable(liSignOut);
+		return isNavMenuRendered(false);
 	}
 
-	public void checkIsNavMenuRendered()
+	public NavigatorPage checkIsNavMenuRendered(boolean withAdmin)
 	{
-		Assert.assertTrue(isNavMenuRendered());
-	}
-
-	private boolean isTeamSelected(String name)
-	{
-		return driver.getElement(currentTeam).getText().equals(name);
-	}
-
-	public void checkIsTeamSelected(String name)
-	{
-		Assert.assertTrue(driver.waitUntilClickable(currentTeam, 2));
-		Assert.assertTrue(isTeamSelected(name));
-	}
-
-	public Main selectTeam(String name)
-	{
-		if (!isTeamSelected(name))
-		{
-			Assert.assertTrue(driver.click(teamsMenuToggle));
-			Assert.assertTrue(driver.waitUntilClickable(mdcListItemWithText(name), 5));
-			Assert.assertTrue(driver.click(mdcListItemWithText(name)));
-			checkIsTeamSelected(name);
-			checkIsNavMenuRendered();
-		}
+		Assert.assertTrue(isNavMenuRendered(withAdmin));
 		return this;
 	}
 
-	public Main clickPlusBtn()
+	public NavigatorPage checkIsNavMenuRendered()
+	{
+		Assert.assertTrue(isNavMenuRendered());
+		return this;
+	}
+
+	private String getAccountText()
+	{
+		return driver.getElement(accountName).getText();
+	}
+
+	public void checkAccount(String name)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(accountName, 2));
+		Assert.assertEquals(getAccountText(), name);
+	}
+
+	private String getTeamText()
+	{
+		return driver.getElement(currentTeam).getText();
+	}
+
+	public void checkTeam(String name)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(currentTeam, 2));
+		Assert.assertEquals(getTeamText(), name);
+	}
+
+	public NavigatorPage selectTeam(String name)
+	{
+		Assert.assertTrue(driver.waitUntilClickable(mdcListItemWithText(name), 5));
+		Assert.assertTrue(driver.click(mdcListItemWithText(name)));
+		checkTeam(name);
+		checkIsNavMenuRendered();
+		return this;
+	}
+
+	public NavigatorPage clickPlusBtn()
 	{
 		String currentUrl = driver.getCurrentUrl();
 		if (currentUrl.contains("library"))
@@ -180,14 +198,6 @@ public class Main extends NPPageObject
 		{
 			Assert.assertTrue(driver.click(createBtn));
 		}
-//		if (currentUrl.contains("delivery"))
-//		{
-//			Assert.assertTrue(driver.click(createBtn));
-//		}
-//		if (currentUrl.contains("alerts"))
-//		{
-//			Assert.assertTrue(driver.click(createBtn));
-//		}
 		if (currentUrl.contains("integrations"))
 		{
 			Assert.assertTrue(driver.click(createBtn));
@@ -199,13 +209,13 @@ public class Main extends NPPageObject
 		return this;
 	}
 
-	public Main clickSearchBtn()
+	public NavigatorPage clickSearchBtn()
 	{
 		Assert.assertTrue(driver.click(searchBtn));
 		return this;
 	}
 
-	public Main searchInNavigator(String text)
+	public NavigatorPage searchInNavigator(String text)
 	{
 		clickSearchBtn();
 		Assert.assertTrue(driver.type(searchInput, text));
@@ -216,120 +226,105 @@ public class Main extends NPPageObject
 
 	//simple actions/////////////////////
 
-	public Main openLibrary()
+	public NavigatorPage openReports()
 	{
-		Assert.assertTrue(driver.click(liReports));
-		checkNavSection("Library", "/library");
-		return this;
-	}
-
-	public Main openReports()
-	{
-		Assert.assertTrue(driver.click(liReports));
+		driver.click(liReports);
 		checkNavSection("Reports", "/reports");
 		return this;
 	}
 
-	public Main openDatasources()
+	public NavigatorPage openDatasources()
 	{
-		Assert.assertTrue(driver.click(liDataSources));
-		checkNavSection("Datasets", "/datasources");
+		driver.click(liDataSources);
+		checkNavSection("Data Sources", "/datasources");
 		return this;
 	}
 
-	public Main openNotifications()
+	public NavigatorPage openIntegrations()
 	{
-		Assert.assertTrue(driver.click(liNotifications));
-		checkNavSection("Notifications", "/notifications");
-		return this;
-	}
-//	public Main openDelivery()
-//	{
-//		Assert.assertTrue(driver.click(liDelivery));
-//		checkNavSection("Delivery", "/delivery");
-//		return this;
-//	}
-//
-//	public Main openAlerts()
-//	{
-//		Assert.assertTrue(driver.click(liAlerts));
-//		checkNavSection("Alerts", "/alerts");
-//		return this;
-//	}
-
-	public Main openIntegrations()
-	{
-		Assert.assertTrue(driver.waitUntilClickable(liIntegrations));
-		Assert.assertTrue(driver.click(liIntegrations));
+		driver.click(liIntegrations);
 		checkNavSection("Integrations", "/integrations");
 		return this;
 	}
 
-	public Main clickAdminBtn()
+	public NavigatorPage openUsers()
 	{
-		Assert.assertTrue(driver.click(liAdmin));
+		driver.click(liUsers);
+		checkNavSection("Users", "/users");
 		return this;
 	}
 
-	public Main clickSettingsBtn()
+	public NavigatorPage clickAdminBtn()
 	{
-		Assert.assertTrue(driver.click(liSettings));
+		driver.click(liAdmin);
 		return this;
 	}
 
-	public Main clickSignOutBtn()
+	public UserSettingsDialog clickSettingsBtn()
+	{
+		driver.click(liSettings);
+		return userSettingsDialog;
+	}
+
+	public WorkspaceSettingsDialog clickWorkspaceBtn()
+	{
+		driver.click(liWorkspace);
+		return workspaceSettingsDialog;
+	}
+
+	public NavigatorPage clickSignOutBtn()
 	{
 		Assert.assertTrue(driver.click(liSignOut));
 		return this;
 	}
 
-	public Main checkObjectInDataTableByName(String name)
+	public NavigatorPage checkObjectInDataTableByName(String name)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']")));
 		return this;
 	}
 
-	public Main checkObjectInDataTableByName(String name, int time)
+	public NavigatorPage checkObjectInDataTableByName(String name, int time)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']"), time));
 		return this;
 	}
 
 
-	public Main checkObjectInDialogByName(String name, int time)
+	public NavigatorPage checkObjectInDialogByName(String name, int time)
 	{
 		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class , 'accordion__item__body')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']"), time));
 		return this;
 	}
 
-	public Main clickObjectInDataTableByName(String name)
+	public NavigatorPage clickObjectInDataTableByName(String name)
 	{
 		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
 
-	public Main clickObjectInDataTableByName(String name, int time)
+	public NavigatorPage clickObjectInDataTableByName(String name, int time)
 	{
 		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
 
-	public Main clickObjectInDialogByName(String name, int time)
+	public NavigatorPage clickObjectInDialogByName(String name, int time)
 	{
 		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
 		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class , 'mdc-dialog__content')]//span[contains(@class, 'mdc-list-item') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]")));
 		return this;
 	}
 
-	public Main contextClickObjectInDataTableByName(String name, int time)
+	public NavigatorPage contextClickObjectInDataTableByName(String name, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
 		return this;
 	}
 
-	public Main contextClickObjectInDataTableByName(String name, String iconClass, int time)
+	public NavigatorPage contextClickObjectInDataTableByName(String name, String iconClass, int time)
 	{
 		Assert.assertFalse(driver.contextClick(By.xpath("//div[contains(@class , 'mdc-data-table')]//span[contains(@class, 'mdc-list-item__text') and text()='" + name + "']/parent::span/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li[contains(@class, 'mdc-list-item')]"), time));
 		return this;

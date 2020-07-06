@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dropdown;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -11,7 +11,7 @@ import org.openqa.selenium.By;
 public class MoreOptionDropDown extends DropDown
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
 	private final By shareIcon = dropDownMdcListItemWithTextIcon("Share", "ic_person_add");
 	private final By linkIcon = dropDownMdcListItemWithTextIcon("Get shareable link...", "ic_link");
@@ -28,7 +28,7 @@ public class MoreOptionDropDown extends DropDown
 	private final By refreshIcon = dropDownMdcListItemWithTextIcon("Refresh", "ic_refresh");
 
 
-	public MoreOptionDropDown(SeleniumDriverWrapper driver, Main pageObj)
+	public MoreOptionDropDown(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

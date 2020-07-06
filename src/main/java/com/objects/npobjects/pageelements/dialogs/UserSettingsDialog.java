@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -11,20 +11,19 @@ import org.openqa.selenium.By;
 public class UserSettingsDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Settings");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By moreOptionsBtn = dialogMdcIconFontBtn("ic_more_vert");
-	private final By itemDetails = dialogMdcListAccordionWithText("Details");
-	private final By itemPassword = dialogMdcListAccordionWithText("Password");
-	private final By itemLanguage = dialogMdcListAccordionWithText("Language and region settings");
-	private final By itemCloudStorage = dialogMdcListAccordionWithText("Cloud storage integrations");
-	private final By itemNotification = dialogMdcListAccordionWithText("Notification settings");
-	private final By addIntegrationBtn = dialogMdcListItemWithTextIcon("Add integration", "ic_add");
+	private final By title = dialogAppBarTitle("Settings");
+	private final By moreOptionsBtn = dialogIconFontBtn("ic_menu_");
+	private final By itemDetails = dialogListAccordionWithText("Details");
+	private final By itemPassword = dialogListAccordionWithText("Password");
+	private final By itemLanguage = dialogListAccordionWithText("Region Settings");
+	private final By itemCloudStorage = dialogListAccordionWithText("Integrations and Apps");
+	private final By itemNotification = dialogListAccordionWithText("Notification Settings");
+	private final By addIntegrationBtn = dialogListItemWithTextIcon("Add integration", "ic_add");
 
 
-	public UserSettingsDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public UserSettingsDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

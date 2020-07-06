@@ -1,9 +1,6 @@
 package com.objects.npobjects.pageelements.dropdown;
 
-import com.objects.npobjects.pageelements.dialogs.SelectDatasetDialog;
-import com.objects.npobjects.pageelements.dialogs.SelectDatasourceTypeDialog;
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -11,7 +8,7 @@ import org.testng.Assert;
 
 public class ChooseObjectDropDown extends DropDown
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
 	private final By ImageIcon = dropDownMdcListItemWithTextIcon("Image", "ic_image");
 	private final By embedIcon = dropDownMdcListItemWithTextIcon("URL embed", "ic_code");
@@ -20,7 +17,7 @@ public class ChooseObjectDropDown extends DropDown
 	private final By chartIcon = dropDownMdcListItemWithTextIcon("Chart", "ic_chart");
 
 
-	public ChooseObjectDropDown(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public ChooseObjectDropDown(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

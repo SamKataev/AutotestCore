@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
+import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -11,31 +11,31 @@ import org.openqa.selenium.By;
 public class CreateDatabaseDialog extends Dialog
 {
 
-	private Main parentPage;
+	private NavigatorPage parentPage;
 
-	private final By title = dialogMdcAppBarTitle("Create new");
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By searchBtn = dialogMdcIconFontBtn("ic_search");
+	private final By title = dialogAppBarTitle("Create new");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By searchBtn = dialogIconFontBtn("ic_search");
 
-	private final By amazonMySQLBtn = dialogMdcListItemWithTextIcon("Amazon RDS MySQL", "ic_amazon_rds");
-	private final By amazonPostgreSQLBtn = dialogMdcListItemWithTextIcon("Amazon RDS PostgreSQL", "ic_amazon_rds");
-	private final By amazonRedshiftBtn = dialogMdcListItemWithTextIcon("Amazon Redshift", "ic_amazon_redshi");
-	private final By treasureDataBtn = dialogMdcListItemWithTextIcon("Arm Treasure Data", "ic_treasure_data");
-	private final By herokuPostgresBtn = dialogMdcListItemWithTextIcon("Heroku Postgres", "ic_heroku_postgr");
-	private final By iBMDB2Btn = dialogMdcListItemWithTextIcon("IBM DB2", "ic_ibm_db2");
-	private final By mariaDBBtn = dialogMdcListItemWithTextIcon("MariaDB", "ic_mariadb");
-	private final By microsoftAzureSQLBtn = dialogMdcListItemWithTextIcon("Microsoft Azure SQL", "ic_microsoft_azu");
-	private final By microsoftSQLServerBtn = dialogMdcListItemWithTextIcon("Microsoft SQL Server", "ic_microsoft_sql");
-	private final By mongoDBBtn = dialogMdcListItemWithTextIcon("MongoDB", "ic_mongodb");
-	private final By mySQLBtn = dialogMdcListItemWithTextIcon("MySQL", "ic_mysql");
-	private final By oracleBtn = dialogMdcListItemWithTextIcon("Oracle", "ic_oracle");
-	private final By postgreSQLBtn = dialogMdcListItemWithTextIcon("PostgreSQL", "ic_postgresql");
-	private final By prestoBtn = dialogMdcListItemWithTextIcon("Presto", "ic_prestodb");
-	private final By sAPHANABtn = dialogMdcListItemWithTextIcon("SAP HANA", "ic_sap_hana");
-	private final By teradataBtn = dialogMdcListItemWithTextIcon("Teradata", "ic_teradata");
-	private final By verticaBtn = dialogMdcListItemWithTextIcon("Vertica", "ic_vertica");
+	private final By amazonMySQLBtn = dialogListItemWithTextIcon("Amazon RDS MySQL", "ic_amazon_rds");
+	private final By amazonPostgreSQLBtn = dialogListItemWithTextIcon("Amazon RDS PostgreSQL", "ic_amazon_rds");
+	private final By amazonRedshiftBtn = dialogListItemWithTextIcon("Amazon Redshift", "ic_amazon_redshi");
+	private final By treasureDataBtn = dialogListItemWithTextIcon("Arm Treasure Data", "ic_treasure_data");
+	private final By herokuPostgresBtn = dialogListItemWithTextIcon("Heroku Postgres", "ic_heroku_postgr");
+	private final By iBMDB2Btn = dialogListItemWithTextIcon("IBM DB2", "ic_ibm_db2");
+	private final By mariaDBBtn = dialogListItemWithTextIcon("MariaDB", "ic_mariadb");
+	private final By microsoftAzureSQLBtn = dialogListItemWithTextIcon("Microsoft Azure SQL", "ic_microsoft_azu");
+	private final By microsoftSQLServerBtn = dialogListItemWithTextIcon("Microsoft SQL Server", "ic_microsoft_sql");
+	private final By mongoDBBtn = dialogListItemWithTextIcon("MongoDB", "ic_mongodb");
+	private final By mySQLBtn = dialogListItemWithTextIcon("MySQL", "ic_mysql");
+	private final By oracleBtn = dialogListItemWithTextIcon("Oracle", "ic_oracle");
+	private final By postgreSQLBtn = dialogListItemWithTextIcon("PostgreSQL", "ic_postgresql");
+	private final By prestoBtn = dialogListItemWithTextIcon("Presto", "ic_prestodb");
+	private final By sAPHANABtn = dialogListItemWithTextIcon("SAP HANA", "ic_sap_hana");
+	private final By teradataBtn = dialogListItemWithTextIcon("Teradata", "ic_teradata");
+	private final By verticaBtn = dialogListItemWithTextIcon("Vertica", "ic_vertica");
 
-	public CreateDatabaseDialog(SeleniumDriverWrapper driver, Main pageObj)
+	public CreateDatabaseDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

@@ -1,24 +1,23 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class SelectaDataSourceDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 
-	private final By closeBtn = dialogMdcIconFontBtn("ic_close");
-	private final By searchBtn = dialogMdcIconFontBtn("ic_search");
-	private final By filterBtn = dialogMdcIconFontBtn("ic_filter");
-	private final By sortBtn = dialogMdcIconFontBtn("ic_sort");
-	private final By title = dialogMdcAppBarTitle("Select a Data Source");
-	private final By createNewDataSourceBtn = dialogMdcTextBtn("Create New Data Source");
+	private final By closeBtn = dialogIconFontBtn("ic_close");
+	private final By searchBtn = dialogIconFontBtn("ic_search");
+	private final By filterBtn = dialogIconFontBtn("ic_filter");
+	private final By sortBtn = dialogIconFontBtn("ic_sort");
+	private final By title = dialogAppBarTitle("Select a Data Source");
+	private final By createNewDataSourceBtn = dialogTextBtn("Create New Data Source");
 
 
-	public SelectaDataSourceDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public SelectaDataSourceDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

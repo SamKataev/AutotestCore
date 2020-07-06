@@ -1,8 +1,7 @@
 package com.objects.npobjects.pageelements.dialogs;
 
 
-import com.objects.npobjects.pageobjects.Main;
-import com.objects.npobjects.pageobjects.ReportsCreate;
+import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
@@ -11,20 +10,20 @@ import org.openqa.selenium.support.ui.Select;
 
 public class SettingsChartDialog extends Dialog
 {
-	private ReportsCreate parentPage;
+	private ReportPage parentPage;
 	public Select selectSize;
 
-	private final By title = panelMdcAppBarTitle("Settings");
-	private final By addDimensionBtn = panelMdcListItemWithTextIconBtn("Add a dimension", "ic_add");
-	private final By addMeasureBtn = panelMdcListItemWithTextIconBtn("Add a Measure", "ic_add");
-	private final By addFilterBtn = panelMdcListItemWithTextIconBtn("Add a Filter", "ic_add");
-	private final By addFieldBtn = panelMdcListItemWithTextIconBtn("Add a field", "ic_add");
+	private final By title = panelAppBarTitle("Settings");
+	private final By addDimensionBtn = panelListItemWithTextIconBtn("Add a dimension", "ic_add");
+	private final By addMeasureBtn = panelListItemWithTextIconBtn("Add a Measure", "ic_add");
+	private final By addFilterBtn = panelListItemWithTextIconBtn("Add a Filter", "ic_add");
+	private final By addFieldBtn = panelListItemWithTextIconBtn("Add a field", "ic_add");
 	private final By styleBtn = tabScrollerMdcWithTextBtn("Style");
 	private final By fontSizeSelect = nodeMdcAppBarSelect("8");
 	private final By lineWeight = mdcIconFontBtn("ic_line_weight");
 	private final By applyBtn = nodeMdcAppBarTextBtn("Apply");
 
-	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportsCreate pageObj)
+	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
