@@ -161,8 +161,11 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		}
 	}
 
+	/**
+	 * switches to random window other than main window
+	 */
 	public void switchRandomWindow()
-	{ //switches to random window other than main window
+	{
 		Set<String> windowHandles = webDriver.getWindowHandles();
 		if (windowHandles.size() > 1)
 		{
@@ -178,6 +181,20 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 	public void switchToMainWindow()
 	{
 		webDriver.switchTo().window(getMainWindowHandle());
+	}
+
+	public void switchToMainWindow(int timeout)
+	{
+		try
+		{
+			Thread.sleep(timeout * 1000);
+			webDriver.switchTo().window(getMainWindowHandle());
+		}
+		catch (InterruptedException e)
+		{
+			System.out.println("error switching to main window with timeout" + timeout + " seconds: " + e.getMessage());
+			getScreenshot("switchWindow");
+		}
 	}
 
 	public void switchToDefaultContent()

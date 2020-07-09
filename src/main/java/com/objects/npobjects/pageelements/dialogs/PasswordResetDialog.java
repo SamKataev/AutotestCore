@@ -11,7 +11,7 @@ public class PasswordResetDialog extends Dialog
 	private AuthPage parentPage;
 
 	private final By emailInput = dialogTextFieldWithLabel("Your e-mail:");
-	private final By resetBtn = dialogTextBtn("Reset");
+	private final By resetBtn = dialogUnelevatedBtn("Reset");
 
 	public PasswordResetDialog(SeleniumDriverWrapper driver, AuthPage pageObj)
 	{

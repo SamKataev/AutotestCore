@@ -10,10 +10,10 @@ public class AuthPage extends NPPageObject
 {
 	private By emailInput = By.xpath("//input[@placeholder='Email']");
 	private By passInput = By.xpath("//input[@placeholder='Password']");
-	private By signInBtn = mdcTextBtn("Sign in");
-	private By googleSignInBtn = mdcTextBtn("Sign in with Google");
-	private By registerBtn = mdcTextBtn("Sign up");
-	private By passResetBtn = mdcTextBtn("Forgot Password?");
+	private By signInBtn = unelevatedBtn("Sign in");
+	private By googleSignInBtn = unelevatedBtn("Sign in with Google");
+	private By registerBtn = unelevatedBtn("Sign up");
+	private By passResetBtn = unelevatedBtn("Forgot Password?");
 
 	public AuthPage(SeleniumDriverWrapper driver)
 	{

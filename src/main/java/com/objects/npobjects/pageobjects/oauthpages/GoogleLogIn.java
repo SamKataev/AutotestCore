@@ -8,13 +8,10 @@ import org.testng.Assert;
 public class GoogleLogIn extends NPPageObject
 {
 	private By emailInput = By.xpath("//input[@type='email']");
-	private By nextBtn = By.xpath("//div[@role='button']");
-	private By nextPassBtn = By.xpath("//div[@role='button' and @id='passwordNext']");
+	private By nextBtnEmail = By.xpath("//div[@id='identifierNext']");
+	private By nextBtnPassword = By.xpath("//div[@id='passwordNext']");
 	private By passwordInput = By.xpath("//input[@type='password']");
-	private By advancedBtn = By.xpath("//div/a[contains(text(), 'Advanced')]");
-	private By gotoBtn = By.xpath("//a[contains(text(), 'Go to newpeople.co (unsafe)')]");
-	private By allowBtn = By.xpath("//div[@role='button' and @id='submit_approve_access']");
-	private By permissionBtn = By.xpath("//content/following-sibling::div//span[contains(text(), 'Allow')]");
+	private By allowBtn = By.xpath("//div[@id='submit_approve_access']");
 
 	public GoogleLogIn(SeleniumDriverWrapper driver)
 	{
@@ -24,9 +21,8 @@ public class GoogleLogIn extends NPPageObject
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilClickable(emailInput, 10)
-				  && driver.waitUntilClickable(nextBtn);
-
+		return driver.waitUntilClickable(emailInput, 5, logIsRenderingCheck)
+				  && driver.waitUntilClickable(nextBtnEmail);
 	}
 
 	public GoogleLogIn checkIsRendered()
@@ -35,7 +31,7 @@ public class GoogleLogIn extends NPPageObject
 		return this;
 	}
 
-	public GoogleLogIn enteremailInput(String text)
+	public GoogleLogIn enterEmailInput(String text)
 	{
 		Assert.assertTrue(driver.type(emailInput, text));
 		return this;
@@ -47,43 +43,21 @@ public class GoogleLogIn extends NPPageObject
 		return this;
 	}
 
-	public GoogleLogIn clicknextBtn()
+	public GoogleLogIn clickEmailNextBtn()
 	{
-		Assert.assertTrue(driver.click(nextBtn));
+		Assert.assertTrue(driver.click(nextBtnEmail));
 		return this;
 	}
 
-	public GoogleLogIn clicknextPassBtn()
+	public GoogleLogIn clickPasswordNextBtn()
 	{
-		Assert.assertTrue(driver.click(nextPassBtn));
+		Assert.assertTrue(driver.click(nextBtnPassword));
 		return this;
 	}
 
-	public GoogleLogIn clickadvancedBtn()
+	public GoogleLogIn clickAllowBtn()
 	{
-		Assert.assertTrue(driver.click(advancedBtn));
-		return this;
-	}
-
-	public GoogleLogIn clickgotoBtn()
-	{
-		Assert.assertTrue(driver.waitUntilClickable(gotoBtn));
-		Assert.assertTrue(driver.click(gotoBtn));
-		return this;
-	}
-
-	public GoogleLogIn clickallowBtn()
-	{
-		Assert.assertTrue(driver.waitUntilClickable(allowBtn));
 		Assert.assertTrue(driver.click(allowBtn));
 		return this;
 	}
-
-	public GoogleLogIn clickPermissionBtn()
-	{
-		Assert.assertTrue(driver.waitUntilClickable(permissionBtn));
-		Assert.assertTrue(driver.click(permissionBtn));
-		return this;
-	}
-
 }

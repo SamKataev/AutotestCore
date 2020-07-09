@@ -12,7 +12,7 @@ public abstract class NPWebTest extends WebTest
 
 	AuthPage authPage;
 	NavigatorPage mainPage;
-	DatasourcePage datasourceCreatePage;
+	DataSourcePage dataSourceCreatePage;
 	ReportPage reportsPage;
 
 	FacebookLogIn facebookLogIn;
@@ -56,7 +56,7 @@ public abstract class NPWebTest extends WebTest
 	{
 		authPage = new AuthPage(driver);
 		mainPage = new NavigatorPage(driver);
-		datasourceCreatePage = new DatasourcePage(driver);
+		dataSourceCreatePage = new DataSourcePage(driver);
 		reportsPage = new ReportPage(driver);
 		facebookLogIn = new FacebookLogIn(driver);
 		instagramLogIn = new InstagramLogIn(driver);
@@ -100,8 +100,11 @@ public abstract class NPWebTest extends WebTest
 
 	protected void changeTeam(String name)
 	{
-		mainPage.checkIsRendered();
-		mainPage.selectTeam(name);
+		mainPage.checkIsRendered()
+				  .clickAccount();
+		mainPage.selectTeamDropDown
+				  .clickTeam(name);
+		mainPage.checkTeam(name);
 	}
 
 }

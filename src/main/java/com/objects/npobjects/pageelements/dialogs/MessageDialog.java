@@ -14,7 +14,7 @@ public class MessageDialog extends Dialog
 	private NavigatorPage parentPage;
 
 	private final By title = dialogAppBarTitle("Message");
-	private final By closeBtn = mdcTextBtn("Close");
+	private final By closeBtn = unelevatedBtn("Close");
 	private final By message = dialogTextMessage("Success");
 
 

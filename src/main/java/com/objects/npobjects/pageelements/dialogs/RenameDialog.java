@@ -10,8 +10,8 @@ public class RenameDialog extends Dialog
 	private NavigatorPage parentPage;
 
 	private final By title = dialogAppBarTitle("Rename");
-	private final By cancelBtn = dialogTextBtn("Cancel");
-	private final By renameBtn = dialogTextBtn("Rename");
+	private final By cancelBtn = dialogUnelevatedBtn("Cancel");
+	private final By renameBtn = dialogUnelevatedBtn("Rename");
 	private final By inputName = dialogTextFieldWithLabel("Please enter a new name for the item:");
 
 

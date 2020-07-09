@@ -1,6 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.DatasourcePage;
+import com.objects.npobjects.pageobjects.DataSourcePage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -8,13 +8,13 @@ import org.testng.Assert;
 public class SettingsDataSourcesDialog extends Dialog
 
 {
-	private DatasourcePage parentPage;
+	private DataSourcePage parentPage;
 
 	private final By title = nodeMdcAppBarTitle("Settings");
 	private final By fields = nodeMdcListAccordionWithText("Fields");
 
 
-	public SettingsDataSourcesDialog(SeleniumDriverWrapper driver, DatasourcePage pageObj)
+	public SettingsDataSourcesDialog(SeleniumDriverWrapper driver, DataSourcePage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

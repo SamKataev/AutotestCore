@@ -10,11 +10,11 @@ public class ChooseObjectDropDown extends DropDown
 {
 	private ReportPage parentPage;
 
-	private final By ImageIcon = dropDownMdcListItemWithTextIcon("Image", "ic_image");
-	private final By embedIcon = dropDownMdcListItemWithTextIcon("URL embed", "ic_code");
-	private final By textIcon = dropDownMdcListItemWithTextIcon("Text", "ic_text");
-	private final By chartTemplateIcon = dropDownMdcListItemWithTextIcon("Chart template", "ic_chart_template");
-	private final By chartIcon = dropDownMdcListItemWithTextIcon("Chart", "ic_chart");
+	private final By ImageIcon = dropDownListItemWithTextIcon("Image", "ic_image");
+	private final By embedIcon = dropDownListItemWithTextIcon("URL embed", "ic_code");
+	private final By textIcon = dropDownListItemWithTextIcon("Text", "ic_text");
+	private final By chartTemplateIcon = dropDownListItemWithTextIcon("Chart template", "ic_chart_template");
+	private final By chartIcon = dropDownListItemWithTextIcon("Chart", "ic_chart");
 
 
 	public ChooseObjectDropDown(SeleniumDriverWrapper driver, ReportPage pageObj)

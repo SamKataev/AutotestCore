@@ -10,7 +10,7 @@ public class PasswordProtectedDialog extends Dialog
 	private NavigatorPage parentPage;
 
 	private final By title = dialogAppBarTitle("This link is password protected");
-	private final By viewReportBtn = mdcTextBtn("View report");
+	private final By viewReportBtn = unelevatedBtn("View report");
 	private final By passwordInput = dialogTextFieldWithLabel("Enter the password below to view the report");
 
 

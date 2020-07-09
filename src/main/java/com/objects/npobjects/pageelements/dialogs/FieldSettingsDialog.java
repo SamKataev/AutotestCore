@@ -1,23 +1,23 @@
 package com.objects.npobjects.pageelements.dialogs;
 
-import com.objects.npobjects.pageobjects.DatasourcePage;
+import com.objects.npobjects.pageobjects.DataSourcePage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class FieldSettingsDialog extends Dialog
 {
-	private DatasourcePage parentPage;
+	private DataSourcePage parentPage;
 
 	private final By title = dialogAppBarTitle("Field settings");
 	private final By fieldName = dialogTextFieldWithLabel("Field name");
-	private final By okBtn = dialogTextBtn("OK");
-	private final By cancelBtn = dialogTextBtn("Cancel");
+	private final By okBtn = dialogUnelevatedBtn("OK");
+	private final By cancelBtn = dialogUnelevatedBtn("Cancel");
 	private final By splitBtn = dialogListItemWithTextIcon("Split...", "ic_check_box_outline");
 	private final By separatorInput = dialogTextFieldWithLabel("Set multi dimension separator");
-	private final By distinctCountSettingsBtn = mdcTextBtn("Distinct-count settings");
+	private final By distinctCountSettingsBtn = unelevatedBtn("Distinct-count settings");
 
-	public FieldSettingsDialog(SeleniumDriverWrapper driver, DatasourcePage pageObj)
+	public FieldSettingsDialog(SeleniumDriverWrapper driver, DataSourcePage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;

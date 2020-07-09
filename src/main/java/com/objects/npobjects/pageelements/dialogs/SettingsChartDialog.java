@@ -20,7 +20,7 @@ public class SettingsChartDialog extends Dialog
 	private final By addFieldBtn = panelListItemWithTextIconBtn("Add a field", "ic_add");
 	private final By styleBtn = tabScrollerMdcWithTextBtn("Style");
 	private final By fontSizeSelect = nodeMdcAppBarSelect("8");
-	private final By lineWeight = mdcIconFontBtn("ic_line_weight");
+	private final By lineWeight = iconFontBtn("ic_line_weight");
 	private final By applyBtn = nodeMdcAppBarTextBtn("Apply");
 
 	public SettingsChartDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
@@ -74,8 +74,8 @@ public class SettingsChartDialog extends Dialog
 
 	public SettingsChartDialog clickDimensionInPanelByName(String text)
 	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]"), 10));
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]")));
+		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]"), 10));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]")));
 		return this;
 	}
 

@@ -13,19 +13,19 @@ public class MoreOptionDropDown extends DropDown
 
 	private NavigatorPage parentPage;
 
-	private final By shareIcon = dropDownMdcListItemWithTextIcon("Share", "ic_person_add");
-	private final By linkIcon = dropDownMdcListItemWithTextIcon("Get shareable link...", "ic_link");
-	private final By slackIcon = dropDownMdcListItemWithTextIcon("Share to Slack", "ic_slack");
-	private final By pdfIcon = dropDownMdcListItemWithTextIcon("Download as PDF", "ic_download");
-	private final By deliveryIcon = dropDownMdcListItemWithTextIcon("Create delivery", "ic_download");
-	private final By accessBtn = dropDownMdcListItemWithText("Who has access");
-	private final By duplicateBtn = dropDownMdcListItemWithText("Duplicate");
-	private final By renameBtn = dropDownMdcListItemWithText("Rename");
-	private final By detailsBtn = dropDownMdcListItemWithText("View details");
-	private final By removeBtn = dropDownMdcListItemWithText("Remove");
-	private final By saveIcon = dropDownMdcListItemWithTextIcon("Save", "ic_save");
-	private final By permissionsIcon = dropDownMdcListItemWithText("Who has access");
-	private final By refreshIcon = dropDownMdcListItemWithTextIcon("Refresh", "ic_refresh");
+	private final By shareIcon = dropDownListItemWithTextIcon("Share", "ic_person_add");
+	private final By linkIcon = dropDownListItemWithTextIcon("Get shareable link...", "ic_link");
+	private final By slackIcon = dropDownListItemWithTextIcon("Share to Slack", "ic_slack");
+	private final By pdfIcon = dropDownListItemWithTextIcon("Download as PDF", "ic_download");
+	private final By deliveryIcon = dropDownListItemWithTextIcon("Create delivery", "ic_download");
+	private final By accessBtn = dropDownListItemWithText("Who has access");
+	private final By duplicateBtn = dropDownListItemWithText("Duplicate");
+	private final By renameBtn = dropDownListItemWithText("Rename");
+	private final By detailsBtn = dropDownListItemWithText("View details");
+	private final By removeBtn = dropDownListItemWithText("Remove");
+	private final By saveIcon = dropDownListItemWithTextIcon("Save", "ic_save");
+	private final By permissionsIcon = dropDownListItemWithText("Who has access");
+	private final By refreshIcon = dropDownListItemWithTextIcon("Refresh", "ic_refresh");
 
 
 	public MoreOptionDropDown(SeleniumDriverWrapper driver, NavigatorPage pageObj)

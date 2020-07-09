@@ -1,5 +1,6 @@
 package com.objects.npobjects.pageelements.dialogs;
 
+import com.objects.npobjects.pageelements.dropdown.SelectFileTypeDropDown;
 import com.objects.npobjects.pageobjects.NavigatorPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import junit.framework.Assert;
@@ -8,14 +9,17 @@ import org.openqa.selenium.By;
 /**
  * Created by User on 05-Apr-19.
  */
-public class CreateDatabaseDialog extends Dialog
+public class CreateDataSourceDialog extends Dialog
 {
 
 	private NavigatorPage parentPage;
 
-	private final By title = dialogAppBarTitle("Create new");
-	private final By closeBtn = dialogIconFontBtn("ic_close");
-	private final By searchBtn = dialogIconFontBtn("ic_search");
+	private final By title = dialogAppBarTitle("Create New Data Source");
+	private final By uploadFile = dialogListItemWithText("Upload a File");
+
+	public SelectFileTypeDropDown selectDatasourceTypeDialog;
+	public ChooseCloudFileDialog chooseCloudFileDialog;
+	public FileByUrlDialog fileByUrlDialog;
 
 	private final By amazonMySQLBtn = dialogListItemWithTextIcon("Amazon RDS MySQL", "ic_amazon_rds");
 	private final By amazonPostgreSQLBtn = dialogListItemWithTextIcon("Amazon RDS PostgreSQL", "ic_amazon_rds");
@@ -35,10 +39,14 @@ public class CreateDatabaseDialog extends Dialog
 	private final By teradataBtn = dialogListItemWithTextIcon("Teradata", "ic_teradata");
 	private final By verticaBtn = dialogListItemWithTextIcon("Vertica", "ic_vertica");
 
-	public CreateDatabaseDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
+	public CreateDataSourceDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
+
+		selectDatasourceTypeDialog = new SelectFileTypeDropDown(driver, this.parentPage);
+		chooseCloudFileDialog = new ChooseCloudFileDialog(driver, this.parentPage);
+		fileByUrlDialog = new FileByUrlDialog(driver, this.parentPage);
 	}
 
 	@Override
@@ -46,130 +54,126 @@ public class CreateDatabaseDialog extends Dialog
 	{
 		return driver.waitUntilExist(title, 5)
 				  && driver.waitUntilClickable(closeBtn)
-				  && driver.waitUntilClickable(searchBtn)
-				  && driver.waitUntilClickable(teradataBtn)
-				  && driver.waitUntilClickable(postgreSQLBtn)
-				  && driver.waitUntilClickable(oracleBtn)
-				  && driver.waitUntilClickable(microsoftAzureSQLBtn)
-				  && driver.waitUntilClickable(mariaDBBtn)
-				  && driver.waitUntilClickable(iBMDB2Btn)
-				  && driver.waitUntilClickable(herokuPostgresBtn)
-				  && driver.waitUntilClickable(amazonPostgreSQLBtn)
-				  && driver.waitUntilClickable(verticaBtn);
-
+				  && driver.waitUntilClickable(uploadFile);
 	}
 
 
-	public CreateDatabaseDialog checkIsRendered()
+	public CreateDataSourceDialog checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickSearchBtn()
+	public SelectFileTypeDropDown clickUploadFile()
+	{
+		Assert.assertTrue(driver.click(uploadFile));
+		return selectDatasourceTypeDialog;
+	}
+
+	public CreateDataSourceDialog ClickSearchBtn()
 	{
 		Assert.assertTrue(driver.click(searchBtn));
 		return this;
 	}
 
 	//Click database
-	public CreateDatabaseDialog ClickAmazonMySQLBtn()
+	public CreateDataSourceDialog ClickAmazonMySQLBtn()
 	{
 		Assert.assertTrue(driver.click(amazonMySQLBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickAmazonPostgreSQLBtn()
+	public CreateDataSourceDialog ClickAmazonPostgreSQLBtn()
 	{
 		Assert.assertTrue(driver.click(amazonPostgreSQLBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickAmazonRedshiftBtn()
+	public CreateDataSourceDialog ClickAmazonRedshiftBtn()
 	{
 		Assert.assertTrue(driver.click(amazonRedshiftBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickTreasureDataBtn()
+	public CreateDataSourceDialog ClickTreasureDataBtn()
 	{
 		Assert.assertTrue(driver.click(treasureDataBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog сlickHerokuPostgresBtn()
+	public CreateDataSourceDialog сlickHerokuPostgresBtn()
 	{
 		Assert.assertTrue(driver.click(herokuPostgresBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickIBMDB2Btn()
+	public CreateDataSourceDialog ClickIBMDB2Btn()
 	{
 		Assert.assertTrue(driver.click(iBMDB2Btn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickMariaDBBtn()
+	public CreateDataSourceDialog ClickMariaDBBtn()
 	{
 		Assert.assertTrue(driver.click(mariaDBBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickMicrosoftAzureSQLBtn()
+	public CreateDataSourceDialog ClickMicrosoftAzureSQLBtn()
 	{
 		Assert.assertTrue(driver.click(microsoftAzureSQLBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickMicrosoftSQLServerBtn()
+	public CreateDataSourceDialog ClickMicrosoftSQLServerBtn()
 	{
 		Assert.assertTrue(driver.click(microsoftSQLServerBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickMongoDBBtn()
+	public CreateDataSourceDialog ClickMongoDBBtn()
 	{
 		Assert.assertTrue(driver.click(mongoDBBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickMySQLBtn()
+	public CreateDataSourceDialog ClickMySQLBtn()
 	{
 		Assert.assertTrue(driver.click(mySQLBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickOracleBtn()
+	public CreateDataSourceDialog ClickOracleBtn()
 	{
 		Assert.assertTrue(driver.click(oracleBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog clickPostgreSQLBtn()
+	public CreateDataSourceDialog clickPostgreSQLBtn()
 	{
 		Assert.assertTrue(driver.click(postgreSQLBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickPrestoBtn()
+	public CreateDataSourceDialog ClickPrestoBtn()
 	{
 		Assert.assertTrue(driver.click(prestoBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickSAPHANABtn()
+	public CreateDataSourceDialog ClickSAPHANABtn()
 	{
 		Assert.assertTrue(driver.click(sAPHANABtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickTeradataBtn()
+	public CreateDataSourceDialog ClickTeradataBtn()
 	{
 		Assert.assertTrue(driver.click(teradataBtn));
 		return this;
 	}
 
-	public CreateDatabaseDialog ClickVerticaBtn()
+	public CreateDataSourceDialog ClickVerticaBtn()
 	{
 		Assert.assertTrue(driver.click(verticaBtn));
 		return this;

@@ -10,8 +10,8 @@ public class SaveAsDialog extends Dialog
 
 	private ReportPage parentPage;
 
-	private final By cancelBtn = dialogTextBtn("Cancel");
-	private final By okBtn = dialogTextBtn("OK");
+	private final By cancelBtn = dialogUnelevatedBtn("Cancel");
+	private final By okBtn = dialogUnelevatedBtn("OK");
 	private final By inputName = dialogTextFieldWithLabel("Name");
 
 

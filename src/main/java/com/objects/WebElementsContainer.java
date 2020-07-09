@@ -12,10 +12,12 @@ public abstract class WebElementsContainer
 {
 
 	protected SeleniumDriverWrapper driver;
+	protected boolean logIsRenderingCheck;
 
 	public WebElementsContainer(SeleniumDriverWrapper webDriver)
 	{
 		driver = webDriver;
+		logIsRenderingCheck = true;
 	}
 
 	public abstract boolean validateElements();
@@ -23,7 +25,6 @@ public abstract class WebElementsContainer
 	public boolean isRendered()
 	{
 		return validateElements();
-		//TODO: add more checks i.e all ajax requests resolved
 	}
 
 	public WebElementsContainer checkIsRendered()
@@ -45,6 +46,11 @@ public abstract class WebElementsContainer
 		{
 			System.out.println("thread sleep interrupted: " + e.getMessage());
 		}
+	}
+
+	public void setLogIsRenderingCheck(boolean logIsRenderingCheck)
+	{
+		this.logIsRenderingCheck = logIsRenderingCheck;
 	}
 
 	/**
@@ -107,39 +113,54 @@ public abstract class WebElementsContainer
 	}
 
 
-	//mdc components xPath locators////////////////////////////////////////////////////////////////////////
+	//components xPath locators////////////////////////////////////////////////////////////////////////
 
-	protected By mdcListItemWithText(String text)
+	protected By listItemWithText(String text)
 	{
-		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li");
+		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/ancestor::li");
 	}
 
-	protected By mdcListItemWithTextIcon(String text, String iconClass)
+	protected By listListItemWithTextIcon(String text, String iconClass)
 	{
-		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
+		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
 	}
 
-	protected By mdcIconFontBtn(String iconClass)
+	protected By twoLineListItemWithText(String text)
+	{
+		return By.xpath("//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/ancestor::li");
+	}
+
+	protected By twoLineListItemWithTextIcon(String text, String iconClass)
+	{
+		return By.xpath("//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
+	}
+
+	protected By iconFontBtn(String iconClass)
 	{
 		return By.xpath("//span[contains(@class, '" + iconClass + "')]/parent::span[contains(@class, 'mdc-icon-toggle')]");
 	}
 
-	protected By mdcTextBtn(String btnText)
+	protected By unelevatedBtn(String btnText)
 	{
-		return By.xpath("//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
+		return By.xpath("//button[contains(@class, 'mdc-button--unelevated') and contains(text(), '" + btnText + "')]");
 	}
 
-	protected By mdcAppBarTitle(String titleText)
+	protected By textBtn(String btnText)
+	{
+		return By.xpath("//button[contains(@class, 'mdc-button--black') and contains(text(), '" + btnText + "')]");
+	}
+
+	protected By AppBarTitle(String titleText)
 	{
 		return By.xpath("//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
 	}
 
-	protected By npTextFieldWithLabel(String label)
+	protected By textFieldWithLabel(String label)
 	{
-		return By.xpath("//label[contains(@class, text-field__label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
+		return By.xpath("//label[contains(@class, control-label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
 
-	protected By mdcTabWithText(String text)
+	protected By tabWithText(String text)
 	{
 		return By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab')]");
 	}

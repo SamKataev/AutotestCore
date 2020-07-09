@@ -23,8 +23,8 @@ public class SaaSParametersDialog extends Dialog
 	private final By passwordField = dialogTextFieldWithLabel("Password");
 	private final By apitokenField = dialogTextFieldWithLabel("API token");
 	private final By tokenField = dialogTextFieldWithLabel("Security token");
-	private final By cancelBtn = dialogTextBtn("Cancel");
-	private final By okBtn = dialogTextBtn("OK");
+	private final By cancelBtn = dialogUnelevatedBtn("Cancel");
+	private final By okBtn = dialogUnelevatedBtn("OK");
 
 	public SaaSParametersDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{

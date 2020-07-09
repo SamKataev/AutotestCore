@@ -11,7 +11,7 @@ public class CalculationsAddDialog extends Dialog
 
 	private final By closeBtn = dialogIconFontBtn("ic_close");
 	private final By title = dialogAppBarTitle("Calculations");
-	private final By addBtn = dialogTextBtn("Add");
+	private final By addBtn = dialogUnelevatedBtn("Add");
 
 
 	public CalculationsAddDialog(SeleniumDriverWrapper driver, ReportPage pageObj)

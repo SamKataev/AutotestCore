@@ -15,8 +15,8 @@ public class ScheduleDeliveryDialog extends Dialog
 	private final By title = dialogAppBarTitle("Schedule Delivery");
 	private final By inputNameDelivery = dialogTextFieldWithLabel("New Delivery");
 	private final By attachmentBtn = dialogListItemWithTextIcon("Add attachment", "ic_add");
-	private final By cancel = dialogTextBtn("Cancel");
-	private final By saveChanges = dialogTextBtn("Save changes");
+	private final By cancel = dialogUnelevatedBtn("Cancel");
+	private final By saveChanges = dialogUnelevatedBtn("Save changes");
 	private final By closeBtn = dialogIconFontBtn("ic_close");
 
 	public ScheduleDeliveryDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)

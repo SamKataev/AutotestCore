@@ -11,7 +11,7 @@ public class FileByUrlDialog extends Dialog
 	private NavigatorPage parentPage;
 
 	private final By title = dialogAppBarTitle("File by URL");
-	private final By urlInput = dialogTextFieldWithLabel("Url to upload");
+	private final By urlInput = dialogTextFieldWithLabel("URL to Upload");
 
 	public FileByUrlDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{
@@ -23,20 +23,20 @@ public class FileByUrlDialog extends Dialog
 	public boolean validateElements()
 	{
 		return driver.waitUntilExist(title, 5)
+				  && driver.waitUntilClickable(closeBtn)
 				  && driver.waitUntilClickable(urlInput)
-				  && driver.waitUntilClickable(cancelBtn)
-				  && driver.waitUntilClickable(okBtn);
-	}
-
-	public FileByUrlDialog typeUrl(String url)
-	{
-		Assert.assertTrue(driver.type(urlInput, url));
-		return this;
+				  && driver.waitUntilClickable(doneBtn);
 	}
 
 	public FileByUrlDialog checkIsRendered()
 	{
 		super.checkIsRendered();
+		return this;
+	}
+
+	public FileByUrlDialog typeUrl(String url)
+	{
+		Assert.assertTrue(driver.type(urlInput, url));
 		return this;
 	}
 }

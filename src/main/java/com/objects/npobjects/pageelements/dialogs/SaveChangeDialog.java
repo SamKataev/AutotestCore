@@ -10,9 +10,9 @@ public class SaveChangeDialog extends Dialog
 
 	private NavigatorPage parentPage;
 
-	private final By cancelBtn = dialogTextBtn("Cancel");
-	private final By saveBtn = dialogTextBtn("Save");
-	private final By dontSaveBtn = dialogTextBtn("t save");
+	private final By cancelBtn = dialogUnelevatedBtn("Cancel");
+	private final By saveBtn = dialogUnelevatedBtn("Save");
+	private final By dontSaveBtn = dialogUnelevatedBtn("t save");
 	private final By title = dialogAppBarTitle("Save changes?");
 
 

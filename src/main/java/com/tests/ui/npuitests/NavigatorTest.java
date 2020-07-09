@@ -19,13 +19,14 @@ public class NavigatorTest extends NPWebTest
 				  .openUsers()
 				  .checkIsNavMenuRendered(true);
 
-		mainPage.clickSettingsBtn()
+		mainPage.clickSettingsBtn();
+		mainPage.userSettingsDialog
 				  .checkIsRendered()
 				  .clickClose();
 
-		mainPage.clickWorkspaceBtn()
+		mainPage.clickWorkspaceBtn();
+		mainPage.workspaceSettingsDialog
 				  .checkIsRendered()
 				  .clickClose();
 	}
-
 }

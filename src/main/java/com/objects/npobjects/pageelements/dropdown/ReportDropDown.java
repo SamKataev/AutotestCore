@@ -10,8 +10,8 @@ public class ReportDropDown extends DropDown
 {
 	private ReportPage parentPage;
 
-	private final By sumBtn = dropDownMdcListItemWithText("Sum");
-	private final By averageBtn = dropDownMdcListItemWithText("Average");
+	private final By sumBtn = dropDownListItemWithText("Sum");
+	private final By averageBtn = dropDownListItemWithText("Average");
 
 	public ReportDropDown(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{

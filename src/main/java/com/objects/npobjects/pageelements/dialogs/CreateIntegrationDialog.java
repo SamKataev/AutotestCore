@@ -29,8 +29,8 @@ public class CreateIntegrationDialog extends Dialog
 	private final By endpointField = dialogTextFieldWithLabel("Endpoint");
 
 
-	private final By createBtn = mdcTextBtn("Create");
-	private final By checkBtn = mdcTextBtn("Check connection");
+	private final By createBtn = unelevatedBtn("Create");
+	private final By checkBtn = unelevatedBtn("Check connection");
 
 	public CreateIntegrationDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{

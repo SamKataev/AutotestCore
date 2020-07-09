@@ -9,9 +9,9 @@ public class RequestAccessDialog extends Dialog
 {
 	private NavigatorPage parentPage;
 
-	private By logoutBtn = mdcTextBtn("Switch Account");
-	private By requestBtn = mdcTextBtn("Request Access");
-	private By closeBtn = mdcIconFontBtn("ic_close");
+	private By logoutBtn = unelevatedBtn("Switch Account");
+	private By requestBtn = unelevatedBtn("Request Access");
+	private By closeBtn = iconFontBtn("ic_close");
 	private By message = By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content')]//span[contains(text(),'You need permission')]");
 
 	public RequestAccessDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)

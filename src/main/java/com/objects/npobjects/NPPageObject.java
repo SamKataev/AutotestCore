@@ -15,8 +15,8 @@ public abstract class NPPageObject extends PageObject
 
 	public PageObject checkIsRendered()
 	{
-		checkWaiterDisappeared(10);
 		super.checkIsRendered();
+		checkWaiterDisappeared(10);
 		return this;
 	}
 
@@ -25,14 +25,9 @@ public abstract class NPPageObject extends PageObject
 		super(pageUrl, webDriver);
 	}
 
-	public void checkIsWaiterDisplayed(int timeout)
+	public void checkWaiterDisplayed(int timeout)
 	{
 		Assert.assertTrue(driver.waitUntilExist(waiterCover, timeout));
-	}
-
-	public void checkIsWaiterDisplayed()
-	{
-		Assert.assertTrue(driver.waitUntilExist(waiterCover));
 	}
 
 	public void checkWaiterDisappeared(int timeout)
@@ -40,9 +35,10 @@ public abstract class NPPageObject extends PageObject
 		Assert.assertTrue(driver.waitUntilDisappear(waiterCover, timeout));
 	}
 
-	public void checkWaiterDisappeared()
+	public void processWaiter(int timeout)
 	{
-		Assert.assertTrue(driver.waitUntilDisappear(waiterCover));
+		if (driver.waitUntilExist(waiterCover, 1, false))
+			checkWaiterDisappeared(timeout);
 	}
 
 	public boolean isMessageDialogAppears()

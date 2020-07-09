@@ -12,7 +12,7 @@ public class CalculationsDialog extends Dialog
 	private final By title = dialogAppBarTitle("Calculations");
 	private final By SaveBtn = dialogAppBarTextBtn("Save");
 	private By codeMirror = By.xpath("//div[contains(@class,'CodeMirror cm-s-default')]");
-	private final By NameInput = By.xpath("//div[contains(@class, 'dropdown__content')]//label[contains(@class, text-field__label) and contains(text(), 'Name')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
+	private final By NameInput = By.xpath("//div[contains(@class, 'dropdown__content')]//label[contains(@class, control-label) and contains(text(), 'Name')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 
 	public CalculationsDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{

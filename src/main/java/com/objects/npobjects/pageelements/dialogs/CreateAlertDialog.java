@@ -16,8 +16,8 @@ public class CreateAlertDialog extends Dialog
 	private final By title = dialogAppBarTitle("Create Alert");
 	private final By inputNameAlert = dialogTextFieldWithLabel("New Alert");
 	private final By addSourceBtn = dialogListItemWithTextIcon("Add data source", "ic_add");
-	private final By cancel = dialogTextBtn("Cancel");
-	private final By saveChanges = dialogTextBtn("Save changes");
+	private final By cancel = dialogUnelevatedBtn("Cancel");
+	private final By saveChanges = dialogUnelevatedBtn("Save changes");
 	private final By closeBtn = dialogIconFontBtn("ic_close");
 
 	public CreateAlertDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)

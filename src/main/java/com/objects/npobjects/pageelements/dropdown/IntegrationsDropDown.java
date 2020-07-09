@@ -13,8 +13,8 @@ public class IntegrationsDropDown extends DropDown
 
 	private NavigatorPage parentPage;
 
-	private final By databaseBtn = dropDownMdcListItemWithText("Database");
-	private final By saasBtn = dropDownMdcListItemWithText("SaaS");
+	private final By databaseBtn = dropDownListItemWithText("Database");
+	private final By saasBtn = dropDownListItemWithText("SaaS");
 
 	public IntegrationsDropDown(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{

@@ -12,7 +12,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickDatabaseBtn();
 		mainPage.createDatabaseDialog.checkIsRendered()
@@ -39,7 +39,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickDatabaseBtn();
 		mainPage.createDatabaseDialog.checkIsRendered()
@@ -65,7 +65,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -75,7 +75,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterDomain("https://slemma.freshdesk.com")
 				  .enterAPI("9xmgaF4hddDHrOw2ay6e")
 				  .clickOkBtn();
-		mainPage.checkObjectInDataTableByName("FreshDesk", 5)
+		mainPage.checkObjectByName("FreshDesk", 5)
 				  .clickObjectInDataTableByName("FreshDesk", 5);
 	}
 
@@ -86,7 +86,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -96,7 +96,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterDomain("https://slemma.freshsales.io/")
 				  .enterAPI("ne3XTHy_Zu438e0ZN9s7OA")
 				  .clickOkBtn();
-		mainPage.checkObjectInDataTableByName("FreshSales", 5)
+		mainPage.checkObjectByName("FreshSales", 5)
 				  .clickObjectInDataTableByName("FreshSales", 5);
 	}
 
@@ -107,7 +107,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -118,7 +118,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterpasswordField("r4e3W@Q!")
 				  .entertokenField("18B4xSXqcDm2LhLDggptoRI9")
 				  .clickOkBtn();
-		mainPage.checkObjectInDataTableByName("Salesforce", 5)
+		mainPage.checkObjectByName("Salesforce", 5)
 				  .clickObjectInDataTableByName("Salesforce", 5);
 	}
 
@@ -129,7 +129,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -142,7 +142,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickSignInBt()
 				  .clickconnectBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("QuickBooks", 5)
+		mainPage.checkObjectByName("QuickBooks", 5)
 				  .clickObjectInDataTableByName("QuickBooks", 5);
 	}
 
@@ -152,7 +152,7 @@ public class IntegrationsTest extends NPWebTest
 //        mainPage.checkIsRendered()
 //                .clickAdminBtn()
 //                .openIntegrations()
-//                .clickPlusBtn();
+//                .clickCreateBtn();
 //        mainPage.integrationsDropDown.checkIsRendered()
 //                .clickSaasBtn();
 //        mainPage.createSaasDialog.checkIsRendered()
@@ -165,7 +165,7 @@ public class IntegrationsTest extends NPWebTest
 //                .enterPassInput("q1w2E#R$")
 //                .clicksignInStripeAccountBtn();
 //        driver.switchToMainWindow();
-//        mainPage.checkObjectInDataTableByName("Stripe",5)
+//        mainPage.checkObjectByName("Stripe",5)
 //                .clickObjectInDataTableByName("Stripe",5);
 //    }
 	@Test
@@ -175,7 +175,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -191,7 +191,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterPasswordInput("q1w2E#R$")
 				  .clickSignInBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Zendesk (d3v-newpeople)", 5)
+		mainPage.checkObjectByName("Zendesk (d3v-newpeople)", 5)
 				  .clickObjectInDataTableByName("Zendesk (d3v-newpeople)", 5);
 	}
 
@@ -202,7 +202,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -216,7 +216,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickNextButton();
 //                .clickForgetInput();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Wrike Andrey Dobzhansky", 5)
+		mainPage.checkObjectByName("Wrike Andrey Dobzhansky", 5)
 				  .clickObjectInDataTableByName("Wrike Andrey Dobzhansky", 5);
 	}
 
@@ -227,7 +227,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -240,7 +240,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clicklogInBtn()
 				  .clickAllowBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Infusionsoft", 5)
+		mainPage.checkObjectByName("Infusionsoft", 5)
 				  .clickObjectInDataTableByName("Infusionsoft", 5);
 	}
 
@@ -251,7 +251,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -262,7 +262,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterloginField("matveeva.e")
 				  .enterAPItokenField("BC7Vo4grSjMP7Xv9wJ8EFDEA")
 				  .clickOkBtn();
-		mainPage.checkObjectInDataTableByName("Jira (https://npeople.atlassian.net)", 5)
+		mainPage.checkObjectByName("Jira (https://npeople.atlassian.net)", 5)
 				  .clickObjectInDataTableByName("Jira (https://npeople.atlassian.net)", 5);
 	}
 
@@ -273,7 +273,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -289,7 +289,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickconfirmBtn()
 				  .clickconfirmBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Facebook (Andrey)", 5)
+		mainPage.checkObjectByName("Facebook (Andrey)", 5)
 				  .clickObjectInDataTableByName("Facebook (Andrey)", 5);
 	}
 
@@ -300,7 +300,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -312,7 +312,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterPassInput("Qwerty12345")
 				  .clickSignInBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Facebook Ads", 5)
+		mainPage.checkObjectByName("Facebook Ads", 5)
 				  .clickObjectInDataTableByName("Facebook Ads", 5);
 	}
 
@@ -323,7 +323,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -336,7 +336,7 @@ public class IntegrationsTest extends NPWebTest
 //              .clickcheckboxBtn()
 				  .clickSignInBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Instagram", 5)
+		mainPage.checkObjectByName("Instagram", 5)
 				  .clickObjectInDataTableByName("Instagram", 5);
 	}
 
@@ -347,7 +347,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -361,7 +361,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterPassInput("q1w2E#R$")
 				  .clickSignInBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("PayPal", 5)
+		mainPage.checkObjectByName("PayPal", 5)
 				  .clickObjectInDataTableByName("PayPal", 5);
 	}
 
@@ -372,7 +372,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -386,7 +386,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickSignInBtn()
 				  .clickAuthorizeAccess();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Intercom", 5)
+		mainPage.checkObjectByName("Intercom", 5)
 				  .clickObjectInDataTableByName("Intercom", 5);
 	}
 
@@ -397,7 +397,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -410,7 +410,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickSignInBtn()
 				  .clickcontinueBtn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("New People", 5)
+		mainPage.checkObjectByName("New People", 5)
 				  .clickObjectInDataTableByName("New People", 5);
 	}
 
@@ -475,18 +475,15 @@ public class IntegrationsTest extends NPWebTest
 				  .clickaddIntegrationBtn();
 		mainPage.createCloudIntegrationDialog.checkIsRendered()
 				  .clickGoogledriveBtn();
-		//GoogleDrive
-		driver.switchWindow(1);
-		googleLogIn.checkIsRendered()
-				  .enteremailInput("s.kataev@slemma.com")
-				  .clicknextBtn()
+
+		driver.switchWindow(2);
+		googleLogIn.enterEmailInput("s.kataev@slemma.com")
+				  .clickEmailNextBtn()
 				  .enterpasswordInput("Q123#@!w")
-				  .clicknextPassBtn()
-				  .clickadvancedBtn()
-				  .clickgotoBtn()
-				  .clickallowBtn();
-//        pause(5);
-		driver.switchToMainWindow();
+				  .clickPasswordNextBtn()
+				  .clickAllowBtn();
+		driver.switchToMainWindow(5);
+
 		mainPage.checkObjectInDialogByName("Google Drive", 10)
 				  .clickObjectInDialogByName("Google Drive", 5);
 	}
@@ -545,7 +542,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -558,7 +555,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickLogInBtn()
 				  .clickAccountChoose();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("Hubspot", 5)
+		mainPage.checkObjectByName("Hubspot", 5)
 				  .clickObjectInDataTableByName("Hubspot", 5);
 	}
 
@@ -569,7 +566,7 @@ public class IntegrationsTest extends NPWebTest
 				  .clickdrawerToggleBtn();
 		mainPage.clickAdminBtn()
 				  .openIntegrations()
-				  .clickPlusBtn();
+				  .clickCreateBtn();
 		mainPage.integrationsDropDown.checkIsRendered()
 				  .clickSaasBtn();
 		mainPage.createSaasDialog.checkIsRendered()
@@ -581,7 +578,7 @@ public class IntegrationsTest extends NPWebTest
 				  .enterPasswordInput("Zurbagan0!")
 				  .clickLogIn();
 		driver.switchToMainWindow();
-		mainPage.checkObjectInDataTableByName("MailChimp (a.dobzhansky@slemma.com)", 5)
+		mainPage.checkObjectByName("MailChimp (a.dobzhansky@slemma.com)", 5)
 				  .clickObjectInDataTableByName("MailChimp (a.dobzhansky@slemma.com)", 5);
 	}
 
@@ -593,7 +590,7 @@ public class IntegrationsTest extends NPWebTest
 //				  .clickdrawerToggleBtn();
 //		mainPage.clickAdminBtn()
 //				  .openIntegrations()
-//				  .clickPlusBtn();
+//				  .clickCreateBtn();
 //		mainPage.integrationsDropDown.checkIsRendered()
 //				  .clickSaasBtn();
 //		mainPage.createSaasDialog.checkIsRendered()
@@ -604,14 +601,14 @@ public class IntegrationsTest extends NPWebTest
 //				  .clickOkBtn();
 //		driver.switchWindow(1);
 //		googleLogIn.checkIsRendered()
-//				  .enteremailInput("s.kataev@slemma.com")
-//				  .clicknextBtn()
+//				  .enterEmailInput("s.kataev@slemma.com")
+//				  .clickNextBtn()
 //				  .enterpasswordInput("Q123#@!w")
-//				  .clicknextPassBtn()
-//				  .clickallowBtn();
+//				  .clickNextPassBtn()
+//				  .clickAllowBtn();
 //		pause(5);
 //		driver.switchToMainWindow();
-//		mainPage.checkObjectInDataTableByName("GoogleAds", 10)
+//		mainPage.checkObjectByName("GoogleAds", 10)
 //				  .clickObjectInDataTableByName("GoogleAds", 5);
 //	}
 //
@@ -623,7 +620,7 @@ public class IntegrationsTest extends NPWebTest
 //				  .clickdrawerToggleBtn();
 //		mainPage.clickAdminBtn()
 //				  .openIntegrations()
-//				  .clickPlusBtn();
+//				  .clickCreateBtn();
 //		mainPage.integrationsDropDown.checkIsRendered()
 //				  .clickSaasBtn();
 //		mainPage.createSaasDialog.checkIsRendered()
@@ -631,16 +628,16 @@ public class IntegrationsTest extends NPWebTest
 //		//googleAnalytics
 //		driver.switchWindow(1);
 //		googleLogIn.checkIsRendered()
-//				  .enteremailInput("s.kataev@slemma.com")
-//				  .clicknextBtn()
+//				  .enterEmailInput("s.kataev@slemma.com")
+//				  .clickNextBtn()
 //				  .enterpasswordInput("Q123#@!w")
-//				  .clicknextPassBtn();
+//				  .clickNextPassBtn();
 ////        pause(5);
 ////        googleLogIn.clickPermissionBtn();
 ////        pause(5);
-//		googleLogIn.clickallowBtn();
+//		googleLogIn.clickAllowBtn();
 //		driver.switchToMainWindow();
-//		mainPage.checkObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5)
+//		mainPage.checkObjectByName("Google Analytics - s.kataev@slemma.com", 5)
 //				  .clickObjectInDataTableByName("Google Analytics - s.kataev@slemma.com", 5);
 //	}
 }

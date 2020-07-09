@@ -15,8 +15,8 @@ public class AddUserDialog extends Dialog
 	private final By title = dialogAppBarTitle("Add user");
 	private final By emailInput = dialogTextFieldWithLabel("Email");
 	private final By roleSelect = dialogSelectWithLabel("Role");
-	private final By cancel = dialogTextBtn("Cancel");
-	private final By addBtn = dialogTextBtn("Add");
+	private final By cancel = dialogUnelevatedBtn("Cancel");
+	private final By addBtn = dialogUnelevatedBtn("Add");
 
 	public AddUserDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)
 	{

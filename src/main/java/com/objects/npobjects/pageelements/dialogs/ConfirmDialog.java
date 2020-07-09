@@ -10,7 +10,7 @@ public class ConfirmDialog extends Dialog
 	private NavigatorPage parentPage;
 
 	private final By title = dialogAppBarTitle("Confirm");
-	private final By deleteBtn = dialogTextBtn("Delete");
+	private final By deleteBtn = dialogUnelevatedBtn("Delete");
 
 
 	public ConfirmDialog(SeleniumDriverWrapper driver, NavigatorPage pageObj)

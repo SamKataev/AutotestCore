@@ -16,7 +16,6 @@ public class ReportPage extends NPPageObject
 	public HTTPSwebAddressDialog hTTPSwebAddressDialog;
 	public SaveAsDialog saveAsDialog;
 	public ChooseaChartTypeDialog chooseaChartTypeDialog;
-	public SelectaDataSourceDialog selectaDataSourceDialog;
 	public SettingsChartDialog settingsChartDialog;
 	public ReportDropDown reportDropDown;
 	public CalculationsAddDialog сalculationsAddDialog;
@@ -25,18 +24,18 @@ public class ReportPage extends NPPageObject
 	public ReportFiltersDialog reportFiltersDialog;
 	public DataRangeSelectionDialog dataRangeSelectionDialog;
 
-	private final By closeBtn = mdcIconFontBtn("ic_close");
+	private final By closeBtn = iconFontBtn("ic_close");
 	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
-	private By settingsBtn = mdcIconFontBtn("ic_tune");
+	private By settingsBtn = iconFontBtn("ic_tune");
 	private By insertBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Insert')]/parent::button[contains(@class, 'mdc-fab')]");
 	private By panelcontent = By.xpath("//div[@class='panelcontent']");
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
-	private By editBtn = mdcTextBtn("Edit");
-	private By filterBtn = mdcIconFontBtn("ic_filter");
-	private By shareBtn = mdcIconFontBtn("ic_person_add");
-	private final By refreshBtn = mdcIconFontBtn("ic_refresh");
-	private By editTextBtn = mdcIconFontBtn("ic_edit");
-	private By sheetBtn = mdcTabWithText("+");
+	private By editBtn = unelevatedBtn("Edit");
+	private By filterBtn = iconFontBtn("ic_filter");
+	private By shareBtn = iconFontBtn("ic_person_add");
+	private final By refreshBtn = iconFontBtn("ic_refresh");
+	private By editTextBtn = iconFontBtn("ic_edit");
+	private By sheetBtn = tabWithText("+");
 
 
 	public ReportPage(SeleniumDriverWrapper driver)
@@ -46,7 +45,6 @@ public class ReportPage extends NPPageObject
 		hTTPSwebAddressDialog = new HTTPSwebAddressDialog(driver, this);
 		saveAsDialog = new SaveAsDialog(driver, this);
 		chooseaChartTypeDialog = new ChooseaChartTypeDialog(driver, this);
-		selectaDataSourceDialog = new SelectaDataSourceDialog(driver, this);
 		settingsChartDialog = new SettingsChartDialog(driver, this);
 		reportDropDown = new ReportDropDown(driver, this);
 		сalculationsAddDialog = new CalculationsAddDialog(driver, this);
@@ -65,6 +63,7 @@ public class ReportPage extends NPPageObject
 
 	public ReportPage checkIsRendered()
 	{
+		processWaiter(10);
 		super.checkIsRendered();
 		return this;
 	}
