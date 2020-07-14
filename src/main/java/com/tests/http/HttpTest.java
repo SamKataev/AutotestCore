@@ -24,7 +24,7 @@ public class HttpTest
 	{
 		Assert.assertTrue(request.send(), "error sending request");
 		request.validateStatusCode();
-		request.validateResponseBody(CommonService.parseStringByDelimeter(ignoredProps));
+		request.validateResponseBodyAsObject(CommonService.parseStringByDelimeter(ignoredProps));
 	}
 
 	void setRequest(HttpRequestWrapper request)

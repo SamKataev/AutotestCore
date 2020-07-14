@@ -1,17 +1,24 @@
 package com.service.http;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.service.CustomJsonParser;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.TrustAllStrategy;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.*;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.ssl.SSLContextBuilder;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -24,6 +31,7 @@ public class HttpRequestWrapper
 	private String type;
 	private String enpoint;
 	private String method;
+	private String key;
 	private String headersSetName;
 	private HashMap<String, String> headers = new HashMap<>();
 	private int expectedStatusCode;
@@ -32,8 +40,22 @@ public class HttpRequestWrapper
 
 	public boolean send()
 	{
+		HttpClient client;
 		RequestConfig config = RequestConfig.custom().setSocketTimeout(60000).build();
-		HttpClient client = HttpClientBuilder.create().setDefaultRequestConfig(config).build();
+
+		try
+		{
+			client = HttpClientBuilder.create()
+					  .setSSLContext(new SSLContextBuilder().loadTrustMaterial(null, TrustAllStrategy.INSTANCE).build())  //disable ssl verify for using with local build
+					  .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)  //disable host verify for using with local build
+					  .setDefaultRequestConfig(config)
+					  .build();
+		}
+		catch (KeyStoreException | KeyManagementException | NoSuchAlgorithmException e)
+		{
+			System.out.println("test \"" + name + "\", error creating SSL context");
+			return false;
+		}
 
 		System.out.println("test \"" + name + "\", send request: " + type + " " + getUrl());
 		if (type.equals("get") || type.equals("delete"))
@@ -145,28 +167,58 @@ public class HttpRequestWrapper
 		}
 	}
 
-	public void validateResponseBody(ArrayList<String> ignoredProps)
+	public JsonObject getResponseJsonObject()
+	{
+		String responseBodyContent = "";
+		try
+		{
+			responseBodyContent = new Scanner(response.getEntity().getContent()).useDelimiter("\\Z").next();
+		}
+		catch (Exception e)
+		{
+			System.out.println("test \"" + name + "\", error reading entity from response");
+			return new JsonObject();
+		}
+		return CustomJsonParser.initJsonObject(responseBodyContent);
+	}
+
+	public JsonArray getResponseJsonArray()
+	{
+		String responseBodyContent = "";
+		try
+		{
+			responseBodyContent = new Scanner(response.getEntity().getContent()).useDelimiter("\\Z").next();
+		}
+		catch (Exception e)
+		{
+			System.out.println("test \"" + name + "\", error reading entity from response");
+			return new JsonArray();
+		}
+		return CustomJsonParser.initJsonArray(responseBodyContent);
+	}
+
+	public void validateResponseBodyAsObject(ArrayList<String> ignoredProps)
 	{
 		if (expectedResponseBody != null)
 		{
-			String responseBodyContent = "";
-			try
-			{
-				responseBodyContent = new Scanner(response.getEntity().getContent()).useDelimiter("\\Z").next();
-			}
-			catch (Exception e)
-			{
-				System.out.println("test \"" + name + "\", error reading entity from response");
-			}
-			JsonObject responseBody = CustomJsonParser.initJsonObject(responseBodyContent);
+			JsonObject responseBody = getResponseJsonObject();
 			CustomJsonParser.removeJsonElements(ignoredProps, responseBody);
-			Assert.assertEquals(responseBody.toString(), expectedResponseBody.toString(), "validate response body failed");
+			Assert.assertEquals(responseBody.toString(), expectedResponseBody.toString(), "validate response body as JSON object failed");
 		}
 	}
 
-	public void validateResponseBody()
+	public void validateResponseBodyAsObject()
 	{
-		validateResponseBody(new ArrayList<>());
+		validateResponseBodyAsObject(new ArrayList<>());
+	}
+
+	public void validateResponseBodyAsArray()
+	{
+		if (expectedResponseBody != null)
+		{
+			JsonArray responseBody = getResponseJsonArray();
+			Assert.assertEquals(responseBody.toString(), expectedResponseBody.toString(), "validate response body as JSON array failed");
+		}
 	}
 
 	public void setName(String name)
@@ -214,6 +266,11 @@ public class HttpRequestWrapper
 		this.method = method;
 	}
 
+	public void setMethodKey(String key)
+	{
+		this.key = key;
+	}
+
 	public void setExpectedStatusCode(int expectedStatusCode)
 	{
 		this.expectedStatusCode = expectedStatusCode;
@@ -247,7 +304,9 @@ public class HttpRequestWrapper
 
 	private String getUrl()
 	{
-		String url = enpoint + method;
+		String url = (enpoint != null ? enpoint : "")
+				  + (method != null ? method : "")
+				  + (key != null ? key : "");
 		return url.replaceAll("\\/{2,}", "/").replaceAll(":\\/", "://");
 	}
 }

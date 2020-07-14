@@ -298,6 +298,19 @@ public class CustomJsonParser
 		}
 	}
 
+	public static JsonArray initJsonArray(String input)
+	{
+		JsonParser jsonParser = new JsonParser();
+		try
+		{
+			return jsonParser.parse(input).getAsJsonArray();
+		}
+		catch (Exception e)
+		{
+			return new JsonArray();
+		}
+	}
+
 	public static void removeJsonElements(ArrayList<String> elements, JsonObject obj)
 	{
 		elements.forEach((el) -> removeJsonElement(el, obj));
