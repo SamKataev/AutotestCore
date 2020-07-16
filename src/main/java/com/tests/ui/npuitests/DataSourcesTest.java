@@ -1,6 +1,7 @@
 package com.tests.ui.npuitests;
 
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class DataSourcesTest extends NPWebTest
@@ -11,6 +12,16 @@ public class DataSourcesTest extends NPWebTest
 	{
 		super.startTestClass();
 		changeTeam("TestTeam");
+	}
+
+	@BeforeMethod
+	@Override
+	public void startTestMethod()
+	{
+		if (!driver.getCurrentWindowHandle().equals(driver.getMainWindowHandle()))
+			driver.switchToMainWindow();
+
+		openDataSourcesPage();
 	}
 
 	@Test
@@ -79,22 +90,36 @@ public class DataSourcesTest extends NPWebTest
 				  .checkObjectByName("For%20charts.csv");
 	}
 
-//	@Test
-//	public void uploadFile()
-//	{
-//		changeTeam("TestTeam");
-//		mainPage.checkIsRendered()
-//				  .openDatasources()
-//				  .clickCreateBtn();
-//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-//				  .uploadFile("C:\\resources\\TestslemmaUpload.csv");
-//		dataSourceCreatePage.checkIsRendered()
-//				  .clickAgViewport()
-//				  .clickSave();
-//		mainPage.checkObjectByName("TestslemmaUpload", 5)
-//				  .clickObjectInDataTableByName("TestslemmaUpload", 5);
-//	}
-
+	@Test
+	public void uploadFile()
+	{
+		mainPage.checkIsRendered()
+				  .openDatasources()
+				  .clickCreateBtn();
+		mainPage.createDatabaseDialog
+				  .checkIsRendered()
+				  .clickUploadFile();
+		mainPage.createDatabaseDialog.selectDatasourceTypeDialog
+				  .checkIsRendered()
+				  .uploadFile("D:\\test data\\source.csv");
+		dataSourceCreatePage
+				  .checkIsRendered()
+				  .clickMenuBtn();
+		dataSourceCreatePage.mainMenu
+				  .checkIsRendered()
+				  .clickSave()
+				  .processWaiter(10);
+		dataSourceCreatePage
+				  .clickClose();
+		mainPage.checkIsRendered()
+				  .checkObjectByName("source");
+	}
+	
+	
+	
+	
+	
+	
 //	@Test
 //	public void datasetGoogleAnalytics()
 //	{
@@ -360,26 +385,6 @@ public class DataSourcesTest extends NPWebTest
 //				  .clickSave();
 //		mainPage.checkObjectByName("Testslemma", 15)
 //				  .clickObjectInDataTableByName("Testslemma", 15);
-//	}
-
-//	@Test
-//	public void datasetGoogleDrive()
-//	{
-//		changeTeam("TestTeam");
-//		mainPage.checkIsRendered()
-//				  .clickdrawerToggleBtn();
-//		mainPage.openDatasources()
-//				  .clickCreateBtn();
-//		mainPage.selectDatasourceTypeDialog.checkIsRendered()
-//				  .clickIntegration("Google Drive");
-//		mainPage.selectDatasetDialog.checkIsRendered()
-//				  .checkDialogTitle("Google Drive", 10)
-//				  .clickFileInDialogByName("Test team number two.csv", "ic_file", 10);
-//		dataSourceCreatePage.checkIsRendered()
-//				  .clickAgViewport()
-//				  .clickSave();
-//		mainPage.checkObjectByName("Test team number two", 15)
-//				  .clickObjectInDataTableByName("Test team number two", 15);
 //	}
 
 //	@Test

@@ -94,7 +94,7 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 		return false;
 	}
 
-	private boolean clickWebElement(By locator, int time)
+	private boolean clickWebElement(By locator, int time, int attemptsCounter)
 	{
 		if (waitUntilClickable(locator, time))
 		{
@@ -103,6 +103,28 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 				getElement(locator, time).click();
 				return true;
 			}
+			catch (StaleElementReferenceException e)
+			{
+				if (attemptsCounter > 0)
+				{
+					attemptsCounter--;
+					try
+					{
+						Thread.sleep(1000);
+					}
+					catch (InterruptedException ex)
+					{
+						System.out.println("error clicking web element (handling StaleElementReferenceException)" + getElement(locator, time).getLocation() + ": " + ex.getMessage().substring(0, 200) + "...");
+						return false;
+					}
+					return clickWebElement(locator, time, attemptsCounter);
+				}
+				else
+				{
+					System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0, 200) + "...");
+					getScreenshot("clickWebElement");
+				}
+			}
 			catch (WebDriverException e)
 			{
 				System.out.println("error clicking web element" + getElement(locator, time).getLocation() + ": " + e.getMessage().substring(0, 200) + "...");
@@ -110,6 +132,11 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 			}
 		}
 		return false;
+	}
+
+	private boolean clickWebElement(By locator, int time)
+	{
+		return clickWebElement(locator, time, 5);
 	}
 
 	private boolean typeWebElement(By locator, String text, int time)

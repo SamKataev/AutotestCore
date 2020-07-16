@@ -25,7 +25,7 @@ public class ChromeDriverWrapper extends SeleniumDriverWrapper
 		prefs.put("profile.default_content_setting_values.notifications", 2);
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", prefs);
-		options.addArguments("--lang=en");
+		options.addArguments("--lang=en", "ignore-certificate-errors");
 		webDriver = new ChromeDriver(service, options);
 		return true;
 	}
