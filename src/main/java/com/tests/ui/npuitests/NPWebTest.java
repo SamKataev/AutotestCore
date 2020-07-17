@@ -43,7 +43,7 @@ public abstract class NPWebTest extends WebTest
 	}
 
 	/**
-	 * switch to main window to handle a case when previous method switched focus to another window and hadn't switched it back to main window
+	 * switch to main window to handle a case when previous method switched focus to another window and hadn't switched it back to main window (e.g. due to test fail)
 	 * each test method starts from reports page if not overridden
 	 */
 	@BeforeMethod
@@ -99,6 +99,15 @@ public abstract class NPWebTest extends WebTest
 	{
 		driver.goToUrl(driver.getBaseUrl() + "/datasources");
 		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/datasources"))
+		{
+			logIn();
+		}
+	}
+
+	protected void openReport(String key)
+	{
+		driver.goToUrl(driver.getBaseUrl() + "/reports/" + key);
+		if (!driver.getCurrentUrl().equals(driver.getBaseUrl() + "/reports/" + key))
 		{
 			logIn();
 		}

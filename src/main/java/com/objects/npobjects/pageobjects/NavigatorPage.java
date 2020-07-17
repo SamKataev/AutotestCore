@@ -3,7 +3,6 @@ package com.objects.npobjects.pageobjects;
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.IntegrationsDropDown;
-import com.objects.npobjects.pageelements.dropdown.MoreOptionDropDown;
 import com.objects.npobjects.pageelements.dropdown.SelectTeamDropDown;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
@@ -19,7 +18,6 @@ public class NavigatorPage extends NPPageObject
 	public WorkspaceSettingsDialog workspaceSettingsDialog;
 	public IntegrationsDropDown integrationsDropDown;
 	public AddUserDialog addUserDialog;
-	public MoreOptionDropDown moreOptionDropDown;
 	public CreateDataSourceDialog createDatabaseDialog;
 	public CreateSaasDialog createSaasDialog;
 	public CreateIntegrationDialog createIntegrationDialog;
@@ -47,7 +45,7 @@ public class NavigatorPage extends NPPageObject
 	private final By currentTeam = By.xpath("//div[contains(@class, 'page-mode-panel__footer')]//span[contains(@class, 'mdc-list-item__secondary-text')]");
 	private final By drawerToggleBtn = iconFontBtn("ic_menu");
 
-	private final By liReports = listItemWithText("Reports");
+	private final By liReports = listItemWithText("ReportTest");
 	private final By liDataSources = listItemWithText("Data Sources");
 	private final By liSettings = listItemWithText("Settings");
 	private final By liHelp = listItemWithText("Help");
@@ -68,7 +66,6 @@ public class NavigatorPage extends NPPageObject
 		workspaceSettingsDialog = new WorkspaceSettingsDialog(driver, this);
 		integrationsDropDown = new IntegrationsDropDown(driver, this);
 		addUserDialog = new AddUserDialog(driver, this);
-		moreOptionDropDown = new MoreOptionDropDown(driver, this);
 		createDatabaseDialog = new CreateDataSourceDialog(driver, this);
 		createSaasDialog = new CreateSaasDialog(driver, this);
 		createIntegrationDialog = new CreateIntegrationDialog(driver, this);
@@ -103,7 +100,7 @@ public class NavigatorPage extends NPPageObject
 	public NavigatorPage checkIsLoggedIn(String accountName, String teamName)
 	{
 		checkIsRendered();
-		checkNavSection("Reports", "/reports");
+		checkNavSection("ReportTest", "/reports");
 		checkAccount(accountName);
 		checkTeam(teamName);
 		return this;
@@ -206,7 +203,7 @@ public class NavigatorPage extends NPPageObject
 	public NavigatorPage openReports()
 	{
 		Assert.assertTrue(driver.click(liReports));
-		checkNavSection("Reports", "/reports");
+		checkNavSection("ReportTest", "/reports");
 		return this;
 	}
 

@@ -298,9 +298,9 @@ public class DataSourcesTest extends NPWebTest
 //		pause(5);
 //		dataSourceCreatePage.clickQueryBtn()
 //				  .clickAgViewport()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		mainPage.renameDialog.checkIsRendered()
 //				  .enterInputName("HerokuQuery")
 //				  .clickRenameBtn();
@@ -402,9 +402,9 @@ public class DataSourcesTest extends NPWebTest
 //		driver.keyboardImitate("SELECT * from action_log");
 //		dataSourceCreatePage.clickQueryBtn()
 //				  .clickAgViewport()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		mainPage.renameDialog.checkIsRendered()
 //				  .enterInputName("action_log")
 //				  .clickRenameBtn();
@@ -589,9 +589,9 @@ public class DataSourcesTest extends NPWebTest
 //		dataSourceCreatePage.fieldSettingsDialog.checkIsRendered()
 //				  .fieldNameInput("Summ1")
 //				  .okBtn();
-//		dataSourceCreatePage.clickMoreBtn();
+//		dataSourceCreatePage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		//		проверка в отчете источника применение изменений
 //		mainPage.checkIsRendered()
 //				  .openReports()
@@ -618,9 +618,9 @@ public class DataSourcesTest extends NPWebTest
 //		dataSourceCreatePage.fieldSettingsDialog.checkIsRendered()
 //				  .fieldNameInput("Summ")
 //				  .okBtn();
-//		dataSourceCreatePage.clickMoreBtn();
+//		dataSourceCreatePage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //	}
 //
 //	@Test
@@ -645,9 +645,9 @@ public class DataSourcesTest extends NPWebTest
 //		dataSourceCreatePage.fieldSettingsDialog.checkIsRendered()
 //				  .fieldNameInput("month1")
 //				  .okBtn();
-//		dataSourceCreatePage.clickMoreBtn();
+//		dataSourceCreatePage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		pause(5);
 //		//		проверка в отчете источника применение изменений
 //		mainPage.checkIsRendered()
@@ -677,9 +677,9 @@ public class DataSourcesTest extends NPWebTest
 //		dataSourceCreatePage.fieldSettingsDialog.checkIsRendered()
 //				  .fieldNameInput("month")
 //				  .okBtn();
-//		dataSourceCreatePage.clickMoreBtn();
+//		dataSourceCreatePage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		pause(5);
 //	}
 //
@@ -701,9 +701,9 @@ public class DataSourcesTest extends NPWebTest
 //				  .okBtn();
 ////		String asd = driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText();
 //		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));
-//		dataSourceCreatePage.clickMoreBtn();
+//		dataSourceCreatePage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		pause(5);
 //		mainPage.clickObjectInDataTableByName("Non-residential outliers", 5);
 //		dataSourceCreatePage.checkIsRendered()
@@ -715,9 +715,9 @@ public class DataSourcesTest extends NPWebTest
 //				  .okBtn();
 ////		String asd = driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText();
 //		Assert.assertTrue(driver.getElement(By.xpath("//div[@row-index='0']//div[@col-id='0']")).getText().matches("BLDM.SLE2"));
-//		dataSourceCreatePage.clickMoreBtn();
+//		dataSourceCreatePage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		pause(5);
 //		mainPage.clickObjectInDataTableByName("Non-residential outliers", 5);
 //		dataSourceCreatePage.checkIsRendered()

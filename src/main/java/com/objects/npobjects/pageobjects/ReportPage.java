@@ -5,6 +5,7 @@ import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.ChooseObjectDropDown;
 import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
 
+import com.objects.npobjects.pageelements.dropdown.ReportMainMenuDropDown;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -13,6 +14,8 @@ public class ReportPage extends NPPageObject
 {
 
 	public ChooseObjectDropDown chooseObjectDropDown;
+	public ReportMainMenuDropDown mainMenuDropDown;
+
 	public HTTPSwebAddressDialog hTTPSwebAddressDialog;
 	public SaveAsDialog saveAsDialog;
 	public ChooseaChartTypeDialog chooseaChartTypeDialog;
@@ -25,7 +28,7 @@ public class ReportPage extends NPPageObject
 	public DataRangeSelectionDialog dataRangeSelectionDialog;
 
 	private final By closeBtn = iconFontBtn("ic_close");
-	private By moreBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_more_vert')]");
+	private By menuBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_menu_')]");
 	private By settingsBtn = iconFontBtn("ic_tune");
 	private By insertBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Insert')]/parent::button[contains(@class, 'mdc-fab')]");
 	private By panelcontent = By.xpath("//div[@class='panelcontent']");
@@ -41,7 +44,10 @@ public class ReportPage extends NPPageObject
 	public ReportPage(SeleniumDriverWrapper driver)
 	{
 		super(driver.getBaseUrl() + "/reports/new", driver);
+
 		chooseObjectDropDown = new ChooseObjectDropDown(driver, this);
+		mainMenuDropDown = new ReportMainMenuDropDown(driver, this);
+
 		hTTPSwebAddressDialog = new HTTPSwebAddressDialog(driver, this);
 		saveAsDialog = new SaveAsDialog(driver, this);
 		chooseaChartTypeDialog = new ChooseaChartTypeDialog(driver, this);
@@ -57,7 +63,7 @@ public class ReportPage extends NPPageObject
 	@Override
 	public boolean validateElements()
 	{
-		return driver.waitUntilExist(moreBtn)
+		return driver.waitUntilExist(menuBtn)
 				  && driver.waitUntilExist(settingsBtn, 10);
 	}
 
@@ -74,9 +80,9 @@ public class ReportPage extends NPPageObject
 		return this;
 	}
 
-	public ReportPage clickMoreBtn()
+	public ReportPage clickMenuBtn()
 	{
-		Assert.assertTrue(driver.click(moreBtn));
+		Assert.assertTrue(driver.click(menuBtn));
 		return this;
 	}
 

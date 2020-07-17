@@ -1,53 +1,92 @@
 package com.tests.ui.npuitests;
 
 
-import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.openqa.selenium.By;
 
-public class Reports extends NPWebTest
-
+public class ReportTest extends NPWebTest
 {
-//	@Test
-//	public void insertSimpleObject()
-//	{
-//		authPage.open().checkIsRendered();
-//		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
-//		changeTeam("TestTeam");
-//		mainPage.checkIsRendered()
-//				  .clickdrawerToggleBtn();
-//		mainPage.openReports()
-//				  .clickCreateBtn();
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
-//				  .uploadFile("C:\\resources\\1472058088_05.jpg")
-//				  .clickObjectByName("Text", "ic_text");
-//		reportsPage.clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
-//				  .clickObjectByName("URL embed", "ic_code");
-//		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
-//				  .urlInput("http://app.newpeople.co/reports/2982")
-//				  .clickDone();
-////		reportsPage.clickInsertBtn();
-////		reportsPage.chooseObjectDropDown.checkIsRendered()
-////				  .clickObjectByName("Chart template", "ic_chart_template");
-////		mainPage.selectDatasetDialog.checkIsRendered()
-////			  .checkDialogTitle("Select connection", 10)
-////			  .clickFileInDialogByName("New People", "ic_pipedrive", 20)
-////			  .clickBasedInDialogByName("Deals Pipeline", "ic_column", 20);
-////		pause(5); //дописать вейтер или нахождение элемента на странице
-//		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
-//		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
-//		reportsPage.saveAsDialog.checkIsRendered()
-//				  .enterInputName("SimpleObject")
-//				  .clickOkBtn();
-//		reportsPage.clickCloseBtn();
-//		mainPage.checkObjectByName("SimpleObject", 15)
-//				  .clickObjectInDataTableByName("SimpleObject", 15);
-//	}
+	String reportKey;
+
+	@BeforeClass
+	@Override
+	public void startTestClass()
+	{
+		super.startTestClass();
+		changeTeam("TestTeam");
+
+		mainPage.checkIsRendered()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
+				  .clickCreateBtn();
+		reportsPage.checkIsRendered()
+				  .clickMenuBtn();
+		reportsPage.mainMenuDropDown
+				  .checkIsRendered()
+				  .clickSaveAs();
+
+		String[] url = driver.getCurrentUrl().split("/");
+		reportKey = url[url.length - 1];
+
+		reportsPage.clickCloseBtn();
+		mainPage.checkIsRendered()
+				  .checkObjectByName("AutotestReport");
+	}
+
+	@BeforeMethod
+	@Override
+	public void startTestMethod()
+	{
+		if (!driver.getCurrentWindowHandle().equals(driver.getMainWindowHandle()))
+			driver.switchToMainWindow();
+
+		openReport(reportKey);
+	}
+
+	@Test
+	public void insertImage()
+	{
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown
+				  .checkIsRendered()
+				  .uploadFile("C:\\resources\\1472058088_05.jpg")
+				  .clickObjectByName("Text", "ic_text");
+		reportsPage.checkIsRendered()
+				  .clickMenuBtn();
+		reportsPage.mainMenuDropDown
+				  .checkIsRendered()
+				  .clickSave();
+	}
+
+	@Test
+	public void insertEmbed()
+	{
+		mainPage.checkIsRendered()
+				  .clickdrawerToggleBtn();
+		mainPage.openReports()
+				  .clickCreateBtn();
+		reportsPage.checkIsRendered()
+				  .clickInsertBtn();
+		reportsPage.chooseObjectDropDown
+				  .checkIsRendered()
+				  .clickObjectByName("URL embed", "ic_code");
+		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
+				  .urlInput("http://app.newpeople.co/reports/2982")
+				  .clickDone();
+		reportsPage.checkIsRendered()
+				  .clickMenuBtn();
+		reportsPage.mainMenuDropDown
+				  .checkIsRendered()
+				  .clickSave();
+		reportsPage.saveAsDialog.checkIsRendered()
+				  .enterInputName("SimpleObject")
+				  .clickOkBtn();
+		reportsPage.clickCloseBtn();
+		mainPage.checkObjectByName("SimpleObject", 15)
+				  .clickObjectInDataTableByName("SimpleObject", 15);
+	}
 //
 //	@Test
 //	public void insertAllTypeChart()
@@ -341,9 +380,9 @@ public class Reports extends NPWebTest
 //				  .clickDimensionInPanelByName("Measure Names");
 //		//сохранение отчета
 //		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("AllTypeChart")
 //				  .clickOkBtn();
@@ -397,9 +436,9 @@ public class Reports extends NPWebTest
 //				  .clickDimensionInPanelByName("New measure");
 //		//сохранение отчета
 //		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("CalculatedMeasure")
 //				  .clickOkBtn();
@@ -427,9 +466,9 @@ public class Reports extends NPWebTest
 //		reportsPage.settingsReportDialog.tiledNodeTrue();
 ////		сохранение отчета
 //		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("Tiled")
 //				  .clickOkBtn();
@@ -567,9 +606,9 @@ public class Reports extends NPWebTest
 //				  .clickEditTextBtn();
 //		driver.keyboardImitate("Здесь вставляется новый текст!");
 //		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("shareObject")
 //				  .clickDone();
@@ -659,9 +698,9 @@ public class Reports extends NPWebTest
 //		reportsPage.checkIsRendered()
 //				  .checkChartNoDate();
 //		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("EmbedCode")
 //				  .clickOkBtn();
@@ -782,9 +821,9 @@ public class Reports extends NPWebTest
 //				  .clickItemInSelectByName("Central", "ic_check_box_outline", 5)
 //				  .clickApplyBtn();
 //		reportsPage.checkIsRendered()
-//				  .clickMoreBtn();
+//				  .clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("CalculatedItem")
 //				  .clickOkBtn();
@@ -811,9 +850,9 @@ public class Reports extends NPWebTest
 //				  .clickRenameBtn();
 //		reportsPage.settingsReportDialog.checkIsRendered()
 //				  .createStartSheet().selectByVisibleText("New name sheet");
-//		reportsPage.clickMoreBtn();
+//		reportsPage.clickMenuBtn();
 //		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveIcon();
+//				  .clickSaveBtn();
 //		reportsPage.saveAsDialog.checkIsRendered()
 //				  .enterInputName("addSheet")
 //				  .clickOkBtn();
