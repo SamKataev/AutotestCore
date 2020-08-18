@@ -2,7 +2,6 @@ package com.objects.npobjects.pageelements.dropdown;
 
 import com.objects.PageElement;
 import com.service.ui.web.SeleniumDriverWrapper;
-import junit.framework.Assert;
 import org.openqa.selenium.By;
 
 public abstract class DropDown extends PageElement

@@ -2,7 +2,7 @@ package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.*;
-import com.objects.npobjects.pageelements.dropdown.ChooseObjectDropDown;
+import com.objects.npobjects.pageelements.dropdown.CreateBlockDropDown;
 import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
 
 import com.objects.npobjects.pageelements.dropdown.ReportMainMenuDropDown;
@@ -13,7 +13,7 @@ import org.testng.Assert;
 public class ReportPage extends NPPageObject
 {
 
-	public ChooseObjectDropDown chooseObjectDropDown;
+	public CreateBlockDropDown insertBlockDropDown;
 	public ReportMainMenuDropDown mainMenuDropDown;
 
 	public HTTPSwebAddressDialog hTTPSwebAddressDialog;
@@ -30,10 +30,10 @@ public class ReportPage extends NPPageObject
 	private final By closeBtn = iconFontBtn("ic_close");
 	private By menuBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_menu_')]");
 	private By settingsBtn = iconFontBtn("ic_tune");
-	private By insertBtn = By.xpath("//span[contains(@class, 'mdc-fab__label') and contains(text(), 'Insert')]/parent::button[contains(@class, 'mdc-fab')]");
+	private By insertBtn = textBtn("Insert");
 	private By panelcontent = By.xpath("//div[@class='panelcontent']");
 	private By wait = By.xpath("//div[@class='dropdown__frame']");
-	private By editBtn = unelevatedBtn("Edit");
+	private By editBtn = textBtn("Edit");
 	private By filterBtn = iconFontBtn("ic_filter");
 	private By shareBtn = iconFontBtn("ic_person_add");
 	private final By refreshBtn = iconFontBtn("ic_refresh");
@@ -45,7 +45,7 @@ public class ReportPage extends NPPageObject
 	{
 		super(driver.getBaseUrl() + "/reports/new", driver);
 
-		chooseObjectDropDown = new ChooseObjectDropDown(driver, this);
+		insertBlockDropDown = new CreateBlockDropDown(driver, this);
 		mainMenuDropDown = new ReportMainMenuDropDown(driver, this);
 
 		hTTPSwebAddressDialog = new HTTPSwebAddressDialog(driver, this);
@@ -183,4 +183,17 @@ public class ReportPage extends NPPageObject
 		return this;
 	}
 
+
+
+	public ReportPage checkImageBlockExists()
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[@np-class='DataView']//div[@np-class='ImageBlock']")));
+		return this;
+	}
+
+	public ReportPage checkWebContentBlockExists()
+	{
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[@np-class='DataView']//div[@np-class='WebContentBlock']")));
+		return this;
+	}
 }

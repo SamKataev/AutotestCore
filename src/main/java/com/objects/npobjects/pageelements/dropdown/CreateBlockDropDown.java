@@ -4,20 +4,19 @@ import com.objects.npobjects.pageobjects.ReportPage;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
-public class ChooseObjectDropDown extends DropDown
+public class CreateBlockDropDown extends DropDown
 {
 	private ReportPage parentPage;
 
 	private final By ImageIcon = dropDownListItemWithTextIcon("Image", "ic_image");
-	private final By embedIcon = dropDownListItemWithTextIcon("URL embed", "ic_code");
+	private final By embedIcon = dropDownListItemWithTextIcon("URL Embed", "ic_code");
 	private final By textIcon = dropDownListItemWithTextIcon("Text", "ic_text");
-	private final By chartTemplateIcon = dropDownListItemWithTextIcon("Chart template", "ic_chart_template");
+	private final By chartTemplateIcon = dropDownListItemWithTextIcon("Chart Template", "ic_chart_template");
 	private final By chartIcon = dropDownListItemWithTextIcon("Chart", "ic_chart");
 
 
-	public ChooseObjectDropDown(SeleniumDriverWrapper driver, ReportPage pageObj)
+	public CreateBlockDropDown(SeleniumDriverWrapper driver, ReportPage pageObj)
 	{
 		super(driver);
 		parentPage = pageObj;
@@ -33,22 +32,46 @@ public class ChooseObjectDropDown extends DropDown
 				  && driver.waitUntilExist(chartIcon, 5);
 	}
 
-	public ChooseObjectDropDown checkIsRendered()
+	public CreateBlockDropDown checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
 
-	public ChooseObjectDropDown clickObjectByName(String text, String iconClass)
+	public ReportPage clickChart()
 	{
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'np-menu dropdown_vis')]//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
-		return this;
+		driver.click(dropDownListItemWithText("Chart"));
+		return parentPage;
 	}
 
-	public ChooseObjectDropDown uploadFile(String text)
+	public ReportPage clickChartTemplate()
+	{
+		driver.click(dropDownListItemWithText("Chart Template"));
+		return parentPage;
+	}
+
+	public ReportPage clickText()
+	{
+		driver.click(dropDownListItemWithText("Text"));
+		return parentPage;
+	}
+
+	public ReportPage clickURLEmbed()
+	{
+		driver.click(dropDownListItemWithText("URL Embed"));
+		return parentPage;
+	}
+
+	public ReportPage clickImage()
+	{
+		driver.click(dropDownListItemWithText("Image"));
+		return parentPage;
+	}
+
+	public ReportPage uploadFile(String text)
 	{
 		WebElement fileInput = driver.getElement(By.xpath("//input[@class='file-input']"));
 		fileInput.sendKeys(text);
-		return this;
+		return parentPage;
 	}
 }

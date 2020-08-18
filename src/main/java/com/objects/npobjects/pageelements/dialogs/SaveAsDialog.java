@@ -34,15 +34,9 @@ public class SaveAsDialog extends Dialog
 		return this;
 	}
 
-	public SaveAsDialog clickOkBtn()
-	{
-		Assert.assertTrue(driver.click(okBtn));
-		return this;
-	}
-
 	public SaveAsDialog enterInputName(String text)
 	{
-		org.testng.Assert.assertTrue(driver.type(inputName, text));
+		Assert.assertTrue(driver.type(inputName, text));
 		return this;
 	}
 }

@@ -1,11 +1,14 @@
 package com.tests.ui.npuitests;
 
+import com.google.gson.JsonArray;
 import com.objects.npobjects.pageobjects.*;
 import com.objects.npobjects.pageobjects.oauthpages.*;
 import com.service.TestProperties;
+import com.service.http.HttpRequestWrapper;
 import com.tests.ui.WebTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 public abstract class NPWebTest extends WebTest
 {
@@ -32,6 +35,14 @@ public abstract class NPWebTest extends WebTest
 	YandexDiskLogIn yandexDiskLogIn;
 	HubSpotLogIn hubSpotLogIn;
 	MailChimpLogIn mailChimpLogIn;
+
+	@BeforeSuite
+	@Override
+	public void startSuite()
+	{
+		super.startSuite();
+		deleteTeamObjects(TestProperties.getNPProp("apiURL"));
+	}
 
 	/**
 	 * each test class starts from reports page if not overridden
@@ -129,4 +140,26 @@ public abstract class NPWebTest extends WebTest
 		mainPage.checkTeam(name);
 	}
 
+	protected void deleteTeamObjects(String url)
+	{
+		HttpRequestWrapper request = new HttpRequestWrapper();
+		request.setName("delete test team objects");
+		request.setHeader("teamid", TestProperties.getNPProp("teamid"));
+		request.setHeader("sig", TestProperties.getNPProp("sig"));
+		request.setHeader("Content-Type", "application/json");
+		request.setEndpoint(url + "/api/v1/");
+		request.setMethod("objects/");
+		request.setType("get");
+		request.setExpectedStatusCode(200);
+		request.send();
+		request.validateStatusCode();
+
+		JsonArray teamObjects = request.getResponseJsonArray();
+
+		request.setType("delete");
+		teamObjects.forEach(teamObject -> {
+			request.setMethodKey(teamObject.getAsJsonObject().get("Key").toString());
+			request.send();
+		});
+	}
 }

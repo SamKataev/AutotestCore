@@ -789,7 +789,7 @@ public class DataSourcesTest extends NPWebTest
 //				  .clickCreateBtn();
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("countries", "ic_dropbox", 30);

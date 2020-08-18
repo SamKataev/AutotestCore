@@ -17,15 +17,18 @@ public class ReportTest extends NPWebTest
 		changeTeam("TestTeam");
 
 		mainPage.checkIsRendered()
-				  .clickdrawerToggleBtn();
-		mainPage.openReports()
+				  .openReports()
 				  .clickCreateBtn();
 		reportsPage.checkIsRendered()
 				  .clickMenuBtn();
 		reportsPage.mainMenuDropDown
 				  .checkIsRendered()
 				  .clickSaveAs();
+		reportsPage.saveAsDialog
+				  .enterInputName("AutotestReport")
+				  .clickDone();
 
+		pause(2);
 		String[] url = driver.getCurrentUrl().split("/");
 		reportKey = url[url.length - 1];
 
@@ -48,12 +51,12 @@ public class ReportTest extends NPWebTest
 	public void insertImage()
 	{
 		reportsPage.checkIsRendered()
+				  .clickEditBtn()
 				  .clickInsertBtn();
-		reportsPage.chooseObjectDropDown
+		reportsPage.insertBlockDropDown
 				  .checkIsRendered()
-				  .uploadFile("C:\\resources\\1472058088_05.jpg")
-				  .clickObjectByName("Text", "ic_text");
-		reportsPage.checkIsRendered()
+				  .uploadFile("C:\\testdata\\img.jpg");
+		reportsPage.checkImageBlockExists()
 				  .clickMenuBtn();
 		reportsPage.mainMenuDropDown
 				  .checkIsRendered()
@@ -63,29 +66,20 @@ public class ReportTest extends NPWebTest
 	@Test
 	public void insertEmbed()
 	{
-		mainPage.checkIsRendered()
-				  .clickdrawerToggleBtn();
-		mainPage.openReports()
-				  .clickCreateBtn();
 		reportsPage.checkIsRendered()
+				  .clickEditBtn()
 				  .clickInsertBtn();
-		reportsPage.chooseObjectDropDown
+		reportsPage.insertBlockDropDown
 				  .checkIsRendered()
-				  .clickObjectByName("URL embed", "ic_code");
+				  .clickURLEmbed();
 		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
-				  .urlInput("http://app.newpeople.co/reports/2982")
-				  .clickDone();
-		reportsPage.checkIsRendered()
+				  .typeUrl("https://repapplic.com")
+				  .clickOk();
+		reportsPage.checkWebContentBlockExists()
 				  .clickMenuBtn();
 		reportsPage.mainMenuDropDown
 				  .checkIsRendered()
 				  .clickSave();
-		reportsPage.saveAsDialog.checkIsRendered()
-				  .enterInputName("SimpleObject")
-				  .clickOkBtn();
-		reportsPage.clickCloseBtn();
-		mainPage.checkObjectByName("SimpleObject", 15)
-				  .clickObjectInDataTableByName("SimpleObject", 15);
 	}
 //
 //	@Test
@@ -101,7 +95,7 @@ public class ReportTest extends NPWebTest
 //		//тип чарта Column
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -115,7 +109,7 @@ public class ReportTest extends NPWebTest
 //		//Stacked column
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -129,7 +123,7 @@ public class ReportTest extends NPWebTest
 //		//100% stacked column
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -143,7 +137,7 @@ public class ReportTest extends NPWebTest
 //		//Bar
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -157,7 +151,7 @@ public class ReportTest extends NPWebTest
 //		//Stacked bar
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -171,7 +165,7 @@ public class ReportTest extends NPWebTest
 //		//100% stacked bar
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -185,7 +179,7 @@ public class ReportTest extends NPWebTest
 //		//Combo
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -199,7 +193,7 @@ public class ReportTest extends NPWebTest
 //		//Line
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -213,7 +207,7 @@ public class ReportTest extends NPWebTest
 //		//Area
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -227,7 +221,7 @@ public class ReportTest extends NPWebTest
 //		//Stacked area
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -241,7 +235,7 @@ public class ReportTest extends NPWebTest
 //		//100% stacked area
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -255,7 +249,7 @@ public class ReportTest extends NPWebTest
 //		//Pie
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -269,7 +263,7 @@ public class ReportTest extends NPWebTest
 //		//Donut
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -283,7 +277,7 @@ public class ReportTest extends NPWebTest
 //		//Single value
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -295,7 +289,7 @@ public class ReportTest extends NPWebTest
 //		//Treemap
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -309,7 +303,7 @@ public class ReportTest extends NPWebTest
 //		//	Scatter plot
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -327,7 +321,7 @@ public class ReportTest extends NPWebTest
 //		//Funnel
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -341,7 +335,7 @@ public class ReportTest extends NPWebTest
 //		//Histogram
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -355,7 +349,7 @@ public class ReportTest extends NPWebTest
 //		//Simple table
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -367,7 +361,7 @@ public class ReportTest extends NPWebTest
 //		//Cross-table
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -403,7 +397,7 @@ public class ReportTest extends NPWebTest
 //				  .clickCreateBtn();
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
@@ -600,7 +594,7 @@ public class ReportTest extends NPWebTest
 //				  .clickCreateBtn();
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Text", "ic_text");
 //		reportsPage.checkIsRendered()
 //				  .clickEditTextBtn();
@@ -690,10 +684,10 @@ public class ReportTest extends NPWebTest
 //		mainPage.clickCreateBtn();
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("URL embed", "ic_code");
 //		reportsPage.hTTPSwebAddressDialog.checkIsRendered()
-//				  .urlInput(embedCode)
+//				  .typeUrl(embedCode)
 //				  .clickDone();
 //		reportsPage.checkIsRendered()
 //				  .checkChartNoDate();
@@ -774,7 +768,7 @@ public class ReportTest extends NPWebTest
 //				  .clickCreateBtn();
 //		reportsPage.checkIsRendered()
 //				  .clickInsertBtn();
-//		reportsPage.chooseObjectDropDown.checkIsRendered()
+//		reportsPage.insertBlockDropDown.checkIsRendered()
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("DemoData", "ic_csv", 30);

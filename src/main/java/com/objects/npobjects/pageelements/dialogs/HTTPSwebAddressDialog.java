@@ -10,7 +10,7 @@ public class HTTPSwebAddressDialog extends Dialog
 
 	private ReportPage parentPage;
 
-	private final By title = dialogAppBarTitle("HTTPS web address");
+	private final By title = dialogAppBarTitle("HTTPS Web Address");
 	private final By urlInput = By.xpath("//div[contains(@class, 'mdc-dialog--open')]//following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 
 	public HTTPSwebAddressDialog(SeleniumDriverWrapper driver, ReportPage pageObj)
@@ -28,15 +28,17 @@ public class HTTPSwebAddressDialog extends Dialog
 				  && driver.waitUntilClickable(okBtn);
 	}
 
-	public HTTPSwebAddressDialog urlInput(String url)
-	{
-		Assert.assertTrue(driver.type(urlInput, url));
-		return this;
-	}
-
 	public HTTPSwebAddressDialog checkIsRendered()
 	{
 		super.checkIsRendered();
 		return this;
 	}
+
+	public HTTPSwebAddressDialog typeUrl(String url)
+	{
+		Assert.assertTrue(driver.type(urlInput, url));
+		return this;
+	}
+
+
 }

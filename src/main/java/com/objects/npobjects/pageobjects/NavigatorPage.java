@@ -45,7 +45,7 @@ public class NavigatorPage extends NPPageObject
 	private final By currentTeam = By.xpath("//div[contains(@class, 'page-mode-panel__footer')]//span[contains(@class, 'mdc-list-item__secondary-text')]");
 	private final By drawerToggleBtn = iconFontBtn("ic_menu");
 
-	private final By liReports = listItemWithText("ReportTest");
+	private final By liReports = listItemWithText("Reports");
 	private final By liDataSources = listItemWithText("Data Sources");
 	private final By liSettings = listItemWithText("Settings");
 	private final By liHelp = listItemWithText("Help");
@@ -100,7 +100,7 @@ public class NavigatorPage extends NPPageObject
 	public NavigatorPage checkIsLoggedIn(String accountName, String teamName)
 	{
 		checkIsRendered();
-		checkNavSection("ReportTest", "/reports");
+		checkNavSection("Reports", "/reports");
 		checkAccount(accountName);
 		checkTeam(teamName);
 		return this;
@@ -203,7 +203,7 @@ public class NavigatorPage extends NPPageObject
 	public NavigatorPage openReports()
 	{
 		Assert.assertTrue(driver.click(liReports));
-		checkNavSection("ReportTest", "/reports");
+		checkNavSection("Reports", "/reports");
 		return this;
 	}
 

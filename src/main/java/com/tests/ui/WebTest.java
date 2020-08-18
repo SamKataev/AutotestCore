@@ -1,8 +1,5 @@
 package com.tests.ui;
 
-import com.google.gson.JsonArray;
-import com.service.TestProperties;
-import com.service.http.HttpRequestWrapper;
 import com.service.ui.UIDriverFactory;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.testng.Assert;
@@ -22,30 +19,24 @@ public abstract class WebTest
 	private static UIDriverFactory driverFactory;
 	protected SeleniumDriverWrapper driver;
 
-	@Parameters({"baseURL"})
 	@BeforeSuite
-	public void startSuite(String url)
+	public void startSuite()
 	{
 		if (driverFactory == null)
 		{
 			driverFactory = new UIDriverFactory();
 			driverFactory.startServices();
 		}
-
-		deleteTeamObjects(url);
 	}
 
-	@Parameters({"baseURL"})
 	@AfterSuite
-	public void stopSuite(String url)
+	public void stopSuite()
 	{
 		if (driverFactory != null)
 		{
 			driverFactory.closeDrivers();
 			driverFactory.stopServices();
 		}
-
-//		deleteTeamObjects(url);
 	}
 
 	@Parameters({"threadId", "baseURL", "browserName", "defaultWaitTime"})
@@ -82,28 +73,4 @@ public abstract class WebTest
 			System.out.println("thread sleep interrupted: " + e.getMessage());
 		}
 	}
-
-	protected void deleteTeamObjects(String url)
-	{
-		HttpRequestWrapper request = new HttpRequestWrapper();
-		request.setName("delete test team objects");
-		request.setHeader("teamid", TestProperties.getNPProp("teamid"));
-		request.setHeader("sig", TestProperties.getNPProp("sig"));
-		request.setHeader("Content-Type", "application/json");
-		request.setEndpoint(url + "/api/v1/");
-		request.setMethod("objects/");
-		request.setType("get");
-		request.setExpectedStatusCode(200);
-		request.send();
-		request.validateStatusCode();
-
-		JsonArray teamObjects = request.getResponseJsonArray();
-
-		request.setType("delete");
-		teamObjects.forEach(teamObject -> {
-			request.setMethodKey(teamObject.getAsJsonObject().get("Key").toString());
-			request.send();
-		});
-	}
-
 }
