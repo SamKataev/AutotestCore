@@ -38,10 +38,4 @@ public class PermissionsDialog extends Dialog
 		Assert.assertTrue(driver.click(closeBtn));
 		return this;
 	}
-
-	public PermissionsDialog checkSelectPeople(String text, int time)
-	{
-		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__secondary-text') and contains(text(), '" + text + "')]/parent::span/parent::li"), time));
-		return this;
-	}
 }

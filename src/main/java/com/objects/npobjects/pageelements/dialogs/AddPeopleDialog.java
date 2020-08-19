@@ -40,11 +40,4 @@ public class AddPeopleDialog extends Dialog
 		Assert.assertTrue(driver.click(sendBtn));
 		return this;
 	}
-
-	public AddPeopleDialog selectPeople(String text, int time)
-	{
-		org.testng.Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__secondary-text') and contains(text(), '" + text + "')]/parent::span/parent::li"), time));
-		org.testng.Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__secondary-text') and contains(text(), '" + text + "')]/parent::span/parent::li")));
-		return this;
-	}
 }

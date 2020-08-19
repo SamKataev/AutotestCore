@@ -1,6 +1,7 @@
 package com.tests.ui.npuitests;
 
 
+import com.service.TestProperties;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -37,6 +38,9 @@ public class ReportTest extends NPWebTest
 				  .checkObjectByName("AutotestReport");
 	}
 
+	/**
+	 * reload report page before methods
+	 */
 	@BeforeMethod
 	@Override
 	public void startTestMethod()
@@ -45,17 +49,17 @@ public class ReportTest extends NPWebTest
 			driver.switchToMainWindow();
 
 		openReport(reportKey);
+		reportsPage.checkIsRendered();
 	}
 
 	@Test
 	public void insertImage()
 	{
-		reportsPage.checkIsRendered()
-				  .clickEditBtn()
+		reportsPage.clickEditBtn()
 				  .clickInsertBtn();
 		reportsPage.insertBlockDropDown
 				  .checkIsRendered()
-				  .uploadFile("C:\\testdata\\img.jpg");
+				  .uploadFile(TestProperties.getNPProp("imgFilePath"));
 		reportsPage.checkImageBlockExists()
 				  .clickMenuBtn();
 		reportsPage.mainMenuDropDown
@@ -66,8 +70,7 @@ public class ReportTest extends NPWebTest
 	@Test
 	public void insertEmbed()
 	{
-		reportsPage.checkIsRendered()
-				  .clickEditBtn()
+		reportsPage.clickEditBtn()
 				  .clickInsertBtn();
 		reportsPage.insertBlockDropDown
 				  .checkIsRendered()
@@ -81,310 +84,159 @@ public class ReportTest extends NPWebTest
 				  .checkIsRendered()
 				  .clickSave();
 	}
-//
-//	@Test
-//	public void insertAllTypeChart()
-//	{
-//		authPage.open().checkIsRendered();
-//		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
-//		changeTeam("TestTeam");
-//		mainPage.checkIsRendered()
-//				  .clickdrawerToggleBtn();
-//		mainPage.openReports()
-//				  .clickCreateBtn();
-//		//тип чарта Column
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Column", "ic_column", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Stacked column
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Stacked column", "ic_stacked_column", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//100% stacked column
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("100% stacked column", "ic_norm_stacked_col", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Bar
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Bar", "ic_bar", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Stacked bar
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Stacked bar", "ic_stacked_bar", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//100% stacked bar
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("100% stacked bar", "ic_norm_stacked_bar", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Combo
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Combo", "ic_combo_chart", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Line
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Line", "ic_line_chart", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Area
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Area", "ic_area_chart", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Stacked area
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Stacked area", "ic_stacked_area", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//100% stacked area
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("100% stacked area", "ic_norm_stacked_are", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Pie
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Pie", "ic_pie", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Donut
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Donut", "ic_donut", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Single value
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Single value", "ic_single_value", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//Treemap
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Treemap", "ic_treemap", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records");
-//		//	Scatter plot
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Scatter plot", "ic_scatter_plot", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records")
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Value1");
-//		reportsPage.reportDropDown.checkIsRendered()
-//				  .clickObjectByName("Sum");
-//		//Funnel
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Funnel", "ic_funnel", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records")
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company");
-//		//Histogram
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Histogram", "ic_histogram", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddMeasureBtn()
-//				  .clickDimensionInPanelByName("Number of records")
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company");
-//		//Simple table
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Simple table", "ic_simple_table", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddFieldBtn()
-//				  .clickDimensionInPanelByName("Company");
-//		//Cross-table
-//		reportsPage.checkIsRendered()
-//				  .clickInsertBtn();
-//		reportsPage.insertBlockDropDown.checkIsRendered()
-//				  .clickObjectByName("Chart", "ic_chart");
-//		reportsPage.selectaDataSourceDialog.checkIsRendered()
-//				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
-//				  .clickTypeChartInDialogByName("Cross-table", "ic_cross_table", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Company")
-//				  .clickAddDimensionBtn()
-//				  .clickDimensionInPanelByName("Measure Names");
-//		//сохранение отчета
-//		reportsPage.checkIsRendered()
-//				  .clickMenuBtn();
-//		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveBtn();
-//		reportsPage.saveAsDialog.checkIsRendered()
-//				  .enterInputName("AllTypeChart")
-//				  .clickOkBtn();
-//		reportsPage.clickCloseBtn();
-//		mainPage.checkObjectByName("AllTypeChart", 15)
-//				  .clickObjectInDataTableByName("AllTypeChart", 15);
-//	}
-//
+
+	@Test
+	public void insertColumnChart()
+	{
+		insertChartOfType("Column", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertStackedColumnChart()
+	{
+		insertChartOfType("Stacked Column", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertFullStackedColumnChart()
+	{
+		insertChartOfType("100% Stacked Column", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertBarChart()
+	{
+		insertChartOfType("Bar", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertStackedBarChart()
+	{
+		insertChartOfType("Stacked Bar", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertFullStackedBarChart()
+	{
+		insertChartOfType("100% Stacked Bar", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertLineChart()
+	{
+		insertChartOfType("Line", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertAreaChart()
+	{
+		insertChartOfType("Area", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertStackedAreaChart()
+	{
+		insertChartOfType("Stacked Area", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertFullStackedAreaChart()
+	{
+		insertChartOfType("100% Stacked Area", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertPieChart()
+	{
+		insertChartOfType("Donut", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertDonutChart()
+	{
+		insertChartOfType("Donut", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertSingleValueChart()
+	{
+		insertChartOfType("Single Value", "source");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertTreemapChart()
+	{
+		insertChartOfType("Treemap", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertBubbleChart()
+	{
+		insertChartOfType("Bubble Chart", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertFunnelChart()
+	{
+		insertChartOfType("Funnel", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
+	@Test
+	public void insertPyramidChart()
+	{
+		insertChartOfType("Pyramid", "source");
+		addDimension("Company");
+		addMeasure("Value", "sum");
+		saveReport();
+	}
+
 //	@Test
 //	public void addCalculatedMeasure()
 //	{
@@ -401,11 +253,11 @@ public class ReportTest extends NPWebTest
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("For%20charts.csv", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
+//		reportsPage.chooseChartTypeDialog.checkIsRendered()
 //				  .clickTypeChartInDialogByName("Column", "ic_column", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .checkDialogTitle("Settings", 2)
-//				  .clickAddDimensionBtn()
+//				  .clickAddDimension()
 //				  .checkDialogTitle("Choose dimension", 5)
 //				  .clickDimensionInPanelByName("Company")
 //				  .checkDialogTitle("Settings", 2)
@@ -424,9 +276,9 @@ public class ReportTest extends NPWebTest
 //		reportsPage.сalculationsAddDialog.checkIsRendered()
 //              .checkMeasureTableByName("New measure",5)
 //				  .clickСloseBtn();
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .checkDialogTitle("Settings", 2)
-//				  .clickAddMeasureBtn()
+//				  .clickAddMeasure()
 //				  .clickDimensionInPanelByName("New measure");
 //		//сохранение отчета
 //		reportsPage.checkIsRendered()
@@ -452,12 +304,12 @@ public class ReportTest extends NPWebTest
 //		mainPage.openReports()
 //				  .clickCreateBtn();
 //		reportsPage.checkIsRendered();
-//		reportsPage.settingsReportDialog.checkIsRendered()
+//		reportsPage.settingsReportPanel.checkIsRendered()
 //				  .createSelectSize().selectByVisibleText("Floating");
-//		reportsPage.settingsReportDialog.FloatingNodeFalse();
-//		reportsPage.settingsReportDialog.checkIsRendered()
+//		reportsPage.settingsReportPanel.FloatingNodeFalse();
+//		reportsPage.settingsReportPanel.checkIsRendered()
 //				  .createSelectSize().selectByVisibleText("Tiled");
-//		reportsPage.settingsReportDialog.tiledNodeTrue();
+//		reportsPage.settingsReportPanel.tiledNodeTrue();
 ////		сохранение отчета
 //		reportsPage.checkIsRendered()
 //				  .clickMenuBtn();
@@ -551,11 +403,11 @@ public class ReportTest extends NPWebTest
 //		reportsPage.reportDropDown.checkIsRendered()
 //				  .clickObjectByName("Paste style");
 //		//проверка применимости стилей
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .clickTabStyleBtn()
 //				  .clickAccordionByName("Title");
-//		Assert.assertTrue(reportsPage.settingsChartDialog.createSelectSize().getFirstSelectedOption().getText().matches("24"));
-//		reportsPage.settingsChartDialog.clickAccordionByName("General")
+//		Assert.assertTrue(reportsPage.chartLayoutPanel.createSelectSize().getFirstSelectedOption().getText().matches("24"));
+//		reportsPage.chartLayoutPanel.clickAccordionByName("General")
 //				  .clickLineWeight();
 //		reportsPage.reportDropDown.checkIsRendered()
 //				  .checkSelectedItem("4px", "ic_check");
@@ -772,9 +624,9 @@ public class ReportTest extends NPWebTest
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("DemoData", "ic_csv", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
+//		reportsPage.chooseChartTypeDialog.checkIsRendered()
 //				  .clickTypeChartInDialogByName("Column", "ic_column", 5);
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .checkDialogTitle("Settings", 2)
 //				  .clickItemInPanelByName("Data source", "ic_csv");
 //		reportsPage.reportDropDown.checkIsRendered()
@@ -793,23 +645,23 @@ public class ReportTest extends NPWebTest
 //		reportsPage.сalculationsAddDialog.checkIsRendered()
 //				  .checkMeasureTableByName("Region item",5)
 //				  .clickСloseBtn();
-//		reportsPage.settingsChartDialog.clickAddDimensionBtn()
+//		reportsPage.chartLayoutPanel.clickAddDimension()
 //				  .checkDialogTitle("Choose dimension", 5)
 //				  .clickDimensionInPanelByName("Region")
-//				  .clickAddMeasureBtn()
+//				  .clickAddMeasure()
 //				  .checkDialogTitle("Choose measure", 5)
 //				  .clickDimensionInPanelByName("Sales");
 //		reportsPage.reportDropDown.checkIsRendered()
 //				  .clickObjectByName("Sum");
 //		//проверка что измерение добавилось фильтры-селект-проверка самого значения
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .clickAddFilterBtn();
 //		reportsPage.reportFiltersDialog.checkIsRendered()
 //				  .checkDialogTitle("Choose item", 2);
 //		Assert.assertTrue(driver.click(By.xpath("(//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), 'Region')])[2]")));
 //		reportsPage.reportDropDown.checkIsRendered()
 //				  .clickObjectByName("Select");
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .checkDialogTitle("Selection", 5)
 //				  .clickItemInSelectByName("Region item", "ic_check_box_outline", 5)
 //				  .clickItemInSelectByName("Central", "ic_check_box_outline", 5)
@@ -823,57 +675,58 @@ public class ReportTest extends NPWebTest
 //				  .clickOkBtn();
 //	}
 //
-//	@Test
-//	public void addNewSheet()
-//	{
-//		authPage.open().checkIsRendered();
-//		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
-//		changeTeam("TestTeam");
-//		mainPage.checkIsRendered()
-//				  .clickdrawerToggleBtn();
-//		mainPage.openReports()
-//				  .clickCreateBtn();
-//		reportsPage.checkIsRendered()
-//				  .clickSheetBtn()
-//				  .clickSheetBtn()
-//				  .contextClickSheet("Sheet 2", 10);
-//		reportsPage.reportDropDown.checkIsRendered()
-//				  .clickObjectByName("Rename");
-//		mainPage.renameDialog.checkIsRendered()
-//				  .enterInputName("New name sheet")
-//				  .clickRenameBtn();
-//		reportsPage.settingsReportDialog.checkIsRendered()
-//				  .createStartSheet().selectByVisibleText("New name sheet");
-//		reportsPage.clickMenuBtn();
-//		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickSaveBtn();
-//		reportsPage.saveAsDialog.checkIsRendered()
-//				  .enterInputName("addSheet")
-//				  .clickOkBtn();
-//		reportsPage.clickCloseBtn();
-//		mainPage.checkIsRendered()
-//				  .clickObjectInDataTableByName("addSheet", 5);
-//		reportsPage.checkIsRendered()
-//				  .checkActiveSheet("New name sheet", "mdc-tab--active", 5)
-//				  .clickCloseBtn();
-//	}
-//
-//	@Test
-//	public void deleteAddNewSheet()
-//	{
-//		authPage.open().checkIsRendered();
-//		authPage.logIn("slemmatest@mail.ru", "Q123#@!w");
-//		changeTeam("TestTeam");
-//		mainPage.checkIsRendered()
-//				  .clickdrawerToggleBtn();
-//		mainPage.openReports()
-//				  .contextClickObjectInDataTableByName("addSheet", 5);
-//		mainPage.moreOptionDropDown.checkIsRendered()
-//				  .clickRemoveBtn();
-//		mainPage.confirmDialog.checkIsRendered()
-//				  .clickDeleteBtn();
-//		mainPage.checkIsRendered();
-//		Assert.assertFalse(driver.waitUntilExist(By.xpath("//div[contains(@class , 'accordion__item__body')]//span[contains(@class, 'mdc-list-item') and text()='addSheet']")));
-//	}
 
+	protected void saveReport()
+	{
+		reportsPage.clickMenuBtn();
+		reportsPage.mainMenuDropDown
+				  .checkIsRendered()
+				  .clickSave();
+	}
+
+	protected void insertChartOfType(String type, String sourceName)
+	{
+		reportsPage.clickEditBtn()
+				  .clickInsertBtn();
+		reportsPage.insertBlockDropDown
+				  .checkIsRendered()
+				  .clickChart();
+		reportsPage.chooseDataSourceDialog
+				  .checkIsRendered()
+				  .clickObjectByName(sourceName);
+		reportsPage.chooseChartTypeDialog
+				  .checkIsRendered()
+				  .clickChartType(type);
+		reportsPage.chartLayoutPanel
+				  .checkIsRendered()
+				  .checkChartType(type);
+
+	}
+
+	protected void addDimension(String name)
+	{
+		reportsPage.chartLayoutPanel
+				  .checkIsRendered()
+				  .clickAddDimension();
+		reportsPage.chartLayoutPanel.chooseDimensionPanel
+				  .checkIsRendered()
+				  .clickDimension(name);
+		reportsPage.chartLayoutPanel
+				  .checkDimensionExists(name);
+	}
+
+	protected void addMeasure(String name, String agg)
+	{
+		reportsPage.chartLayoutPanel
+				  .checkIsRendered()
+				  .clickAddMeasure();
+		reportsPage.chartLayoutPanel.chooseMeasurePanel
+				  .checkIsRendered()
+				  .clickMeasure(name);
+		reportsPage.chartLayoutPanel.chooseMeasurePanel.aggDropDown
+				  .checkIsRendered()
+				  .clickAgg(agg);
+		reportsPage.chartLayoutPanel
+				  .checkMeasureExists(agg.toUpperCase() + " (" + name + ")");
+	}
 }

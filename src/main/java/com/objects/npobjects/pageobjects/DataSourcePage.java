@@ -1,11 +1,9 @@
 package com.objects.npobjects.pageobjects;
 
 import com.objects.npobjects.NPPageObject;
-import com.objects.npobjects.pageelements.dialogs.SettingsDataSourcesDialog;
 import com.objects.npobjects.pageelements.dialogs.FieldSettingsDialog;
 import com.objects.npobjects.pageelements.dialogs.DistinctCountSettingsDialog;
 import com.objects.npobjects.pageelements.dialogs.CalculationFieldDialog;
-import com.objects.npobjects.pageelements.dropdown.DropDown;
 import com.objects.npobjects.pageelements.dropdown.SourceMainMenuDropDown;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;

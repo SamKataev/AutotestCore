@@ -46,7 +46,7 @@ public class MessageDialog extends Dialog
 
 	public MessageDialog checkMessage(String text, int time)
 	{
-		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and contains(text(), '" + text + "')]"), time));
+		Assert.assertTrue(driver.waitUntilExist(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and text() = '" + text + "']"), time));
 		return this;
 	}
 }

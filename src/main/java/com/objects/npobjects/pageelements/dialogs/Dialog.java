@@ -63,32 +63,32 @@ public abstract class Dialog extends PageElement
 
 	protected By dialogListItemWithText(String text)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/ancestor::li");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/ancestor::li");
 	}
 
 	protected By dialogListItemWithText(String text, String dialogClass)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/ancestor::li");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/ancestor::li");
 	}
 
 	protected By dialogListItemWithTextIcon(String text, String iconClass)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
 	}
 
 	protected By dialogTwoLineListItemWithText(String text)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/ancestor::li");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']/ancestor::li");
 	}
 
 	protected By dialogTwoLineListItemWithText(String text, String dialogClass)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/ancestor::li");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']/ancestor::li");
 	}
 
 	protected By dialogTwoLineListItemWithTextIcon(String text, String iconClass)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
 	}
 
 	protected By dialogIconFontBtn(String iconClass)
@@ -121,6 +121,11 @@ public abstract class Dialog extends PageElement
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//button[contains(@class, 'mdc-button--black') and contains(text(), '" + btnText + "')]");
 	}
 
+	protected By dialogBtn(String btnText)
+	{
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
+	}
+
 	protected By dialogAppBarTitle(String titleText)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
@@ -141,88 +146,23 @@ public abstract class Dialog extends PageElement
 		return By.xpath("//div[contains(@class, 'mdc-dialog--open') and contains(@class, '" + dialogClass + "')]//label[contains(@class, control-label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
 	}
 
-
-	//Accordion
 	protected By dialogListAccordionWithText(String text)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']");
 	}
-//селект
 
 	protected By dialogSelectWithLabel(String text)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//label[contains(@class, control-label) and contains(text(), '" + text + "')]/following-sibling::div[contains(@class, 'select__native-control-container')]");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//label[contains(@class, control-label) and text() = '" + text + "']/following-sibling::div[contains(@class, 'select__native-control-container')]");
 	}
 
-	//текст сообщения
 	protected By dialogTextMessage(String text)
 	{
-		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and contains(text(), '" + text + "')]");
+		return By.xpath("//div[contains(@class, 'mdc-dialog--open')]//div[contains(@class, 'mdc-dialog__content') and text() = '" + text + "']");
 	}
 
-	//block-setting-panel
-	protected By panelAppBarTitle(String titleText)
-	{
-		return By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
-	}
-
-	protected By panelListItemWithTextIconBtn(String text, String iconClass)
-	{
-		return By.xpath("//div[contains(@class, 'block-settings-panel')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
-	}
-
-	//app-bar btn
 	protected By dialogAppBarTextBtn(String btnText)
 	{
 		return By.xpath("//div[contains(@class, 'mdc-top-app-bar')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
 	}
-
-	//settings-node
-	protected By nodeMdcAppBarTitle(String titleText)
-	{
-		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-top-app-bar__title') and contains(text(), '" + titleText + "')]");
-	}
-
-	//settings-node select
-	protected By nodeMdcAppBarSelect(String titleText)
-	{
-		return By.xpath("//option[contains(text(), '" + titleText + "')]//parent::select[@class='select__native-control']");
-	}
-
-	//settings-node select with label
-	protected By nodeMdcAppBarSelectWithLabel(String text)
-	{
-		return By.xpath("//label[contains(@class, 'select__label') and contains(text(), '" + text + "')]/following-sibling::div/child::select[contains(@class, 'select__native-control')]");
-	}
-
-	//settings-node accordion
-	protected By nodeMdcListAccordionWithText(String text)
-	{
-		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]");
-	}
-
-	//settings-node input
-	protected By nodeNpTextFieldWithLabel(String label)
-	{
-		return By.xpath("//div[contains(@class, 'settings-node')]//label[contains(@class, control-label) and contains(text(), '" + label + "')]/following-sibling::div[contains(@class, 'text-field__input-container')]/input");
-	}
-
-	//node btn
-	protected By nodeMdcAppBarTextBtn(String btnText)
-	{
-		return By.xpath("//div[contains(@class, 'settings-node')]//button[contains(@class, 'mdc-button') and contains(text(), '" + btnText + "')]");
-	}
-
-	//node btn with icon
-	protected By nodeMdcListItemWithTextIconBtn(String text, String iconClass)
-	{
-		return By.xpath("//div[contains(@class, 'settings-node')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li");
-	}
-
-	//mdc-tab-scroller
-	protected By tabScrollerMdcWithTextBtn(String text)
-	{
-		return By.xpath("//div[contains(@class, 'mdc-tab-scroller')]//span[contains(@class, 'mdc-tab__text-label') and contains(text(), '" + text + "')]//ancestor::button");
-	}
-
 }

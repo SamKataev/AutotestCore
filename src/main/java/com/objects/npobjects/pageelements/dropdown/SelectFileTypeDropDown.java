@@ -56,7 +56,7 @@ public class SelectFileTypeDropDown extends DropDown
 
 	public SelectFileTypeDropDown clickIntegration(String text)
 	{
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']")));
 		return this;
 	}
 

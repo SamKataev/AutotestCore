@@ -67,19 +67,5 @@ public class FieldSettingsDialog extends Dialog
 		Assert.assertTrue(driver.type(separatorInput, text));
 		return this;
 	}
-
-	public FieldSettingsDialog clickFieldsInDialogByName(String text, String iconClass, int time)
-	{
-		Assert.assertTrue(driver.waitUntilClickable(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li"), time));
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'mdc-dialog--open')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/parent::li")));
-		return this;
-	}
-
-	public FieldSettingsDialog clickDistinctCountSettingsBtn()
-	{
-		Assert.assertTrue(driver.waitUntilExist(distinctCountSettingsBtn, 5));
-		Assert.assertTrue(driver.click(distinctCountSettingsBtn));
-		return this;
-	}
 }
 

@@ -1,5 +1,6 @@
 package com.tests.ui.npuitests;
 
+import com.service.TestProperties;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -87,7 +88,7 @@ public class DataSourcesTest extends NPWebTest
 		dataSourceCreatePage
 				  .clickClose();
 		mainPage.checkIsRendered()
-				  .checkObjectByName("For%20charts.csv");
+				  .checkObjectByName("dates");
 	}
 
 	@Test
@@ -101,7 +102,7 @@ public class DataSourcesTest extends NPWebTest
 				  .clickUploadFile();
 		mainPage.createDatabaseDialog.selectDatasourceTypeDialog
 				  .checkIsRendered()
-				  .uploadFile("D:\\test data\\source.csv");
+				  .uploadFile(TestProperties.getNPProp("csvFilePath"));
 		dataSourceCreatePage
 				  .checkIsRendered()
 				  .clickMenuBtn();
@@ -114,11 +115,7 @@ public class DataSourcesTest extends NPWebTest
 		mainPage.checkIsRendered()
 				  .checkObjectByName("source");
 	}
-	
-	
-	
-	
-	
+
 	
 //	@Test
 //	public void datasetGoogleAnalytics()
@@ -599,9 +596,9 @@ public class DataSourcesTest extends NPWebTest
 //		reportsPage.checkIsRendered()
 //				  .clickEditBtn()
 //				  .clickChartByName("changeMeusureDimention");
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .checkDimensionInPanelByName("Name1")
-//				  .checkDimensionInPanelByName("Summ1");
+//		reportsPage.chartLayoutPanel.checkIsRendered()
+//				  .checkDimensionExists("Name1")
+//				  .checkDimensionExists("Summ1");
 //		reportsPage.clickCloseBtn();
 //		//обратное переименование метрик
 //		mainPage.checkIsRendered()
@@ -656,9 +653,9 @@ public class DataSourcesTest extends NPWebTest
 //		reportsPage.checkIsRendered()
 //				  .clickEditBtn()
 //				  .clickChartByName("changeMeusureDimention");
-//		reportsPage.settingsChartDialog.checkIsRendered()
-//				  .checkDimensionInPanelByName("data_varchar1")
-//				  .checkDimensionInPanelByName("month1");
+//		reportsPage.chartLayoutPanel.checkIsRendered()
+//				  .checkDimensionExists("data_varchar1")
+//				  .checkDimensionExists("month1");
 //		reportsPage.clickCloseBtn();
 //		//обратное переименование метрик
 //		mainPage.checkIsRendered()
@@ -793,13 +790,13 @@ public class DataSourcesTest extends NPWebTest
 //				  .clickObjectByName("Chart", "ic_chart");
 //		reportsPage.selectaDataSourceDialog.checkIsRendered()
 //				  .clickDataSourceInDialogByName("countries", "ic_dropbox", 30);
-//		reportsPage.chooseaChartTypeDialog.checkIsRendered()
+//		reportsPage.chooseChartTypeDialog.checkIsRendered()
 //				  .clickTypeChartInDialogByName("Column", "ic_column", 10);
-//		reportsPage.settingsChartDialog.checkIsRendered()
+//		reportsPage.chartLayoutPanel.checkIsRendered()
 //				  .checkDialogTitle("Settings", 2)
-//				  .clickAddMeasureBtn()
+//				  .clickAddMeasure()
 //				  .checkDialogTitle("Choose measure", 5)
-//				  .checkDimensionInPanelByName("New Name");
+//				  .checkDimensionExists("New Name");
 //		reportsPage.clickCloseBtn();
 //		mainPage.saveChangeDialog.checkIsRendered()
 //				  .clickDontSaveBtn();

@@ -68,9 +68,14 @@ public abstract class SeleniumDriverWrapper implements UIDriverWrapper
 
 	public boolean click(Object object)
 	{
+		return click(object, defaultWaitTime);
+	}
+
+	public boolean click(Object object, int time)
+	{
 		if (object instanceof By)
 		{
-			return clickWebElement((By) object, defaultWaitTime);
+			return clickWebElement((By) object, time);
 		}
 		else
 		{

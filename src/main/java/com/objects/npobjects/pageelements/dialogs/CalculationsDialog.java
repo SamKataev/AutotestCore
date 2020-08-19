@@ -48,7 +48,7 @@ public class CalculationsDialog extends Dialog
 
 	public CalculationsDialog clickMetricsByName(String text)
 	{
-		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'calculations-edit__metrics')]//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/parent::li")));
+		Assert.assertTrue(driver.click(By.xpath("//div[contains(@class, 'calculations-edit__metrics')]//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/parent::li")));
 		return this;
 	}
 

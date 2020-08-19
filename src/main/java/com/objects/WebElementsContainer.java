@@ -117,22 +117,22 @@ public abstract class WebElementsContainer
 
 	protected By listItemWithText(String text)
 	{
-		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/ancestor::li");
+		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/ancestor::li");
 	}
 
 	protected By listListItemWithTextIcon(String text, String iconClass)
 	{
-		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
+		return By.xpath("//span[contains(@class, 'mdc-list-item__text') and text() = '" + text + "']/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
 	}
 
 	protected By twoLineListItemWithText(String text)
 	{
-		return By.xpath("//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/ancestor::li");
+		return By.xpath("//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']/ancestor::li");
 	}
 
 	protected By twoLineListItemWithTextIcon(String text, String iconClass)
 	{
-		return By.xpath("//span[contains(@class, 'mdc-list-item__primary-text') and contains(text(), '" + text + "')]/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
+		return By.xpath("//span[contains(@class, 'mdc-list-item__primary-text') and text() = '" + text + "']/preceding-sibling::span[contains(@class, '" + iconClass + "')]/ancestor::li");
 	}
 
 	protected By iconFontBtn(String iconClass)
@@ -162,7 +162,7 @@ public abstract class WebElementsContainer
 
 	protected By tabWithText(String text)
 	{
-		return By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab')]");
+		return By.xpath("//span[contains(@class,'mdc-tab__text-label') and text() = '" + text + "']/ancestor::button[contains(@class, 'mdc-tab')]");
 	}
 
 }

@@ -3,9 +3,11 @@ package com.objects.npobjects.pageobjects;
 import com.objects.npobjects.NPPageObject;
 import com.objects.npobjects.pageelements.dialogs.*;
 import com.objects.npobjects.pageelements.dropdown.CreateBlockDropDown;
-import com.objects.npobjects.pageelements.dropdown.ReportDropDown;
+import com.objects.npobjects.pageelements.dropdown.AggDropDown;
 
 import com.objects.npobjects.pageelements.dropdown.ReportMainMenuDropDown;
+import com.objects.npobjects.pageelements.panels.ChartLayoutPanel;
+import com.objects.npobjects.pageelements.panels.ReportSettingsPanel;
 import com.service.ui.web.SeleniumDriverWrapper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
@@ -18,14 +20,13 @@ public class ReportPage extends NPPageObject
 
 	public HTTPSwebAddressDialog hTTPSwebAddressDialog;
 	public SaveAsDialog saveAsDialog;
-	public ChooseaChartTypeDialog chooseaChartTypeDialog;
-	public SettingsChartDialog settingsChartDialog;
-	public ReportDropDown reportDropDown;
+	public ChooseDataSourceDialog chooseDataSourceDialog;
+	public ChooseChartTypeDialog chooseChartTypeDialog;
+	public ChartLayoutPanel chartLayoutPanel;
+	public AggDropDown reportDropDown;
 	public CalculationsAddDialog сalculationsAddDialog;
 	public CalculationsDialog calculationsDialog;
-	public SettingsReportDialog settingsReportDialog;
-	public ReportFiltersDialog reportFiltersDialog;
-	public DataRangeSelectionDialog dataRangeSelectionDialog;
+	public ReportSettingsPanel settingsReportPanel;
 
 	private final By closeBtn = iconFontBtn("ic_close");
 	private By menuBtn = By.xpath("//div[@class='mdc-top-app-bar__row']//span[contains(@class, 'ic_menu_')]");
@@ -50,14 +51,13 @@ public class ReportPage extends NPPageObject
 
 		hTTPSwebAddressDialog = new HTTPSwebAddressDialog(driver, this);
 		saveAsDialog = new SaveAsDialog(driver, this);
-		chooseaChartTypeDialog = new ChooseaChartTypeDialog(driver, this);
-		settingsChartDialog = new SettingsChartDialog(driver, this);
-		reportDropDown = new ReportDropDown(driver, this);
+		chooseDataSourceDialog = new ChooseDataSourceDialog(driver, this);
+		chooseChartTypeDialog = new ChooseChartTypeDialog(driver, this);
+		chartLayoutPanel = new ChartLayoutPanel(driver, this);
+		reportDropDown = new AggDropDown(driver, this);
 		сalculationsAddDialog = new CalculationsAddDialog(driver, this);
 		calculationsDialog = new CalculationsDialog(driver, this);
-		settingsReportDialog = new SettingsReportDialog(driver, this);
-		reportFiltersDialog = new ReportFiltersDialog(driver, this);
-		dataRangeSelectionDialog = new DataRangeSelectionDialog(driver, this);
+		settingsReportPanel = new ReportSettingsPanel(driver, this);
 	}
 
 	@Override
@@ -170,20 +170,6 @@ public class ReportPage extends NPPageObject
 		Assert.assertTrue(driver.click(sheetBtn));
 		return this;
 	}
-
-	public ReportPage contextClickSheet(String text, int time)
-	{
-		Assert.assertFalse(driver.contextClick(By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab')]"), 10));
-		return this;
-	}
-
-	public ReportPage checkActiveSheet(String text, String buttonClass, int time)
-	{
-		Assert.assertFalse(driver.waitUntilClickable(By.xpath("//span[contains(@class,'mdc-tab__text-label') and contains(text(), '" + text + "')]/ancestor::button[contains(@class, 'mdc-tab') and contains(@class, '" + buttonClass + "')]"), 5));
-		return this;
-	}
-
-
 
 	public ReportPage checkImageBlockExists()
 	{

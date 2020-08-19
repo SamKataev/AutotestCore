@@ -24,7 +24,7 @@ public class SourceMainMenuDropDown extends DropDown
 	public boolean validateElements()
 	{
 		return driver.waitUntilExist(root, 5)
-				  && driver.waitUntilClickable(saveAsBtn)
+				  && driver.waitUntilClickable(saveBtn)
 				  && driver.waitUntilClickable(renameBtn);
 	}
 
