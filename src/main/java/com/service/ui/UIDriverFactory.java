@@ -85,7 +85,7 @@ public class UIDriverFactory
 			return true;
 		}
 		genericChromeDriverService = new ChromeDriverService.Builder()
-				  .usingDriverExecutable(new File(System.getProperty("user.dir") + "/vendors/chromedriver.exe"))
+				  .usingDriverExecutable(new File(System.getProperty("user.dir") + "/vendors/chromedriver"))
 				  .usingAnyFreePort()
 				  .build();
 

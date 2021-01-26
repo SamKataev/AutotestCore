@@ -1,0 +1,6 @@
+/target/
+/vendors/chromedriver
+/screenshots/
+/.idea/
+/AutotestCore.iml
+/allure-results/
