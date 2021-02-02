@@ -22,7 +22,7 @@ public abstract class SlemmaWebTest extends WebTest
 	 * each test class starts from home page if not overridden
 	 */
 	@BeforeClass
-	public void startSlemmaTestClass()
+	public void startClass()
 	{
 		openHomePage();
 	}
@@ -31,7 +31,7 @@ public abstract class SlemmaWebTest extends WebTest
 	 * each test method starts from home page if not overridden
 	 */
 	@BeforeMethod
-	public void startSlemmaTestMethod()
+	public void startMethod()
 	{
 		openHomePage();
 	}

@@ -9,7 +9,7 @@ public class RegistrationPage extends SlemmaWebTest
 
 	@BeforeClass
 	@Override
-	public void startSlemmaTestClass()
+	public void startClass()
 	{
 		//empty to cancel default behavior
 	}
